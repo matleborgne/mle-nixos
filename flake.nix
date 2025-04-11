@@ -39,7 +39,7 @@
         home-manager.nixosModules.default
         ./base.nix
       ] ++ (import (builtins.toPath ./modules/imports.nix));
-      
+            
     in {
 
     nixosConfigurations = {
@@ -77,6 +77,7 @@
 
 
 #    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+     inherit nixosModules;
 
   };
 }
