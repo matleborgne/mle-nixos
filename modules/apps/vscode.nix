@@ -34,7 +34,7 @@
         enable = true;
         package = pkgs.vscodium;
 
-        userSettings = {
+        profiles.default.userSettings = {
           "workbench.colorTheme" = "GitHub Light Default";
           "workbench.statusBar.visible" = false;
           "workbench.editor.enablePreview" = false;
@@ -42,7 +42,7 @@
           "editor.minimap.enabled" = false;
         };
 
-        extensions = with pkgs.vscode-extensions; [
+        profiles.default.extensions = with pkgs.vscode-extensions; [
 
           ms-ceintl.vscode-language-pack-fr    # Pack FR
           pkief.material-icon-theme            # Pack d'icones 

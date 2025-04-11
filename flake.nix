@@ -1,5 +1,5 @@
 {
-  description = "mle-nixos github flake";
+  description = "202503-refonte";
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Inputs - Every external data source
@@ -33,19 +33,14 @@
 
     let
 
-      baseModules = [
+      # Define modules shared among ALL machines
+      basicModules = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
-        { nixpkgs.config = nixpkgsConfig; }
-        nixosModules.default
-        
         home-manager.nixosModules.default
         ./base.nix
-      ];
-
-
-      mleModules = (import (builtins.toPath ./modules/imports.nix));
-            
-
+        ./hardware-configuration.nix
+      ] ++ (import (builtins.toPath ./modules/imports.nix))
+        ++ (import (builtins.toPath ./secrets/imports.nix));
 
     in {
 
@@ -57,7 +52,7 @@
 
       lx600 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = baseModules ++ mleModules ++ [
+        modules = basicModules ++ [
           ./roles/lx600.nix
         ];
       };
@@ -65,26 +60,25 @@
 
       yoga = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = baseModules ++ mleModules ++ [ ./roles/yoga.nix ];
+        modules = basicModules ++ [ ./roles/yoga.nix ];
       };
 
 
       sgpc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = baseModules ++ mleModules ++ [ ./roles/sgpc.nix ];
+        modules = basicModules ++ [ ./roles/sgpc.nix ];
       };
 
 
       ridge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = baseModules ++ mleModules ++ [ ./roles/ridge.nix ];
+        modules = basicModules ++ [ ./roles/ridge.nix ];
       };
 
     };
 
 
 #    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-     inherit nixosModules;
 
   };
 }
