@@ -33,13 +33,20 @@
 
     let
 
-      # Define modules shared among ALL machines
-      basicModules = [
+      baseModules = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
+        { nixpkgs.config = nixpkgsConfig; }
+        nixosModules.default
+        
         home-manager.nixosModules.default
         ./base.nix
-      ] ++ (import (builtins.toPath ./modules/imports.nix));
+      ];
+
+
+      mleModules = (import (builtins.toPath ./modules/imports.nix));
             
+
+
     in {
 
     nixosConfigurations = {
@@ -50,7 +57,7 @@
 
       lx600 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [
+        modules = baseModules ++ mleModules ++ [
           ./roles/lx600.nix
         ];
       };
@@ -58,19 +65,19 @@
 
       yoga = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/yoga.nix ];
+        modules = baseModules ++ mleModules ++ [ ./roles/yoga.nix ];
       };
 
 
       sgpc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/sgpc.nix ];
+        modules = baseModules ++ mleModules ++ [ ./roles/sgpc.nix ];
       };
 
 
       ridge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/ridge.nix ];
+        modules = baseModules ++ mleModules ++ [ ./roles/ridge.nix ];
       };
 
     };
