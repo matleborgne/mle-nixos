@@ -28,6 +28,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   system.activationScripts.preUpdate = ''
+    ${pkgs.git}/bin/git config --global --add safe.directory /etc/nixos/github
     ${pkgs.bash}/bin/bash /etc/nixos/build/scripts/github-autosync.sh
     ${pkgs.bash}/bin/bash /etc/nixos/build/scripts/mlemodules.sh
   '';
