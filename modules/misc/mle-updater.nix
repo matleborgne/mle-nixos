@@ -29,8 +29,8 @@
 
   system.activationScripts.preUpdate = ''
     cd /etc/nixos/build
-    ${pkgs.bash} ./scripts/github-autosync.sh
-    ${pkgs.bash} ./scripts/mlemodules.sh
+    ${pkgs.bash}/bin/bash ./scripts/github-autosync.sh
+    ${pkgs.bash}/bin/bash ./scripts/mlemodules.sh
   '';
     
 	};
