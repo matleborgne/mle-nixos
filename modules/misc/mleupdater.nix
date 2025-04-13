@@ -39,6 +39,6 @@
     ${pkgs.bash}/bin/bash sudo -u ${mainUser} /etc/nixos/build/scripts/mlemodules.sh
   '';
     
-	};
+	});
 
 }
