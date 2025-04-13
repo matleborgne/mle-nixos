@@ -1,6 +1,14 @@
 #!/bin/bash
 
+PATH=$PATH:/run/current-system/sw/bin
 #set -x
+
+# TODO BEFORE EXECUTING FORK SCRIPT
+
+# USECASE example : duplication of config for Librewolf along Firefox
+
+# 1. Go to https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/programs/PROGRAM_NAME.nix
+# 2. Check if everything can be easily forked (like librewolf which just replace firefox by librewolf everywhere)
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
