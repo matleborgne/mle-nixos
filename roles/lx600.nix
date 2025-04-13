@@ -53,6 +53,7 @@
     
     misc = {
       libvirt.enable = true;
+      mle-updater.enable = true;
       sshfs.enable = true;
     };
 
