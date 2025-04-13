@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PATH=$PATH:/run/current-system/sw/bin
+#PATH=$PATH:/run/current-system/sw/bin
 #set -x
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -11,11 +11,13 @@ current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 echo $current
 
 cd "$current"/../../github
-git pull origin main
+/run/current-system/sw/bin/git pull origin main
 
-rsync -avzhx --delete ./modules/ ../build/modules/
-rsync -avzhx --delete ./roles/ ../build/roles/
-rsync -avzhx --delete ./scripts/ ../build/scripts/
+/run/current-system/sw/bin/rsync -avzhx --delete ./modules/ ../build/modules/
+/run/current-system/sw/bin/rsync -avzhx --delete ./roles/ ../build/roles/
+/run/current-system/sw/bin/rsync -avzhx --delete ./scripts/ ../build/scripts/
 
-rsync -avzhx ./base.nix ../build/base.nix
-rsync -avzhx ./flake.nix ../build/flake.nix
+/run/current-system/sw/bin/rsync -avzhx ./base.nix ../build/base.nix
+/run/current-system/sw/bin/rsync -avzhx ./flake.nix ../build/flake.nix
+
+cd "$current"/../../build
