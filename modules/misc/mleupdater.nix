@@ -9,28 +9,27 @@
 
 {
 
-	options.mle.misc.mle-updater.enable = lib.mkOption {
+	options.mle.misc.mleupdater.enable = lib.mkOption {
 		description = "Configure mle-updater";
 		type = lib.types.bool;
 		default = false;
 	};
 	
-	config = lib.mkIf config.mle.misc.mle-updater.enable {
+	config = lib.mkIf config.mle.misc.mleupdater.enable {
 		
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   system.activationScripts.preUpdate = ''
-    cd /etc/nixos/build
-    ${pkgs.bash}/bin/bash ./scripts/github-autosync.sh
-    ${pkgs.bash}/bin/bash ./scripts/mlemodules.sh
+    ${pkgs.bash}/bin/bash /etc/nixos/build/scripts/github-autosync.sh
+    ${pkgs.bash}/bin/bash /etc/nixos/build/scripts/mlemodules.sh
   '';
     
 	};

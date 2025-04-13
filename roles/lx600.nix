@@ -10,8 +10,6 @@
 # 3- Note it is possible to override config present in some module
 # To do that, use "lib.mkForce"
 
-# TEST
-
 {
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -53,7 +51,7 @@
     
     misc = {
       libvirt.enable = true;
-      mle-updater.enable = true;
+      mleupdater.enable = true;
       sshfs.enable = true;
     };
 
