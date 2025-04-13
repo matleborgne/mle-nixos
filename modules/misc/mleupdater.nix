@@ -35,8 +35,8 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   system.activationScripts.preUpdate = ''
-    ${pkgs.bash}/bin/bash sudo -u ${mainUser} /etc/nixos/build/scripts/github-autosync.sh
-    ${pkgs.bash}/bin/bash sudo -u ${mainUser} /etc/nixos/build/scripts/mlemodules.sh
+    ${pkgs.bash}/bin/bash ${pkgs.sudo}/bin/sudo -u ${mainUser} /etc/nixos/build/scripts/github-autosync.sh
+    ${pkgs.bash}/bin/bash ${pkgs.sudo}/bin/sudo -u ${mainUser} /etc/nixos/build/scripts/mlemodules.sh
   '';
     
 	});
