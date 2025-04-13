@@ -1,5 +1,6 @@
 #!/bin/bash
 
+PATH=$PATH:/run/current-system/sw/bin
 #set -x
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
