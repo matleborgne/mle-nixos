@@ -34,7 +34,6 @@
     };
 
     bundles = {
-      development.enable = true;
     };
 
     desktop = {
