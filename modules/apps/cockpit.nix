@@ -29,7 +29,7 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    programs.cockpit = {
+    services.cockpit = {
       enable = true;
       openFirewall = true;
       port = lib.mkDefault 9090;
