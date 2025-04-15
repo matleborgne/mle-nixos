@@ -2,11 +2,9 @@
 
 set -x
 PATH=$PATH:/run/current-system/sw/bin
-
 disk="/dev/sda"
 
 umount -Rl /mnt
-
 cryptpart=$(lsblk --raw | grep crypt | awk -F ' ' '{ print $1 }')
 cryptsetup close /dev/mapper/"$cryptpart"
 
@@ -64,3 +62,15 @@ mkfs.vfat -F32 "$disk"1
 mount --mkdir -o "rw,noatime" /dev/mapper/"$rootmap" /mnt
 mount --mkdir -o "rw,noatime" "$disk"2 /mnt/boot
 mount --mkdir -o "rw,noatime" "$disk"1 /mnt/efi
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Clone github repo
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+mkdir -p /mnt/etc/nixos
+cd /mnt/etc/nixos
+
+mkdir -p build
+bash github/scripts/github-autosync.sh
+cp -r github/secrets build/secrets
