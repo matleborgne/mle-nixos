@@ -3,7 +3,8 @@
 set -x
 PATH=$PATH:/run/current-system/sw/bin
 
-disk="/dev/sda"
+echo "Enter disk path (ex: /dev/sda, /dev/nvme0n1, etc.) :"
+read disk
 
 if [[ "$disk" == *"nvme"* ]]; then
   parts="$disk"p
