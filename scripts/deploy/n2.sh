@@ -6,13 +6,18 @@ PATH=$PATH:/run/current-system/sw/bin
 echo "Enter disk path (ex: /dev/sda, /dev/nvme0n1, etc.) :"
 read disk
 
+echo "Enter desired password for luks :"
+read password
+
 if [[ "$disk" == *"nvme"* ]]; then
   parts="$disk"p
 else
   parts="$disk"
 fi
 
+
 umount -Rl /mnt
+
 cryptpart=$(lsblk --raw | grep crypt | awk -F ' ' '{ print $1 }')
 cryptsetup close /dev/mapper/"$cryptpart"
 
@@ -49,12 +54,12 @@ partprobe -s "$disk"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # LUKS root
-cryptsetup luksFormat "$parts"3
+echo -e "$password\n$password" | cryptsetup luksFormat "$parts"3
 
 rootid=$(blkid -o value -s UUID "$parts"3)
 rootmap="luks-$rootid"
 
-cryptsetup open "$parts"3 "$rootmap"
+echo -e "$password" | cryptsetup open "$parts"3 "$rootmap"
 
 
 # Filesystems
