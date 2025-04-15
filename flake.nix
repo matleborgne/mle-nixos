@@ -64,6 +64,12 @@
       };
 
 
+      n2 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = basicModules ++ [ ./roles/n2.nix ];
+      };
+
+
       sgpc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = basicModules ++ [ ./roles/sgpc.nix ];
