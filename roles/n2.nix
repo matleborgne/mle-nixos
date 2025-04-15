@@ -30,7 +30,8 @@
 
   mle = {
 
-    apps = {    
+    apps = {
+      cockpit.enable = true;
     };
 
     bundles = {
@@ -40,7 +41,6 @@
     };
     
     misc = {
-      cockpit.enable = true;
       libvirt.enable = true;
       mleupdater.enable = true;
       sshfs.enable = true;
