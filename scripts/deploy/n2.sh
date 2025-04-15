@@ -79,6 +79,9 @@ mount --mkdir -o "rw,noatime" "$parts"1 /mnt/efi
 mkdir -p /mnt/etc/nixos
 cd /mnt/etc/nixos
 
+git clone https://github.com/matleborgne/mle-nixos
+mv mle-nixos github
+
 mkdir -p build
 bash github/scripts/github-autosync.sh
 cp -r github/secrets build/secrets
