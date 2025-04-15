@@ -26,8 +26,12 @@ echo "{ config, lib, pkgs, ... }:
 
 
 # Loop for filesystems - fstab
-
-fstab=$(findmnt --noheadings --real --raw --uniq --nofsroot --output SOURCE,UUID,TARGET,FSTYPE,OPTIONS,FSROOT | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" | sed "s/$/ _/g")
+if [ $(findmnt --real --raw | grep '/ ' | wc -l) -gt 0 ]; then
+  fstab=$(findmnt --noheadings --real --raw --uniq --nofsroot --output SOURCE,UUID,TARGET,FSTYPE,OPTIONS,FSROOT | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" | sed "s/$/ _/g")
+else if [ $(findmnt --real --raw | grep '/mnt ' | wc -l) -gt 0 ]; then
+  fstab=$(findmnt --noheadings --real --raw --uniq --nofsroot --output SOURCE,UUID,TARGET,FSTYPE,OPTIONS,FSROOT | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" | sed "s/$/ _/g")
+fi
+fi
 
 oldIFS=$IFS
 IFS="_"
