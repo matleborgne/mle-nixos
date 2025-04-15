@@ -95,8 +95,9 @@ mkdir -p build
 bash github/scripts/github-autosync.sh
 cp -r github/secrets build/secrets
 
-# Hardware
+# Calculate hardware and include in imports
 bash build/scripts/hardware-configuration.sh
+bash build/scripts/mlemodules.sh
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Deploy nixos
