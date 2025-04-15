@@ -2,7 +2,14 @@
 
 set -x
 PATH=$PATH:/run/current-system/sw/bin
+
 disk="/dev/sda"
+
+if [[ "$disk" == *"nvme"* ]]; then
+  parts="$disk"p
+else
+  parts="$disk"
+fi
 
 umount -Rl /mnt
 cryptpart=$(lsblk --raw | grep crypt | awk -F ' ' '{ print $1 }')
