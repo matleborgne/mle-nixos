@@ -80,15 +80,26 @@ mount --mkdir -o "rw,noatime" "$parts"1 /mnt/efi
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Clone github repo
+# Prepare /etc/nixos
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 mkdir -p /mnt/etc/nixos
 cd /mnt/etc/nixos
 
+# Clone and rename github repo
 git clone https://github.com/matleborgne/mle-nixos
 mv mle-nixos github
 
+# Sync github files with build for first build
 mkdir -p build
 bash github/scripts/github-autosync.sh
 cp -r github/secrets build/secrets
+
+# Hardware
+bash build/scripts/hardware-configuration.sh
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Deploy nixos
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+nixos-install --flake /mnt/etc/nixos/build#n2
