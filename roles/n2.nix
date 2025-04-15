@@ -34,21 +34,12 @@
       cockpit.enable = true;
     };
 
-    bundles = {
-    };
-
-    desktop = {
-    };
-    
     misc = {
       libvirt.enable = true;
       mleupdater.enable = true;
       sshfs.enable = true;
     };
 
-    secrets = {
-    };
-    
   };
 
 
