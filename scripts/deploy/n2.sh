@@ -62,6 +62,7 @@ rootid=$(blkid -o value -s UUID "$parts"3)
 rootmap="luks-$rootid"
 
 echo -e "$password" | cryptsetup open "$parts"3 "$rootmap"
+unset password
 
 
 # Filesystems
