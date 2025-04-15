@@ -20,7 +20,7 @@
   let
     allUsers = builtins.attrNames config.users.users;
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
-    mainUser = builtins.elemAt normalUsers 0;
+    mainUser = lib.optionalAttrs (builtins.length normalUsers > 0) builtins.elemAt normalUsers 0;
 
   in {
 		
