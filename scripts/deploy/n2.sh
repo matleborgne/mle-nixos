@@ -13,7 +13,7 @@ cryptsetup close /dev/mapper/"$cryptpart"
 # Partition table and parts
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-sgdisk -Z /dev/sda
+sgdisk -Z "$disk"
 
 sgdisk \
   --new=1:0:+256M \
