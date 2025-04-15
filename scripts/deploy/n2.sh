@@ -7,7 +7,9 @@ echo "Enter disk path (ex: /dev/sda, /dev/nvme0n1, etc.) :"
 read disk
 
 echo "Enter desired password for luks :"
-read password
+stty -echo
+read $password
+stty echo
 
 if [[ "$disk" == *"nvme"* ]]; then
   parts="$disk"p
