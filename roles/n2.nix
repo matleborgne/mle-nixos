@@ -34,11 +34,7 @@
     };
 
     bundles = {
-      datapro.enable = true;
       development.enable = true;
-      gaming.enable = true;
-      multimedia.enable = true;
-      office.enable = true;
     };
 
     desktop = {
@@ -62,8 +58,8 @@
 
   # Example with force bluetooth disabled
   # Bad example because here we disable a full module, so we could do
-  # mle.bluetooth.enable = lib.mkForce false;
-  hardware.bluetooth.enable = lib.mkForce false;
+  mle.bluetooth.enable = lib.mkForce false;
+  # hardware.bluetooth.enable = lib.mkForce false;
 
   # Works better for example with a gsettings parameter to override (font size, etc.)
 
