@@ -27,7 +27,7 @@ echo "{ config, lib, pkgs, ... }:
 
 # Loop for filesystems - fstab
 
-fstab=$(findmnt --noheadings --real --raw --uniq --nofsroot --output SOURCE,UUID,TARGET,FSTYPE,OPTIONS,FSROOT | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" | sed "s/$/ _/g")
+fstab=$(findmnt --noheadings --real --raw --uniq --nofsroot --output SOURCE,UUID,TARGET,FSTYPE,OPTIONS,FSROOT | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" | sed "s/$/ _/g")
 
 oldIFS=$IFS
 IFS="_"
