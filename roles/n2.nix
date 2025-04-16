@@ -30,6 +30,10 @@
 
   mle = {
 
+    apps = {
+      cockpit.enable = true;
+    };
+
     misc = {
       libvirt.enable = true;
       mleupdater.enable = true;
