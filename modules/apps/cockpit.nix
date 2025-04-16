@@ -45,7 +45,7 @@
       };
     };
 
-  podman-containers = pkgs.callPackage ./podman-containers.nix { };
+  podman-containers = pkgs.callPackage ../forks/cockpit-podman.nix { };
 
   };
 }
