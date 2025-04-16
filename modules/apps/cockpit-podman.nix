@@ -30,46 +30,11 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages = 
-      let
-        cockpit-podman = 
-        #with import <nixpkgs> {};
-        with pkgs;
-        stdenv.mkDerivation rec {
-          pname = "cockpit-podman";
-          version = "103";
-      
-          src = fetchzip {
-            url = "https://github.com/cockpit-project/${pname}/releases/download/${version}/${pname}-${version}.tar.xz";
-            sha256 = "sha256-xWW4rcdwS0rfW9We5rY9nTH8+QPPGRn7XmNSjf6MdqQ=";
-          };
-      
-          nativeBuildInputs = [
-            gettext
-          ];
+    # REV-PARSE : git rev-parse HEAD in flake directory
 
-           makeFlags = [ "DESTDIR=$(out)" "PREFIX=" ];
-        
-            postPatch = ''
-              substituteInPlace Makefile \
-                --replace /usr/share $out/share
-              touch pkg/lib/cockpit-po-plugin.js
-              touch dist/manifest.json
-            '';
-        
-            dontBuild = true;
-        
-            meta = with lib; {
-              description = "Cockpit UI for podman containers";
-              license = licenses.lgpl21;
-              homepage = "https://github.com/cockpit-project/cockpit-podman";
-              platforms = platforms.linux;
-              maintainers = with maintainers; [ ];
-            };
-
-          };
-
-        in [ cockpit-podman ];
+    environment.systemPackages = with pkgs; [
+      (builtins.getFlake "github:matleborgne/cockpit-podman/22a84790eb888c74f9738284cd19ac0de9fecf03").packages.x86_64-linux.default
+    ];
       
   };
 }
