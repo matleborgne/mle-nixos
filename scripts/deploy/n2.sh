@@ -20,8 +20,11 @@ fi
 
 umount -Rl /mnt
 
-cryptpart=$(lsblk --raw | grep crypt | awk -F ' ' '{ print $1 }')
-cryptsetup close /dev/mapper/"$cryptpart"
+uncryptpart=$(lsblk --raw | grep crypt | awk -F ' ' '{ print $1 }')
+cryptsetup close /dev/mapper/"$uncryptpart"
+
+cryptpart=$(lsblk --raw -o NAME,FSTYPE | grep LUKS | awk -F ' ' '{ print $1 }')
+cryptsetup luksErase /dev/"$cryptpart"
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,7 +59,7 @@ partprobe -s "$disk"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # LUKS root
-echo -e "YES\n$password\n$password" | cryptsetup luksFormat "$parts"3
+echo -e "$password\n$password" | cryptsetup luksFormat "$parts"3
 
 rootid=$(blkid -o value -s UUID "$parts"3)
 rootmap="luks-$rootid"
