@@ -95,9 +95,8 @@ git clone https://github.com/matleborgne/mle-nixos
 mv mle-nixos github
 
 # Sync github files with build for first build
-mkdir -p build
-bash github/scripts/github-autosync.sh
 mkdir -p build/secrets
+bash github/scripts/github-autosync.sh
 
 # Calculate hardware and include in imports
 bash build/scripts/hardware-configuration.sh
