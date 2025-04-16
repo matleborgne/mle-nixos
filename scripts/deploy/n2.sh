@@ -60,8 +60,8 @@ cryptsetup open "$parts"3 "$rootmap"
 
 # LUKS keyfile
 mkdir -p /etc/keys
-dd if=/dev/urandom of=/etc/keyfile bs=512 count=4
-cryptsetup luksAddKey "$parts"3 /etc/keyfile
+dd if=/dev/urandom of=/etc/keys/keyfile bs=512 count=4
+cryptsetup luksAddKey "$parts"3 /etc/keys/keyfile
 
 
 # Filesystems
