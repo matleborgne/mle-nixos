@@ -39,21 +39,7 @@
 	      dockerCompat = true;
 	      # Required for containers under podman-compose to be able to talk to each other.
 	      defaultNetwork.settings.dns_enabled = true;
-	    }; # podman
-	
-	    containers.storage.settings = {
-	      storage = {
-		#driver = "btrfs";
-		runroot = "/run/containers/storage";
-		graphroot = "/var/lib/containers/storage";
-		options.overlay.mountopt = "nodev,metacopy=on";
-	      }; # storage
 	    };
-	  }; # virtualisation
-	
-	  users.groups.podman = {
-	    name = "podman";
-	  };
 	
 	  environment.systemPackages = with pkgs; [
 	    dive # look into docker image layers
