@@ -69,7 +69,7 @@
 
           };
 
-        in [ cockpit-podman ];
+        in [ pkgs.cockpit-podman ];
       
   };
 }
