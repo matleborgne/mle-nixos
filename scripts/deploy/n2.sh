@@ -67,6 +67,10 @@ rootmap="luks-$rootid"
 echo -e "$password" | cryptsetup open "$parts"3 "$rootmap"
 unset password
 
+# LUKS keyfile
+dd if=/dev/urandom of=/etc/keyfile bs=512 count=4
+cryptsetup luksAddKey "$parts"3 /etc/keyfile
+
 
 # Filesystems
 mkfs.ext4 -F /dev/mapper/"$rootmap"
