@@ -2,11 +2,11 @@
 
   stdenv.mkDerivation rec {
     pname = "cockpit-podman";
-    version = "81";
+    version = "103";
 
     src = fetchzip {
       url = "https://github.com/cockpit-project/${pname}/releases/download/${version}/${pname}-${version}.tar.xz";
-      sha256 = "sha256-7ibC1tUyVmabJ9yLFZQJGC/bBplqWjsBxORKyioQ8bE=";
+      sha256 = "sha256-xWW4rcdwS0rfW9We5rY9nTH8+QPPGRn7XmNSjf6MdqQ=";
     };
 
     nativeBuildInputs = [
