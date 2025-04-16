@@ -40,6 +40,7 @@
 	      # Required for containers under podman-compose to be able to talk to each other.
 	      defaultNetwork.settings.dns_enabled = true;
 	    };
+	  };
 	
 	  environment.systemPackages = with pkgs; [
 	    dive # look into docker image layers
