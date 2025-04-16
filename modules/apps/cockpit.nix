@@ -36,6 +36,7 @@
 
     environment.systemPackages = with pkgs; [
       pcp
+      podman-containers
     ];
 
     services.cockpit = {
