@@ -37,6 +37,7 @@
     misc = {
       libvirt.enable = true;
       mleupdater.enable = true;
+      podman.enable = true;
       sshfs.enable = true;
     };
 
