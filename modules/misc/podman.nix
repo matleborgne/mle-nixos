@@ -48,6 +48,10 @@
 	    podman-tui   # Terminal mgmt UI for Podman
 	    passt    # For Pasta rootless networking
 	  ];
+
+	  users.groups.podman = {
+	    name = "podman";
+	  };
 	
 	  # Add 'newuidmap' and 'sh' to the PATH for users' Systemd units. 
 	  # Required for Rootless podman.
