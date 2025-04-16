@@ -38,6 +38,7 @@
       libvirt.enable = true;
       mleupdater.enable = true;
       docker.enable = true;
+      nspawn.enable = true;
       sshfs.enable = true;
     };
 
