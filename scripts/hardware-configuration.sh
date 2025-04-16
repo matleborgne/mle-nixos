@@ -127,10 +127,10 @@ echo "    '';
 
 
 # First step : determine whether root disk is encrypted
-root=$(lsblk --raw --output NAME,FSTYPE,MOUNTPOINT | rev | grep '^/' | rev)
-
-if [ $(echo $root | wc -l) -lt 1 ]; then
+if [ $(lsblk --raw --output NAME,FSTYPE,MOUNTPOINT | rev | grep '^/' | rev | wc -l) -lt 1 ]; then
   root=$(lsblk --raw --output NAME,FSTYPE,MOUNTPOINT | rev | grep '^tnm/' | rev)
+else
+  root=$(lsblk --raw --output NAME,FSTYPE,MOUNTPOINT | rev | grep '^/' | rev)
 fi
 
 if [ "$(echo $root | awk -F '-' '{ print $1}')" = "luks" ]
