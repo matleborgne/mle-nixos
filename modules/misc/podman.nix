@@ -9,13 +9,13 @@
 
 {
 
-	options.mle.podman.enable = lib.mkOption {
+	options.mle.misc.podman.enable = lib.mkOption {
 		description = "Configure podman";
 		type = lib.types.bool;
 		default = false;
 	};
 	
-	config = lib.mkIf config.mle.podman.enable {
+	config = lib.mkIf config.mle.misc.podman.enable {
 	
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -27,7 +27,7 @@
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    # lib.optional (mle.cockpit.enable = true) cockpit-podman
+    # lib.optional (mle.apps.cockpit.enable = true) cockpit-podman
 
 		environment.systemPackages = with pkgs; [
 			podman
