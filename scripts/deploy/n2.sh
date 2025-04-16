@@ -59,7 +59,7 @@ rootmap="luks-$rootid"
 cryptsetup open "$parts"3 "$rootmap"
 
 # LUKS keyfile
-mkdir -p /etc/keys
+mkdir -p /mnt/etc/keys
 dd if=/dev/urandom of=/mnt/etc/keys/keyfile.key bs=512 count=4
 cryptsetup luksAddKey "$parts"3 /mnt/etc/keys/keyfile.key
 
