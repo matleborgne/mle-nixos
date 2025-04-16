@@ -12,7 +12,8 @@ else
   parts="$disk"
 fi
 
-
+umount -Rl /mnt/efi
+umount -Rl /mnt/boot
 umount -Rl /mnt
 
 uncryptpart=$(lsblk --raw | grep crypt | awk -F ' ' '{ print $1 }')
