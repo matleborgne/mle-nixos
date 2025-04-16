@@ -1,3 +1,12 @@
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+
+{
+
 { lib, stdenv, fetchzip, gettext }:
 
   stdenv.mkDerivation rec {
@@ -32,3 +41,5 @@
       maintainers = with maintainers; [ ];
     };
   }
+
+}
