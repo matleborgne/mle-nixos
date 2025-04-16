@@ -42,6 +42,9 @@
       sshfs.enable = true;
     };
 
+    secrets = {
+      hm-nas.enable = true;
+
   };
 
 
