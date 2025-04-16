@@ -9,13 +9,13 @@
 
 {
 
-	options.mle.iphone.enable = lib.mkOption {
+	options.mle.misc.iphone.enable = lib.mkOption {
 		description = "Configure client IPHONE connection";
 		type = lib.types.bool;
 		default = false;
 	};
 	
-	config = lib.mkIf config.mle.iphone.enable {
+	config = lib.mkIf config.mle.misc.iphone.enable {
 	
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
