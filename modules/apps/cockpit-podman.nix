@@ -16,7 +16,13 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.cockpit-podman.enable {
+  config = lib.mkIf config.mle.apps.cockpit-podman.enable (
+
+  let
+    cockpit-apps = ../forks/cockpit-podman.nix { inherit pkgs; };
+
+  in
+  {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -30,7 +36,9 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+    environment.systemPackages = with pkgs; [
+      cockpit-apps.podman-containers
+    ];
       
   };
 }
