@@ -97,7 +97,7 @@ mv mle-nixos github
 # Sync github files with build for first build
 mkdir -p build
 bash github/scripts/github-autosync.sh
-cp -r github/secrets build/secrets
+mkdir -p build/secrets
 
 # Calculate hardware and include in imports
 bash build/scripts/hardware-configuration.sh
