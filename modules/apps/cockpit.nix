@@ -29,6 +29,10 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    environment.systemPackages = with pkgs; [
+      pcp
+    ];
+
     services.cockpit = {
       enable = true;
       openFirewall = true;
