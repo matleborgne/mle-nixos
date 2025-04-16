@@ -6,11 +6,6 @@ PATH=$PATH:/run/current-system/sw/bin
 echo "Enter disk path (ex: /dev/sda, /dev/nvme0n1, etc.) :"
 read disk
 
-echo "Enter desired password for luks :"
-stty -echo
-read $password
-stty echo
-
 if [[ "$disk" == *"nvme"* ]]; then
   parts="$disk"p
 else
@@ -22,9 +17,6 @@ umount -Rl /mnt
 
 uncryptpart=$(lsblk --raw | grep crypt | awk -F ' ' '{ print $1 }')
 cryptsetup close /dev/mapper/"$uncryptpart"
-
-cryptpart=$(lsblk --raw -o NAME,FSTYPE | grep LUKS | awk -F ' ' '{ print $1 }')
-cryptsetup luksErase /dev/"$cryptpart"
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,13 +51,11 @@ partprobe -s "$disk"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # LUKS root
-echo -n "$password" cryptsetup luksFormat --key-file - "$parts"3
+cryptsetup luksFormat "$parts"3
 
 rootid=$(blkid -o value -s UUID "$parts"3)
 rootmap="luks-$rootid"
-
-echo -e "$password" | cryptsetup open "$parts"3 "$rootmap"
-unset password
+cryptsetup open "$parts"3 "$rootmap"
 
 # LUKS keyfile
 mkdir -p /etc/keys
