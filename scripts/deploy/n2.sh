@@ -56,7 +56,7 @@ partprobe -s "$disk"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # LUKS root
-echo -e "$password\n$password" | cryptsetup luksFormat "$parts"3
+echo -e "YES\n$password\n$password" | cryptsetup luksFormat "$parts"3
 
 rootid=$(blkid -o value -s UUID "$parts"3)
 rootmap="luks-$rootid"
