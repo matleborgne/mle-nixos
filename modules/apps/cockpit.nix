@@ -35,6 +35,9 @@
       port = lib.mkDefault 9090;
 
       settings = {
+        WebService = {
+          AllowUnencrypted = true;
+        };
       };
     
     };
