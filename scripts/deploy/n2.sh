@@ -68,6 +68,7 @@ echo -e "$password" | cryptsetup open "$parts"3 "$rootmap"
 unset password
 
 # LUKS keyfile
+mkdir -p /etc/keys
 dd if=/dev/urandom of=/etc/keyfile bs=512 count=4
 cryptsetup luksAddKey "$parts"3 /etc/keyfile
 
