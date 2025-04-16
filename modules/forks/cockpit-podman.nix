@@ -2,12 +2,13 @@
   pkgs,
   config,
   lib,
+  stdenv,
+  fetchzip,
+  gettext,
   ...
 }:
 
 {
-
-{ lib, stdenv, fetchzip, gettext }:
 
   stdenv.mkDerivation rec {
     pname = "cockpit-podman";
