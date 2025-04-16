@@ -41,6 +41,15 @@
 	      defaultNetwork.settings.dns_enabled = true;
 	    };
 	  };
+
+	  systemd.services.create-podman-network = with config.virtualisation.oci-containers; {
+	    serviceConfig.Type = "oneshot";
+	    wantedBy = [ "${backend}-homer.service" "${backend}-caddy.service" ];
+	    script = ''
+	      ${pkgs.podman}/bin/podman network exists net_macvlan || \
+	        ${pkgs.podman}/bin/podman network create --driver=macvlan --gateway=10.23.0.1 --subnet=10.23.0.0/24 -o parent=ens18 net_macvlan
+	    '';
+	  };
 	
 	  environment.systemPackages = with pkgs; [
 	    dive # look into docker image layers
