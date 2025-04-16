@@ -16,12 +16,7 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.cockpit.enable (
-
-  let
-    podman-containers = pkgs.callPackage ../forks/cockpit-podman.nix { };
-
-  in {
+  config = lib.mkIf config.mle.apps.cockpit.enable {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -36,7 +31,6 @@
 
     environment.systemPackages = with pkgs; [
       pcp
-      podman-containers
     ];
 
     services.cockpit = {
