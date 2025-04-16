@@ -33,7 +33,7 @@
     # REV-PARSE : git rev-parse HEAD in flake directory
 
     environment.systemPackages = with pkgs; [
-      (builtins.getFlake "github:matleborgne/cockpit-podman/22a84790eb888c74f9738284cd19ac0de9fecf03").packages.x86_64-linux.default
+      (builtins.getFlake "github:matleborgne/cockpit-podman/3e5b86026543c85059d04c99a9b7a7ddc9e07836").packages.x86_64-linux.default
     ];
       
   };
