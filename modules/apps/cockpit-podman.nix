@@ -34,6 +34,7 @@
       let
         cockpit-podman = 
         #with import <nixpkgs> {};
+        with pkgs;
         stdenv.mkDerivation rec {
           pname = "cockpit-podman";
           version = "103";
