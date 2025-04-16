@@ -44,6 +44,7 @@
 
     secrets = {
       hm-nas.enable = true;
+    };
 
   };
 
