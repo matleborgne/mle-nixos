@@ -30,15 +30,10 @@
 
   mle = {
 
-    apps = {
-      cockpit.enable = true;
-      cockpit-podman.enable = true;
-    };
-
     misc = {
       libvirt.enable = true;
       mleupdater.enable = true;
-      podman.enable = true;
+      docker.enable = true;
       sshfs.enable = true;
     };
 
