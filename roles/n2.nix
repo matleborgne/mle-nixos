@@ -32,7 +32,6 @@
 
     apps = {
       cockpit.enable = true;
-      cockpit-podman.enable = true;
     };
 
     misc = {
