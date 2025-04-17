@@ -48,7 +48,7 @@
     services.resolved.enable = true;
 
 
-    }
+    };
   };
   };
 }
