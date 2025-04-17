@@ -28,6 +28,8 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    nixpkgs.config.allowUnfree = lib.mkForce true;
+
     services.plex = {
       enable = true;
       openFirewall = true;
