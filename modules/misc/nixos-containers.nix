@@ -9,13 +9,13 @@
 
 {
 
-	options.mle.misc.nixos-containers.enable = lib.mkOption {
-		description = "Configure nixos-containers";
-		type = lib.types.bool;
-		default = false;
-	};
+  options.mle.misc.nixos-containers.enable = lib.mkOption {
+    description = "Configure nixos-containers";
+    type = lib.types.bool;
+    default = false;
+  };
 	
-	config = lib.mkIf config.mle.misc.nixos-containers.enable {
+  config = lib.mkIf config.mle.misc.nixos-containers.enable {
 	
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -32,6 +32,11 @@
 #    virtualisation =  {
 #      containers.enable = true;
 #    };
+
+# TODO test if needed or not
+#    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+
+
 
     networking.nat = {
   enable = true;
