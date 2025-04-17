@@ -28,7 +28,7 @@
     # Recursive activation of other mle.<modules> INSIDE THE CONTAINER
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    imports = [ mle.apps.plexserver.nixosModule ];
+    imports = [ ../apps/plexserver.nix ];
     mle.apps.plexserver.enable = true;
 
 
