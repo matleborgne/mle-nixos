@@ -34,7 +34,7 @@
       cockpit.enable = true;
     };
 
-    containers = {
+    ct = {
       plexserver.enable = true;
     };
 
