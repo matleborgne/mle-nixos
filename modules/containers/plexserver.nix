@@ -29,6 +29,7 @@
     localAddress = "10.22.0.155"; # change this, NOT THE SAME AS HOST ADDRESS
 
     config = { lib, config, pkgs, options, ... }: {
+      systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules> INSIDE THE CONTAINER
