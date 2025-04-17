@@ -22,14 +22,14 @@
     privateNetwork = true;
     hostAddress = "10.22.0.154";  # change this
     localAddress = "10.22.0.155"; # change this, NOT THE SAME AS HOST ADDRESS
-    config = { lib, config, pkgs, mle.apps.plexserver, ... }: {
+    config = { lib, config, pkgs, ... }: {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules> INSIDE THE CONTAINER
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    imports = [ mle.apps.plexserver.nixosModule ];
-    mle.apps.plexserver.enable = true;
+    imports = [ options.mle.apps.plexserver.nixosModule ];
+    options.mle.apps.plexserver.enable = true;
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
