@@ -39,7 +39,7 @@
     networking.nat = {
       enable = true;
       internalInterfaces = ["ve-+"];   # "ve-*" if using nftables instead of iptables
-      externalInterface = "enp3s0";    # TODO read the interface name
+      externalInterface = "enp3s0";    # TODO read the interface name # ip link | grep enp | awk -F ": " '{ print $2 }'
     };
   
   };  
