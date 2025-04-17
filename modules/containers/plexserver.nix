@@ -19,6 +19,7 @@
 
   containers.plexserver = {
     autoStart = true;
+    ephemeral = false;
     bindMounts = {
       "/var/lib/plex" = { hostPath = "/var/lib/ct/plex"; isReadOnly = false; };
     };
