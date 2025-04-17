@@ -36,13 +36,10 @@
 # TODO test if needed or not
 #    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
-
-
     networking.nat = {
-  enable = true;
-  # Use "ve-*" when using nftables instead of iptables
-  internalInterfaces = ["ve-+"];
-  externalInterface = "ens3";
+      enable = true;
+      internalInterfaces = ["ve-+"];   # "ve-*" if using nftables instead of iptables
+      externalInterface = "enp3s0";    # TODO read the interface name
   # Lazy IPv6 connectivity for the container
   enableIPv6 = true;
 };
