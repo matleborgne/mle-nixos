@@ -16,6 +16,7 @@
   };
 
   config = lib.mkIf config.mle.containers.plexserver.enable {
+  containers.plexserver = {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -100,5 +101,6 @@
     };   
 
 
+  };
   };
 }
