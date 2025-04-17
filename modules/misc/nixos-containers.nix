@@ -29,9 +29,9 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # TODO test if needed for nspawn systemd nixos-containers
-#    virtualisation =  {
-#      containers.enable = true;
-#    };
+    virtualisation =  {
+      containers.enable = true;
+    };
 
 # TODO test if needed or not
 #    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
