@@ -22,6 +22,7 @@
     privateNetwork = true;
     hostAddress = "10.22.0.154";  # change this
     localAddress = "10.22.0.155"; # change this, NOT THE SAME AS HOST ADDRESS
+
     config = { lib, config, pkgs, options, ... }: {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
