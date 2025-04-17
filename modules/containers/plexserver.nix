@@ -39,10 +39,6 @@
 
     system.stateVersion = "24.11";
 
-    # TODO test if needed or not
-    #networking.defaultGateway = "10.22.0.1";
-    #boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-
     networking = {
       useHostResolvConf = lib.mkForce false;
     };
