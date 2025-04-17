@@ -9,28 +9,29 @@
 
 {
 
-	options.mle.misc.nspawn.enable = lib.mkOption {
-		description = "Configure nspawn";
+	options.mle.misc.nixos-containers.enable = lib.mkOption {
+		description = "Configure nixos-containers";
 		type = lib.types.bool;
 		default = false;
 	};
 	
-	config = lib.mkIf config.mle.misc.nspawn.enable {
+	config = lib.mkIf config.mle.misc.nixos-containers.enable {
 	
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      
+    mle.misc.networkmanager.enable = lib.mkForce false;
+
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
-	  virtualisation =  {
-	    containers.enable = true;
-	    #oci-containers.backend = "docker";
-    };
+
+# TODO test if needed for nspawn systemd nixos-containers
+#    virtualisation =  {
+#      containers.enable = true;
+#    };
 
     networking.nat = {
   enable = true;
