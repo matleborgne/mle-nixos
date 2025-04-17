@@ -35,7 +35,7 @@
     # Services and customization of CONTAINER
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    system.StateVersion = "24.11";
+    system.stateVersion = "24.11";
 
     # TODO test if needed or not
     #networking.defaultGateway = "10.22.0.1";
