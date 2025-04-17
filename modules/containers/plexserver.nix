@@ -42,7 +42,7 @@
     #boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
     networking = {
-      userHostResolvConf = lib.mkForce false;
+      useHostResolvConf = lib.mkForce false;
     };
 
     services.resolved.enable = true;
