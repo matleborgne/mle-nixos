@@ -28,13 +28,14 @@
     # Recursive activation of other mle.<modules> INSIDE THE CONTAINER
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    mle.apps.plexserver.enable = true;
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Activation and customization of CONTAINER
+    # Services and customization of CONTAINER
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    
+    system.StateVersion = "24.11";
 
 
 
