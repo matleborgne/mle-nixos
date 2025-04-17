@@ -34,7 +34,7 @@
     };
 
 # TODO test if needed or not
-    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+    #boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
     networking.nat = {
       enable = true;
