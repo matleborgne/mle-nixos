@@ -33,6 +33,7 @@
     apps = {
       firefox.enable = true;
       librewolf.enable = true;
+      python-chainladder.enable = true;
       thunderbird.enable = true;      
       video-downloader.enable = true;      
     };
