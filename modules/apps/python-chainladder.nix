@@ -29,7 +29,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = with pkgs; [
-      (builtins.getFlake "github:matleborgne/chainladder/266d0b328918cbaf2ebb52d567c50a7a874926e6").packages.x86_64-linux.default
+      (builtins.getFlake "github:matleborgne/chainladder/master/266d0b328918cbaf2ebb52d567c50a7a874926e6").packages.x86_64-linux.default
     ];
 
   };
