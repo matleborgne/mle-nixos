@@ -28,9 +28,14 @@
         image = "portainer/portainer-ce:latest";
         environment = {};
 
-        ports = [];
+        ports = [
+          "8000:8000"
+          "9000:9000"
+        ];
 
-        volumes = [];
+        volumes = [
+          "/var/run/docker.sock:/var/run/docker/sock"
+        ];
       };
     };
           
