@@ -36,6 +36,11 @@
         volumes = [
           "/var/run/docker.sock:/var/run/docker/sock"
         ];
+
+        extraOptions = [
+          "--ip=10.22.0.165"
+        ];
+
       };
     };
           
