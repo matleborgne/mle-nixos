@@ -34,14 +34,15 @@
       cockpit.enable = true;
     };
 
-    ct = {
-      plexserver.enable = true;
+    docker = {
+      portainer.enable = true;
     };
 
     misc = {
+      docker.enable = true;
       libvirt.enable = true;
       #mleupdater.enable = true;
-      nixos-containers.enable = true;
+      #nixos-containers.enable = true;
       sshfs.enable = true;
     };
 
