@@ -57,7 +57,7 @@
 
           # Customisation for container
           services.nextcloud = {
-            settings = { trusted_domains = address; };
+            settings = { trusted_domains = [ builtins.elemAt (builtins.split "/" (builtins.elemAt address 0)) 0 ]; };
             config = { adminpassFile = "/ncpassfile"; };
           };
 
