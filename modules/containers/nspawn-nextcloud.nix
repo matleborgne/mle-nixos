@@ -46,8 +46,6 @@
           # Main services
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          #systemd.tmpfiles.rules = [ "d /var/lib/nextcloud 700 plex plex -" ];
-
           mle = {
             apps = {
               nextcloud.enable = true;
