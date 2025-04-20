@@ -18,7 +18,7 @@
   config = lib.mkIf config.mle.nspawn.plexserver.enable (
 
     let
-      address = [ "10.22.0.155/24" ]; # change this accord to desired local IP
+      address = [ "10.22.0.152/24" ]; # change this accord to desired local IP
 
     in {
 
