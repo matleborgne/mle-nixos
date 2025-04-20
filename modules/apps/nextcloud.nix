@@ -34,6 +34,14 @@
       enable = true;
       package = pkgs.nextcloud30;
       hostName = "localhost";
+      settings = lib.mkDefault { trusted_domains = [] };
+
+      config = {
+        dbtype = "pgsql";
+        dbname = "nextcloud";
+        dbuser = "nextcloud";
+        dbhost = "/run/postgresql";
+        adminpassFile = lib.mkDefault "/etc/nextcloud-admin-passfile";
     };
 
     services.nginx = {
