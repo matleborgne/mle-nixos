@@ -9,13 +9,13 @@
 
 {
 
-  options.mle.ct.plexserver.enable = lib.mkOption {
-    description = "Configure plexserver container";
+  options.mle.nspawn.plexserver.enable = lib.mkOption {
+    description = "Configure plexserver nspawn container";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.ct.plexserver.enable {
+  config = lib.mkIf config.mle.nspawn.plexserver.enable {
 
   containers.plexserver = {
     autoStart = true;
