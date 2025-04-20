@@ -45,9 +45,7 @@
       office.enable = true;
     };
 
-    desktop = {
-      gnome-mleborgne.enable = true;
-    };
+    desktop.gnome.mleborgne.enable = true;
     
     misc = {
       libvirt.enable = true;
