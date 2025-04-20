@@ -51,9 +51,8 @@
 
     services.resolved.enable = true;
 
-# Provisoire pour tester le bug
-
-
+    # Provisoire pour tester le bug
+    networking.firewall.enable = lib.mkForce false;
 
     };
   };
