@@ -30,9 +30,13 @@
 
     #nixpkgs.config.allowUnfree = lib.mkForce true;
 
+    networking.firewall = {
+      allowedTCPPorts = [ 80 8080 ];
+    };
+
     services.nextcloud = {
       enable = true;
-      package = pkgs.nextcloud30;
+      package = pkgs.nextcloud31;
       hostName = "localhost";
       settings = lib.mkDefault { trusted_domains = []; };
 
