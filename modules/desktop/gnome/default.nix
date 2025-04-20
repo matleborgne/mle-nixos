@@ -1,4 +1,12 @@
 { config, lib, pkgs, ... }:
+   
+# TODO : A DEPLACER
+
+#  services.libinput.enable = true;
+#  services.packagekit.enable = false;
+#  services.flatpak.enable = true;
+#  services.blueman.enable = true;
+#  programs.fuse.userAllowOther = true;
 
 {
 
@@ -95,59 +103,6 @@
       gnome-tweaks
       gparted	
     ];
-    
 
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # FIX de la mise en veille de GNOME
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    systemd = {
-    
-      services."gnome-suspend" = {
-        description = "suspend gnome shell";
-        before = [
-          "systemd-suspend.service"
-          "systemd-hibernate.service"
-          "nvidia-suspend.service"
-          "nvidia-hibernate.service"
-        ];
-        wantedBy = [
-          "systemd-suspend.service"
-          "systemd-hibernate.service"
-        ];
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = ''${pkgs.procps}/bin/pkill -f -STOP ${pkgs.gnome-shell}/bin/gnome-shell'';
-        };
-      };
-    
-      services."gnome-resume" = {
-        description = "resume gnome shell";
-        after = [
-          "systemd-suspend.service"
-          "systemd-hibernate.service"
-          "nvidia-resume.service"
-        ];
-        wantedBy = [
-          "systemd-suspend.service"
-          "systemd-hibernate.service"
-        ];
-        serviceConfig = {
-          Type = "oneshot";
-          ExecStart = ''${pkgs.procps}/bin/pkill -f -CONT ${pkgs.gnome-shell}/bin/gnome-shell'';
-        };
-      };
-
-    };
-
-# TODO : A DEPLACER
-
-#  services.libinput.enable = true;
-#  services.packagekit.enable = false;
-#  services.flatpak.enable = true;
-#  services.blueman.enable = true;
-#  programs.fuse.userAllowOther = true;
-
-	};
-
+  };
 }
