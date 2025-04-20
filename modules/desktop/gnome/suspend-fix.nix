@@ -9,7 +9,7 @@
   };
 
   config = lib.mkIf config.mle.desktop.gnome.suspend-fix.enable {
-		
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

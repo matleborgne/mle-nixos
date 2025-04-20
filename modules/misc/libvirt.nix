@@ -9,13 +9,13 @@
 
 {
 
-	options.mle.misc.libvirt.enable = lib.mkOption {
-		description = "Enable LIBVIRT opensource virtualisation";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.misc.libvirt.enable (
+  options.mle.misc.libvirt.enable = lib.mkOption {
+    description = "Enable LIBVIRT opensource virtualisation";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.misc.libvirt.enable (
     
     let
       allUsers = builtins.attrNames config.users.users;
@@ -44,7 +44,7 @@
     ];
 
 
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # LIBVIRT daemon configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -67,11 +67,11 @@
     };
     
           
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Autostart HYPERVISOR and NAT
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-		programs.dconf = {
+    programs.dconf = {
       enable = true;
       profiles.user.databases = [
 
@@ -110,5 +110,5 @@
     virtualisation.spiceUSBRedirection.enable = true;
 
     
-	});
+  });
 }

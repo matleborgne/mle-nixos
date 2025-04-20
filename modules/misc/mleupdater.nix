@@ -9,13 +9,13 @@
 
 {
 
-	options.mle.misc.mleupdater.enable = lib.mkOption {
-		description = "Configure mle-updater";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.misc.mleupdater.enable (
+  options.mle.misc.mleupdater.enable = lib.mkOption {
+    description = "Configure mle-updater";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.misc.mleupdater.enable (
 
   let
     allUsers = builtins.attrNames config.users.users;
@@ -25,7 +25,7 @@
     mainUser = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
 
   in {
-		
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -41,6 +41,6 @@
     ${pkgs.sudo}/bin/sudo -u ${mainUser} ${pkgs.bash}/bin/bash /etc/nixos/build/scripts/mlemodules.sh
   '';
     
-	});
+  });
 
 }

@@ -9,14 +9,14 @@
 
 {
 
-	options.mle.misc.iphone.enable = lib.mkOption {
-		description = "Configure client IPHONE connection";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.misc.iphone.enable {
-	
+  options.mle.misc.iphone.enable = lib.mkOption {
+    description = "Configure client IPHONE connection";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.misc.iphone.enable {
+  
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -27,13 +27,13 @@
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-		services.usbmuxd.enable = true;
+    services.usbmuxd.enable = true;
 
-		environment.systemPackages = with pkgs; [
-			libheif
-			libimobiledevice
-			ifuse # optional, to mount using 'ifuse /home/mleborgne/iphone'
-		];
+    environment.systemPackages = with pkgs; [
+      libheif
+      libimobiledevice
+      ifuse # optional, to mount using 'ifuse /home/mleborgne/iphone'
+    ];
 
   };  
 }

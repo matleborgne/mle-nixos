@@ -17,7 +17,7 @@
   };
 
   config = lib.mkIf config.mle.desktop.gnome.default.enable {
-		
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -101,7 +101,7 @@
       ffmpegthumbnailer
       gnome-terminal
       gnome-tweaks
-      gparted	
+      gparted  
     ];
 
   };

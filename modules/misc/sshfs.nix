@@ -9,27 +9,27 @@
 
 {
 
-	options.mle.misc.sshfs.enable = lib.mkOption {
-		description = "Enable SSHFS service";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.misc.sshfs.enable (
+  options.mle.misc.sshfs.enable = lib.mkOption {
+    description = "Enable SSHFS service";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.misc.sshfs.enable (
 
   let
     allUsers = builtins.attrNames config.users.users;
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
 
   in {
-		
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -44,6 +44,6 @@
       gocryptfs
     ];
     
-	});
+  });
 
 }
