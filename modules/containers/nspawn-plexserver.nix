@@ -56,10 +56,6 @@
             useNetworkd = true;
             useDHCP = false;
             useHostResolvConf = false;
-
-            firewall = {
-              enable = lib.mkForce false;
-            };
           };
 
           systemd.network = {
