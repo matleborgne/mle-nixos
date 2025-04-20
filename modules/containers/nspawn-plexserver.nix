@@ -49,7 +49,7 @@
 
     system.stateVersion = "24.11";
 
-    networking.interfaces.my-eth1 = {
+    networking.interfaces.mv-eth1 = {
       ipv4.addresses = [{ address = containerIp; prefixLength = 24; }];
     };
 
