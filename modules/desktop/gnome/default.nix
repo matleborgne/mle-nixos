@@ -23,7 +23,7 @@
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Activation de GNOME
+    # Base of GNOME desktop
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     services = {
@@ -53,50 +53,48 @@
           
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Paquets exclus de l'installation de GNOME
+    # Packages exclusion
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-		environment.gnome.excludePackages = with pkgs; [
-		  yelp totem tali iagno hitori atomix geary xterm
-		  epiphany packagekit system-config-printer
-		  
-		  gnome-backgrounds gnome-weather
-		  gnome-music gnome-tour gnome-photos gnome-characters
-		  gnome-maps gnome-clocks gnome-connections
-		  gnome-font-viewer gnome-software
-		  gnome-packagekit gnome-tour
-		];
+    environment.gnome.excludePackages = with pkgs; [
+      yelp totem tali iagno hitori atomix geary xterm
+      epiphany packagekit system-config-printer
+  
+      gnome-backgrounds gnome-weather
+      gnome-music gnome-tour gnome-photos gnome-characters
+      gnome-maps gnome-clocks gnome-connections
+      gnome-font-viewer gnome-software
+      gnome-packagekit gnome-tour
+    ];
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Packages supplémentaires à l'environnement de bureau
+    # Added packages
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-		programs.kdeconnect = {
+    programs.kdeconnect = {
       enable = true;
       package = pkgs.gnomeExtensions.gsconnect;
     };
 
     environment.systemPackages = with pkgs; [
-    
-    		# Extensions
-    		gnomeExtensions.appindicator
-    		gnomeExtensions.dash-to-panel
-    		gnomeExtensions.gsconnect
-    		gnomeExtensions.just-perfection
-    		gnomeExtensions.pop-shell
-    		gnomeExtensions.vitals
-    		gnomeExtensions.user-themes
-    		
-    		# General use
-    		dconf-editor
-    		dconf2nix
-    		easyeffects
-    		ffmpegthumbnailer
-		  gnome-terminal
-		  gnome-tweaks
-		  gparted
-    		
+      # Extensions
+      gnomeExtensions.appindicator
+      gnomeExtensions.dash-to-panel
+      gnomeExtensions.gsconnect
+      gnomeExtensions.just-perfection
+      gnomeExtensions.pop-shell
+      gnomeExtensions.vitals
+      gnomeExtensions.user-themes
+
+      # General use
+      dconf-editor
+      dconf2nix
+      easyeffects
+      ffmpegthumbnailer
+      gnome-terminal
+      gnome-tweaks
+      gparted	
     ];
     
 
