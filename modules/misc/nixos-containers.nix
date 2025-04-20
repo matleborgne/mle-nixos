@@ -51,7 +51,7 @@
         br0 = { interfaces = [ "enp3s0" ]; };
       };
       
-      interfaces = {
+      interfaces.br0 = {
         useDHCP = true;
         ipv4.addresses = [{ address = "10.23.0.3"; prefixLength = 8; }];
       };
