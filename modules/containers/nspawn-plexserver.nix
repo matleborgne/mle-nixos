@@ -33,8 +33,7 @@
         };
 
         config = { lib, config, pkgs, options, ... }: {
-
-          imports = 
+          imports = (import (builtins.toPath ../imports.nix));
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Main services
@@ -42,8 +41,12 @@
 
           systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
 
-          imports = [ ../apps/plexserver.nix ];
-          mle.apps.plexserver.enable = true;
+          mle = {
+            apps = {
+              plexserver.enable = true;
+              fish.enable = true;
+            };
+          };
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,9 +79,6 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Other services
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-          imports = [ ../apps/fish.nix ];
-          mle.apps.fish.enable = true;
 
         };
       };
