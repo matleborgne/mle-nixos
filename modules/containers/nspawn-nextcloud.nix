@@ -31,8 +31,8 @@
         bindMounts = {
           "/var/lib/nextcloud" = { hostPath = "/var/lib/nspawn/nextcloud/app"; isReadOnly = false; };
           "/var/lib/postgresql" = { hostPath = "/var/lib/nspawn/nextcloud/db"; isReadOnly = false; };
-          #"/mnt/nfs" = { hostPath = "/var/srv"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
+          "/ncpassfile" = { hostPath = "/etc/nixos/build/secrets/keys/nextcloud_passfile"; isReadOnly = true; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
@@ -55,7 +55,10 @@
             };
           };
 
-          services.nextcloud.settings = { trusted_domains = [ address ]; };
+          # Customisation for container
+          services.nextcloud = {
+            settings = { trusted_domains = [ address ]; };
+            config = { adminpassFile = "/ncpassfile"; };
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
