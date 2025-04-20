@@ -33,7 +33,11 @@
         };
 
         config = { lib, config, pkgs, options, ... }: {
-          imports = (import (builtins.toPath ../imports.nix));
+
+          imports = [
+            ../apps/plexserver.nix
+            ../apps/fish.nix
+          ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Main services
