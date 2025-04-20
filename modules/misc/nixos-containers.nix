@@ -31,20 +31,39 @@
 # TODO test if needed for nspawn systemd nixos-containers
     virtualisation =  {
       containers.enable = true;
-      vlans = [ 1 ];
     };
 
-    networking.macvlans.mv-eth1-host = {
-      interface = "eth1";
-      mode = "bridge";
+    systemd.network = {
+      enable = true;
+      wait-online.enable = lib.mkForce false;
+      networks = {
+        "40-enp3s0" = {
+          matchConfig.Name = "enp3s0";
+          networkConfig.DHCP = "yes";
+        };
+      };
     };
 
-    networking.interfaces.eth1.ipv4.addresses = lib.mkForce [];
-    networking.interfaces.mv-eth1-host = {
-      ipv4.addresses = [ { address = "10.22.0.1"; prefixLength = 24; } ];
+    networking = {
+      useNetworkd = true;
+      nameservers = [
+        "1.1.1.1"
+        "1.0.0.1"
+      ];
     };
 
-    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+
+#    networking.macvlans.mv-eth1-host = {
+#      interface = "eth1";
+#      mode = "bridge";
+#    };
+
+#    networking.interfaces.eth1.ipv4.addresses = lib.mkForce [];
+#    networking.interfaces.mv-eth1-host = {
+#      ipv4.addresses = [ { address = "10.22.0.1"; prefixLength = 24; } ];
+#    };
+
+#    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
 #    networking.nat = {
 #      enable = true;
