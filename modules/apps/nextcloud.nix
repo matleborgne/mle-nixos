@@ -42,7 +42,29 @@
         dbuser = "nextcloud";
         dbhost = "/run/postgresql";
         adminpassFile = lib.mkDefault "/etc/nextcloud-admin-passfile";
+      };
     };
+
+
+    services.postgresql = {
+      enable = true;
+      ensureDatabases = [ "nextcloud" ];
+      ensureUsers = [{
+        name = "nextcloud";
+        ensureDBOwnership = true;
+      }];
+    };
+
+    services.postgresqlBackup = {
+      enable = true;
+      location = "/var/lib/postgresql/backup";
+      databases = [ "nextcloud" ];
+      startAt = "*-*-* 03:15:00";
+    };
+
+
+    systemd.services = {
+
 
     services.nginx = {
       enable = true;
