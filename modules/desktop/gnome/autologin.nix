@@ -29,6 +29,7 @@
 
     services.xserver.displayManager.gdm.autoLogin = {
       enable = true;
+      delay = 3;
       inherit user;
     };
 
