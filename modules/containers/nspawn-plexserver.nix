@@ -75,6 +75,8 @@
           # Other services
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+          imports = [ ../apps/fish.nix ];
+          mle.apps.fish.enable = true;
 
         };
       };
