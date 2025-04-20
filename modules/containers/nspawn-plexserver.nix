@@ -30,6 +30,7 @@
 
         bindMounts = {
           "/var/lib/plex" = { hostPath = "/var/lib/nspawn/plex"; isReadOnly = false; };
+          "/mnt/nfs" = { hostPath = "/var/srv"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
@@ -77,6 +78,27 @@
                 inherit address;
               };
             };
+          };
+
+
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Backup
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          services.restic.backups = {
+
+            plex = {
+              initialize = false;
+              repository = "/mnt/nfs/bkp/lxc/552-plexserver";
+              paths = [ "/var/lib/plex" ];
+              passwordFile = "XXXXX";
+              pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
+              timerConfig = {
+                OnCalendar = "Tue 05:25";
+                Persistent = "true";
+              };
+            };
+
           };
 
 
