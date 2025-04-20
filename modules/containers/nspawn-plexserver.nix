@@ -85,6 +85,8 @@
           # Auto Backup
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+          environment.systemPackages = with pkgs; [ restic ];
+
           services.restic.backups = {
 
             plex = {
