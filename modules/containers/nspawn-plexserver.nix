@@ -53,13 +53,13 @@
       ipv4.addresses = [{ address = containerIp; prefixLength = 24; }];
     };
 
-#    networking = {
-#      hostName = "plexserver";
+    networking = {
+      hostName = "plexserver";
 #      interfaces."eth0".useDHCP = true;
-#      useHostResolvConf = lib.mkForce false;
-#    };
+      useHostResolvConf = lib.mkForce false;
+    };
 
-    services.resolved.enable = true;
+#    services.resolved.enable = true;
 
     };
   };
