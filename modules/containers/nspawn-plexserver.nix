@@ -17,6 +17,10 @@
 
   config = lib.mkIf config.mle.nspawn.plexserver.enable {
 
+  networking.nat.forwardPorts = [
+    { destination = "10.22.0.174:32400"; sourcePort = "32400"; }
+  ];
+
   containers.plexserver = {
     autoStart = true;
     ephemeral = false;
@@ -52,9 +56,9 @@
     services.resolved.enable = true;
 
     # Provisoire pour tester le bug
-    networking.firewall.enable = lib.mkForce false;
-    networking.defaultGateway = "10.22.0.1";
-    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+    #networking.firewall.enable = lib.mkForce false;
+    #networking.defaultGateway = "10.22.0.1";
+    #boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
     };
   };
