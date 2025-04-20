@@ -49,6 +49,7 @@
 
       bridges = {
         br0 = { interfaces = [ "enp3s0" ]; };
+      };
       
       interfaces = {
         useDHCP = true;
