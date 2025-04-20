@@ -31,6 +31,7 @@
         bindMounts = {
           "/var/lib/plex" = { hostPath = "/var/lib/nspawn/plex"; isReadOnly = false; };
           "/mnt/nfs" = { hostPath = "/var/srv"; isReadOnly = false; };
+          "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
@@ -93,7 +94,7 @@
               initialize = false;
               repository = "/mnt/nfs/bkp/lxc/552-plexserver";
               paths = [ "/var/lib/plex" ];
-              passwordFile = "XXXXX";
+              passwordFile = "/passfile";
               pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
               timerConfig = {
                 OnCalendar = "Tue 05:25";
