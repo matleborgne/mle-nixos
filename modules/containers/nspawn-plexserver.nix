@@ -15,20 +15,23 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.nspawn.plexserver.enable {
+  config = lib.mkIf config.mle.nspawn.plexserver.enable (
 
+    let
+      containerIp1 = "10.22.0.174";
+      containerIp2 = "10.22.0.175";
+
+    in {
 
   containers.plexserver = {
     autoStart = true;
     ephemeral = false;
+    privateNetwork = true;
+    macvlans = [ "eth1" ];
+
     #bindMounts = {
     #  "/var/lib/plex" = { hostPath = "/var/lib/ct/plex"; isReadOnly = false; };
     #};
-
-    privateNetwork = true;
-    #hostBridge = "br0";
-    hostAddress = "10.22.0.174";  # change this
-    localAddress = "10.22.0.175"; # change this, NOT THE SAME AS HOST ADDRESS
 
     config = { lib, config, pkgs, options, ... }: {
     #  systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
@@ -47,11 +50,15 @@
 
     system.stateVersion = "24.11";
 
-    networking = {
-      hostName = "plexserver";
-      interfaces."eth0".useDHCP = true;
-      useHostResolvConf = lib.mkForce false;
+    networking.interfaces.my-eth1 = {
+      ipv4.addresses = [{ address = containerIp1; prefixLength = 24; }];
     };
+
+#    networking = {
+#      hostName = "plexserver";
+#      interfaces."eth0".useDHCP = true;
+#      useHostResolvConf = lib.mkForce false;
+#    };
 
     services.resolved.enable = true;
 
