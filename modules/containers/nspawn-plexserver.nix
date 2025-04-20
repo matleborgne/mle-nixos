@@ -18,8 +18,7 @@
   config = lib.mkIf config.mle.nspawn.plexserver.enable (
 
     let
-      containerIp1 = "10.22.0.174";
-      containerIp2 = "10.22.0.175";
+      containerIp = "10.22.0.175";
 
     in {
 
@@ -51,7 +50,7 @@
     system.stateVersion = "24.11";
 
     networking.interfaces.my-eth1 = {
-      ipv4.addresses = [{ address = containerIp1; prefixLength = 24; }];
+      ipv4.addresses = [{ address = containerIp; prefixLength = 24; }];
     };
 
 #    networking = {
