@@ -26,9 +26,9 @@
     #};
 
     privateNetwork = true;
-    hostBridge = "br0";
-    #hostAddress = "10.22.0.174";  # change this
-    localAddress = "10.23.0.2/8"; # change this, NOT THE SAME AS HOST ADDRESS
+    #hostBridge = "br0";
+    hostAddress = "10.22.0.174";  # change this
+    localAddress = "10.22.0.175"; # change this, NOT THE SAME AS HOST ADDRESS
 
     config = { lib, config, pkgs, options, ... }: {
     #  systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
