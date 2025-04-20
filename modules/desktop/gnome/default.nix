@@ -29,29 +29,31 @@
     services = {
       udev.packages = [ pkgs.gnome-settings-daemon ];
 
-    		xserver = {
-          excludePackages = [ pkgs.xterm ];
-          xkb = {
-            layout = "fr";
-            variant = "azerty";
-            options = "eurosign:e";
-          };
-
-    			displayManager.gdm.enable = true;
-    			desktopManager.gnome = {
-    				enable = true;
-					  extraGSettingsOverridePackages = [ pkgs.mutter ];
-					  extraGSettingsOverrides = ''
-              [org.gnome.mutter]
-              experimental-features=['scale-monitor-framebuffer']
-            '';
-          };
+      xserver = {
+        excludePackages = [ pkgs.xterm ];
+        xkb = {
+          layout = "fr";
+          variant = "azerty";
+          options = "eurosign:e";
         };
+
+        displayManager.gdm.enable = true;
+        desktopManager.gnome = {
+          enable = true;
+          extraGSettingsOverridePackages = [ pkgs.mutter ];
+          extraGSettingsOverrides = ''
+            [org.gnome.mutter]
+            experimental-features=['scale-monitor-framebuffer']
+          '';
+        };
+
+      };
+
     };
           
 
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		# Paquets exclus de l'installation de GNOME
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Paquets exclus de l'installation de GNOME
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		environment.gnome.excludePackages = with pkgs; [
