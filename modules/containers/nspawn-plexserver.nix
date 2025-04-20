@@ -25,8 +25,8 @@
   containers.plexserver = {
     autoStart = true;
     ephemeral = false;
-    privateNetwork = true;
-    macvlans = [ "eth1" ];
+    privateNetwork = false;
+    macvlans = [ "enp3s0" ];
 
     #bindMounts = {
     #  "/var/lib/plex" = { hostPath = "/var/lib/ct/plex"; isReadOnly = false; };
@@ -49,17 +49,30 @@
 
     system.stateVersion = "24.11";
 
-    networking.interfaces.mv-eth1 = {
-      ipv4.addresses = [{ address = containerIp; prefixLength = 24; }];
-    };
-
     networking = {
       hostName = "plexserver";
-#      interfaces."eth0".useDHCP = true;
-      useHostResolvConf = lib.mkForce false;
+
+      useNetworkd = true;
+      useDHCP = false;
+      useHostResolvConf = false;
+
+      firewall = {
+        enable = lib.mkForce false;
+      };
     };
 
-#    services.resolved.enable = true;
+    systemd.network = {
+      enable = true;
+      networks = {
+        "40-mv-enp3s0" = {
+          matchConfig.Name = "mv-enp3s0";
+          networkConfig.DHCP = "yes";
+          dhcpV4Config.ClientIdentifier = "mac";
+          address = [ "10.22.0.155/24" ];
+        };
+      };
+    };
+
 
     };
   };
