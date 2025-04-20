@@ -17,7 +17,7 @@
 
   config = lib.mkIf config.mle.nspawn.jellyfin.enable {
 
-  containers.plexserver = {
+  containers.jellyfin = {
     autoStart = true;
     ephemeral = false;
     #bindMounts = {
