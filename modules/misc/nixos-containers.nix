@@ -65,7 +65,7 @@
 #        useDHCP = true;
 #        ipv4.addresses = [{ address = "10.23.0.3"; prefixLength = 8; }];
 #      };
-    };
+#    };
 
   };  
 }
