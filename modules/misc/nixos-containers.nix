@@ -31,7 +31,8 @@
 # TODO test if needed for nspawn systemd nixos-containers
     virtualisation =  {
       containers.enable = true;
-      #vlans = [ 1 ];
+      memorySize = 256;
+      vlans = [ 1 ];
     };
 
     networking.macvlans.mv-eth1-host = {
