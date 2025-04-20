@@ -42,6 +42,19 @@
       externalInterface = "br0";    
       # TODO read the interface name # ip link | grep enp | awk -F ": " '{ print $2 }'
     };
-  
+
+    networking = {
+      useNetworkd = true;
+      useDHCP = true;
+
+      bridges = {
+        br0 = { interfaces = [ "enp3s0" ]; };
+      
+      interfaces = {
+        useDHCP = true;
+        ipv4.addresses = [{ address = "10.23.0.3"; prefixLength = 8; }];
+      };
+    };
+
   };  
 }
