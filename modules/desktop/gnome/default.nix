@@ -2,13 +2,13 @@
 
 {
 
-	options.mle.desktop.gnome-pure.enable = lib.mkOption {
-		description = "Enable GNOME";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.desktop.gnome-pure.enable {
+  options.mle.desktop.gnome.default.enable = lib.mkOption {
+    description = "Enable GNOME";
+    type = lib.types.bool;
+    default = false;
+  };
+
+  config = lib.mkIf config.mle.desktop.gnome.default.enable {
 		
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -22,12 +22,12 @@
     mle.misc.networkmanager.enable = true;
 
 
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation de GNOME
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     services = {
-    		udev.packages = [ pkgs.gnome-settings-daemon ];
+      udev.packages = [ pkgs.gnome-settings-daemon ];
 
     		xserver = {
           excludePackages = [ pkgs.xterm ];
