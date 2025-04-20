@@ -18,7 +18,7 @@
   config = lib.mkIf config.mle.nspawn.plexserver.enable {
 
   networking.nat.forwardPorts = [
-    { destination = "10.22.0.174:32400"; sourcePort = "32400"; }
+    { destination = "10.22.0.175:32400"; sourcePort = "32400"; }
   ];
 
   containers.plexserver = {
