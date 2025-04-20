@@ -34,7 +34,7 @@
       enable = true;
       package = pkgs.nextcloud30;
       hostName = "localhost";
-      settings = lib.mkDefault { trusted_domains = [] };
+      settings = lib.mkDefault { trusted_domains = []; };
 
       config = {
         dbtype = "pgsql";
