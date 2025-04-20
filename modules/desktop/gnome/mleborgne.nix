@@ -14,9 +14,14 @@
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    mle.apps.fluent-gtk-theme.enable = true;
-
-    mle.desktop.gnome-pure.enable = true;
+    mle = {
+      apps.fluent-gtk-theme.enable = true;
+      
+      desktop.gnome = {
+        default.enable = true;
+        autologin.enable = true;
+        suspend-fix.enable = true;
+      };
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
