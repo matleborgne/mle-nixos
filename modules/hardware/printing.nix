@@ -10,14 +10,14 @@
 
 {
 
-	options.mle.hardware.printing.enable = lib.mkOption {
-		description = "Enable priting support";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.hardware.printing.enable (
-		
+  options.mle.hardware.printing.enable = lib.mkOption {
+    description = "Enable priting support";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.hardware.printing.enable (
+    
     let
       allUsers = builtins.attrNames config.users.users;
       normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
@@ -25,7 +25,7 @@
     in
     {
 
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Configuration des services (cups, avahi, udev, sane)
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
@@ -81,7 +81,7 @@
     programs.system-config-printer.enable = true;
     
 
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Configuration des groupes utilisateur
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     

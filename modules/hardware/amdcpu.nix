@@ -10,15 +10,15 @@
 
 {
 
-	options.mle.hardware.amdcpu.enable = lib.mkOption {
-		description = "Configure AMD CPU";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.hardware.amdcpu.enable {
-	
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  options.mle.hardware.amdcpu.enable = lib.mkOption {
+    description = "Configure AMD CPU";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.hardware.amdcpu.enable {
+  
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Settings for hardware piece
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     

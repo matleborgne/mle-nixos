@@ -9,14 +9,14 @@
 
 {
 
-	options.mle.bundles.netpro.enable = lib.mkOption {
-		description = "Enable NETPRO bundle";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.bundles.netpro.enable {
-		
+  options.mle.bundles.netpro.enable = lib.mkOption {
+    description = "Enable NETPRO bundle";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.bundles.netpro.enable {
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -37,6 +37,6 @@
       
     ];
 
-	};
+  };
 
 }

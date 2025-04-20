@@ -9,14 +9,14 @@
 
 {
 
-	options.mle.bundles.datapro.enable = lib.mkOption {
-		description = "Enable DATAPRO bundle";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.bundles.datapro.enable {
-		
+  options.mle.bundles.datapro.enable = lib.mkOption {
+    description = "Enable DATAPRO bundle";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.bundles.datapro.enable {
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,6 +36,6 @@
 
     ];
 
-	};
+  };
 
 }

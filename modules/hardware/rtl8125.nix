@@ -10,15 +10,15 @@
 
 {
 
-	options.mle.hardware.rtl8125.enable = lib.mkOption {
-		description = "Configure Ethernet REALTEK RTL8125 driver";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.hardware.rtl8125.enable {
-	
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  options.mle.hardware.rtl8125.enable = lib.mkOption {
+    description = "Configure Ethernet REALTEK RTL8125 driver";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.hardware.rtl8125.enable {
+  
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation of kernel module for Realtek
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     

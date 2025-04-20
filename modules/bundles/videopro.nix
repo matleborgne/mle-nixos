@@ -14,9 +14,9 @@
     type = lib.types.bool;
     default = false;
   };
-	
+  
   config = lib.mkIf config.mle.bundles.videopro.enable {
-		
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

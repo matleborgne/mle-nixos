@@ -10,15 +10,15 @@
 
 {
 
-	options.mle.hardware.intelcpu.enable = lib.mkOption {
-		description = "Configure INTEL CPU";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.hardware.intelcpu.enable {
-	
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  options.mle.hardware.intelcpu.enable = lib.mkOption {
+    description = "Configure INTEL CPU";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.hardware.intelcpu.enable {
+  
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Settings for hardware piece
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     

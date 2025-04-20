@@ -10,15 +10,15 @@
 
 {
 
-	options.mle.hardware.bluetooth.enable = lib.mkOption {
-		description = "Configure bluetooth service";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.hardware.bluetooth.enable {
-	
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  options.mle.hardware.bluetooth.enable = lib.mkOption {
+    description = "Configure bluetooth service";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.hardware.bluetooth.enable {
+  
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Settings for hardware piece
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     

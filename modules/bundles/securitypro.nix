@@ -9,20 +9,20 @@
 
 {
 
-	options.mle.bundles.securitypro.enable = lib.mkOption {
-		description = "Enable SECURITYPRO bundle";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.bundles.securitypro.enable (
+  options.mle.bundles.securitypro.enable = lib.mkOption {
+    description = "Enable SECURITYPRO bundle";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.bundles.securitypro.enable (
 
   let
     allUsers = builtins.attrNames config.users.users;
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
 
   in {
-		
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,6 +48,6 @@
     users.groups.wireshark.members = normalUsers;
 
 
-	});
+  });
 
 }

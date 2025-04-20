@@ -9,14 +9,14 @@
 
 {
 
-	options.mle.bundles.python.enable = lib.mkOption {
-		description = "Enable PYTHON bundle";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.bundles.python.enable {
-		
+  options.mle.bundles.python.enable = lib.mkOption {
+    description = "Enable PYTHON bundle";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.bundles.python.enable {
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,6 +47,6 @@
       
     ];
 
-	};
+  };
 
 }

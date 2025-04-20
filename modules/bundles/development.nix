@@ -9,14 +9,14 @@
 
 {
 
-	options.mle.bundles.development.enable = lib.mkOption {
-		description = "Enable DEVELOPMENT bundle";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.bundles.development.enable {
-		
+  options.mle.bundles.development.enable = lib.mkOption {
+    description = "Enable DEVELOPMENT bundle";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.bundles.development.enable {
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,6 +46,6 @@
 
     ];
 
-	};
+  };
 
 }

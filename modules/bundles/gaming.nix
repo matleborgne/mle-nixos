@@ -9,14 +9,14 @@
 
 {
 
-	options.mle.bundles.gaming.enable = lib.mkOption {
-		description = "Enable GAMING bundle";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.bundles.gaming.enable {
-		
+  options.mle.bundles.gaming.enable = lib.mkOption {
+    description = "Enable GAMING bundle";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.bundles.gaming.enable {
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,6 +40,6 @@
       ncurses ocl-icd libxslt libva
     ];
 
-	};
+  };
 
 }

@@ -9,14 +9,14 @@
 
 {
 
-	options.mle.bundles.multimedia.enable = lib.mkOption {
-		description = "Enable MULTIMEDIA bundle";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.bundles.multimedia.enable {
-		
+  options.mle.bundles.multimedia.enable = lib.mkOption {
+    description = "Enable MULTIMEDIA bundle";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.bundles.multimedia.enable {
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -35,6 +35,6 @@
       discord
     ];
 
-	};
+  };
 
 }

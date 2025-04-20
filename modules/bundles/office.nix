@@ -9,14 +9,14 @@
 
 {
 
-	options.mle.bundles.office.enable = lib.mkOption {
-		description = "Enable OFFICE bundle";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.bundles.office.enable {
-		
+  options.mle.bundles.office.enable = lib.mkOption {
+    description = "Enable OFFICE bundle";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.bundles.office.enable {
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,6 +39,6 @@
       bitwarden
     ];
 
-	};
+  };
 
 }
