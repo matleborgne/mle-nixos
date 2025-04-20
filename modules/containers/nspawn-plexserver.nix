@@ -29,13 +29,13 @@
         macvlans = [ "enp3s0" ];
 
         bindMounts = {
-          "/var/lib/plex" = { hostPath = "/var/lib/ct/plex"; isReadOnly = false; };
+          "/var/lib/plex" = { hostPath = "/var/lib/nspawn/plex"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Defined services inside container
+          # Main services
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
@@ -45,7 +45,7 @@
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Container network
+          # Network
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           system.stateVersion = "24.11";
@@ -74,8 +74,13 @@
             };
           };
 
-        };
 
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Other services
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+        };
       };
   });
 }
