@@ -22,13 +22,16 @@
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    # /!\ Specifications for Nextcloud APP :
+    # For first installation, to not being stuck without account :
+    # Enter nixos container : nixos-container root-login nextcloud
+    # Re-enable root account : nextcloud-occ user:enable root
+    # This is not needed if an account already exist (backup, etc.)
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    #nixpkgs.config.allowUnfree = lib.mkForce true;
 
     networking.firewall = {
       allowedTCPPorts = [ 80 8080 ];
