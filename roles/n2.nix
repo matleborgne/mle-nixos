@@ -42,6 +42,7 @@
     };
 
     nspawn = {
+      nextcloud.enable = true;
       plexserver.enable = true;
     };
 
