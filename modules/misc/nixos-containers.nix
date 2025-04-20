@@ -23,6 +23,8 @@
 
     mle.misc.networkmanager.enable = lib.mkForce false;
 
+    imports = [ <nixpkgs/nixos/modules/virtualisation/qemu-vm.nix> ];
+
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Misc configuration
