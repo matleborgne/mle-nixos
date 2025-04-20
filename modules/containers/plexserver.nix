@@ -25,8 +25,8 @@
     };
 
     privateNetwork = true;
-    hostAddress = "10.22.0.154";  # change this
-    localAddress = "10.22.0.155"; # change this, NOT THE SAME AS HOST ADDRESS
+    hostAddress = "10.22.0.174";  # change this
+    localAddress = "10.22.0.175"; # change this, NOT THE SAME AS HOST ADDRESS
 
     config = { lib, config, pkgs, options, ... }: {
       systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
