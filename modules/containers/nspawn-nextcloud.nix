@@ -55,6 +55,8 @@
             };
           };
 
+          services.nextcloud.settings = { trusted_domains = [ address ]; };
+
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Network
