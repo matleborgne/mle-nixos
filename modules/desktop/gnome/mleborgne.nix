@@ -2,13 +2,13 @@
 
 {
 
-  options.mle.desktop.gnome-mleborgne.enable = lib.mkOption {
+  options.mle.desktop.gnome.mleborgne.enable = lib.mkOption {
     description = "mleborgne customized GNOME via GSETTINGS";
     type = lib.types.bool;
     default = false;
   };
   
-  config = lib.mkIf config.mle.desktop.gnome-mleborgne.enable {
+  config = lib.mkIf config.mle.desktop.gnome.mleborgne.enable {
   
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
