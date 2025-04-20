@@ -39,7 +39,7 @@
     networking.nat = {
       enable = true;
       internalInterfaces = ["ve-+"];   # "ve-*" if using nftables instead of iptables
-      externalInterface = "br0";    
+      externalInterface = "enp3s0";    
       # TODO read the interface name # ip link | grep enp | awk -F ": " '{ print $2 }'
     };
 
@@ -47,14 +47,14 @@
       useNetworkd = true;
       useDHCP = true;
 
-      bridges = {
-        br0 = { interfaces = [ "enp3s0" ]; };
-      };
+#      bridges = {
+#        br0 = { interfaces = [ "enp3s0" ]; };
+#      };
       
-      interfaces.br0 = {
-        useDHCP = true;
-        ipv4.addresses = [{ address = "10.23.0.3"; prefixLength = 8; }];
-      };
+#      interfaces.br0 = {
+#        useDHCP = true;
+#        ipv4.addresses = [{ address = "10.23.0.3"; prefixLength = 8; }];
+#      };
     };
 
   };  
