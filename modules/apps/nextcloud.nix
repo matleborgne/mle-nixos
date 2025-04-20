@@ -34,6 +34,7 @@
       allowedTCPPorts = [ 80 8080 ];
     };
 
+
     services.nextcloud = {
       enable = true;
       package = pkgs.nextcloud31;
