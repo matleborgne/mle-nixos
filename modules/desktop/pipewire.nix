@@ -2,21 +2,21 @@
 
 {
 
-	options.mle.desktop.pipewire.enable = lib.mkOption {
-		description = "Enable pipewire sound";
-		type = lib.types.bool;
-		default = false;
-	};
-	
-	config = lib.mkIf config.mle.desktop.pipewire.enable {
-		
+  options.mle.desktop.pipewire.enable = lib.mkOption {
+    description = "Enable pipewire sound";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.desktop.pipewire.enable {
+    
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-		# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation des services PIPEWIRE
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
@@ -45,6 +45,6 @@
       
     };
 
-	};
+  };
 
 }
