@@ -23,8 +23,6 @@
 
     mle.misc.networkmanager.enable = lib.mkForce false;
 
-    imports = [ <nixpkgs/nixos/modules/virtualisation/qemu-vm.nix> ];
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Misc configuration
@@ -33,8 +31,6 @@
 # TODO test if needed for nspawn systemd nixos-containers
     virtualisation =  {
       containers.enable = true;
-      memorySize = 256;
-      vlans = [ 1 ];
     };
 
     networking.macvlans.mv-eth1-host = {
