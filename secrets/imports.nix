@@ -1,1 +1,1 @@
-[ ]
+[ ../secrets/hardware-configuration.nix ]
