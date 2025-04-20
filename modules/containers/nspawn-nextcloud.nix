@@ -57,6 +57,7 @@
 
           # Customisation for container
           services.nextcloud = {
+            # Very sensitive Nextcloud-installer about trusted domain : only IP without mask or anything else
             settings = { trusted_domains = [ (builtins.elemAt (builtins.split "/" (builtins.elemAt address 0)) 0) ]; };
             config = { adminpassFile = "/ncpassfile"; };
           };
