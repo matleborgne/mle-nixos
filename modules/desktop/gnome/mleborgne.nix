@@ -22,6 +22,7 @@
         autologin.enable = true;
         suspend-fix.enable = true;
       };
+    };
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
