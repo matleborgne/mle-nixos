@@ -42,7 +42,7 @@
     };
 
     nspawn = {
-      jellyfin.enable = true;
+      plexserver.enable = true;
     };
 
     secrets = {
