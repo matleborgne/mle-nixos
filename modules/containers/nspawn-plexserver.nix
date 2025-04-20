@@ -53,6 +53,8 @@
 
     # Provisoire pour tester le bug
     networking.firewall.enable = lib.mkForce false;
+    networking.defaultGateway = "10.22.0.1";
+    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
     };
   };
