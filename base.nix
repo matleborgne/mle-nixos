@@ -91,8 +91,6 @@ in
   # Firewall
   networking.firewall = {
     enable = lib.mkDefault true;
-    allowedTCPPorts = lib.mkDefault [];
-    allowedUDPPorts = lib.mkDefault [];
   };  
 
   # Antivirus
