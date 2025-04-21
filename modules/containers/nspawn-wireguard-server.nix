@@ -74,7 +74,7 @@
           system.stateVersion = "24.11";
 
           networking = {
-            hostName = "nextcloud";
+            hostName = "wireguard-server";
 
             useNetworkd = true;
             useDHCP = false;
