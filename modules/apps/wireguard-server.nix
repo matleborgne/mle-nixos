@@ -40,7 +40,7 @@
 
       networking.firewall = {
         allowedTCPPorts = lib.mkDefault [ 53 ];
-        allowedUDPPorts = lib.mkDefault [ 53 ${listenPort} ];
+        allowedUDPPorts = lib.mkDefault [ 53 listenPort ];
       };
 
       networking.nat = {
