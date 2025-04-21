@@ -38,7 +38,6 @@
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
         home-manager.nixosModules.default
         ./base.nix
-        ./secrets/hardware-configuration.nix
       ] ++ (import (builtins.toPath ./modules/imports.nix))
         ++ (import (builtins.toPath ./secrets/imports.nix));
 
