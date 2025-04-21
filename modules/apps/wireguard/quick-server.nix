@@ -37,9 +37,15 @@
         wireguard-tools
       ];
 
-      system.activationScripts.wgQuick = ''
-        wg-quick up $serverFile
-      '';
+      systemd.services.wg-quick-up = {
+        enable = true;
+        wantedBy = [ "default.target" ];
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "/run/current-system/sw/bin/wg-quick up $serverFile";
+        };
+      };
+
     
   });
 }
