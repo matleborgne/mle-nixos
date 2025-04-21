@@ -35,6 +35,7 @@
 
       # /!\ Not totally operational
       # Coordination problems between systemd-networkd inside container and on host
+      # Stay with quick-server for now
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # Activation and customization of APP
