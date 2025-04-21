@@ -19,8 +19,6 @@
   config = lib.mkIf config.mle.apps.wireguard-server.enable (
 
     let
-      interface = "eth0";
-
       # Change server address here
       wgIpv4 = "10.44.0.1";
       wgIpv6 = "10:44:0:1::";
