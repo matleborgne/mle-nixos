@@ -29,7 +29,7 @@
         macvlans = [ "enp3s0" ];
 
         bindMounts = {
-          "/var/lib/nspawn/wireguard" = { hostPath = "/var/lib/nspawn/wireguard"; isReadOnly = false; };
+          "/var/lib/wireguard" = { hostPath = "/etc/nixos/build/secrets/keys/wireguard"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
