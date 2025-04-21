@@ -61,8 +61,8 @@
               wireguardPeers = [{
                 wireguardPeerConfig = { 
                   PublicKey = (builtins.readFile ../../secrets/keys/wireguard/client-public-key);
-                  PresharedKeyFile = "../../secrets/wireguard/keys/preshared-key";
-                  Endpoint = (builtins.readFile ../../secrets/wireguard/keys/endpoint);
+                  PresharedKeyFile = "../../secrets/keys/wireguard/preshared-key";
+                  Endpoint = (builtins.readFile ../../secrets/keys/wireguard/endpoint);
                 };
               }];
             };
