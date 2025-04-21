@@ -29,7 +29,7 @@
         macvlans = [ "enp3s0" ];
 
         bindMounts = {
-          "/var/lib/wireguard" = { hostPath = "/etc/nixos/build/secrets/keys/wireguard"; isReadOnly = false; };
+          "/etc/nixos/build/secrets/keys/wireguard" = { hostPath = "/etc/nixos/build/secrets/keys/wireguard"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
@@ -55,14 +55,14 @@
           systemd.network = {
             netdevs."15-wg0" = {
               wireguardConfig = {
-                PrivateKeyFile = "/var/lib/wireguard/server-private-key";
+                PrivateKeyFile = "../../secrets/wireguard/server-private-key";
               };
 
               wireguardPeers = [{
                 wireguardPeerConfig = { 
-                  PublicKey = (builtins.readFile /var/lib/wireguard/client-public-key);
-                  PresharedKeyFile = "/var/lib/wireguard/preshared-key";
-                  Endpoint = (builtins.readFile /var/lib/wireguard/endpoint);
+                  PublicKey = (builtins.readFile ../../secrets/wireguard/client-public-key);
+                  PresharedKeyFile = "../../secrets/wireguard/preshared-key";
+                  Endpoint = (builtins.readFile ../../secrets/wireguard/endpoint);
                 };
               }];
             };
