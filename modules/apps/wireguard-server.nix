@@ -59,20 +59,18 @@
           };
 
           wireguardConfig = {
-            PrivateKeyFile = lib.mkDefault ""; # path to file
+            PrivateKeyFile = lib.mkDefault "ServerPrivateKey"; # path to file
             FirewallMark = wgFwMark;
             RouteTable = "off";
           };
 
           wireguardPeers = [{
-            wireguardPeerConfig = { 
-              PublicKey = lib.mkDefault ""; # string like "blabla"
-              PresharedKeyFile = lib.mkDefault ""; # path to file
-              Endpoint = lib.mkDefault ""; # string like wg.example.com:51820
-              AllowedIPs = [ "0.0.0.0/0" "::/0" ];
-              PersistentKeepalive = 25;
-              RouteTable = "off";
-            };
+            PublicKey = lib.mkDefault "ClientPublicKey"; # string like "blabla"
+            PresharedKeyFile = lib.mkDefault "PreSharedKey"; # path to file
+            Endpoint = lib.mkDefault "Endpoint:Port"; # string like wg.example.com:51820
+            AllowedIPs = [ "0.0.0.0/0" "::/0" ];
+            PersistentKeepalive = 25;
+            RouteTable = "off";
           }];
         };
 
