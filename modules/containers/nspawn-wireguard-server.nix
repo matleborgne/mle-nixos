@@ -37,7 +37,6 @@
           imports = [
             ../apps/wireguard-server.nix
             ../apps/fish.nix
-            ../../secrets/apps/wireguard-server.nix
           ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,9 +47,6 @@
             apps = {
               wireguard-server.enable = true;
               fish.enable = true;
-            };
-            secrets = {
-              wireguard-server.enable = true;
             };
           };
 
