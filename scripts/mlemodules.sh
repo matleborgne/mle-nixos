@@ -32,6 +32,6 @@ echo '[ '$(find "$current/../secrets" -name '*.nix' \
           > "$current/../secrets/imports.nix"
 
 # specific import for secrets/hardware-configuration
-echo $(find "$current" -name "*hardware-configuration-$host.nix" \
+echo $(find "$current/../secrets" -name "*hardware-configuration-$host.nix" \
           | sed -e "s|$current/||g")' ]' \
           >> "$current/../secrets/imports.nix"
