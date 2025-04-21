@@ -21,6 +21,10 @@
     let
       interface = "eth0";
 
+      # Change server address here
+      wgIpv4 = "10.44.0.1";
+      wgIpv6 = "10:44:0:1::";
+
       # No need to touch this
       wgFwMark = 4242;
       wgTable = 4000;
@@ -78,7 +82,10 @@
         networks."15-wg0" = {
           matchConfig.Name = "wg0";
           linkConfig.RequiredForOnline = false;
-          address = [ "10.44.0.1/32" ];
+          address = [
+            "${wgIpv4}/32"
+            "${wgIpv6}/128"
+          ];
           networkConfig = {
             # DNS = "1.1.1.1";
           };
@@ -122,7 +129,26 @@
 
 
 
-
+      networking.nftables = {
+        enable = true;
+        ruleset = ''
+          table inet wg-wg0 {
+            chain preraw {
+              type filter hook prerouting priority raw; policy accept;
+              iifname != "wg0" ip daddr ${wgIpv4} fib saddr type != local drop
+              iifname != "wg0" ip6 daddr ${wgIpv6} fib saddr type != local drop
+            }
+            chain premangle {
+              type filter hook prerouting priority mangle; policy accept;
+              meta l4proto udp meta mark set ct mark
+            }
+            chain postmangle {
+              type filter hook postrouting priority mangle; policy accept;
+              meta l4proto udp meta mark ${toString wgFwMark} ct mark set meta mark
+            }
+          }
+        '';
+      };
 
 
     
