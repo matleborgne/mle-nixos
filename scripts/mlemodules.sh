@@ -16,7 +16,7 @@ PATH=$PATH:/run/current-system/sw/bin
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-host=
+host=$(cat /etc/hostname)
 
 # mlemodules.nix
 echo '[ '$(find "$current/../modules" -name '*.nix' \
@@ -28,8 +28,10 @@ echo '[ '$(find "$current/../modules" -name '*.nix' \
 echo '[ '$(find "$current/../secrets" -name '*.nix' \
           | grep -v "/imports.nix" \
           | grep -v "/hardware-configuration*" \
-          | sed -e "s|$current/||g")' ]' \
+          | sed -e "s|$current/||g")' ' \
           > "$current/../secrets/imports.nix"
 
 # specific import for secrets/hardware-configuration
-echo $(find "$current" -name "hardware-configuration-$host.nix"
+echo $(find "$current" -name "hardware-configuration-$host.nix" \
+          | sed -e "s|$current/||g")' ]' \
+          > "$current/../secrets/imports.nix"
