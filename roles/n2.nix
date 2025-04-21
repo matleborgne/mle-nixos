@@ -39,7 +39,7 @@
     nspawn = {
       nextcloud.enable = true;
       plexserver.enable = true;
-      wireguard-server.enable = true;
+      wireguard-quick.enable = true;
     };
 
     secrets = {
