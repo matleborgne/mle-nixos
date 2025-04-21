@@ -77,6 +77,7 @@
         #-----
         networks."15-wg0" = {
           matchConfig.Name = "wg0";
+          linkConfig.RequiredForOnline = false;
           address = [ "10.44.0.1/32" ];
           networkConfig = {
             # DNS = "1.1.1.1";
@@ -102,7 +103,22 @@
             }
           ];
 
-
+          routes = [
+            {
+              routeConfig = {
+                Destination = "0.0.0.0/0";
+                Table = wgTable;
+                Scope = "link";
+              };
+            }
+            {
+              routeConfig = {
+                Destination = "::/0";
+                Table = wgTable;
+                Scope = "link";
+              };
+            }
+          ];
 
 
 
