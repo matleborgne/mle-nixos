@@ -19,7 +19,7 @@
   config = lib.mkIf config.mle.apps.wireguard.quick-server.enable (
 
     let
-      serverFile = "../../../secrets/keys/wireguard/wg0.conf";
+      serverFile = lib.mkDefault "/etc/wireguard/wg0.conf";
 
     in {
 
