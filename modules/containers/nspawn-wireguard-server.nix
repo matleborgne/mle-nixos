@@ -55,14 +55,14 @@
           systemd.network = {
             netdevs."15-wg0" = {
               wireguardConfig = {
-                PrivateKeyFile = "../../secrets/wireguard/server-private-key";
+                PrivateKeyFile = "../../secrets/keys/wireguard/server-private-key";
               };
 
               wireguardPeers = [{
                 wireguardPeerConfig = { 
-                  PublicKey = (builtins.readFile ../../secrets/wireguard/client-public-key);
-                  PresharedKeyFile = "../../secrets/wireguard/preshared-key";
-                  Endpoint = (builtins.readFile ../../secrets/wireguard/endpoint);
+                  PublicKey = (builtins.readFile ../../secrets/keys/wireguard/client-public-key);
+                  PresharedKeyFile = "../../secrets/wireguard/keys/preshared-key";
+                  Endpoint = (builtins.readFile ../../secrets/wireguard/keys/endpoint);
                 };
               }];
             };
