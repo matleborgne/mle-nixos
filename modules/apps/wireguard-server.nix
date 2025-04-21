@@ -33,12 +33,33 @@
       ];
 
       networking.firewall = {
-        allowedTCPPorts = [];
-        allowedUDPPorts = [];
+        allowedTCPPorts = lib.mkDefault [];
+        allowedUDPPorts = lib.mkDefault [];
       };
 
-      d
+      networking.nat = {
+        enable = true;
+        externalInterface = lib.mkDefault "eth0";
+        internalInterfaces = [ "wg0" ];
 
+
+      # Change random defaults set here with secret configuration
+      networking.wireguard.interfaces = {
+
+        wg0 = {
+          privateKey = lib.mkDefault "ServerPrivateKeyHere";
+          ips = lib.mkDefault [ "10.44.0.1/24" ]; # internal IPs on wg0
+          listenPort = lib.mkDefault 53800;
+
+          postSetup = ''
+            ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
+            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+          '';
+
+          postShutdown = ''
+            ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
+            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+          '';
     
   };
 }
