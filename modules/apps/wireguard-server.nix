@@ -60,16 +60,16 @@
           };
 
           wireguardConfig = {
-            PrivateKeyFile = "/var/lib/wireguard/server-private-key";
+            PrivateKeyFile = "/var/lib/nspawn/wireguard/server-private-key";
             FirewallMark = wgFwMark;
             RouteTable = "off";
           };
 
           wireguardPeers = [{
             wireguardPeerConfig = { 
-              PublicKey = (builtins.readFile /var/lib/wireguard/client-public-key);
-              PresharedKeyFile = "/var/lib/wireguard/preshared-key";
-              Endpoint = (builtins.readFile /var/lib/wireguard/endpoint); #like wg.example.com:51820
+              PublicKey = (builtins.readFile /var/lib/nspawn/wireguard/client-public-key);
+              PresharedKeyFile = "/var/lib/nspawn/wireguard/preshared-key";
+              Endpoint = (builtins.readFile /var/lib/nspawn/wireguard/endpoint); #like wg.example.com:51820
               AllowedIPs = [ "0.0.0.0/0" "::/0" ];
               PersistentKeepalive = 25;
               RouteTable = "off";
