@@ -28,9 +28,9 @@
         privateNetwork = false;
         macvlans = [ "enp3s0" ];
 
-        #bindMounts = {
-        #  "/var/lib/nextcloud" = { hostPath = "/var/lib/nspawn/nextcloud/app"; isReadOnly = false; };
-        #};
+        bindMounts = {
+          "/var/lib/nspawn/wireguard" = { hostPath = "/var/lib/nspawn/wireguard"; isReadOnly = false; };
+        };
 
         config = { lib, config, pkgs, options, ... }: {
 
