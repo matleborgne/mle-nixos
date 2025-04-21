@@ -44,7 +44,7 @@
 
       networking.nat = {
         enable = true;
-        externalInterface = lib.mkDefault "eth0";
+        externalInterface = interface;
         internalInterfaces = [ "wg0" ];
       };
 
@@ -59,12 +59,12 @@
 
           postSetup = ''
             ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
-            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o ${interface} -j MASQUERADE
           '';
 
           postShutdown = ''
             ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
-            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o ${interface} -j MASQUERADE
           '';
 
 
