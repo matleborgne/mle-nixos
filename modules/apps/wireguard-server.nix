@@ -54,15 +54,15 @@
 
         wg0 = {
           privateKey = lib.mkDefault "ServerPrivateKeyHere";
-          ips = lib.mkDefault [ "10.44.0.1/24" ]; # internal IPs on wg0, change this for you needs
+          ips = lib.mkDefault [ "192.168.2.1/24" ]; # internal IPs on wg0, change this for you needs
           listenPort = lib.mkDefault 53800; # change this and port forwarding in the routeur
 
-          postSetup = ''
+          postSetup = lib.mkDefault ''
             ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
             ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o ${interface} -j MASQUERADE
           '';
 
-          postShutdown = ''
+          postShutdown = lib.mkDefault ''
             ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
             ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o ${interface} -j MASQUERADE
           '';
@@ -74,7 +74,7 @@
             # Client 1
             publicKey = "ClientPublicKeyHere";
             presharedKey = "EventuallyPreSharedKeyWithClient";
-            allowedIPs = [ "10.44.0.2/32" ]; # change this for your needs, same subnet as "ips" with /32
+            allowedIPs = [ "192.168.2.2/32" ]; # change this for your needs, same subnet as "ips" with /32
             persistentKeepalive = 25;
 
           }];
