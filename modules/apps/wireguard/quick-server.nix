@@ -37,6 +37,8 @@
         wireguard-tools
       ];
 
+      networking.firewall.enable = false;
+
       systemd.services.wg-quick-up = {
         enable = true;
         wantedBy = [ "default.target" ];
