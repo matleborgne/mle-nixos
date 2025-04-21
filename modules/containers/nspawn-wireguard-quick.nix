@@ -45,7 +45,7 @@
 
           mle = {
             apps = {
-              wireguard-quick.enable = true;
+              wireguard.quick-server.enable = true;
               fish.enable = true;
             };
           };
