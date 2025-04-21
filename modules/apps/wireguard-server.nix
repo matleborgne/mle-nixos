@@ -41,6 +41,7 @@
         enable = true;
         externalInterface = lib.mkDefault "eth0";
         internalInterfaces = [ "wg0" ];
+      };
 
 
       # Change random defaults set here with secret configuration
@@ -60,6 +61,13 @@
             ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
             ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
           '';
+
+          peers = [
+
+          ];
+        };
+      };  
+
     
   };
 }
