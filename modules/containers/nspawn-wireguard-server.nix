@@ -25,7 +25,7 @@
       containers.wireguard-server = {
         autoStart = true;
         ephemeral = false;
-        privateNetwork = false;
+        privateNetwork = true;
         macvlans = [ "enp3s0" ];
 
         bindMounts = {
@@ -72,6 +72,11 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           system.stateVersion = "24.11";
+
+          boot.kernel.sysctl = {
+            "net.ipv4.ip_forward" = 1;
+            "net.ipv6.ip_forward" = 1;
+          };
 
           networking = {
             hostName = "wireguard-server";
