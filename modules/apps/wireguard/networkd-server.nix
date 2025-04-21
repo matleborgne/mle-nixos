@@ -33,7 +33,8 @@
       # Recursive activation of other mle.<modules>
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+      # /!\ Not totally operational
+      # Coordination problems between systemd-networkd inside container and on host
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # Activation and customization of APP
