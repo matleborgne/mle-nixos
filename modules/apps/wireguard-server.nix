@@ -88,38 +88,30 @@
 
           routingPolicyRules = [
             {
-              routingPolicyRuleConfig = {
-                Family = "both";
-                Table = "main";
-                SuppressPrefixLength = 0;
-                Priority = 10;
-              };
+              Family = "both";
+              Table = "main";
+              SuppressPrefixLength = 0;
+              Priority = 10;
             }
             {
-              routingPolicyRuleConfig = {
-                Family = "both";
-                InvertRule = true;
-                FirewallMark = wgFwMark;
-                Table = wgTable;
-                Priority = 11;
-              };
+              Family = "both";
+              InvertRule = true;
+              FirewallMark = wgFwMark;
+              Table = wgTable;
+              Priority = 11;
             }
           ];
 
           routes = [
             {
-              routeConfig = {
-                Destination = "0.0.0.0/0";
-                Table = wgTable;
-                Scope = "link";
-              };
+              Destination = "0.0.0.0/0";
+              Table = wgTable;
+              Scope = "link";
             }
             {
-              routeConfig = {
-                Destination = "::/0";
-                Table = wgTable;
-                Scope = "link";
-              };
+              Destination = "::/0";
+              Table = wgTable;
+              Scope = "link";
             }
           ];
         };
