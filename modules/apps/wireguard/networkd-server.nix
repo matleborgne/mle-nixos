@@ -10,13 +10,13 @@
 
 {
 
-  options.mle.apps.wireguard-server.enable = lib.mkOption {
-    description = "Configure wireguard-server app";
+  options.mle.apps.wireguard.networkd-server.enable = lib.mkOption {
+    description = "Configure wireguard.networkd-server app";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.wireguard-server.enable (
+  config = lib.mkIf config.mle.apps.wireguard.networkd-server.enable (
 
     let
       # Change server address here
