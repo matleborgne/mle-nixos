@@ -5,6 +5,8 @@ current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 host=$(cat /etc/hostname)
 hardwarefile="/$current/../secrets/hardware/hardware-configuration-$host.nix"
 
+mkdir -p "/$current/../secrets/hardware"
+
 # TODO BEFORE EXECUTING HARDWARE SCRIPT
 
 # 1. Open luks partition with correct name
