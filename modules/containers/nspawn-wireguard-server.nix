@@ -59,9 +59,9 @@
               };
 
               wireguardPeers = [{
-                PublicKey = (lib.strings.removeSuffix "\n" (builtins.readFile ../../secrets/keys/wireguard/client-public-key));
+                PublicKey = builtins.readFile ../../secrets/keys/wireguard/client-public-key;
                 PresharedKeyFile = "../../secrets/keys/wireguard/preshared-key";
-                Endpoint = (lib.strings.removeSuffix "\n" (builtins.readFile ../../secrets/keys/wireguard/endpoint));
+                Endpoint = builtins.readFile ../../secrets/keys/wireguard/endpoint;
               }];
             };
           };
