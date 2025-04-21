@@ -65,10 +65,10 @@
           };
 
           wireguardPeers = [{
-            wireguardPeerConfig = lib.mkDefault { 
-              PublicKey = "PublicKeyHere";
+            wireguardPeerConfig = { 
+              PublicKey = (builtins.readFile /var/lib/wireguard/client-public-key);
               PresharedKeyFile = "/var/lib/wireguard/preshared-key";
-              Endpoint = "wg.example.com:51820";
+              Endpoint = (builtins.readFile /var/lib/wireguard/endpoint); #like wg.example.com:51820
               AllowedIPs = [ "0.0.0.0/0" "::/0" ];
               PersistentKeepalive = 25;
               RouteTable = "off";
