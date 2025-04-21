@@ -51,6 +51,24 @@
           };
 
 
+          # Wireguard config keys
+          systemd.network = {
+            netdevs."15-wg0" = {
+              wireguardConfig = {
+                PrivateKeyFile = "/var/lib/wireguard/server-private-key";
+              };
+
+              wireguardPeers = [{
+                wireguardPeerConfig = { 
+                  PublicKey = (builtins.readFile /var/lib/wireguard/client-public-key);
+                  PresharedKeyFile = "/var/lib/wireguard/preshared-key";
+                  Endpoint = (builtins.readFile /var/lib/wireguard/endpoint);
+                };
+              }];
+            };
+          };
+
+
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Network
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
