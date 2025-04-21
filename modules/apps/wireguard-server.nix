@@ -27,6 +27,7 @@
       # Recursive activation of other mle.<modules>
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+      mle.secrets.wireguard-server.enable = true;
 
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
