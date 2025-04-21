@@ -52,11 +52,14 @@
           };
 
           wireguardConfig = {
-            PrivateKeyFile = "/etc/wireguard/server-private-key";
+            PrivateKeyFile = "/var/lib/wireguard/server-private-key";
             FirewallMark = wgFwMark;
             RouteTable = "off";
           };
 
+          wireguardPeers = lib.mkDefault [{
+            PublicKey = 
+            PresharedKeyFile = "/var/lib/wireguard/preshared-key";
 
 
 
@@ -70,51 +73,6 @@
 
 
 
-
-
-      #networking.firewall = {
-      #  allowedTCPPorts = [ ]; # open 53 for DNS
-      #  allowedUDPPorts = [ ]; # open 53 for DNS and listenPort here
-      #};
-
-      networking.nat = {
-        enable = true;
-        externalInterface = interface;
-        internalInterfaces = [ "wg0" ];
-      };
-
-
-      # Change random defaults set here with secret configuration
-      networking.wireguard.interfaces = {
-
-        wg0 = {
-          privateKey = lib.mkDefault "ServerPrivateKeyHere";
-          ips = lib.mkDefault [ "192.168.2.1/24" ]; # internal IPs on wg0, change this for you needs
-          listenPort = lib.mkDefault 53800; # change this and port forwarding in the routeur
-
-          postSetup = lib.mkDefault ''
-            ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
-            ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o ${interface} -j MASQUERADE
-          '';
-
-          postShutdown = lib.mkDefault ''
-            ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -j ACCEPT
-            ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o ${interface} -j MASQUERADE
-          '';
-
-
-          # Random example - keep the structure
-          peers = lib.mkDefault [{
-
-            # Client 1
-            publicKey = "ClientPublicKeyHere";
-            presharedKey = "EventuallyPreSharedKeyWithClient";
-            allowedIPs = [ "192.168.2.2/32" ]; # change this for your needs, same subnet as "ips" with /32
-            persistentKeepalive = 25;
-
-          }];
-        };
-      };  
 
     
   });
