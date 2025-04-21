@@ -52,9 +52,7 @@
 
       lx600 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [
-          ./roles/lx600.nix
-        ];
+        modules = basicModules ++ [ ./roles/lx600.nix ];
       };
 
 
