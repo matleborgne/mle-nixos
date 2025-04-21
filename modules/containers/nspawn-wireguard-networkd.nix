@@ -9,20 +9,20 @@
 
 {
 
-  options.mle.nspawn.wireguard-server.enable = lib.mkOption {
-    description = "Configure wireguard-server nspawn container";
+  options.mle.nspawn.wireguard-networkd.enable = lib.mkOption {
+    description = "Configure wireguard-networkd nspawn container";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.nspawn.wireguard-server.enable (
+  config = lib.mkIf config.mle.nspawn.wireguard-networkd.enable (
 
     let
       address = [ "10.22.0.154/24" ]; # change this accord to desired local IP
 
     in {
 
-      containers.wireguard-server = {
+      containers.wireguard-networkd = {
         autoStart = true;
         ephemeral = false;
         privateNetwork = true;
