@@ -30,13 +30,8 @@
 
   mle = {
 
-    apps = {
-      cockpit.enable = true;
-    };
-
     misc = {
       libvirt.enable = true;
-      #mleupdater.enable = true;
       nixos-containers.enable = true;
       sshfs.enable = true;
     };
