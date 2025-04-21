@@ -2,7 +2,7 @@
 
 #set -x
 current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-hardwarefile="$current/../secrets/hardware-configuration.nix"
+hardwarefile="/etc/hardware-configuration.nix"
 
 # TODO BEFORE EXECUTING HARDWARE SCRIPT
 
