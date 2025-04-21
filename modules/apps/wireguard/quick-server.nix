@@ -37,6 +37,7 @@
         wireguard-tools
       ];
 
+      # Re-enable firewall in deployment and open ListenPort
       networking.firewall.enable = false;
 
       systemd.services.wg-quick-up = {
