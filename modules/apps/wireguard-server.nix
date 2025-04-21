@@ -33,7 +33,7 @@
       # Recursive activation of other mle.<modules>
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      mle.misc.networkmanager.enable = lib.mkForce false;
+      #mle.misc.networkmanager.enable = lib.mkForce false;
 
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
