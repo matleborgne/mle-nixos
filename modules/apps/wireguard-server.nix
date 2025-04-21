@@ -16,17 +16,22 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.wireguard-server.enable {
+  config = lib.mkIf config.mle.apps.wireguard-server.enable (
 
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Recursive activation of other mle.<modules>
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    let
+      interface = "eth0";
+
+    in {
+
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # Recursive activation of other mle.<modules>
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Activation and customization of APP
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # Activation and customization of APP
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       environment.systemPackages = with pkgs; [
         wireguard-tools
@@ -49,7 +54,7 @@
 
         wg0 = {
           privateKey = lib.mkDefault "ServerPrivateKeyHere";
-          ips = lib.mkDefault [ "10.44.0.1/24" ]; # internal IPs on wg0
+          ips = lib.mkDefault [ "10.44.0.1/24" ]; # internal IPs on wg0, change this for you needs
           listenPort = lib.mkDefault 53800;
 
           postSetup = ''
@@ -62,12 +67,19 @@
             ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
           '';
 
-          peers = [
+
+          peers = lib.mkDefault [
+
+            # Random example - keep the structure, /32 mask, etc.
+            publicKey = lib.mkDefault "ClientPublicKeyHere";
+            presharedKey = lib.mkDefault "EventuallyPreSharedKeyWithClient";
+            allowedIPs = lib.mkDefault [ "10.44.0.2/32" ]; # change this for your needs, same subnet as "ips"
+            persistentKeepalive = 25;
 
           ];
         };
       };  
 
     
-  };
+  });
 }
