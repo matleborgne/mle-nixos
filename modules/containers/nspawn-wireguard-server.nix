@@ -35,7 +35,7 @@
         config = { lib, config, pkgs, options, ... }: {
 
           imports = [
-            ../apps/wireguard-server.nix
+            ../apps/wireguard/networkd-server.nix
             ../apps/fish.nix
           ];
       
