@@ -37,6 +37,41 @@
         wireguard-tools
       ];
 
+
+      services.resolved.enable = true;
+      networking.useNetworkd = true;
+
+      systemd.network = {
+        enable = true;
+
+        netdevs."15-wg0" = {
+          netdevConfig = {
+            Kind = "wireguard";
+            Name = "wg0";
+            MTUBytes = "1420";
+          };
+
+          wireguardConfig = {
+            PrivateKeyFile = "/etc/wireguard/server-private-key";
+            FirewallMark = wgFwMark;
+            RouteTable = "off";
+          };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       #networking.firewall = {
       #  allowedTCPPorts = [ ]; # open 53 for DNS
       #  allowedUDPPorts = [ ]; # open 53 for DNS and listenPort here
