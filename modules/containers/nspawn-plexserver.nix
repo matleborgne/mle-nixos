@@ -25,7 +25,7 @@
       containers.plexserver = {
         autoStart = true;
         ephemeral = false;
-        privateNetwork = false;
+        privateNetwork = true;
         macvlans = [ "enp3s0" ];
 
         bindMounts = {
