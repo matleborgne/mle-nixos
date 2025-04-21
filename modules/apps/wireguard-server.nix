@@ -68,12 +68,15 @@
           '';
 
 
-          # Random example - keep the structure, /32 mask, etc.
-          peers = lib.mkDefault [{          
+          # Random example - keep the structure
+          peers = lib.mkDefault [{
+
+            # Client 1
             publicKey = "ClientPublicKeyHere";
             presharedKey = "EventuallyPreSharedKeyWithClient";
-            allowedIPs = [ "10.44.0.2/32" ]; # change this for your needs, same subnet as "ips"
+            allowedIPs = [ "10.44.0.2/32" ]; # change this for your needs, same subnet as "ips" with /32
             persistentKeepalive = 25;
+
           }];
         };
       };  
