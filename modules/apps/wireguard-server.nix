@@ -37,10 +37,10 @@
         wireguard-tools
       ];
 
-      networking.firewall = {
-        allowedTCPPorts = lib.mkDefault [ ]; # open 53 for DNS
-        allowedUDPPorts = lib.mkDefault [ ]; # open 53 for DNS and listenPort here
-      };
+      #networking.firewall = {
+      #  allowedTCPPorts = [ ]; # open 53 for DNS
+      #  allowedUDPPorts = [ ]; # open 53 for DNS and listenPort here
+      #};
 
       networking.nat = {
         enable = true;
