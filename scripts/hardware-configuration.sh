@@ -3,7 +3,7 @@
 #set -x
 current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 host=$(cat /etc/hostname)
-hardwarefile="/$current/../secrets/hardware-configuration-$host.nix"
+hardwarefile="/$current/../secrets/hardware/hardware-configuration-$host.nix"
 
 # TODO BEFORE EXECUTING HARDWARE SCRIPT
 
