@@ -38,7 +38,7 @@
       ];
 
       system.activationScripts.wgQuick = ''
-        wg quick up $serverFile
+        wg-quick up $serverFile
       '';
     
   });
