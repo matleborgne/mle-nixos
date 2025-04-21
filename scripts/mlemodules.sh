@@ -34,5 +34,7 @@ echo '[ '$(find "$current/../secrets" -name '*.nix' \
 # specific import for secrets/hardware-configuration
 echo $(find "$current/../secrets" -name "*hardware-configuration-$host.nix" \
           | sed -e "s|$current/||g")' ]' \
-          | tr -d '\n' \
           >> "$current/../secrets/imports.nix"
+
+# correction import.nix
+sed -i 's/\n//g' "$current/../secrets/imports.nix"
