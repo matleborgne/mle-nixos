@@ -37,4 +37,4 @@ echo $(find "$current/../secrets" -name "*hardware-configuration-$host.nix" \
           >> "$current/../secrets/imports.nix"
 
 # correction import.nix
-sed -i 's/\\n//' "$current/../secrets/imports.nix"
+echo $(sed -z 's/\n//g' "$current/../secrets/imports.nix") > "$current/../secrets/imports.nix"
