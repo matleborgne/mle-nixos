@@ -55,7 +55,7 @@
         wg0 = {
           privateKey = lib.mkDefault "ServerPrivateKeyHere";
           ips = lib.mkDefault [ "10.44.0.1/24" ]; # internal IPs on wg0, change this for you needs
-          listenPort = lib.mkDefault 53800;
+          listenPort = lib.mkDefault 53800; # change this and port forwarding in the routeur
 
           postSetup = ''
             ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -j ACCEPT
