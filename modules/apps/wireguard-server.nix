@@ -33,7 +33,6 @@
       # Recursive activation of other mle.<modules>
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      #mle.misc.networkmanager.enable = lib.mkForce false;
 
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,16 +59,16 @@
           };
 
           wireguardConfig = {
-            PrivateKeyFile = "/var/lib/nspawn/wireguard/server-private-key";
+            PrivateKeyFile = "../secrets/keys/wireguard/server-private-key";
             FirewallMark = wgFwMark;
             RouteTable = "off";
           };
 
           wireguardPeers = [{
             wireguardPeerConfig = { 
-              PublicKey = (builtins.readFile /var/lib/nspawn/wireguard/client-public-key);
-              PresharedKeyFile = "/var/lib/nspawn/wireguard/preshared-key";
-              Endpoint = (builtins.readFile /var/lib/nspawn/wireguard/endpoint); #like wg.example.com:51820
+              PublicKey = (builtins.readFile ../secrets/keys/wireguard/client-public-key);
+              PresharedKeyFile = "../secrets/keys/wireguard/preshared-key";
+              Endpoint = (builtins.readFile ../secrets/keys/wireguard/endpoint); #like wg.example.com:51820
               AllowedIPs = [ "0.0.0.0/0" "::/0" ];
               PersistentKeepalive = 25;
               RouteTable = "off";
