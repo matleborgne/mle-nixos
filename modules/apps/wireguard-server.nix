@@ -21,6 +21,10 @@
     let
       interface = "eth0";
 
+      # No need to touch this
+      wgFwMark = 4242;
+      wgTable = 4000;
+
     in {
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -44,6 +48,7 @@
       systemd.network = {
         enable = true;
 
+        #-----
         netdevs."15-wg0" = {
           netdevConfig = {
             Kind = "wireguard";
@@ -57,15 +62,45 @@
             RouteTable = "off";
           };
 
-          wireguardPeers = lib.mkDefault [{
-            PublicKey = 
-            PresharedKeyFile = "/var/lib/wireguard/preshared-key";
+          wireguardPeers = [{
+            wireguardPeerConfig = lib.mkDefault { 
+              PublicKey = "PublicKeyHere";
+              PresharedKeyFile = "/var/lib/wireguard/preshared-key";
+              Endpoint = "wg.example.com:51820";
+              AllowedIPs = [ "0.0.0.0/0" "::/0" ];
+              PersistentKeepalive = 25;
+              RouteTable = "off";
+            };
+          }];
+        };
 
+        #-----
+        networks."15-wg0" = {
+          matchConfig.Name = "wg0";
+          address = [ "10.44.0.1/32" ];
+          networkConfig = {
+            # DNS = "1.1.1.1";
+          };
 
-
-
-
-
+          routingPolicyRules = [
+            {
+              routingPolicyRuleConfig = {
+                Family = "both";
+                Table = "main";
+                SuppressPrefixLength = 0;
+                Priority = 10;
+              };
+            }
+            {
+              routingPolicyRuleConfig = {
+                Family = "both";
+                InvertRule = true;
+                FirewallMark = wgFwMark;
+                Table = wgTable;
+                Priority = 11;
+              };
+            }
+          ];
 
 
 
