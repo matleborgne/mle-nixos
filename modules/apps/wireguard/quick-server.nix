@@ -19,7 +19,7 @@
   config = lib.mkIf config.mle.apps.wireguard.quick-server.enable (
 
     let
-      serverFile = lib.mkDefault "/etc/wireguard/wg0.conf";
+      #serverFile = lib.mkDefault "/etc/wireguard/wg0.conf";
 
     in {
 
@@ -42,7 +42,7 @@
         wantedBy = [ "default.target" ];
         serviceConfig = {
           Type = "oneshot";
-          ExecStart = "/run/current-system/sw/bin/wg-quick up $serverFile";
+          ExecStart = "/run/current-system/sw/bin/wg-quick up wg0";
         };
       };
 
