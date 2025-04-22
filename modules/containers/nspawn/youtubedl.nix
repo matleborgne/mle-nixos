@@ -33,7 +33,7 @@
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
-        config = { lib, config, pkgs, options, ... }: {
+        config = { lib, config, pkgs, options, mle, ... }: {
 
           imports = [
             ../../apps/fish.nix
