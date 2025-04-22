@@ -9,13 +9,13 @@
 
 {
 
-  options.mle.nspawn.wireguard-networkd.enable = lib.mkOption {
+  options.mle.containers.nspawn.wireguard-networkd.enable = lib.mkOption {
     description = "Configure wireguard-networkd nspawn container";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.nspawn.wireguard-networkd.enable (
+  config = lib.mkIf config.mle.containers.nspawn.wireguard-networkd.enable (
 
     let
       address = [ "10.22.0.154/24" ]; # change this accord to desired local IP
@@ -35,8 +35,8 @@
         config = { lib, config, pkgs, options, ... }: {
 
           imports = [
-            ../apps/wireguard/networkd-server.nix
-            ../apps/fish.nix
+            ../../apps/wireguard/networkd-server.nix
+            ../../apps/fish.nix
           ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
