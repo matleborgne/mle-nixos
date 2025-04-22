@@ -36,7 +36,7 @@
       sshfs.enable = true;
     };
 
-    nspawn = {
+    containers.nspawn = {
       nextcloud.enable = true;
       plexserver.enable = true;
       wireguard-quick.enable = true;
