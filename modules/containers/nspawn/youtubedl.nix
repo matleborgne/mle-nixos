@@ -43,8 +43,16 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           mle.apps.fish.enable = true;
+          networking.firewall.enable = false;
 
+          environment.systemPackages = with pkgs; [
+            yt-dlp gocryptfs
+          ];
 
+          system.activationScripts.mkYoutubedlDirs = ''
+            install -d -m 0755 -o "root" -g users "/var/lib/youtubedl" || true
+            install -d -m 0755 -o "root" -g users "/mnt/uncrypt" || true
+          '';
 
           systemd.services."youtubedl" = {
             serviceConfig = {
@@ -60,9 +68,6 @@
               Unit = "youtubedl.service";
             };
           };
-
-
-
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
