@@ -20,14 +20,14 @@ in
     };
   };
 
+  programs.nix-index.enable = lib.mkDefault true;
+
   nix.settings.experimental-features = lib.mkDefault [
     "nix-command"
     "flakes"
   ];
 
   hardware.enableRedistributableFirmware = lib.mkDefault true;
-
-  programs.nix-index.enable = true;
 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
