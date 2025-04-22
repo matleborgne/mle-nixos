@@ -9,13 +9,13 @@
 
 {
 
-  options.mle.nspawn.nextcloud.enable = lib.mkOption {
+  options.mle.containers.nspawn.nextcloud.enable = lib.mkOption {
     description = "Configure nextcloud nspawn container";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.nspawn.nextcloud.enable (
+  config = lib.mkIf config.mle.containers.nspawn.nextcloud.enable (
 
     let
       address = [ "10.22.0.153/24" ]; # change this accord to desired local IP
@@ -38,8 +38,8 @@
         config = { lib, config, pkgs, options, ... }: {
 
           imports = [
-            ../apps/nextcloud.nix
-            ../apps/fish.nix
+            ../../apps/nextcloud.nix
+            ../../apps/fish.nix
           ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
