@@ -1,4 +1,4 @@
-{ lib, config, pkgs, options.mle.apps.fish, ... }:
+{ lib, config, pkgs, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # CONTAINERS
@@ -35,9 +35,9 @@
 
         config = { lib, config, pkgs, options, ... }: {
 
-          #imports = [
-          #  ../../apps/fish.nix
-          #];
+          imports = [
+            ../../apps/fish.nix
+          ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Main services
