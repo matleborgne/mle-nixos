@@ -21,6 +21,7 @@ in
   };
 
   programs.nix-index.enable = lib.mkDefault true;
+  programs.command-not-found.enable = lib.mkDefault false;
 
   nix.settings.experimental-features = lib.mkDefault [
     "nix-command"
