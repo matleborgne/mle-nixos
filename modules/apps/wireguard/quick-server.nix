@@ -48,6 +48,8 @@
       # Re-enable firewall in deployment and open ListenPort
       networking.firewall = {
         enable = true;
+        allowedTCPPorts = [ listenPort ];
+        allowedUDPPorts = [ listenPort ];
       };
 
       systemd.services.wg-quick-up = {
