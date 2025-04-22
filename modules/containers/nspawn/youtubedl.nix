@@ -105,26 +105,14 @@
 
           services.restic.backups = {
 
-            nextcloud-app = {
+            youtubedl = {
               initialize = false;
-              repository = "/mnt/nfs/bkp/lxc/553-nextcloud/app";
-              paths = [ "/var/lib/nextcloud" ];
+              repository = "/mnt/nas/bkp/lxc/555-youtubedl";
+              paths = [ "/var/lib/youtubedl" ];
               passwordFile = "/passfile";
               pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
               timerConfig = {
-                OnCalendar = "Wed 05:30";
-                Persistent = "true";
-              };
-            };
-
-            nextcloud-db = {
-              initialize = false;
-              repository = "/mnt/nfs/bkp/lxc/553-nextcloud/db";
-              paths = [ "/var/lib/postgresql" ];
-              passwordFile = "/passfile";
-              pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
-              timerConfig = {
-                OnCalendar = "Wed 07:30";
+                OnCalendar = "Tue 05:25";
                 Persistent = "true";
               };
             };
