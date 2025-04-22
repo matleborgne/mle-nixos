@@ -9,13 +9,13 @@
 
 {
 
-  options.mle.nspawn.plexserver.enable = lib.mkOption {
+  options.mle.containers.nspawn.plexserver.enable = lib.mkOption {
     description = "Configure plexserver nspawn container";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.nspawn.plexserver.enable (
+  config = lib.mkIf config.mle.containers.nspawn.plexserver.enable (
 
     let
       address = [ "10.22.0.152/24" ]; # change this accord to desired local IP
@@ -37,8 +37,8 @@
         config = { lib, config, pkgs, options, ... }: {
 
           imports = [
-            ../apps/plexserver.nix
-            ../apps/fish.nix
+            ../../apps/plexserver.nix
+            ../../apps/fish.nix
           ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
