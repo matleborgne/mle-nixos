@@ -8,6 +8,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nix-index.url = "github:nix-community/nix-index/master";
     #nix-colors.url = "github:Misterio77/nix-colors";
 
     home-manager = {
@@ -25,6 +26,7 @@
   outputs = {
     self,
     nixpkgs,
+    nix-index,
     home-manager,
     ...
   }
