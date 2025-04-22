@@ -21,6 +21,14 @@
     let
       #serverFile = lib.mkDefault "/etc/wireguard/wg0.conf";
 
+      # Direct reading from secret config file
+      # It is working but can be improved
+      config = "../../../secrets/keys/wireguard/wg0.conf";
+      readFile = (builtins.filter (x: x != []) (builtins.split "\n" (builtins.readFile config)));
+      readLine = (builtins.toString (builtins.attrValues (lib.attrsets.filterAttrs (n: v: n == "ListenPort") \
+        (builtins.groupBy (builtins.substring 0 10) readFile))))
+      listenPort = lib.toInt (builtins.elemAt (builtins.split " = " readLine) 2)
+
     in {
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,7 +46,9 @@
       ];
 
       # Re-enable firewall in deployment and open ListenPort
-      networking.firewall.enable = false;
+      networking.firewall = {
+        enable = true;
+      };
 
       systemd.services.wg-quick-up = {
         enable = true;
