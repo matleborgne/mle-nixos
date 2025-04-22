@@ -19,7 +19,6 @@
       
       desktop.gnome = {
         default.enable = true;
-        autologin.enable = true;
         suspend-fix.enable = true;
       };
     };
