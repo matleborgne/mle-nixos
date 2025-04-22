@@ -46,7 +46,7 @@
           networking.firewall.enable = false;
 
           environment.systemPackages = with pkgs; [
-            yt-dlp gocryptfs
+            bat gocryptfs yt-dlp
           ];
 
           system.activationScripts.mkYoutubedlDirs = ''
