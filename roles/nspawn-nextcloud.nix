@@ -34,21 +34,9 @@
       fish.enable = true;
       nextcloud.enable = true;   
     };
-
-    bundles = {
-      datapro.enable = true;
-      development.enable = true;
-      gaming.enable = true;
-      multimedia.enable = true;
-      office.enable = true;
-    };
-
-    desktop.gnome.mleborgne.enable = true;
     
     misc = {
-      libvirt.enable = true;
-      mleupdater.enable = true;
-      sshfs.enable = true;
+      networkd.enable = true;
     };
 
     secrets = {
