@@ -23,8 +23,7 @@
 
       # Direct reading from secret config file
       # It is working but can be improved
-      config = "/etc/nixos/build/secrets/keys/wireguard/wg0.conf";
-      readFile = (builtins.filter (x: x != []) (builtins.split "\n" (builtins.readFile config)));
+      readFile = (builtins.filter (x: x != []) (builtins.split "\n" (builtins.readFile ../../../secrets/keys/wireguard/wg0.conf)));
       readLine = (builtins.toString (builtins.attrValues (lib.attrsets.filterAttrs (n: v: n == "ListenPort") (builtins.groupBy (builtins.substring 0 10) readFile))));
       listenPort = lib.toInt (builtins.elemAt (builtins.split " = " readLine) 2);
 
