@@ -23,6 +23,8 @@
 
       # Direct reading from secret config file
       # It is working but can be improved
+      # For instance, substring 0 10 only works for listenPort because 10 characters
+      # Better idea : transform whole list into set
       readFile = (builtins.filter (x: x != []) (builtins.split "\n" (builtins.readFile ../../../secrets/keys/wireguard/wg0.conf)));
       readLine = (builtins.toString (builtins.attrValues (lib.attrsets.filterAttrs (n: v: n == "ListenPort") (builtins.groupBy (builtins.substring 0 10) readFile))));
       listenPort = lib.toInt (builtins.elemAt (builtins.split " = " readLine) 2);
