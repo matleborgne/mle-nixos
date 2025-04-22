@@ -44,12 +44,25 @@
 
           mle.apps.fish.enable = true;
 
-          # Customisation for container
-          services.nextcloud = {
-            # Very sensitive Nextcloud-installer about trusted domain : only IP without mask or anything else
-            settings = { trusted_domains = [ (builtins.elemAt (builtins.split "/" (builtins.elemAt address 0)) 0) ]; };
-            config = { adminpassFile = "/ncpassfile"; };
+
+
+          systemd.services."youtubedl" = {
+            serviceConfig = {
+              Type = "oneshot";
+              ExecStart = ''${pkgs.bash}/bin/bash /var/lib/youtubedl/start-services.sh'';
+            };
           };
+
+          systemd.timers."youtubedl" = {
+            wantedBy = [ "timers.target" ];
+            timerConfig = {
+              OnCalendar = "23:35";
+              Unit = "youtubedl.service";
+            };
+          };
+
+
+
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -59,7 +72,7 @@
           system.stateVersion = "24.11";
 
           networking = {
-            hostName = "nextcloud";
+            hostName = "youtubedl";
 
             useNetworkd = true;
             useDHCP = false;
