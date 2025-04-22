@@ -47,7 +47,7 @@
           networking.firewall.enable = false;
 
           environment.systemPackages = with pkgs; [
-            bat gocryptfs yt-dlp
+            bat gocryptfs yt-dlp restic
           ];
 
           system.activationScripts.mkYoutubedlDirs = ''
@@ -101,8 +101,6 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Auto Backup
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-          environment.systemPackages = with pkgs; [ restic ];
 
           services.restic.backups = {
 
