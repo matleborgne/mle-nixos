@@ -35,7 +35,7 @@
           "/ncpassfile" = { hostPath = "/etc/nixos/build/secrets/keys/nextcloud_passfile"; isReadOnly = true; };
         };
 
-        config = { lib, config, pkgs, options, ... }: {
+        config = { lib, config, pkgs, options, mle, ... }: {
 
           imports = [
             ../../apps/nextcloud.nix
