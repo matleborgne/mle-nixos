@@ -27,6 +27,8 @@ in
 
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 
+  programs.nix-index.enable = true;
+
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Custom modules - mle modules
@@ -107,7 +109,7 @@ in
 
   environment.systemPackages = with pkgs; [
     # Nix tools
-    nh nix-index nix-prefetch-git nix-prefetch-github nixpkgs-fmt nixos-icons
+    nh nix-prefetch-git nix-prefetch-github nixpkgs-fmt nixos-icons
 
     # Filesystems
     e2fsprogs btrfs-progs dosfstools ntfs3g mtpfs exfat exfatprogs
