@@ -25,7 +25,6 @@
   outputs = {
     self,
     nixpkgs,
-    nix-index,
     home-manager,
     ...
   }
