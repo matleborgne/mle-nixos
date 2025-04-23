@@ -23,6 +23,10 @@
 
     in {
 
+      systemd.tmpfiles.rules = [
+        "d /var/lib/youtubedl - - - -"
+      ];
+
       containers.${name} = {
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -53,6 +57,10 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          systemd.tmpfiles.rules = [
+            "d /var/lib/youtubedl - - - -"
+          ];
 
           mle.apps.fish.enable = true;
           #networking.firewall.enable = false;
