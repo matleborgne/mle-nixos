@@ -76,7 +76,7 @@
 
             vaultwarden = {
               initialize = false;
-              repository = "/mnt/nfs/bkp/lxc/551-vaultwarden";
+              repository = "/mnt/nas/bkp/lxc/551-vaultwarden";
               paths = [ "/var/lib/vaultwarden" ];
               passwordFile = "/passfile";
               pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
