@@ -7,6 +7,12 @@
 # Containers modules are the place for declaration of
 # nixos-containers, through nspawn from systemd
 
+    # /!\ Specifications for Nextcloud APP :
+    # For first installation, to not being stuck without account :
+    # Enter nixos container : nixos-container root-login nextcloud
+    # Re-enable root account : nextcloud-occ user:enable root
+    # This is not needed if an account already exist (backup, etc.)
+
 {
 
   options.mle.containers.nspawn.nextcloud.enable = lib.mkOption {
