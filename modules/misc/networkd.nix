@@ -15,7 +15,13 @@
     default = false;
   };
   
-  config = lib.mkIf config.mle.misc.networkd.enable {
+  config = lib.mkIf config.mle.misc.networkd.enable (
+
+  let
+    iface =
+
+  in
+  {
     
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -44,5 +50,5 @@
       };
     };
 
-  };
+  });
 }
