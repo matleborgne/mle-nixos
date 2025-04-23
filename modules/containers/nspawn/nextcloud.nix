@@ -53,6 +53,9 @@
               nextcloud.enable = true;
               fish.enable = true;
             };
+            misc = {
+              networkd.enable = true;
+            };
           };
 
           # Customisation for container
@@ -67,27 +70,27 @@
           # Network
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          system.stateVersion = "24.11";
+#          system.stateVersion = "24.11";
 
-          networking = {
-            hostName = "nextcloud";
+#          networking = {
+#            hostName = "nextcloud";
 
-            useNetworkd = true;
-            useDHCP = false;
-            useHostResolvConf = false;
-          };
+#            useNetworkd = true;
+#            useDHCP = false;
+#            useHostResolvConf = false;
+#          };
 
-          systemd.network = {
-            enable = true;
-            networks = {
-              "40-mv-enp3s0" = {
-                matchConfig.Name = "mv-enp3s0";
-                networkConfig.DHCP = "yes";
-                dhcpV4Config.ClientIdentifier = "mac";
-                inherit address;
-              };
-            };
-          };
+#          systemd.network = {
+#            enable = true;
+#            networks = {
+#              "40-mv-enp3s0" = {
+#                matchConfig.Name = "mv-enp3s0";
+#                networkConfig.DHCP = "yes";
+#                dhcpV4Config.ClientIdentifier = "mac";
+#                inherit address;
+#              };
+#            };
+#          };
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
