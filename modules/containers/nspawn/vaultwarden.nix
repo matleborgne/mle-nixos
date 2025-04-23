@@ -23,6 +23,10 @@
 
     in {
 
+      systemd.tmpfiles.rules = [
+        "d /var/lib/vaultwarden - - - -"
+      ];
+
       containers.${name} = {
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,6 +58,10 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          systemd.tmpfiles.rules = [
+            "d /var/lib/vaultwarden - - - -"
+          ];
 
           mle = {
             apps = {
