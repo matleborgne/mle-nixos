@@ -34,8 +34,6 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #nixpkgs.config.allowUnfree = lib.mkForce true;
-
     networking.firewall.allowedTCPPorts = [ 80 port ];
 
     services.vaultwarden = {
