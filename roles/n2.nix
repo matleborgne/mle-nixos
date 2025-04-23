@@ -37,11 +37,11 @@
     };
 
     containers.nspawn = {
-      nextcloud.enable = true;
-      plexserver.enable = true;
-      vaultwarden.enable = true;
-      wireguard-quick.enable = true;
-      youtubedl.enable = true;
+      #nextcloud.enable = true;
+      #plexserver.enable = true;
+      #vaultwarden.enable = true;
+      #wireguard-quick.enable = true;
+      #youtubedl.enable = true;
     };
 
     secrets = {
