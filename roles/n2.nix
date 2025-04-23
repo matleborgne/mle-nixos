@@ -31,8 +31,6 @@
   mle = {
 
     misc = {
-      libvirt.enable = true;
-      nixos-containers.enable = true;
       sshfs.enable = true;
     };
 
