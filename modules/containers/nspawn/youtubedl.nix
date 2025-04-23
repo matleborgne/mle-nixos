@@ -64,16 +64,11 @@
           ];
 
           mle.apps.fish.enable = true;
-          #networking.firewall.enable = false;
+          networking.firewall.enable = false;
 
           environment.systemPackages = with pkgs; [
             bat gocryptfs yt-dlp restic
           ];
-
-          system.activationScripts.mkYoutubedlDirs = ''
-            install -d -m 0755 -o "root" -g users "/var/lib/youtubedl" || true
-            install -d -m 0755 -o "root" -g users "/mnt/uncrypt" || true
-          '';
 
           systemd.services."youtubedl" = {
             serviceConfig = {
