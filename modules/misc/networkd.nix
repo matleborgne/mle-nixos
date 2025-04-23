@@ -18,7 +18,7 @@
   config = lib.mkIf config.mle.misc.networkd.enable (
 
   let
-    iface =
+    iface = (lib.removeSuffix "\n" (builtins.readFile ./secrets/keys/netIface));
 
   in
   {
@@ -42,8 +42,8 @@
     systemd.network = {
       enable = true;
       networks = {
-        "40-mv-enp3s0" = {
-          matchConfig.Name = "mv-enp3s0";
+        "40-mv-${iface}" = {
+          matchConfig.Name = "mv-${iface}";
           networkConfig.DHCP = "yes";
           dhcpV4Config.ClientIdentifier = "mac";
         };
