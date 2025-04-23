@@ -19,7 +19,7 @@
 
     let
       name = "nextcloud";
-      iface = (lib.removeSuffix "\n" (builtins.readFile ../../../secrets/keys/netIface));
+      net = (import ../../../secrets/keys/netIface);
       address = [ "10.22.0.153/24" ]; # change this accord to desired local IP
 
     in {
@@ -33,8 +33,7 @@
         autoStart = true;
         ephemeral = false;
         privateNetwork = true;
-        #macvlans = [ iface ];
-        macvlans = (builtins.split " " iface);
+        macvlans = net.ifaceList;
 
         bindMounts = {
           "/var/lib/nextcloud" = { hostPath = "/var/lib/nextcloud/app"; isReadOnly = false; };
@@ -47,7 +46,7 @@
           system.stateVersion = "24.11";
 
           networking.hostName = name;
-          systemd.network.networks."40-mv-${iface}" = { inherit address; };
+          systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
 
           imports = [
             ../../apps/nextcloud.nix
