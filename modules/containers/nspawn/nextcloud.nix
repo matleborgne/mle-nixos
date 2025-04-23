@@ -58,7 +58,10 @@
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          systemd.tmpfiles.rules = [ "d /var/lib/nextcloud 700 nextcloud nextcloud -" ];
+          systemd.tmpfiles.rules = [
+            "d /var/lib/nextcloud 700 nextcloud nextcloud -"
+            "d /var/lib/postgresql - postgres postgres -"
+          ];
 
           mle = {
             apps = {
