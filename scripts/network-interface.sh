@@ -2,5 +2,5 @@
 
 current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-netIface = $(ip link | grep enp | awk -F ": " '{ print $2 }')
+netIface=$(ip link | grep enp | awk -F ": " '{ print $2 }')
 echo $netIface > "$current/../secrets/keys/netIface"
