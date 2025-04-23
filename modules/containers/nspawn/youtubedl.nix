@@ -18,11 +18,17 @@
   config = lib.mkIf config.mle.containers.nspawn.youtubedl.enable (
 
     let
+      name = "youtubedl";
       address = [ "10.22.0.155/24" ]; # change this accord to desired local IP
 
     in {
 
-      containers.youtubedl = {
+      containers.${name} = {
+
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        # Container structure
+        # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         autoStart = true;
         ephemeral = false;
         privateNetwork = true;
@@ -34,17 +40,22 @@
         };
 
         config = { lib, config, pkgs, options, mle, ... }: {
+          system.stateVersion = "24.11";
+
+          networking.hostName = name;
+          systemd.network.networks."40-mv-enp3s0" = { inherit address; };
 
           imports = [
             ../../apps/fish.nix
           ];
-      
+
+
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Main services
+          # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           mle.apps.fish.enable = true;
-          networking.firewall.enable = false;
+          #networking.firewall.enable = false;
 
           environment.systemPackages = with pkgs; [
             bat gocryptfs yt-dlp restic
@@ -72,34 +83,7 @@
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Network
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-          system.stateVersion = "24.11";
-
-          networking = {
-            hostName = "youtubedl";
-
-            useNetworkd = true;
-            useDHCP = false;
-            useHostResolvConf = false;
-          };
-
-          systemd.network = {
-            enable = true;
-            networks = {
-              "40-mv-enp3s0" = {
-                matchConfig.Name = "mv-enp3s0";
-                networkConfig.DHCP = "yes";
-                dhcpV4Config.ClientIdentifier = "mac";
-                inherit address;
-              };
-            };
-          };
-
-
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Auto Backup
+          # Backup service
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           services.restic.backups = {
@@ -119,9 +103,6 @@
           };
 
 
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Other services
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         };
       };
