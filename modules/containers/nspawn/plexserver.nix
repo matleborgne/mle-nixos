@@ -29,7 +29,7 @@
         macvlans = [ "enp3s0" ];
 
         bindMounts = {
-          "/var/lib/plex" = { hostPath = "/var/lib/nspawn/plex"; isReadOnly = false; };
+          "/var/lib/plex" = { hostPath = "/var/lib/plex"; isReadOnly = false; };
           "/mnt/nfs" = { hostPath = "/var/srv"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
