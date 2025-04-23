@@ -18,7 +18,7 @@
   config = lib.mkIf config.mle.misc.networkd.enable (
 
   let
-    iface = (lib.removeSuffix "\n" (builtins.readFile ./secrets/keys/netIface));
+    iface = (lib.removeSuffix "\n" (builtins.readFile ../../secrets/keys/netIface));
 
   in
   {
