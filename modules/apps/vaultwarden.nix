@@ -16,7 +16,13 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.vaultwarden.enable {
+  config = lib.mkIf config.mle.apps.vaultwarden.enable (
+
+  let
+    port = 8080;
+
+  in
+  {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -30,6 +36,8 @@
 
     #nixpkgs.config.allowUnfree = lib.mkForce true;
 
+    networking.firewall.allowedTCPPorts = [ 80 port ];
+
     services.vaultwarden = {
       enable = true;
       package = pkgs.vaultwarden;
@@ -38,7 +46,7 @@
       config = {
         SIGNUPS_ALLOWED = true;
         DATABASE_URL = "/var/lib/vaultwarden/db.sqlite3";
-        ROCKET_PORT = "8080";
+        ROCKET_PORT = "$port";
       };
     };
 
@@ -53,7 +61,7 @@
       virtualHosts = {
         "vaultwarden.example.com" = {
           locations."/" = {
-            proxyPass = "http://localhost:8080";
+            proxyPass = "http://localhost:$port";
             proxyWebsockets = true;
           };
         };
@@ -61,5 +69,5 @@
     };
 
 
-  };
+  });
 }
