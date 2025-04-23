@@ -79,7 +79,7 @@
               repository = "/mnt/nas/bkp/lxc/551-vaultwarden";
               paths = [ "/var/lib/vaultwarden" ];
               passwordFile = "/passfile";
-              pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
+              pruneOpts = [ "--keep-daily 10 --keep-weekly 5" "--keep-monthly 3" ];
               timerConfig = {
                 OnCalendar = "05:05";
                 Persistent = "true";
