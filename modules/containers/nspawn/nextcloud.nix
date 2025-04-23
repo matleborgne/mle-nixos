@@ -32,8 +32,8 @@
 
         autoStart = true;
         ephemeral = false;
-        privateNetwork = true;
-        macvlans = [ "enp3s0" ];
+        privateNetwork = false;
+        macvlans = net.ifaceList;
 
         bindMounts = {
           "/var/lib/nextcloud" = { hostPath = "/var/lib/nextcloud/app"; isReadOnly = false; };
