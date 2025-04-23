@@ -33,7 +33,6 @@
         autoStart = true;
         ephemeral = false;
         privateNetwork = true;
-        #macvlans = [ "enp3s0" ];
         macvlans = net.ifaceList;
 
         bindMounts = {
