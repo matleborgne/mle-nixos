@@ -54,7 +54,7 @@
 
           system.stateVersion = "24.11";
 
-          networking.hostName = "$name";
+          networking.hostName = name;
           systemd.network.networks."40-mv-enp3s0" = { inherit address; };
 
           systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
