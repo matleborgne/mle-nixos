@@ -19,7 +19,7 @@
 
     let
       name = "nextcloud";
-      iface = (lib.removeSuffix "\n" (builtins.readFile ./secrets/keys/netIface));
+      iface = (lib.removeSuffix "\n" (builtins.readFile ../../../secrets/keys/netIface));
       address = [ "10.22.0.153/24" ]; # change this accord to desired local IP
 
     in {
