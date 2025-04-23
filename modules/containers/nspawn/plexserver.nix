@@ -31,7 +31,7 @@
 
         autoStart = true;
         ephemeral = false;
-        privateNetwork = true;
+        privateNetwork = false;
         macvlans = [ "enp3s0" ];
 
         bindMounts = {
