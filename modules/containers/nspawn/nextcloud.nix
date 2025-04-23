@@ -25,8 +25,8 @@
     in {
 
       systemd.tmpfiles.rules = [
-        "d /var/lib/nextcloud/app 755 root root -"
-        "d /var/lib/nextcloud/db 755 root root -"
+        "d /var/lib/nextcloud/app - - - -"
+        "d /var/lib/nextcloud/db - - - -"
       ];
 
 
@@ -66,7 +66,7 @@
 
           systemd.tmpfiles.rules = [
             "d /var/lib/nextcloud 700 nextcloud nextcloud -"
-            "d /var/lib/postgresql - postgres postgres -"
+            "d /var/lib/postgresql - - - -"
           ];
 
           mle = {
