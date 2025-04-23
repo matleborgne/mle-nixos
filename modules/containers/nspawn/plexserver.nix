@@ -45,6 +45,7 @@
           imports = [
             ../../apps/plexserver.nix
             ../../apps/fish.nix
+            ../../misc/networkd.nix
           ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
