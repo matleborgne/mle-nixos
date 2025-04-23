@@ -19,6 +19,7 @@
 
     let
       name = "vaultwarden";
+      net = (import ../../../secrets/keys/netIface);
       address = [ "10.22.0.151/24" ]; # change this accord to desired local IP
 
     in {
@@ -36,7 +37,7 @@
         autoStart = true;
         ephemeral = false;
         privateNetwork = true;
-        macvlans = [ "enp3s0" ];
+        macvlans = net.ifaceList;
 
         bindMounts = {
           "/var/lib/vaultwarden" = { hostPath = "/var/lib/vaultwarden"; isReadOnly = false; };
@@ -47,7 +48,7 @@
           system.stateVersion = "24.11";
 
           networking.hostName = name;
-          systemd.network.networks."40-mv-enp3s0" = { inherit address; };
+          systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
 
           imports = [
             ../../apps/vaultwarden.nix
