@@ -31,8 +31,9 @@
 
         autoStart = true;
         ephemeral = false;
-        privateNetwork = false;
-        macvlans = [ "enp3s0" ];
+        privateNetwork = true;
+        #macvlans = [ "enp3s0" ];
+        macvlans = net.ifaceList;
 
         bindMounts = {
           "/var/lib/plex" = { hostPath = "/var/lib/plex"; isReadOnly = false; };
