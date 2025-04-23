@@ -24,6 +24,11 @@
 
     in {
 
+      systemd.tmpfiles.rules = [
+        "d /var/lib/plex - - - -"
+        "d /var/srv - - - -"
+      ];
+
       containers.${name} = {
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
