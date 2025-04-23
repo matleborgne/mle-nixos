@@ -40,11 +40,14 @@
           imports = [
             ../../apps/nextcloud.nix
             ../../apps/fish.nix
+            ../../misc/networkd.nix
           ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Main services
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          networking.hostName = "nextcloud";
 
           systemd.tmpfiles.rules = [ "d /var/lib/nextcloud 700 nextcloud nextcloud -" ];
 
