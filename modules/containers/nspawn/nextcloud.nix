@@ -50,7 +50,7 @@
           system.stateVersion = "24.11";
 
           networking.hostName = "nextcloud";
-          systemd.network.networks."40-mv-enp3s0" = { inherit address; }
+          systemd.network.networks."40-mv-enp3s0" = { inherit address; };
 
           systemd.tmpfiles.rules = [ "d /var/lib/nextcloud 700 nextcloud nextcloud -" ];
 
