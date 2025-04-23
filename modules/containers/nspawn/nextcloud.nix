@@ -48,6 +48,7 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           networking.hostName = "nextcloud";
+          system.stateVersion = "24.11";
 
           systemd.tmpfiles.rules = [ "d /var/lib/nextcloud 700 nextcloud nextcloud -" ];
 
