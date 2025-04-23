@@ -29,7 +29,7 @@
         macvlans = [ "enp3s0" ];
 
         bindMounts = {
-          "/var/lib/youtubedl" = { hostPath = "/var/lib/nspawn/youtubedl"; isReadOnly = false; };
+          "/var/lib/youtubedl" = { hostPath = "/var/lib/youtubedl"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
