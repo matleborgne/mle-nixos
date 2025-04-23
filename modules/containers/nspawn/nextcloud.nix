@@ -24,6 +24,12 @@
 
     in {
 
+      systemd.tmpfiles.rules = [
+        "d /var/lib/nextcloud/app 755 root root -"
+        "d /var/lib/nextcloud/db 755 root root -"
+      ];
+
+
       containers.${name} = {
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
