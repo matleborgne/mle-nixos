@@ -33,7 +33,7 @@
         autoStart = true;
         ephemeral = false;
         privateNetwork = true;
-        macvlans = [ iface ];
+        macvlans = [ ${iface} ];
 
         bindMounts = {
           "/var/lib/nextcloud" = { hostPath = "/var/lib/nextcloud/app"; isReadOnly = false; };
