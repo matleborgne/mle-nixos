@@ -18,11 +18,12 @@
   config = lib.mkIf config.mle.containers.nspawn.nextcloud.enable (
 
     let
+      name = "nextcloud";
       address = [ "10.22.0.153/24" ]; # change this accord to desired local IP
 
     in {
 
-      containers.nextcloud = {
+      containers.${name} = {
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         # Container structure
@@ -34,13 +35,17 @@
         macvlans = [ "enp3s0" ];
 
         bindMounts = {
-          "/var/lib/nextcloud" = { hostPath = "/var/lib/nspawn/nextcloud/app"; isReadOnly = false; };
-          "/var/lib/postgresql" = { hostPath = "/var/lib/nspawn/nextcloud/db"; isReadOnly = false; };
+          "/var/lib/nextcloud" = { hostPath = "/var/lib/nextcloud/app"; isReadOnly = false; };
+          "/var/lib/postgresql" = { hostPath = "/var/lib/nextcloud/db"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
           "/ncpassfile" = { hostPath = "/etc/nixos/build/secrets/keys/nextcloud_passfile"; isReadOnly = true; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
+          system.stateVersion = "24.11";
+
+          networking.hostName = name;
+          systemd.network.networks."40-mv-enp3s0" = { inherit address; };
 
           imports = [
             ../../apps/nextcloud.nix
@@ -51,11 +56,6 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-          system.stateVersion = "24.11";
-
-          networking.hostName = "nextcloud";
-          systemd.network.networks."40-mv-enp3s0" = { inherit address; };
 
           systemd.tmpfiles.rules = [ "d /var/lib/nextcloud 700 nextcloud nextcloud -" ];
 
