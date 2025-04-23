@@ -34,7 +34,7 @@
         ephemeral = false;
         privateNetwork = true;
         #macvlans = [ iface ];
-        macvlans = (builtins.split " " (lib.removeSuffix "\n" (builtins.readFile ./secrets/keys/netIface)))
+        macvlans = (builtins.split " " iface);
 
         bindMounts = {
           "/var/lib/nextcloud" = { hostPath = "/var/lib/nextcloud/app"; isReadOnly = false; };
