@@ -51,7 +51,7 @@
       settings = {
 
         http = {
-          address = "127.0.0.1:80";
+          address = "0.0.0.0:80";
         };
 
         users = {
