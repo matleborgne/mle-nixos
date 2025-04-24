@@ -20,7 +20,7 @@
     let
       name = "plexserver";
       net = (import ../../../secrets/keys/netIface);
-      address = [ "10.22.0.152/24" ]; # change this accord to desired local IP
+      address = (import ../../../secrets/containers_ips).plexserver;
 
     in {
 
