@@ -66,13 +66,11 @@
             "d /var/lib/vaultwarden - - - -"
           ];
 
-
           imports = [
             ../../apps/vaultwarden.nix
             ../../apps/fish.nix
             ../../misc/networkd.nix
           ];
-
 
           mle = {
             apps = {
