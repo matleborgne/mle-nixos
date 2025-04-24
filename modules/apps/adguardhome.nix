@@ -16,7 +16,13 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.adguardhome.enable {
+  config = lib.mkIf config.mle.apps.adguardhome.enable (
+
+    let
+      port = 80;
+      users = 
+
+    in {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -44,12 +50,12 @@
       settings = {
 
         http = {
-          address = "127.0.0.1";
-          pprof = {
-            enabled = true;
-            port = 3000;
-          };
+          address = "127.0.0.1:80";
         };
+
+        users = {
+          name = "mleborgne";
+          password =
 
         dns = {
           bootstrap_dns = [ "9.9.9.9" ];
@@ -78,5 +84,5 @@
  
 
 
-  };
+  });
 }
