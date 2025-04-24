@@ -15,7 +15,13 @@
     default = false;
   };
   
-  config = lib.mkIf config.mle.misc.mdadm.enable {
+  config = lib.mkIf config.mle.misc.mdadm.enable (
+
+    let
+      conf = (builtins.readFile ../../secrets/mdadm.conf);
+
+    in
+    {
     
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -29,7 +35,7 @@
 
     boot.swraid = {
       enable = true;
-      mdadmConf = (builtins.readFile ../../secrets/mdadm.conf);
+      mdadmConf = conf;
     };
 
     # Override mdmonitor to log to syslog instead of emailing or alerting
@@ -38,5 +44,5 @@
     };
     
 
-  };
+  });
 }
