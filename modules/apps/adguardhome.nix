@@ -47,7 +47,8 @@
       # Needed for integrated DHCP server
       allowDHCP = lib.mkDefault false;
 
-      # Declarative settings in secrets, import from yaml file
+      # Declarative settings in secrets, YAML style
+      # https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file
       settings = {
 
         http = {
