@@ -60,9 +60,15 @@
         };
 
         dns = {
-          bootstrap_dns = [ "9.9.9.9" ];
+          bind_hosts = [ "0.0.0.0" ];
+          bootstrap_dns = [
+            "9.9.9.10"
+            "149.112.112.10"
+            "2620:fe::10"
+            "2620:fe::fe:10"
+          ];
           upstream_dns = [
-            "9.9.9.9" # dns.quad9.net
+            "https://dns10.quad9.net/dns-query"
           ];
         };
 
