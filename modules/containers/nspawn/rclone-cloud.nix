@@ -9,16 +9,16 @@
 
 {
 
-  options.mle.containers.nspawn.rclone.enable = lib.mkOption {
-    description = "Configure rclone nspawn container";
+  options.mle.containers.nspawn.rclone-cloud.enable = lib.mkOption {
+    description = "Configure rclone-cloud nspawn container";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.containers.nspawn.rclone.enable (
+  config = lib.mkIf config.mle.containers.nspawn.rclone-cloud.enable (
 
     let
-      name = "rclone";
+      name = "rclone-cloud";
       net = (import ../../../secrets/keys/netIface);
       address = [ "10.22.0.158/24" ]; # change this accord to desired local IP
 
