@@ -46,6 +46,7 @@
 
       # Declarative settings in secrets, import from yaml file
       settings = {
+        http = { "127.0.0.1:3000" };
 
         dns = {
           bootstrap_dns = [ "9.9.9.9" ];
