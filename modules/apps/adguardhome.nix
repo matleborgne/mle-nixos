@@ -20,7 +20,8 @@
 
     let
       port = 80;
-      users = 
+      name = (import ../../secrets/keys/adguard_users).name;
+      password = (import ../../secrets/keys/adguard_users).password;
 
     in {
 
@@ -54,8 +55,9 @@
         };
 
         users = {
-          name = "mleborgne";
-          password =
+          inherit name;
+          inherit password;
+        };
 
         dns = {
           bootstrap_dns = [ "9.9.9.9" ];
