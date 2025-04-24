@@ -68,9 +68,14 @@
 
           imports = [
             ../../apps/fish.nix
+            ../../misc/networkd.nix
           ];
 
-          mle.apps.fish.enable = true;
+          mle = {
+            apps.fish.enable = true;
+            misc.networkd.enable = true;
+          };
+
           networking.firewall.enable = false;
 
           environment.systemPackages = with pkgs; [
