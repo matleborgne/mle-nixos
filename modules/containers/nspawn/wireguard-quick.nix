@@ -52,15 +52,16 @@
           networking.hostName = name;
           systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
 
+      
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Running services inside the container
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
           imports = [
             ../../apps/wireguard/quick-server.nix
             ../../apps/fish.nix
             ../../misc/networkd.nix
           ];
-      
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Running services inside the container
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           mle = {
             apps = {
