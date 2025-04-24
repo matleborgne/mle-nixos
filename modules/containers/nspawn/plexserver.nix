@@ -32,7 +32,7 @@
 
       systemd.tmpfiles.rules = [
         "d /var/lib/plex - - - -"
-        "d /var/srv - - - -"
+        "d /srv - - - -"
       ];
 
 
@@ -49,7 +49,7 @@
 
         bindMounts = {
           "/var/lib/plex" = { hostPath = "/var/lib/plex"; isReadOnly = false; };
-          "/mnt/nfs" = { hostPath = "/var/srv"; isReadOnly = false; };
+          "/mnt/nfs" = { hostPath = "/srv"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
