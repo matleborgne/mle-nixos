@@ -66,13 +66,11 @@
 
           systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
 
-
           imports = [
             ../../apps/plexserver.nix
             ../../apps/fish.nix
             ../../misc/networkd.nix
           ];
-
 
           mle = {
             apps = {
