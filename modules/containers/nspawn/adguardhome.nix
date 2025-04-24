@@ -66,11 +66,6 @@
 
           networking.firewall.enable = lib.mkForce false;
 
-          boot.kernel.sysctl = {
-            "net.ipv4.ip_forward" = 1;
-            "net.ipv6.ip_forward" = 1;
-          };
-
           imports = [
             ../../apps/adguardhome.nix
             ../../apps/fish.nix
