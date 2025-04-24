@@ -33,17 +33,19 @@
     services.adguardhome = {
       enable = true;
       package = lib.mkDefault pkgs.adguardhome;
+
+      # Manually change firewall port if change defaults
+      port = lib.mkDefault 3000;
       openFirewall = lib.mkDefault true;
 
       # Config made on web interface overwrite the declarative config
       mutableSettings = lib.mkDefault false;
 
+      # Needed for integrated DHCP server
+      allowDHCP = lib.mkDefault false;
+
       # Declarative settings in secrets, import from yaml file
       settings = {
-
-        http = {
-          address = lib.mkDefault "127.0.0.1:3003"; # open firewall port
-        };
 
         dns = {
           upstream_dns = [
