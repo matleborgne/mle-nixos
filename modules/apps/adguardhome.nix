@@ -39,10 +39,10 @@
       mutableSettings = lib.mkDefault false;
 
       # Declarative settings in secrets, import from yaml file
-      settings = lib.mkDefault {
+      settings = {
 
         http = {
-          address = "127.0.0.1:3003"; # open firewall port
+          address = lib.mkDefault "127.0.0.1:3003"; # open firewall port
         };
 
         dns = {
