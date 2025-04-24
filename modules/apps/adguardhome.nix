@@ -42,7 +42,7 @@
       package = lib.mkDefault pkgs.adguardhome;
 
       # Config made on web interface overwrite the declarative config
-      mutableSettings = lib.mkDefault false;
+      mutableSettings = lib.mkDefault true;
 
       # Needed for integrated DHCP server
       allowDHCP = lib.mkDefault false;
@@ -72,11 +72,17 @@
           ];
         };
 
+        trusted_proxies = [
+          "127.0.0.0/8"
+          "::1/128"
+        ];
+
         filtering = {
           protection_enabled = true;
           filtering_enabled = true;
           parental_enabled = lib.mkDefault false;
           safe_search.enabled = lib.mkDefault false;
+          safe_fs_patterns = [ "/var/lib/AdGuardHome/*" ];
         };
 
         filters = builtins.map(url: { enabled = true; utl = url; }) [
