@@ -20,7 +20,7 @@
     let
       name = "rclone-cloud";
       net = (import ../../../secrets/keys/netIface);
-      address = [ "10.22.0.158/24" ]; # change this accord to desired local IP
+      address = (import ../../../secrets/containers_ips).rclone-cloud;
 
     in {
 
