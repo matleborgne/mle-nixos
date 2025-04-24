@@ -48,6 +48,7 @@
       settings = {
 
         dns = {
+          bootstrap_dns = [ "9.9.9.9" ];
           upstream_dns = [
             "9.9.9.9" # dns.quad9.net
           ];
