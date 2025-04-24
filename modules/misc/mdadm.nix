@@ -19,6 +19,7 @@
 
     let
       conf = (builtins.readFile ../../secrets/mdadm.conf);
+      name = "md0";
 
     in
     {
@@ -42,7 +43,13 @@
     systemd.services."mdmonitor".environment = {
       MDADM_MONITOR_ARGS = "--scan --syslog";
     };
-    
+
+    fileSystems."${name}" = {
+      device = "/dev/${name}";
+      fsType = "btrfs";
+      options = ;
+    };
+
 
   });
 }
