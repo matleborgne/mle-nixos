@@ -52,15 +52,16 @@
           networking.hostName = name;
           systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
 
+      
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Running services inside the container
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
           imports = [
             ../../apps/wireguard/networkd-server.nix
             ../../apps/fish.nix
             ../../misc/networkd.nix
           ];
-      
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Running services inside the container
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           mle = {
             apps = {
@@ -76,7 +77,6 @@
             "net.ipv4.ip_forward" = 1;
             "net.ipv6.ip_forward" = 1;
           };
-
 
           # Wireguard config keys
           systemd.network = {
