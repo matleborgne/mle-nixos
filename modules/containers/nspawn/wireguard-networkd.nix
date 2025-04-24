@@ -20,7 +20,7 @@
     let
       name = "wireguard-networkd";
       net = (import ../../../secrets/keys/netIface);
-      address = [ "10.22.0.154/24" ]; # change this accord to desired local IP
+      address = (import ../../../secrets/containers_ips).wireguard-networkd;
 
     in {
 
