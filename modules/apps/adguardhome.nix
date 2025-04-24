@@ -34,10 +34,6 @@
       enable = true;
       package = lib.mkDefault pkgs.adguardhome;
 
-      # Manually change firewall port if change defaults
-      port = lib.mkDefault 3000;
-      openFirewall = lib.mkDefault true;
-
       # Config made on web interface overwrite the declarative config
       mutableSettings = lib.mkDefault false;
 
@@ -46,7 +42,14 @@
 
       # Declarative settings in secrets, import from yaml file
       settings = {
-        http.address = "127.0.0.1:3000";
+
+        http = {
+          address = "127.0.0.1";
+          pprof = {
+            enabled = true;
+            port = 3000;
+          };
+        };
 
         dns = {
           bootstrap_dns = [ "9.9.9.9" ];
