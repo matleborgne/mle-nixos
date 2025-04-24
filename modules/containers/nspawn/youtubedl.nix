@@ -20,7 +20,7 @@
     let
       name = "youtubedl";
       net = (import ../../../secrets/keys/netIface);
-      address = [ "10.22.0.155/24" ]; # change this accord to desired local IP
+      address = (import ../../../secrets/containers_ips).youtubedl;
 
     in {
 
