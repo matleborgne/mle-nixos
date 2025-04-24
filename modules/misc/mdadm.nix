@@ -47,7 +47,7 @@
     fileSystems."${name}" = {
       device = "/dev/${name}";
       fsType = "btrfs";
-      options = ;
+      options = "rw,relatime,ssd,space_cache=v2,subvolid=5,subvol=/";
     };
 
 
