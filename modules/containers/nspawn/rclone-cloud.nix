@@ -68,7 +68,7 @@
             "d /mnt/reverse - - - -"
           ];
 
-          environment.variables = { RCLONE_CONFIG = "/var/lib/rclone/rclone.conf"; };
+          environment.sessionVariables = { RCLONE_CONFIG = "/var/lib/rclone/rclone.conf"; };
 
           imports = [
             ../../apps/fish.nix
