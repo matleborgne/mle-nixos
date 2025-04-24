@@ -65,6 +65,8 @@
 
           #systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
 
+          networking.firewall.enable = lib.mkForce false;
+
           imports = [
             ../../apps/adguardhome.nix
             ../../apps/fish.nix
