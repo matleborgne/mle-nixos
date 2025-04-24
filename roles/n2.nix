@@ -31,6 +31,7 @@
   mle = {
 
     misc = {
+      mdadm.enable = true;
       sshfs.enable = true;
     };
 
@@ -70,15 +71,5 @@
     WD2416644A0N08 UUID=770393e5-bc01-4c4d-9de9-05aeb51dd7ae /etc/keys/keyfile.key luks,nofail
     WD24201W4A1B10 UUID=38996162-dca0-4e8c-9593-2294ed006b38 /etc/keys/keyfile.key luks,nofail
   '';
-
-  boot.swraid = {
-    enable = true;
-    mdadmConf = (builtins.readFile ../secrets/mdadm.conf);
-  };
-
-  # Override mdmonitor to log to syslog instead of emailing or alerting
-  systemd.services."mdmonitor".environment = {
-    MDADM_MONITOR_ARGS = "--scan --syslog";
-  };
 
 }
