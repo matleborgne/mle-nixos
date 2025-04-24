@@ -38,7 +38,17 @@
       # Config made on web interface overwrite the declarative config
       mutableSettings = lib.mkDefault false;
 
-
+      # Declarative settings in secrets, import from yaml file
+      settings = lib.mkDefault {
+        http = {
+          address = "127.0.0.1:3003"; # open firewall port
+        };
+        dns = {
+          upstream_dns = [
+            "9.9.9.9" # dns.quad9.net
+          ];
+        };
+      };
 
 
     };
