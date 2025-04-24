@@ -26,7 +26,7 @@
     let
       name = "nextcloud";
       net = (import ../../../secrets/keys/netIface);
-      address = [ "10.22.0.153/24" ]; # change this accord to desired local IP
+      address = (import ../../../secrets/containers_ips).nextcloud;
 
     in {
 
