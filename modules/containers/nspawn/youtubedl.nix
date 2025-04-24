@@ -57,10 +57,6 @@
           networking.hostName = name;
           systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
 
-          imports = [
-            ../../apps/fish.nix
-          ];
-
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Running services inside the container
@@ -68,6 +64,10 @@
 
           systemd.tmpfiles.rules = [
             "d /var/lib/youtubedl - - - -"
+          ];
+
+          imports = [
+            ../../apps/fish.nix
           ];
 
           mle.apps.fish.enable = true;
