@@ -30,9 +30,9 @@
 
       mle.misc.nixos-containers.enable = lib.mkForce true;
 
-      #systemd.tmpfiles.rules = [
-      #  "d /var/lib/adguardhome - - - -"
-      #];
+      systemd.tmpfiles.rules = [
+        "d /var/lib/AdGuardHome - - - -"
+      ];
 
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -46,11 +46,10 @@
         privateNetwork = true;
         macvlans = net.ifaceList;
 
-        #bindMounts = {
-        #  "/var/lib/plex" = { hostPath = "/var/lib/plex"; isReadOnly = false; };
-        #  "/mnt/nfs" = { hostPath = "/var/srv"; isReadOnly = false; };
-        #  "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
-        #};
+        bindMounts = {
+          "/var/lib/AdGuardHome" = { hostPath = "/var/lib/AdGuardHome"; isReadOnly = false; };
+          "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
+        };
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
@@ -63,7 +62,7 @@
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          #systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
+          systemd.tmpfiles.rules = [ "d /var/lib/AdGuardHome 700 - - -" ];
 
           networking.firewall.enable = lib.mkForce false;
 
