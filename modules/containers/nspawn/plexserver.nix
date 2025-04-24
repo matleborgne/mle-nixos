@@ -59,17 +59,20 @@
           networking.hostName = name;
           systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
 
-          imports = [
-            ../../apps/plexserver.nix
-            ../../apps/fish.nix
-            ../../misc/networkd.nix
-          ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
+
+
+          imports = [
+            ../../apps/plexserver.nix
+            ../../apps/fish.nix
+            ../../misc/networkd.nix
+          ];
+
 
           mle = {
             apps = {
