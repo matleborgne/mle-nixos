@@ -35,6 +35,7 @@
     };
 
     containers.nspawn = {
+      adguardhome.enable = true;
       #nextcloud.enable = true;
       #plexserver.enable = true;
       rclone-cloud.enable = true;
