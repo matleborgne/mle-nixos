@@ -66,11 +66,6 @@
           networking.hostName = name;
           systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
 
-          imports = [
-            ../../apps/nextcloud.nix
-            ../../apps/fish.nix
-            ../../misc/networkd.nix
-          ];
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Running services inside the container
@@ -79,6 +74,12 @@
           systemd.tmpfiles.rules = [
             "d /var/lib/nextcloud 700 nextcloud nextcloud -"
             "d /var/lib/postgresql - - - -"
+          ];
+
+          imports = [
+            ../../apps/nextcloud.nix
+            ../../apps/fish.nix
+            ../../misc/networkd.nix
           ];
 
           mle = {
