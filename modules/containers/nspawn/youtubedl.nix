@@ -25,7 +25,7 @@
     in {
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      # Host preparation
+      # Host prerequisites
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       mle.misc.nixos-containers.enable = lib.mkForce true;
