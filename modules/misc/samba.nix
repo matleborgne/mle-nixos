@@ -56,10 +56,6 @@
 
       securityType = "user";
       openFirewall = true;
-      extraConfig = ''
-        server smb encrypt = required
-        server min protocol = SMB3_00
-      '';
 
       settings = {
       
@@ -67,6 +63,8 @@
           "workgroup" = "WORKGROUP";
           "server string" = "smbnix";
           "netbios name" = "smbnix";
+          "server smb encrypt" = "required";
+          "server min protocol" = "SMB3_00";
           #"hosts allow" = "10.22.0.0/24 127.0.0.1 localhost";
           #"hosts deny" = "0.0.0.0/0";
           #"guest account" = "nobody";
