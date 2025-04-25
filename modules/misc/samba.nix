@@ -44,13 +44,12 @@
           "netbios name" = "smbnix";
           "security" = "user";
           "client max protocol" = "smb3";
-          "username map" = "/etc/samba/smbusers";
           "idmap config * : backend" = "tdb";
           "name resolve order" = "wins lmhosts host bcast";
         };
 
-        "rootfs" = {
-          "path" = "/";
+        mls = {
+          "path" = "/srv/mls";
           "browseable" = "yes";
           "read only" = "no";
           "create mask" = "0644";
