@@ -39,7 +39,7 @@
       systemd.tmpfiles.rules = [
         "d /var/lib/nextcloud/app - - - -"
         "d /var/lib/nextcloud/db - - - -"
-        "d /srv - - - -"
+        "d /srv/bkp/lxc/553-nextcloud - - - -"
       ];
 
 
