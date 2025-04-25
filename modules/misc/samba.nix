@@ -42,8 +42,8 @@
           "workgroup" = "WORKGROUP";
           "server string" = "smbnix";
           "netbios name" = "smbnix";
-          "security" = "USER";
-          "client max protocol" = "SMB3";
+          "security" = "user";
+          "client max protocol" = "smb3";
           "username map" = "/etc/samba/smbusers";
           "idmap config * : backend" = "tdb";
           "name resolve order" = "wins lmhosts host bcast";
