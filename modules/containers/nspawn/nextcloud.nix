@@ -130,7 +130,7 @@
               passwordFile = "/passfile";
               pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
               timerConfig = {
-                OnCalendar = "Wed 07:35";
+                OnCalendar = "Wed 07:40";
                 Persistent = "true";
               };
             };
