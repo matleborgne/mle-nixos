@@ -67,11 +67,11 @@
           "passwd program" = "/run/current-system/sw/bin/passwd %u";
           "pam password change" = "yes";
           "socket options" = "TCP_NODELAY IPTOS_LOWDELAY";
-
-
-          "netbios name" = "smbnix";
-          "server smb encrypt" = "required";
-          "server min protocol" = "SMB3_00";
+          "unix extensions" = "yes";
+          "create mask" = "0777";
+          "directory mask" = "0777";
+          "time server" = "no";
+          "server min protocol" = "SMB2_02";
           #"hosts allow" = "10.22.0.0/24 127.0.0.1 localhost";
           #"hosts deny" = "0.0.0.0/0";
           "guest account" = "nobody";
