@@ -37,18 +37,18 @@
 
     services.samba = {
       enable = true;
-      securityType = "user";
+      #securityType = "user";
       openFirewall = true;
       settings = {
       
         global = {
           "workgroup" = "WORKGROUP";
-          "server string" = "smbnix";
-          "netbios name" = "smbnix";
-          "hosts allow" = "10.22.0.0/24 127.0.0.1 localhost";
-          "hosts deny" = "0.0.0.0/0";
+          #"server string" = "smbnix";
+          #"netbios name" = "smbnix";
+          #"hosts allow" = "10.22.0.0/24 127.0.0.1 localhost";
+          #"hosts deny" = "0.0.0.0/0";
           "guest account" = "nobody";
-          "map to guest" = "bad user";
+          #"map to guest" = "bad user";
         };
 
         public = {
@@ -66,7 +66,7 @@
           "guest ok" = "no";
           "create mask" = "0644";
           "directory mask" = "0755";
-          #"force user" = "mlepro";
+          "force user" = "mlepro";
           #"force group" = "groupname";
         };
 
