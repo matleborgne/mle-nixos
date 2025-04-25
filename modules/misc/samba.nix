@@ -82,6 +82,13 @@
           "browseable" = "yes";
           "read only" = "no";
           "guest ok" = "yes";
+          "guest only" = "no";
+          "shadow:mountpoint" = "/srv";
+          "shadow:basedir" = "/srv/shr";
+          "ea support" = "no";
+          "force create mode" = "0664";
+          "force directory mode" = "0775";
+          "follow symlinks" = "yes";
         };
 
         # Example of customization here
