@@ -33,10 +33,8 @@
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    networking.firewall.enable = lib.mkForce false;
-
     #users.groups.fuse.members = normalUsers;
-    #networking.firewall.allowPing = true;
+    networking.firewall.allowPing = true;
 
     services.samba-wsdd = {
       enable = true;
