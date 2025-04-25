@@ -44,10 +44,19 @@
       MDADM_MONITOR_ARGS = "--scan --syslog";
     };
 
-    fileSystems."/srv" = {
-      device = "/dev/${name}";
-      fsType = "btrfs";
-      options = [ "rw,relatime,ssd,space_cache=v2,subvol=/" ];
+    fileSystems = {
+
+      "/srv" = {
+        device = "/dev/${name}";
+        fsType = "btrfs";
+        options = [ "rw,relatime,ssd,space_cache=v2,subvol=/" ];
+      };
+
+      "/home" = {
+        device = "/srv/home";
+        fsType = "none";
+        options = [ "bind" ];
+
     };
 
 
