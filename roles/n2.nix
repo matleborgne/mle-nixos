@@ -44,6 +44,7 @@
       #youtubedl.enable = true;
       #adguardhome.enable = true;
       #rclone-cloud.enable = true;
+      samba.enable = true;
     };
 
     secrets = {
