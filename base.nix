@@ -120,7 +120,7 @@ in
     git util-linux pciutils lshw dmidecode smartmontools ncdu tree
     lm_sensors duf neofetch htop vim bat
     p7zip gnutar
-    cron rsync wget curl
+    cron rsync restic wget curl
   ];
 
 
