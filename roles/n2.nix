@@ -36,7 +36,7 @@
     };
 
     containers.nspawn = {
-      #vaultwarden.enable = true;
+      vaultwarden.enable = true;
       plexserver.enable = true;
       #nextcloud.enable = true;
       #wireguard-quick.enable = true;
