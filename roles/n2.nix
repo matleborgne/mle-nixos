@@ -32,6 +32,7 @@
 
     misc = {
       mdadm.enable = true;
+      samba.enable = true;
       sshfs.enable = true;
     };
 
