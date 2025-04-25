@@ -42,38 +42,22 @@
           "workgroup" = "WORKGROUP";
           "server string" = "smbnix";
           "netbios name" = "smbnix";
-          "security" = "user";
-          #"use sendfile" = "yes";
-          "max protocol" = "smb2";
-          # note: localhost is the ipv6 localhost ::1
-          #"hosts allow" = "10.22.0. 127.0.0.1 localhost";
-          #"hosts deny" = "0.0.0.0/0";
-          "hosts allow" = "0.0.0.0/0";
-          "guest account" = "nobody";
-          "map to guest" = "bad user";
+          "security" = "USER";
+          "client max protocol" = "SMB3";
+          "username map" = "/etc/samba/smbusers";
+          "idmap config * : backend" = "tdb";
+          "name resolve order" = "wins lmhosts host bcast";
         };
 
-        "public" = {
-          "path" = "/srv";
+        "rootfs" = {
+          "path" = "/";
           "browseable" = "yes";
           "read only" = "no";
-          "guest ok" = "yes";
           "create mask" = "0644";
-          "directory mask" = "0755";
-          #"force user" = "username";
-          #"force group" = "groupname";
+          "force user" = "root";
+          "force group" = "root";
         };
 
-        "private" = {
-          "path" = "/srv2";
-          "browseable" = "yes";
-          "read only" = "no";
-          "guest ok" = "no";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          "force user" = "mlepro";
-          "force group" = "users";
-        };
       };
     };
 
