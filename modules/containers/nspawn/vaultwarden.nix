@@ -32,6 +32,7 @@
 
       systemd.tmpfiles.rules = [
         "d /var/lib/vaultwarden - - - -"
+        "d /srv - - - -"
       ];
 
 
@@ -48,6 +49,7 @@
 
         bindMounts = {
           "/var/lib/vaultwarden" = { hostPath = "/var/lib/vaultwarden"; isReadOnly = false; };
+          "/srv/bkp/lxc/551-vaultwarden" = { hostPath = "/srv/bkp/lxc/551-vaultwarden"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
@@ -64,6 +66,7 @@
 
           systemd.tmpfiles.rules = [
             "d /var/lib/vaultwarden - - - -"
+            "d /srv/bkp/lxc/551-vaultwarden - - - -"
           ];
 
           imports = [
@@ -93,7 +96,7 @@
 
             vaultwarden = {
               initialize = false;
-              repository = "/mnt/nas/bkp/lxc/551-vaultwarden";
+              repository = "/srv/bkp/lxc/551-vaultwarden";
               paths = [ "/var/lib/vaultwarden" ];
               passwordFile = "/passfile";
               pruneOpts = [ "--keep-daily 10 --keep-weekly 5" "--keep-monthly 3" ];
