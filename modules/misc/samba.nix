@@ -61,13 +61,20 @@
       
         global = {
           "workgroup" = "WORKGROUP";
-          "server string" = "smbnix";
+          "server string" = "%h server";
+          "dns proxy" = "no";
+          #"passdb backend" = "tdbsam";
+          "passwd program" = "/run/current-system/sw/bin/passwd %u";
+          "pam password change" = "yes";
+          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY";
+
+
           "netbios name" = "smbnix";
           "server smb encrypt" = "required";
           "server min protocol" = "SMB3_00";
           #"hosts allow" = "10.22.0.0/24 127.0.0.1 localhost";
           #"hosts deny" = "0.0.0.0/0";
-          #"guest account" = "nobody";
+          "guest account" = "nobody";
           #"map to guest" = "bad user";
         };
 
