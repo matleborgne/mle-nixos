@@ -62,6 +62,7 @@
         global = {
           "workgroup" = "WORKGROUP";
           "server string" = "%h server";
+          "server role" = "standalone server";
           "dns proxy" = "no";
           #"passdb backend" = "tdbsam";
           "passwd program" = "/run/current-system/sw/bin/passwd %u";
