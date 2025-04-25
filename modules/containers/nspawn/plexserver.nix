@@ -49,7 +49,8 @@
 
         bindMounts = {
           "/var/lib/plex" = { hostPath = "/var/lib/plex"; isReadOnly = false; };
-          "/mnt/nfs" = { hostPath = "/srv"; isReadOnly = false; };
+          "/mnt/nfs/vid" = { hostPath = "/srv/vid"; isReadOnly = true; };
+          "/mnt/nfs/bkp/lxc/552-plexserver" = { hostPath = "/srv/bkp/lxc/552-plexserver"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
@@ -64,7 +65,11 @@
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          systemd.tmpfiles.rules = [ "d /var/lib/plex 700 plex plex -" ];
+          systemd.tmpfiles.rules = [
+            "d /var/lib/plex 700 plex plex -"
+            "d /mnt/nfs/vid - - - -"
+            "d /mnt/nfs/bkp/lxc/552-plexserver - - - -"
+          ];
 
           imports = [
             ../../apps/plexserver.nix
