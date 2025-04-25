@@ -33,8 +33,48 @@
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #users.groups.fuse.members = normalUsers;
-    networking.firewall.allowPing = true;
+    services.samba = {
+      enable = true;
+      openFirewall = true;
+      settings = {
+
+        global = {
+          "workgroup" = "WORKGROUP";
+          "server string" = "smbnix";
+          "netbios name" = "smbnix";
+          "security" = "user";
+          #"use sendfile" = "yes";
+          #"max protocol" = "smb2";
+          # note: localhost is the ipv6 localhost ::1
+          "hosts allow" = "10.22.0. 127.0.0.1 localhost";
+          "hosts deny" = "0.0.0.0/0";
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
+        };
+
+        "public" = {
+          "path" = "/srv/shr";
+          "browseable" = "yes";
+          "read only" = "no";
+          "guest ok" = "yes";
+          "create mask" = "0644";
+          "directory mask" = "0755";
+          #"force user" = "username";
+          #"force group" = "groupname";
+        };
+
+        "private" = {
+          "path" = "/srv/mls";
+          "browseable" = "yes";
+          "read only" = "no";
+          "guest ok" = "no";
+          "create mask" = "0644";
+          "directory mask" = "0755";
+          "force user" = "mlepro";
+          "force group" = "users";
+        };
+      };
+    };
 
     services.samba-wsdd = {
       enable = true;
@@ -44,69 +84,14 @@
     services.avahi = {
       publish.enable = true;
       publish.userServices = true;
+      # ^^ Needed to allow samba to automatically register mDNS records (without the need for an `extraServiceFile`
       nssmdns4 = true;
+      # ^^ Not one hundred percent sure if this is needed- if it aint broke, don't fix it
       enable = true;
       openFirewall = true;
     };
 
-
-    services.samba = {
-      enable = true;
-      package = pkgs.samba4Full;
-
-      securityType = "user";
-      openFirewall = true;
-
-      settings = {
-      
-        global = {
-          "workgroup" = "WORKGROUP";
-          "server string" = "%h server";
-          "server role" = "standalone server";
-          "dns proxy" = "no";
-          #"passdb backend" = "tdbsam";
-          "passwd program" = "/run/current-system/sw/bin/passwd %u";
-          "pam password change" = "yes";
-          "socket options" = "TCP_NODELAY IPTOS_LOWDELAY";
-          "unix extensions" = "yes";
-          "create mask" = "0777";
-          "directory mask" = "0777";
-          "time server" = "no";
-          "server min protocol" = "SMB2_02";
-          #"hosts allow" = "10.22.0.0/24 127.0.0.1 localhost";
-          #"hosts deny" = "0.0.0.0/0";
-          "guest account" = "nobody";
-        };
-
-        public = {
-          "path" = "/srv/shr";
-          "browseable" = "yes";
-          "read only" = "no";
-          "guest ok" = "yes";
-          "guest only" = "no";
-          "shadow:mountpoint" = "/srv";
-          "shadow:basedir" = "/srv/shr";
-          "ea support" = "no";
-          "force create mode" = "0664";
-          "force directory mode" = "0775";
-          "follow symlinks" = "yes";
-        };
-
-        # Example of customization here
-        mlepro = {
-          "path" = "/srv/mle";
-          "browseable" = "yes";
-          "read only" = "no";
-          "guest ok" = "no";
-          "create mask" = "0644";
-          "directory mask" = "0755";
-          "force user" = "mlepro";
-          #"force group" = "groupname";
-        };
-
-      };
-
-    };
+    networking.firewall.allowPing = true;
 
         
   });
