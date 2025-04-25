@@ -34,9 +34,25 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     #users.groups.fuse.members = normalUsers;
+    networking.firewall.allowPing = true;
+
+    services.samba-wsdd = {
+      enable = true;
+      openFirewall = true;
+    };
+
+    services.avahi = {
+      publish.enable = true;
+      publish.userServices = true;
+      enable = true;
+      openFirewall = true;
+    };
+
 
     services.samba = {
       enable = true;
+      package = pkgs.samba4Full;
+
       securityType = "user";
       openFirewall = true;
       settings = {
@@ -73,13 +89,6 @@
       };
 
     };
-
-    services.samba-wsdd = {
-      enable = true;
-      openFirewall = true;
-    };
-
-    networking.firewall.allowPing = true;
 
         
   });
