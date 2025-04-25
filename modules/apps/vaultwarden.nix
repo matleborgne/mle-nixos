@@ -44,7 +44,7 @@
       config = {
         SIGNUPS_ALLOWED = true;
         DATABASE_URL = "/var/lib/vaultwarden/db.sqlite3";
-        ROCKET_PORT = "$port";
+        ROCKET_PORT = 8080;
       };
     };
 
