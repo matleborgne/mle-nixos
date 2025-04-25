@@ -46,9 +46,9 @@
         privateNetwork = true;
         macvlans = net.ifaceList;
 
-        #bindMounts = {
-        #  "/var/lib/plex" = { hostPath = "/var/lib/plex"; isReadOnly = false; };
-        #};
+        bindMounts = {
+          "/srv/mls" = { hostPath = "/srv/mls"; isReadOnly = false; };
+        };
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
@@ -62,8 +62,7 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /srv 777 - - -"
-            "d /srv2 777 - - -"
+            "d /srv/mls 755 - - -"
           ];
 
           imports = [
@@ -88,7 +87,6 @@
             smbpasswd -e mlepro
           '';
 
-          networking.firewall.enable = lib.mkForce false;
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
