@@ -43,15 +43,37 @@
       
         global = {
           "workgroup" = "WORKGROUP";
+          "server string" = "smbnix";
+          "netbios name" = "smbnix";
           "hosts allow" = "192.168.0. 127.0.0.1 localhost";
           "hosts deny" = "0.0.0.0/0";
           "guest account" = "nobody";
           "map to guest" = "bad user";
         };
+
+        # Example of customization here
+        "mlepro" = {
+          "path" = "/srv/mle";
+          "browseable" = "yes";
+          "read only" = "no";
+          "guest ok" = "no";
+          "create mask" = "0644";
+          "directory mask" = "0755";
+          "force user" = "mlepro";
+          #"force group" = "groupname";
+        };
+
       };
 
     };
+
+    services.samba-wsdd = {
+      enable = true;
+      openFirewall = true;
+    };
+
+    networking.firewall.allowPing = true;
+
         
   });
-
 }
