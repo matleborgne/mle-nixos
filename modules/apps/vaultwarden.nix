@@ -34,7 +34,7 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    networking.firewall.allowedTCPPorts = [ 80 8080 ];
+    networking.firewall.allowedTCPPorts = [ 80 port ];
 
     services.vaultwarden = {
       enable = true;
@@ -44,7 +44,8 @@
       config = {
         SIGNUPS_ALLOWED = true;
         DATABASE_URL = "/var/lib/vaultwarden/db.sqlite3";
-        ROCKET_PORT = 8080;
+        ROCKET_ADDRESS = "127.0.0.1";
+        ROCKET_PORT = port;
       };
     };
 
