@@ -69,7 +69,6 @@
             ../../apps/fish.nix
             ../../misc/networkd.nix
             ../../misc/samba.nix
-            #../../../secrets/users/mlepro.nix
           ];
 
           mle = {
@@ -80,11 +79,13 @@
               networkd.enable = true;
               samba.enable = true;
             };
-            #users = {
-            #  mlepro.enable = true;
-            #};
           };
 
+          system.activationScripts.mleproSamba = ''
+            useradd mlepro
+            echo -e TEST\nTEST | smbpasswd -a mlepro  
+            smbpasswd -e mlepro
+          '';
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
