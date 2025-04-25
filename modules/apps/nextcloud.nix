@@ -69,9 +69,15 @@
       recommendedTlsSettings = true;
 
       virtualHosts = {
-        "localhost".listen = [ { addr = "127.0.0.1"; port = 8080; } ];
-      };
-    };
+        "nextcloud.example.com" = {
+          http2 = true;
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:8080/";
+            proxyWebsockets = true;
+          };
+        };
+
+};
 
 
     services.postgresql = {
