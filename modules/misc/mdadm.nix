@@ -56,6 +56,7 @@
         device = "/srv/home";
         fsType = "none";
         options = [ "bind" ];
+      };
 
     };
 
