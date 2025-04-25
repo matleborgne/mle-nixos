@@ -59,7 +59,7 @@
           "guest ok" = "no";
           "create mask" = "0644";
           "directory mask" = "0755";
-          "force user" = "mlepro";
+          #"force user" = "mlepro";
           #"force group" = "groupname";
         };
 
