@@ -36,13 +36,13 @@
     };
 
     containers.nspawn = {
-      vaultwarden.enable = true;
+      #vaultwarden.enable = true;
       plexserver.enable = true;
       #nextcloud.enable = true;
-      wireguard-quick.enable = true;
-      youtubedl.enable = true;
-      adguardhome.enable = true;
-      rclone-cloud.enable = true;
+      #wireguard-quick.enable = true;
+      #youtubedl.enable = true;
+      #adguardhome.enable = true;
+      #rclone-cloud.enable = true;
     };
 
     secrets = {
