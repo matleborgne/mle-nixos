@@ -56,6 +56,11 @@
 
       securityType = "user";
       openFirewall = true;
+      extraConfig = ''
+        server smb encrypt = required
+        server min protocol = SMB3_00
+      '';
+
       settings = {
       
         global = {
