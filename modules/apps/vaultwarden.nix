@@ -19,7 +19,7 @@
   config = lib.mkIf config.mle.apps.vaultwarden.enable (
 
   let
-    port = 8080;
+    port = 8083;
 
   in
   {
@@ -34,7 +34,7 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    networking.firewall.allowedTCPPorts = [ 80 port ];
+    networking.firewall.allowedTCPPorts = [ 80 8083 ];
 
     services.vaultwarden = {
       enable = true;
@@ -44,8 +44,8 @@
       config = {
         SIGNUPS_ALLOWED = true;
         DATABASE_URL = "/var/lib/vaultwarden/db.sqlite3";
-        ROCKET_ADDRESS = "127.0.0.1";
-        ROCKET_PORT = port;
+        #ROCKET_ADDRESS = "127.0.0.1";
+        #ROCKET_PORT = 8083;
       };
     };
 
@@ -60,7 +60,7 @@
       virtualHosts = {
         "vaultwarden.example.com" = {
           locations."/" = {
-            proxyPass = "http://127.0.0.1:80";
+            proxyPass = "http://127.0.0.1:8083";
             proxyWebsockets = true;
           };
         };
