@@ -69,6 +69,7 @@
             ../../apps/fish.nix
             ../../misc/networkd.nix
             ../../misc/samba.nix
+            ../../../secrets/users/mlepro.nix
           ];
 
           mle = {
@@ -78,6 +79,9 @@
             misc = {
               networkd.enable = true;
               samba.enable = true;
+            };
+            users = {
+              mlepro.enable = true;
             };
           };
 
