@@ -39,6 +39,7 @@
       systemd.tmpfiles.rules = [
         "d /var/lib/nextcloud/app - - - -"
         "d /var/lib/nextcloud/db - - - -"
+        "d /srv - - - -"
       ];
 
 
@@ -56,6 +57,7 @@
         bindMounts = {
           "/var/lib/nextcloud" = { hostPath = "/var/lib/nextcloud/app"; isReadOnly = false; };
           "/var/lib/postgresql" = { hostPath = "/var/lib/nextcloud/db"; isReadOnly = false; };
+          "/srv/bkp" = { hostPath = "/srv/bkp"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
           "/ncpassfile" = { hostPath = "/etc/nixos/build/secrets/keys/nextcloud_passfile"; isReadOnly = true; };
         };
@@ -74,6 +76,7 @@
           systemd.tmpfiles.rules = [
             "d /var/lib/nextcloud 700 nextcloud nextcloud -"
             "d /var/lib/postgresql - - - -"
+            "d /srv/bkp - - - -"
           ];
 
           imports = [
@@ -110,7 +113,7 @@
 
             nextcloud-app = {
               initialize = false;
-              repository = "/mnt/nfs/bkp/lxc/553-nextcloud/app";
+              repository = "/srv/bkp/lxc/553-nextcloud/app";
               paths = [ "/var/lib/nextcloud" ];
               passwordFile = "/passfile";
               pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
@@ -122,7 +125,7 @@
 
             nextcloud-db = {
               initialize = false;
-              repository = "/mnt/nfs/bkp/lxc/553-nextcloud/db";
+              repository = "/srv/bkp/lxc/553-nextcloud/db";
               paths = [ "/var/lib/postgresql" ];
               passwordFile = "/passfile";
               pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
