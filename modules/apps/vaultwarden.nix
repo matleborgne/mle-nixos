@@ -16,13 +16,7 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.vaultwarden.enable (
-
-  let
-    port = 8083;
-
-  in
-  {
+  config = lib.mkIf config.mle.apps.vaultwarden.enable {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -68,5 +62,5 @@
     };
 
 
-  });
+  };
 }
