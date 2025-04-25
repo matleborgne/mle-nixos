@@ -74,8 +74,8 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /var/lib/nextcloud 700 nextcloud nextcloud -"
-            "d /var/lib/postgresql - - - -"
+            "d /var/lib/nextcloud - nextcloud nextcloud -"
+            "d /var/lib/postgresql - postgres postgres -"
             "d /srv/bkp/lxc/553-nextcloud - - - -"
           ];
 
