@@ -44,7 +44,7 @@
           "netbios name" = "smbnix";
           "security" = "user";
           #"use sendfile" = "yes";
-          #"max protocol" = "smb2";
+          "max protocol" = "smb2";
           # note: localhost is the ipv6 localhost ::1
           #"hosts allow" = "10.22.0. 127.0.0.1 localhost";
           #"hosts deny" = "0.0.0.0/0";
@@ -65,7 +65,7 @@
         };
 
         "private" = {
-          "path" = "/srv";
+          "path" = "/srv2";
           "browseable" = "yes";
           "read only" = "no";
           "guest ok" = "no";
