@@ -9,9 +9,14 @@
 
     # /!\ Specifications for Nextcloud APP :
     # For first installation, to not being stuck without account :
+
     # Enter nixos container : nixos-container root-login nextcloud
     # Re-enable root account : nextcloud-occ user:enable root
     # This is not needed if an account already exist (backup, etc.)
+
+    # Other option : create admin user via commandline
+    # nextcloud-occ user:add utilisateur
+    # nextcloud-occ group:adduser admin utilisateur
 
 {
 
