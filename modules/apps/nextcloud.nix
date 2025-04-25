@@ -40,7 +40,7 @@
 
     services.nextcloud = {
       enable = true;
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud30;
       hostName = "localhost";
       settings = lib.mkDefault { trusted_domains = []; };
 
