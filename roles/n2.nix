@@ -39,7 +39,7 @@
       vaultwarden.enable = true;
       plexserver.enable = true;
       nextcloud.enable = true;
-      #wireguard-quick.enable = true;
+      wireguard-quick.enable = true;
       #youtubedl.enable = true;
       #adguardhome.enable = true;
       #rclone-cloud.enable = true;
