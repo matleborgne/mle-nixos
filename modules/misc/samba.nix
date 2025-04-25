@@ -51,8 +51,15 @@
           "map to guest" = "bad user";
         };
 
+        public = {
+          path = "/srv/shr";
+          browseable = "yes";
+          "read only" = "no";
+          "guest ok" = "yes";
+        };
+
         # Example of customization here
-        "mlepro" = {
+        mlepro = {
           "path" = "/srv/mle";
           "browseable" = "yes";
           "read only" = "no";
