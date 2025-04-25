@@ -72,7 +72,7 @@
         "nextcloud.example.com" = {
           http2 = true;
           locations."/" = {
-            proxyPass = "http://127.0.0.1:8080/";
+            proxyPass = "http://127.0.0.1:80/";
             proxyWebsockets = true;
           };
         };
