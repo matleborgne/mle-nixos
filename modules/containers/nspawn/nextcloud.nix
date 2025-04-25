@@ -57,7 +57,7 @@
         bindMounts = {
           "/var/lib/nextcloud" = { hostPath = "/var/lib/nextcloud/app"; isReadOnly = false; };
           "/var/lib/postgresql" = { hostPath = "/var/lib/nextcloud/db"; isReadOnly = false; };
-          "/srv/bkp" = { hostPath = "/srv/bkp"; isReadOnly = false; };
+          "/srv/bkp/lxc/553-nextcloud" = { hostPath = "/srv/bkp/lxc/553-nextcloud"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
           "/ncpassfile" = { hostPath = "/etc/nixos/build/secrets/keys/nextcloud_passfile"; isReadOnly = true; };
         };
@@ -76,7 +76,7 @@
           systemd.tmpfiles.rules = [
             "d /var/lib/nextcloud 700 nextcloud nextcloud -"
             "d /var/lib/postgresql - - - -"
-            "d /srv/bkp - - - -"
+            "d /srv/bkp/lxc/553-nextcloud - - - -"
           ];
 
           imports = [
