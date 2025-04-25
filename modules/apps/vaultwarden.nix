@@ -34,7 +34,8 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    networking.firewall.allowedTCPPorts = [ 80 port ];
+    #networking.firewall.allowedTCPPorts = [ 80 port ];
+    networking.firewall.enable = lib.mkForce false;
 
     services.vaultwarden = {
       enable = true;
