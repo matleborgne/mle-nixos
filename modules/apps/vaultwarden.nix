@@ -34,8 +34,7 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #networking.firewall.allowedTCPPorts = [ 80 8080 ];
-    networking.firewall.enable = lib.mkForce false;
+    networking.firewall.allowedTCPPorts = [ 80 8080 ];
 
     services.vaultwarden = {
       enable = true;
@@ -60,7 +59,7 @@
       virtualHosts = {
         "vaultwarden.example.com" = {
           locations."/" = {
-            proxyPass = "http://localhost:80";
+            proxyPass = "http://127.0.0.1:80";
             proxyWebsockets = true;
           };
         };
