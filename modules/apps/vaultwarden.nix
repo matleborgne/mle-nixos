@@ -34,7 +34,7 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    networking.firewall.allowedTCPPorts = [ 80 port ];
+    networking.firewall.allowedTCPPorts = [ 80 8080 ];
 
     services.vaultwarden = {
       enable = true;
