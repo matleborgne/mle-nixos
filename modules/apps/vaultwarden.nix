@@ -60,7 +60,7 @@
       virtualHosts = {
         "vaultwarden.example.com" = {
           locations."/" = {
-            proxyPass = "http://127.0.0.1:80";
+            proxyPass = "http://localhost:80";
             proxyWebsockets = true;
           };
         };
