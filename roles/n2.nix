@@ -49,6 +49,10 @@
       hm-nas.enable = true;
     };
 
+    users = {
+      mlepro.enable = true;
+    };
+
   };
 
 
