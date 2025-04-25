@@ -88,6 +88,8 @@
             smbpasswd -e mlepro
           '';
 
+          networking.firewall.enable = lib.mkForce false;
+
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
