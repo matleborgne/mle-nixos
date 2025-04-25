@@ -56,6 +56,21 @@
         dbhost = "/run/postgresql";
         adminpassFile = lib.mkDefault "/etc/nextcloud-admin-passfile";
       };
+
+      https = true;
+    };
+
+    services.nginx = {
+      enable = true;
+  
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+
+      virtualHosts = {
+        "localhost".listen = [ { addr = "127.0.0.1"; port = 8080; } ];
+      };
     };
 
 
@@ -74,6 +89,7 @@
       databases = [ "nextcloud" ];
       startAt = "*-*-* 03:15:00";
     };
+
 
 
     systemd.services = {
