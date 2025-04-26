@@ -54,7 +54,7 @@
         # Merging of many attributes sets with redundancy
         bindMounts = with builtins;
 
-          let "bind" = path: hostPath: isReadOnly: {
+          let bind = path: hostPath: isReadOnly: {
             name = path;
             value = {
               inherit hostPath;
