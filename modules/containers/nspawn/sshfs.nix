@@ -22,9 +22,9 @@
       net = (import ../../../secrets/keys/netIface);
       address = (import ../../../secrets/containers_ips).sshfs;
 
-      pwd = (import ../../../secrets/keys/passwords);
-      pubkeys = (import ../../../secrets/keys/pubkeys);
-
+      # Users
+      mleborgne = (import ../../../secrets/users/mleborgne.var);
+ 
     in {
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,9 +49,7 @@
         privateNetwork = true;
         macvlans = net.ifaceList;
 
-        bindMounts = {
-          "/sftp/mleborgne/srv" = { hostPath = "/srv"; isReadOnly = false; };
-        };
+        bindMounts = mleborgne.ctMounts;
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
@@ -69,8 +67,6 @@
             ../../misc/networkd.nix
             ../../misc/sshfs.nix
             ../../../secrets/ssh/openssh-server.nix
-            ../../../secrets/users/mleborgne.nix
-            ../../../secrets/users/pbachelier.nix
           ];
 
           mle = {
@@ -105,30 +101,22 @@
           # SFTP USERS
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-          # Dont forget to import the module before
-          mle.users = {
-            mleborgne.enable = true;
-            pbachelier.enable = true;
-          };
-
-
-          systemd.tmpfiles.rules = [
-            "d /sftp/mleborgne 755 root root -"
-            "d /sftp/mleborgne/srv 750 mleborgne users -"
-            "d /sftp/pbachelier/srv 750 pbachelier users -"
-          ];
+          systemd.tmpfiles.rules = mleborgne.sftpMounts ++ pbachelier.sftpMounts;
 
           users.users.mleborgne = {
-            openssh.authorizedKeys.keys = [ pubkeys.mleborgne ];
+            isNormalUser = true;
+            extraGroups = [ "udev" "users" "fuse" ];
             shell = lib.mkForce "/run/current-system/sw/bin/nologin";
-            password = pwd.mleborgne;
+            openssh.authorizedKeys.keys = [ mleborgne.pubkey ];
+            password = mleborgne.pwd;
           };
 
           users.users.pbachelier = {
-            openssh.authorizedKeys.keys = [ pubkeys.pbachelier ];
+            isNormalUser = true;
+            extraGroups = [ "udev" "users" "fuse" ];
             shell = lib.mkForce "/run/current-system/sw/bin/nologin";
-            password = pwd.pbachelier;
+            openssh.authorizedKeys.keys = [ pbachelier.pubkey ];
+            password = pbachelier.pwd;
           };
 
 
