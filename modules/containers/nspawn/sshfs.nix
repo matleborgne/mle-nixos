@@ -102,6 +102,12 @@
             '';
           };
 
+          users.users.mleborgne = {
+            openssh.authorizedKeys.keys = [ pubkeys.mleborgne ];
+            shell = lib.mkForce null;
+            password = pwd.mleborgne;
+          };
+
           networking.firewall.enable = lib.mkForce false;
 
 
