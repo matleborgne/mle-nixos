@@ -82,6 +82,14 @@
           };
 
 
+          # Temporary solution
+          # TODO : lib.optional for home-manager solutions
+          users.users.mleborgne = {
+            isNormalUser = true;
+            extraGroups = [ "udev" "users" "fuse" ];
+          };
+
+
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
