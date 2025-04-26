@@ -50,7 +50,7 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/srv/mleborgne" = { hostPath = "/srv"; isReadOnly = false; };
+          "/srv/mleborgne" = { hostPath = "/srv/mle"; isReadOnly = false; };
           #"/srv/pbachelier" = { hostPath = "/srv"; isReadOnly = false; };
         };
 
