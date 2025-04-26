@@ -89,6 +89,8 @@
             chown mleborgne:users /home/mleborgne/.ssh/authorized_keys
           '';
 
+          networking.firewall.enable = lib.mkForce false;
+
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
