@@ -46,6 +46,8 @@
           "client max protocol" = "smb3";
           "idmap config * : backend" = "tdb";
           "name resolve order" = "wins lmhosts host bcast";
+      "guest account" = "nobody";
+      "map to guest" = "bad user";
         };
 
         mls = {
