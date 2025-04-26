@@ -52,21 +52,9 @@
 
 
         # Merging of many attributes sets with redundancy
-        bindMounts = with builtins;
-
-          let bind = path: hostPath: isReadOnly: {
-            name = path;
-            value = {
-              inherit hostPath;
-              inherit isReadOnly;
-            };
-          };
-
-          in listToAttrs (
-            mleborgne.ctMounts
-            ++ pbachelier.ctMounts
-          );
-
+        bindMounts = {
+          "/srv" = { hostPath = "/srv"; isReadOnly = false; };
+        };
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
