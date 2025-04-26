@@ -50,11 +50,7 @@
         privateNetwork = true;
         macvlans = net.ifaceList;
 
-
         bindMounts = mleborgne.ctMounts // pbachelier.ctMounts;
-        #{
-        #  "/srv" = { hostPath = "/srv"; isReadOnly = false; };
-        #};
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
