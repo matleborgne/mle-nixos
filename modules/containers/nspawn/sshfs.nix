@@ -51,10 +51,10 @@
         macvlans = net.ifaceList;
 
 
-        # Merging of many attributes sets with redundancy
-        bindMounts = {
-          "/srv" = { hostPath = "/srv"; isReadOnly = false; };
-        };
+        bindMounts = mleborgne.ctMounts // pbachelier.ctMounts;
+        #{
+        #  "/srv" = { hostPath = "/srv"; isReadOnly = false; };
+        #};
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
