@@ -1,0 +1,94 @@
+{ lib, config, pkgs, ... }:
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# CONTAINERS
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Containers modules are the place for declaration of
+# nixos-containers, through nspawn from systemd
+
+{
+
+  options.mle.containers.nspawn.sshfs.enable = lib.mkOption {
+    description = "Configure sshfs nspawn container";
+    type = lib.types.bool;
+    default = false;
+  };
+
+  config = lib.mkIf config.mle.containers.nspawn.sshfs.enable (
+
+    let
+      name = "sshfs";
+      net = (import ../../../secrets/keys/netIface);
+      address = (import ../../../secrets/containers_ips).sshfs;
+
+    in {
+
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # Host prerequisites
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      mle.misc.nixos-containers.enable = lib.mkForce true;
+
+      systemd.tmpfiles.rules = [
+        "d /srv - - - -"
+      ];
+
+
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # Container structure
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      containers.${name} = {
+
+        autoStart = true;
+        ephemeral = false;
+        privateNetwork = true;
+        macvlans = net.ifaceList;
+
+        bindMounts = {
+          "/srv/mle" = { hostPath = "/srv/mle"; isReadOnly = false; };
+        };
+
+        config = { lib, config, pkgs, options, ... }: {
+          system.stateVersion = "24.11";
+
+          networking.hostName = name;
+          systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
+
+      
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Running services inside the container
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          systemd.tmpfiles.rules = [
+            "d /srv/mle 700 1000 100 -"
+          ];
+
+          imports = [
+            ../../apps/fish.nix
+            ../../misc/networkd.nix
+            ../../misc/sshfs.nix
+          ];
+
+          mle = {
+            apps = {
+              fish.enable = true;
+            };
+            misc = {
+              networkd.enable = true;
+              sshfs.enable = true;
+            };
+          };
+
+
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Backup service
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+        };
+      };
+  });
+}
