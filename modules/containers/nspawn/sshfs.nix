@@ -98,7 +98,7 @@
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # SFTP USERS
+          # SFTP USERS - LIMITED USERS FOR SFTP USE
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = mleborgne.sftpMounts ++ pbachelier.sftpMounts;
