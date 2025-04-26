@@ -36,7 +36,7 @@
         nix-install = "nix-env -iA";
         ip = "ip -c";
         ns = "nix-shell";
-        nsp = "nix-shell -p";
+        nsp = "nix-shell --run bash -p";
       };
 
     };
