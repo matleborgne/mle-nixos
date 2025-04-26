@@ -21,6 +21,7 @@
       name = "sshfs";
       net = (import ../../../secrets/keys/netIface);
       address = (import ../../../secrets/containers_ips).sshfs;
+      pubkeys = (import ../../../secrets/sshfs/pubkeys);
 
     in {
 
