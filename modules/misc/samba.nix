@@ -56,8 +56,8 @@
           "read only" = "no";
           "create mask" = "0644";
           "guest ok" = "no";
-          "force user" = "root";
-          "force group" = "root";
+          "force user" = "mlepro";
+          "force group" = "users";
         };
 
       };
