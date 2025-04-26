@@ -102,11 +102,6 @@
             '';
           };
 
-
-          system.activationScripts.mleborgnePubkeyOnly = ''
-            echo -e ${pwd.mleborgne}\n${pwd.mleborgne} | passwd mleborgne
-          '';
-
           networking.firewall.enable = lib.mkForce false;
 
 
