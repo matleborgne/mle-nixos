@@ -63,13 +63,14 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /srv/mle 700 1000 100 -"
+            "d /srv/mle 755 1000 100 -"
           ];
 
           imports = [
             ../../apps/fish.nix
             ../../misc/networkd.nix
             ../../misc/sshfs.nix
+            ../../../secrets/users/mleborgne.nix
           ];
 
           mle = {
@@ -80,15 +81,10 @@
               networkd.enable = true;
               sshfs.enable = true;
             };
+            users.mleborgne.enable = true;
           };
 
 
-          # Temporary solution
-          # TODO : lib.optional for home-manager solutions
-          users.users.mleborgne = {
-            isNormalUser = true;
-            extraGroups = [ "udev" "users" "fuse" ];
-          };
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
