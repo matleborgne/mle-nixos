@@ -79,7 +79,7 @@
       openFirewall = true;
     };
 
-    networking.firewall.allowPing = true;
+    networking.firewall.allowPing = lib.mkDefault true;
 
         
   });
