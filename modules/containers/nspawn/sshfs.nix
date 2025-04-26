@@ -24,6 +24,7 @@
 
       # Users
       mleborgne = (import ../../../secrets/users/mleborgne.var);
+      pbachelier = (import ../../../secrets/users/pbachelier.var);
  
     in {
 
@@ -49,7 +50,7 @@
         privateNetwork = true;
         macvlans = net.ifaceList;
 
-        bindMounts = mleborgne.ctMounts;
+        bindMounts = mleborgne.ctMounts // pbachelier.ctMounts;
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
