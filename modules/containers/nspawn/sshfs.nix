@@ -23,6 +23,9 @@
       address = (import ../../../secrets/containers_ips).sshfs;
       pubkeys = (import ../../../secrets/sshfs/pubkeys);
 
+      # For testing purpose
+      home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
+
     in {
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
