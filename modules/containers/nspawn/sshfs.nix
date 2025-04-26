@@ -51,27 +51,6 @@
         macvlans = net.ifaceList;
 
 
-        ExtensionSettings = with builtins;
-
-          let extension = shortId: uuid: {
-            name = uuid;
-            value = {
-              install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
-              installation_mode = "normal_installed";
-            };
-          };
-          
-          in listToAttrs [
-            (extension "ublock-origin" "uBlock0@raymondhill.net")
-            (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
-            (extension "privacy-badger17" "jid1-MnnxcxisBPnSXQ@jetpack")
-            (extension "istilldontcareaboutcookies" "idcac-pub@guus.ninja")
-            (extension "return-youtube-dislikes" "{762f9885-5a13-4abd-9c77-433dcd38b8fd}")
-          ];
-
-      };
-
-
         # Merging of many attributes sets with redundancy
         bindMounts = with builtins;
 
