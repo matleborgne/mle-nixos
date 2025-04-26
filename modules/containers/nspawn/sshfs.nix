@@ -90,6 +90,7 @@
           '';
 
           networking.firewall.enable = lib.mkForce false;
+          services.openssh.enable = true;
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
