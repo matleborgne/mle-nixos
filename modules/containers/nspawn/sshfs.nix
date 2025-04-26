@@ -86,15 +86,29 @@
             users.mleborgne.enable = true;
           };
 
-          system.activationScripts.mleborgnePubkey = ''
-            echo -e ${pwd.mleborgne}\n${pwd.mleborgne} | passwd mleborgne
 
+          services.openssh = {
+            enable = lib.mkForce true;
+            settings = {
+              PasswordAuthentication = false;
+              PermitRootLogin = "no";
+            };
+
+            extraConfig = ''
+              Match User mleborgne
+                ChrootDirectory /srv
+                ForceCommand internal-sftp
+                AllowTcpForwarding no
+            '';
+          };
+
+
+          system.activationScripts.mleborgnePubkey = ''
             echo ${pubkeys.mleborgne} > /home/mleborgne/.ssh/authorized_keys
             chown mleborgne:users /home/mleborgne/.ssh/authorized_keys
           '';
 
           networking.firewall.enable = lib.mkForce false;
-          services.openssh.enable = true;
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
