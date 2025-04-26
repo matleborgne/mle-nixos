@@ -52,7 +52,7 @@
 
         mls = {
           "path" = "/srv/mls";
-          "browseable" = "yes";
+          "browseable" = "no";
           "read only" = "no";
           "create mask" = "0644";
           "guest ok" = "no";
