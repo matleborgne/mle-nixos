@@ -51,6 +51,7 @@
 
         bindMounts = {
           "/srv/mleborgne" = { hostPath = "/srv"; isReadOnly = false; };
+          #"/srv/pbachelier" = { hostPath = "/srv"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
