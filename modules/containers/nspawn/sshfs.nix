@@ -96,11 +96,10 @@
             };
 
             extraConfig = ''
-              Match Group users
-                ForceCommand internal-sftp
-                AllowTcpForwarding no
               Match User mleborgne
                 ChrootDirectory /srv/mleborgne
+                ForceCommand internal-sftp
+                AllowTcpForwarding no
             '';
           };
 
