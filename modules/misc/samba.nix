@@ -44,15 +44,15 @@
           "netbios name" = "smbnix";
           "security" = "user";
           "client max protocol" = "smb3";
-          "idmap config * : backend" = "tdb";
-          "name resolve order" = "wins lmhosts host bcast";
+          #"idmap config * : backend" = "tdb";
+          #"name resolve order" = "wins lmhosts host bcast";
       "guest account" = "nobody";
       "map to guest" = "bad user";
         };
 
         mls = {
           "path" = "/srv/mls";
-          "browseable" = "no";
+          "browseable" = "yes"; # only change the view not the access
           "read only" = "no";
           "create mask" = "0644";
           "guest ok" = "no";
