@@ -66,7 +66,7 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /srv/mleborgne 700 mleborgne - -"
+            "d /srv/mleborgne 755 mleborgne - -"
           ];
 
           imports = [
