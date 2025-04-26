@@ -23,9 +23,6 @@
       address = (import ../../../secrets/containers_ips).sshfs;
       pubkeys = (import ../../../secrets/sshfs/pubkeys);
 
-      # For testing purpose
-      home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
-
     in {
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,7 +51,13 @@
           "/srv/mle" = { hostPath = "/srv/mle"; isReadOnly = false; };
         };
 
-        config = { lib, config, pkgs, options, ... }: {
+        config = { lib, config, pkgs, options, ... }: (
+
+        let
+          # For testing purpose
+          home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
+
+        in {
           system.stateVersion = "24.11";
 
           networking.hostName = name;
@@ -96,7 +99,7 @@
 
 
 
-        };
+        });
       };
   });
 }
