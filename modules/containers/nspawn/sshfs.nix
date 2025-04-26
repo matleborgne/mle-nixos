@@ -21,7 +21,9 @@
       name = "sshfs";
       net = (import ../../../secrets/keys/netIface);
       address = (import ../../../secrets/containers_ips).sshfs;
-      pubkeys = (import ../../../secrets/sshfs/pubkeys);
+
+      pwd = (import ../../../secrets/keys/passwords);
+      pubkeys = (import ../../../secrets/keys/pubkeys);
 
     in {
 
@@ -85,6 +87,8 @@
           };
 
           system.activationScripts.mleborgnePubkey = ''
+            echo -e ${pwd.mleborgne}\n${pwd.mleborgne} | passwd mleborgne
+
             echo ${pubkeys.mleborgne} > /home/mleborgne/.ssh/authorized_keys
             chown mleborgne:users /home/mleborgne/.ssh/authorized_keys
           '';
