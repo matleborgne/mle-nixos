@@ -64,11 +64,6 @@
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          systemd.tmpfiles.rules = [
-            "d /sftp/mleborgne 755 root root -"
-            "d /sftp/mleborgne/srv 750 mleborgne users -"
-          ];
-
           imports = [
             ../../apps/fish.nix
             ../../misc/networkd.nix
@@ -86,10 +81,6 @@
               sshfs.enable = true;
             };
             secrets.openssh-server.enable = true;
- 
-            users = {
-              mleborgne.enable = true;
-            };
           };
 
 
@@ -108,16 +99,37 @@
             '';
           };
 
+
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # SFTP USERS
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+          # Dont forget to import the module before
+          mle.users = {
+            mleborgne.enable = true;
+            pbachelier.enable = true;
+          };
+
+
+          systemd.tmpfiles.rules = [
+            "d /sftp/mleborgne 755 root root -"
+            "d /sftp/mleborgne/srv 750 mleborgne users -"
+            "d /sftp/pbachelier/srv 750 pbachelier users -"
+          ];
+
           users.users.mleborgne = {
             openssh.authorizedKeys.keys = [ pubkeys.mleborgne ];
             shell = lib.mkForce "/run/current-system/sw/bin/nologin";
             password = pwd.mleborgne;
           };
 
+          users.users.pbachelier = {
+            openssh.authorizedKeys.keys = [ pubkeys.pbachelier ];
+            shell = lib.mkForce "/run/current-system/sw/bin/nologin";
+            password = pwd.pbachelier;
+          };
 
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Backup service
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
