@@ -51,13 +51,7 @@
           "/srv/mle" = { hostPath = "/srv/mle"; isReadOnly = false; };
         };
 
-        config = { lib, config, pkgs, options, ... }: (
-
-        let
-          # For testing purpose
-          home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
-
-        in {
+        config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
 
           networking.hostName = name;
@@ -99,7 +93,7 @@
 
 
 
-        });
+        };
       };
   });
 }
