@@ -63,7 +63,7 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /srv/mls 700 - - -"
+            "d /srv/mls 750 - users -"
           ];
 
           imports = [
