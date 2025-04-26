@@ -105,7 +105,7 @@
 
           users.users.mleborgne = {
             openssh.authorizedKeys.keys = [ pubkeys.mleborgne ];
-            shell = lib.mkForce "/run/current-system/sw/bin/nologin";
+            #shell = lib.mkForce "/run/current-system/sw/bin/nologin";
             password = pwd.mleborgne;
           };
 
