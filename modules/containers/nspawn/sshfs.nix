@@ -70,6 +70,7 @@
             ../../misc/sshfs.nix
             ../../../secrets/ssh/openssh-server.nix
             ../../../secrets/users/mleborgne.nix
+            ../../../secrets/users/pbachelier.nix
           ];
 
           mle = {
