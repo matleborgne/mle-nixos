@@ -84,7 +84,8 @@
           };
 
           in listToAttrs [
-
+            (bind "/sftp/mleborgne/srv" "/srv" "false")
+            (bind "/sftp/pbachelier/srv" "/srv" "false")
           ];
 
 
