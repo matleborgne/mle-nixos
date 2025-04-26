@@ -84,10 +84,10 @@
             users.mleborgne.enable = true;
           };
 
-          system.activationScripts.mleborgnePubkey = {
+          system.activationScripts.mleborgnePubkey = ''
             echo ${pubkeys.mleborgne} > /home/mleborgne/.ssh/authorized_keys
             chown mleborgne:users /home/mleborgne/.ssh/authorized_keys
-          };
+          '';
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
