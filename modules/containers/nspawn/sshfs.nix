@@ -105,10 +105,6 @@
 
           system.activationScripts.mleborgnePubkeyOnly = ''
             echo -e ${pwd.mleborgne}\n${pwd.mleborgne} | passwd mleborgne
-            /run/current-system/sw/bin/sed -i "s/fish/nologin/g" /etc/passwd
-
-            echo ${pubkeys.mleborgne} > /home/mleborgne/.ssh/authorized_keys
-            chown mleborgne:users /home/mleborgne/.ssh/authorized_keys
           '';
 
           networking.firewall.enable = lib.mkForce false;
