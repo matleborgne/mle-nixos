@@ -73,6 +73,7 @@
             ../../apps/fish.nix
             ../../misc/networkd.nix
             ../../misc/sshfs.nix
+            ../../../secrets/ssh/openssh-server.nix
             ../../../secrets/users/mleborgne.nix
           ];
 
@@ -84,7 +85,11 @@
               networkd.enable = true;
               sshfs.enable = true;
             };
-            users.mleborgne.enable = true;
+            secrets.openssh-server.enable = true;
+ 
+            users = {
+              mleborgne.enable = true;
+            };
           };
 
 
@@ -108,8 +113,6 @@
             shell = lib.mkForce "/run/current-system/sw/bin/nologin";
             password = pwd.mleborgne;
           };
-
-          networking.firewall.enable = lib.mkForce false;
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
