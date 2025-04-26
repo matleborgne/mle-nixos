@@ -50,7 +50,7 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/srv/mleborgne" = { hostPath = "/srv/mle"; isReadOnly = false; };
+          "/srv/mleborgne" = { hostPath = "/srv"; isReadOnly = false; };
           #"/srv/pbachelier" = { hostPath = "/srv"; isReadOnly = false; };
         };
 
@@ -96,8 +96,8 @@
             };
 
             extraConfig = ''
-              Match Group users
-                ChrootDirectory /srv/%u
+              Match User mleborgne
+                ChrootDirectory /srv/mleborgne
                 ForceCommand internal-sftp
                 AllowTcpForwarding no
             '';
