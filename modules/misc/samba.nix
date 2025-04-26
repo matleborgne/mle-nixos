@@ -44,20 +44,21 @@
           "netbios name" = "smbnix";
           "security" = "user";
           "client max protocol" = "smb3";
-          #"idmap config * : backend" = "tdb";
-          #"name resolve order" = "wins lmhosts host bcast";
-      "guest account" = "nobody";
-      "map to guest" = "bad user";
+          "hosts allow" = "10.22.0. 127.0.0.1 localhost";
+          "hosts deny" = "0.0.0.0/0";
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
         };
 
         mls = {
           "path" = "/srv/mls";
-          "browseable" = "yes"; # only change the view not the access
+          "browseable" = "yes";
           "read only" = "no";
-          "create mask" = "0644";
           "guest ok" = "no";
+          "create mask" = "0644";
+          "directory mask" = "0755";
           "force user" = "mlepro";
-          "force group" = "users";
+          #"force group" = "users";
         };
 
       };
