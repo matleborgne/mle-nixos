@@ -50,7 +50,7 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/srv/mleborgne" = { hostPath = "/srv/mle"; isReadOnly = false; };
+          "/home/mleborgne/srv" = { hostPath = "/srv"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
@@ -65,7 +65,7 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /srv/mleborgne 755 mleborgne users -"
+            "d /home/mleborgne/srv 755 mleborgne users -"
           ];
 
           imports = [
@@ -95,8 +95,8 @@
             };
 
             extraConfig = ''
-              Match User mleborgne
-                ChrootDirectory /srv/mleborgne
+              Match Group users
+                ChrootDirectory /home/%u
                 ForceCommand internal-sftp
                 AllowTcpForwarding no
             '';
