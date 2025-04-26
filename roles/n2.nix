@@ -32,7 +32,6 @@
 
     misc = {
       mdadm.enable = true;
-      sshfs.enable = true;
     };
 
     containers.nspawn = {
@@ -44,15 +43,13 @@
       #adguardhome.enable = true;
       #rclone-cloud.enable = true;
       samba.enable = true;
+      sshfs.enable = true;
     };
 
     secrets = {
       hm-nas.enable = true;
     };
 
-    users = {
-      mlepro.enable = true;
-    };
   };
 
 
