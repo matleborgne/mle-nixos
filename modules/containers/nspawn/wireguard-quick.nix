@@ -43,7 +43,7 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/etc/wireguard" = { hostPath = "/etc/nixos/build/secrets/keys/wireguard"; isReadOnly = false; };
+          "/etc/wireguard" = { hostPath = "/etc/nixos/build/secrets/wireguard/quick-server"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
