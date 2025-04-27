@@ -78,7 +78,7 @@
             "net.ipv6.ip_forward" = 1;
           };
 
-          system.activationScript.macRandomize = ''
+          system.activationScripts.macRandomize = ''
             macaddr=$(echo $FQDN|md5sum|sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')
             echo "
               [Link]
