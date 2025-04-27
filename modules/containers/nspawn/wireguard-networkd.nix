@@ -43,7 +43,7 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/etc/nixos/build/secrets/keys/wireguard" = { hostPath = "/etc/nixos/build/secrets/keys/wireguard"; isReadOnly = false; };
+          "/etc/nixos/build/secrets/wireguard/networkd-server" = { hostPath = "/etc/nixos/build/secrets/wireguard/networkd-server"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
@@ -82,13 +82,13 @@
           systemd.network = {
             netdevs."15-wg0" = {
               wireguardConfig = {
-                PrivateKeyFile = "../../secrets/keys/wireguard/server-private-key";
+                PrivateKeyFile = "../../secrets/wireguard/networkd-server/server-private-key";
               };
 
               wireguardPeers = [{
-                PublicKey = builtins.readFile ../../secrets/keys/wireguard/client-public-key;
-                PresharedKeyFile = "../../secrets/keys/wireguard/preshared-key";
-                Endpoint = builtins.readFile ../../secrets/keys/wireguard/endpoint;
+                PublicKey = builtins.readFile ../../secrets/wireguard/networkd-server/client-public-key;
+                PresharedKeyFile = "../../secrets/wireguard/networkd-server/preshared-key";
+                Endpoint = builtins.readFile ../../secrets/wireguard/networkd-server/endpoint;
               }];
             };
           };
