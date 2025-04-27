@@ -53,7 +53,10 @@
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          networking.firewall.enable = lib.mkForce false;
+          networking.firewall = {
+            allowedTCPPorts = [ 53 80 ];
+            allowedUDPPorts = [ 53 ];
+          };
 
           imports = [
             ../../apps/adguardhome.nix
