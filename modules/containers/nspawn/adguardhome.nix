@@ -47,7 +47,7 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/var/lib/AdGuardHome" = { hostPath = "/var/lib/AdGuardHome"; isReadOnly = false; };
+          #"/var/lib/AdGuardHome" = { hostPath = "/var/lib/AdGuardHome"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
@@ -62,7 +62,7 @@
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          systemd.tmpfiles.rules = [ "d /var/lib/AdGuardHome - - - -" ];
+          #systemd.tmpfiles.rules = [ "d /var/lib/AdGuardHome - - - -" ];
 
           networking.firewall.enable = lib.mkForce false;
 
