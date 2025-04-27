@@ -44,6 +44,7 @@
       nextcloud.enable = true;
       wireguard-quick.enable = true;
       #youtubedl.enable = true;
+      seedbox.enable = true;
       adguardhome.enable = true;
       #rclone-cloud.enable = true;
       samba.enable = true;
