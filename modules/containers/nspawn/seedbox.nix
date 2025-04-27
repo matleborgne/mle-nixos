@@ -73,6 +73,7 @@
           ];
 
           imports = [
+            ../../apps/wireguard/proton-client.nix
             ../../apps/qbittorrent.nix
             ../../apps/fish.nix
             ../../forks/qbittorrent.nix
@@ -81,6 +82,7 @@
 
           mle = {
             apps = {
+              wireguard.proton-client.enable = true;
               qbittorrent.enable = true;
               fish.enable = true;
             };
