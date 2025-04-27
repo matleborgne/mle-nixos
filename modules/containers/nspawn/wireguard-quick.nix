@@ -78,6 +78,15 @@
             "net.ipv6.ip_forward" = 1;
           };
 
+          system.activationScript.macRandomize = ''
+            macaddr=$(echo $FQDN|md5sum|sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/02:\1:\2:\3:\4:\5/')
+            echo "
+              [Link]
+              MACAddress="$macaddr"
+            " >> /etc/systemd/network/40-mv-enp4s0.network
+
+            systemctl restart systemd-networkd
+          ''
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
