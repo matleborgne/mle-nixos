@@ -82,6 +82,7 @@
           imports = [
             ../../apps/qbittorrent.nix
             ../../apps/fish.nix
+            ../../forks/qbittorrent.nix
             ../../misc/networkd.nix
           ];
 
