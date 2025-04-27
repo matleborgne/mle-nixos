@@ -91,6 +91,10 @@
             };
           };
 
+          system.activationScripts.customIpTables = ''
+            ${pkgs.bash}/bin/bash /etc/wireguard/iptables.sh
+          '';
+
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
