@@ -47,7 +47,6 @@
         };
 
         config = { lib, config, pkgs, options, ... }: {
-          boot.isContainer = true;
           system.stateVersion = "24.11";
 
           networking.hostName = name;
