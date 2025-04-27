@@ -78,6 +78,11 @@
             "net.ipv6.ip_forward" = 1;
           };
 
+          systemd.network.networks."40-mv-enp4s0".extraConfig = ''
+            ConfigureWithoutCarrier=true
+            ActivationPolicy=always-up
+          '';
+
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
