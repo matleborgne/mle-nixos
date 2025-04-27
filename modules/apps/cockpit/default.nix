@@ -45,42 +45,5 @@
       };
     };
 
-    services.nginx = {
-      enable = true;
-  
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
-  
-      virtualHosts = {
-        "cockpit.example.com" = {
-          http2 = true;
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:9090/";
-            proxyWebsockets = true;
-          };
-  
-          extraConfig = ''
-            # Required to proxy the connection to Cockpit
-            proxy_pass https://127.0.0.1:9090;
-            proxy_set_header Host $host;
-            proxy_set_header X-Forwarded-Proto $scheme;
-
-            # Required for web sockets to function
-            proxy_http_version 1.1;
-            proxy_buffering off;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
-
-            # Pass ETag header from Cockpit to clients.
-            # See: https://github.com/cockpit-project/cockpit/issues/5239
-            gzip off;
-          '';
-        };
-      };
-    };   
-  
-
   };
 }
