@@ -86,7 +86,7 @@
           safe_fs_patterns = [ "/var/lib/AdGuardHome/*" ];
         };
 
-        filters = builtins.map(url: { enabled = true; utl = url; }) [
+        filters = builtins.map(url: { enabled = true; url = url; }) [
           "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt"
           "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt"
         ];
