@@ -30,6 +30,10 @@
 
   mle = {
 
+    apps = {
+      cockpit.enable = true;
+    };
+
     misc = {
       mdadm.enable = true;
     };
