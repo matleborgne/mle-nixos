@@ -50,7 +50,13 @@
           system.stateVersion = "24.11";
 
           networking.hostName = name;
-          systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
+          systemd.network.networks."40-mv-${net.iface}" = {
+            inherit address;
+            extraConfig = ''
+              ConfigureWithoutCarrier=true
+              ActivationPolicy=always-up
+            '';
+          };
 
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -77,11 +83,6 @@
             "net.ipv4.ip_forward" = 1;
             "net.ipv6.ip_forward" = 1;
           };
-
-          systemd.network.networks."40-mv-enp4s0".extraConfig = ''
-            ConfigureWithoutCarrier=true
-            ActivationPolicy=always-up
-          '';
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
