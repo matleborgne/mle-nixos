@@ -27,63 +27,16 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    networking.firewall = {
-      allowedTCPPorts = [ 80 8080 ];
-    };
+#    networking.firewall = {
+#      allowedTCPPorts = [ 80 8080 ];
+#    };
 
-
-    services.qbittorrent-nox = {
+    services.qbittorrent = {
       enable = true;
-      package = pkgs.nextcloud31;
-      hostName = "localhost";
-      settings = lib.mkDefault { trusted_domains = []; };
-
-      config = {
-        dbtype = "pgsql";
-        dbname = "nextcloud";
-        dbuser = "nextcloud";
-        dbhost = "/run/postgresql";
-        adminpassFile = lib.mkDefault "/etc/nextcloud-admin-passfile";
-      };
+      openFirewall = true;
+      port = 8080;
     };
 
-
-    services.postgresql = {
-      enable = true;
-      ensureDatabases = [ "nextcloud" ];
-      ensureUsers = [{
-        name = "nextcloud";
-        ensureDBOwnership = true;
-      }];
-    };
-
-    services.postgresqlBackup = {
-      enable = true;
-      location = "/var/lib/postgresql/backup";
-      databases = [ "nextcloud" ];
-      startAt = "*-*-* 03:15:00";
-    };
-
-
-    systemd.services = {
-
-      "nextcloud-setup" = {
-        requires = [ "postgresql.service" ];
-        after = [ "postgresql.service" ];
-      };
-
-      "disable-root" = {
-        enable = true;
-        wantedBy = [ "default.target" ];
-        requires = [ "nextcloud-setup.service" ];
-        after = [ "nextcloud-setup.service" ];
-        serviceConfig = {
-          Type = "simple";
-          ExecStart = ''/run/current-system/sw/bin/nextcloud-occ user:disable root'';
-        };
-      };
-
-    };
 
 
   };
