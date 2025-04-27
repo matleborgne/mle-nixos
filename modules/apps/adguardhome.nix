@@ -42,7 +42,7 @@
       package = lib.mkDefault pkgs.adguardhome;
 
       # Config made on web interface overwrite the declarative config
-      mutableSettings = lib.mkDefault true;
+      mutableSettings = lib.mkDefault false;
 
       # Needed for integrated DHCP server
       allowDHCP = lib.mkDefault false;
