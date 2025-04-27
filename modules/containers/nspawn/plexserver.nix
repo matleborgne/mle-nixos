@@ -87,17 +87,15 @@
             };
           };
 
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          # Ensure user 1000
-          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          users.users.plexserver = {
-            uid = 1000;
-            isNormalUser = true;
-            extraGroups = [ "udev" "plex" ];
-          };
-
-          systemd.services.plex.serviceConfig.User = lib.mkForce "plexserver";
+# NOT NEEDED
+#          users.users.plexserver = {
+#            uid = 1000;
+#            isNormalUser = true;
+#            extraGroups = [ "udev" "plex" ];
+#          };
+#
+#          systemd.services.plex.serviceConfig.User = lib.mkForce "plexserver";
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
