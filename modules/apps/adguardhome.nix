@@ -35,7 +35,7 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #nixpkgs.config.allowUnfree = lib.mkForce true;
+    services.resolved.enable = false;
 
     services.adguardhome = {
       enable = true;
