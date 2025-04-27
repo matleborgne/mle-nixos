@@ -4,8 +4,8 @@ with lib;
 
 let
   cfg = config.services.qbittorrent;
-  UID = 1000;
-  GID = 100;
+  UID = 888;
+  GID = 888;
 
 in
 {
