@@ -60,6 +60,9 @@
 
     };
 
+    environment.etc."mdadm.conf".text = ''
+      MAILADDR root
+    '';
 
   });
 }
