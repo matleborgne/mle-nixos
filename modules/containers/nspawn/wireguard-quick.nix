@@ -50,13 +50,7 @@
           system.stateVersion = "24.11";
 
           networking.hostName = name;
-          systemd.network.networks."40-mv-${net.iface}" = {
-            inherit address;
-            extraConfig = ''
-              ConfigureWithoutCarrier=true
-              ActivationPolicy=always-up
-            '';
-          };
+          systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
 
       
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
