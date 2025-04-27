@@ -47,6 +47,7 @@
         };
       };
 
+      networking.firewall.extraCommands = builtins.readFile ../../../secrets/wireguard/proton-client/iptables.var;
     
   };
 }
