@@ -45,7 +45,7 @@
       settings = {
 
         http = {
-          address = "0.0.0.0:80";
+          address = "10.22.0.0:80"; # change here IP range
         };
 
         dns = {
