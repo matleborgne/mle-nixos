@@ -58,7 +58,6 @@
         serviceConfig = {
           Type = "oneshot";
           ExecStart = "/run/current-system/sw/bin/wg-quick up wg0";
-          ExecStop = "/run/current-system/sw/bin/wg-quick down wg0";
         };
       };
 
