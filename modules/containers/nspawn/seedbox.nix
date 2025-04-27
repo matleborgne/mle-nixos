@@ -49,10 +49,11 @@
 
         bindMounts = {
           "/var/lib/qbittorrent" = { hostPath = "/var/lib/qbittorrent"; isReadOnly = false; };
+          "/etc/wireguard" = { hostPath = "/etc/nixos/build/secrets/wireguard/proton-client"; isReadOnly = false; };
+          "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
           "/srv/bkp" = { hostPath = "/srv/bkp"; isReadOnly = false; };
           "/srv/sof" = { hostPath = "/srv/sof"; isReadOnly = false; };
           "/srv/vid" = { hostPath = "/srv/vid"; isReadOnly = false; };
-          "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
