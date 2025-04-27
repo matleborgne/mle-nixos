@@ -86,7 +86,7 @@
             " >> /etc/systemd/network/40-mv-enp4s0.network
 
             systemctl restart systemd-networkd
-          ''
+          '';
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
