@@ -16,14 +16,7 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.adguardhome.enable (
-
-    let
-      port = 80;
-      name = (import ../../secrets/keys/adguard_users).name;
-      password = (import ../../secrets/keys/adguard_users).password;
-
-    in {
+  config = lib.mkIf config.mle.apps.adguardhome.enable {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -47,7 +40,7 @@
       # Needed for integrated DHCP server
       allowDHCP = lib.mkDefault false;
 
-      # Declarative settings in secrets, NIX style > YAML > JSON
+      # Declarative settings : NIX style > YAML > JSON
       # https://github.com/AdguardTeam/AdGuardHome/wiki/Configuration#configuration-file
       settings = {
 
@@ -93,5 +86,5 @@
  
 
 
-  });
+  };
 }
