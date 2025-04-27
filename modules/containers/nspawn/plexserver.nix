@@ -66,7 +66,7 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /var/lib/plex 700 plex plex -"
+            "d /var/lib/plex - - - -"
             "d /mnt/nfs/vid - - - -"
             "d /mnt/nfs/bkp/lxc/552-plexserver - - - -"
           ];
