@@ -7,17 +7,6 @@
 # Containers modules are the place for declaration of
 # nixos-containers, through nspawn from systemd
 
-    # /!\ Specifications for Nextcloud APP :
-    # For first installation, to not being stuck without account :
-
-    # Enter nixos container : nixos-container root-login nextcloud
-    # Re-enable root account : nextcloud-occ user:enable root
-    # This is not needed if an account already exist (backup, etc.)
-
-    # Other option : create admin user via commandline
-    # nextcloud-occ user:add utilisateur
-    # nextcloud-occ group:adduser admin utilisateur
-
 {
 
   options.mle.containers.nspawn.seedbox.enable = lib.mkOption {
@@ -42,7 +31,7 @@
       mle.misc.nixos-containers.enable = lib.mkForce true;
 
       systemd.tmpfiles.rules = [
-        "d /var/lib/seedbox - - - -"
+        "d /var/lib/qbittorrent - - - -"
         "d /srv - - - -"
       ];
 
@@ -59,7 +48,10 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/var/lib/seedbox" = { hostPath = "/var/lib/seedbox"; isReadOnly = false; };
+          "/var/lib/qbittorrent" = { hostPath = "/var/lib/qbittorrent"; isReadOnly = false; };
+          "/srv/bkp" = { hostPath = "/srv/bkp"; isReadOnly = false; };
+          "/srv/sof" = { hostPath = "/srv/sof"; isReadOnly = false; };
+          "/srv/vid" = { hostPath = "/srv/vid"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
@@ -75,7 +67,7 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /var/lib/seedbox - - - -"
+            "d /var/lib/qbittorrent - - - -"
             "d /srv/bkp/lxc/556-seedbox - - - -"
           ];
 
