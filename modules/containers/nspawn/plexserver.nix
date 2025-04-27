@@ -87,6 +87,16 @@
             };
           };
 
+          system.activationScripts.chgUid = ''
+            systemctl stop plex
+
+            usermod -u 1000 -g 100 plex
+            find /var -uid 193 -exec chown -v -h 1000 '{}' \;
+            find /var -gid 193 -exec chgrp -v 100 '{}' \;
+
+            systemctl start plex
+          '';
+
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
