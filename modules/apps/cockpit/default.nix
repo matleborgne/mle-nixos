@@ -30,13 +30,13 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = with pkgs; [
-      pcp
+      pcp cockpit
     ];
 
     services.cockpit = {
       enable = true;
       openFirewall = true;
-      port = lib.mkDefault 9090;
+      port = 9090;
 
       settings = {
         WebService = {
