@@ -91,8 +91,19 @@
             };
           };
 
-          system.activationScripts.customIpTables = ''
-            ${pkgs.bash}/bin/bash /etc/wireguard/iptables.sh
+          #system.activationScripts.customIpTables = ''
+          #  ${pkgs.bash}/bin/bash /etc/wireguard/iptables.sh
+          #'';
+
+          # Provisoire
+          system.activationScripts.chgUid = ''
+            systemctl stop qbittorrent
+
+            usermod -u 1000 -g 100 qbittorrent
+            find /var -uid 888 -exec chown -v -h 1000 '{}' \;
+            find /var -gid 888 -exec chgrp -v 100 '{}' \;
+
+            systemctl start qbittorrent
           '';
 
 
