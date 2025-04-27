@@ -68,7 +68,7 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /var/lib/qbittorrent - - - -"
+            "d /var/lib/qbittorrent 755 qbittorrent qbittorrent -"
             "d /srv/bkp/lxc/556-seedbox - - - -"
           ];
 
