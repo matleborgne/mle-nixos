@@ -91,11 +91,7 @@
             };
           };
 
-          #system.activationScripts.customIpTables = ''
-          #  ${pkgs.bash}/bin/bash /etc/wireguard/iptables.sh
-          #'';
-
-          # Provisoire
+          # Change user ID
           system.activationScripts.chgUid = ''
             systemctl stop qbittorrent
 
