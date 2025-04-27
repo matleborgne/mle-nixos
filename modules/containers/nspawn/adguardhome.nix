@@ -62,7 +62,7 @@
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          systemd.tmpfiles.rules = [ "d /var/lib/AdGuardHome 700 - - -" ];
+          systemd.tmpfiles.rules = [ "d /var/lib/AdGuardHome - - - -" ];
 
           networking.firewall.enable = lib.mkForce false;
 
