@@ -55,10 +55,10 @@
           address = "0.0.0.0:80";
         };
 
-        users = {
-          name = "mleborgne";
-          inherit password;
-        };
+        #users = {
+        #  name = "mleborgne";
+        #  inherit password;
+        #};
 
         dns = {
           bind_hosts = [ "0.0.0.0" ];
