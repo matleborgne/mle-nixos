@@ -97,7 +97,8 @@
             extraGroups = [ "udev" "plex" ];
           };
 
-          systemd.services.plex.user
+          systemd.services.plex.serviceConfig.User = lib.mkForce "plexserver";
+
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
