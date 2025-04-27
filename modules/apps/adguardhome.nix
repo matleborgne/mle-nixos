@@ -55,11 +55,6 @@
           address = "0.0.0.0:80";
         };
 
-        #users = {
-        #  name = "mleborgne";
-        #  inherit password;
-        #};
-
         dns = {
           bind_hosts = [ "0.0.0.0" ];
           bootstrap_dns = [
@@ -83,7 +78,6 @@
           filtering_enabled = true;
           parental_enabled = lib.mkDefault false;
           safe_search.enabled = lib.mkDefault false;
-          #safe_fs_patterns = [ "/var/lib/AdGuardHome/*" ];
         };
 
         filters = builtins.map(url: { enabled = true; url = url; }) [
