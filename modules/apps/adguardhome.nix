@@ -56,7 +56,7 @@
         };
 
         users = {
-          inherit name;
+          name = "mleborgne";
           inherit password;
         };
 
@@ -83,7 +83,7 @@
           filtering_enabled = true;
           parental_enabled = lib.mkDefault false;
           safe_search.enabled = lib.mkDefault false;
-          safe_fs_patterns = [ "/var/lib/AdGuardHome/*" ];
+          #safe_fs_patterns = [ "/var/lib/AdGuardHome/*" ];
         };
 
         filters = builtins.map(url: { enabled = true; url = url; }) [
