@@ -1,0 +1,126 @@
+{ lib, config, pkgs, ... }:
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# CONTAINERS
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Containers modules are the place for declaration of
+# nixos-containers, through nspawn from systemd
+
+    # /!\ Specifications for Nextcloud APP :
+    # For first installation, to not being stuck without account :
+
+    # Enter nixos container : nixos-container root-login nextcloud
+    # Re-enable root account : nextcloud-occ user:enable root
+    # This is not needed if an account already exist (backup, etc.)
+
+    # Other option : create admin user via commandline
+    # nextcloud-occ user:add utilisateur
+    # nextcloud-occ group:adduser admin utilisateur
+
+{
+
+  options.mle.containers.nspawn.seedbox.enable = lib.mkOption {
+    description = "Configure seedbox nspawn container";
+    type = lib.types.bool;
+    default = false;
+  };
+
+  config = lib.mkIf config.mle.containers.nspawn.seedbox.enable (
+
+    let
+      name = "seedbox";
+      net = (import ../../../secrets/keys/netIface);
+      address = (import ../../../secrets/containers_ips).seedbox;
+
+    in {
+
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # Host prerequisites
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      mle.misc.nixos-containers.enable = lib.mkForce true;
+
+      systemd.tmpfiles.rules = [
+        "d /var/lib/seedbox - - - -"
+        "d /srv - - - -"
+      ];
+
+
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # Container structure
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      containers.${name} = {
+
+        autoStart = true;
+        ephemeral = false;
+        privateNetwork = true;
+        macvlans = net.ifaceList;
+
+        bindMounts = {
+          "/var/lib/seedbox" = { hostPath = "/var/lib/seedbox"; isReadOnly = false; };
+          "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
+        };
+
+        config = { lib, config, pkgs, options, ... }: {
+          system.stateVersion = "24.11";
+
+          networking.hostName = name;
+          systemd.network.networks."40-mv-${net.iface}" = { inherit address; };
+
+      
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Running services inside the container
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          systemd.tmpfiles.rules = [
+            "d /var/lib/seedbox - - - -"
+            "d /srv/bkp/lxc/556-seedbox - - - -"
+          ];
+
+          imports = [
+            ../../apps/qbittorrent.nix
+            ../../apps/fish.nix
+            ../../misc/networkd.nix
+          ];
+
+          mle = {
+            apps = {
+              qbittorrent.enable = true;
+              fish.enable = true;
+            };
+            misc = {
+              networkd.enable = true;
+            };
+          };
+
+
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Backup service
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          environment.systemPackages = with pkgs; [ restic ];
+
+#          services.restic.backups = {
+
+#            qbittorrent = {
+#              initialize = false;
+#              repository = "/srv/bkp/lxc/553-nextcloud/app";
+#              paths = [ "/var/lib/nextcloud" ];
+#              passwordFile = "/passfile";
+#              pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
+#              timerConfig = {
+#                OnCalendar = "Wed 05:30";
+#                Persistent = "true";
+#              };
+#            };
+
+#          };
+
+
+
+        };
+      };
+  });
+}
