@@ -21,7 +21,9 @@
       name = "samba";
       net = (import ../../../secrets/keys/netIface);
       address = (import ../../../secrets/containers_ips).samba;
-      pwd = (import ../../../secrets/keys/passwords);
+
+      # Users
+      mlepro = (import ../../../secrets/users/mlepro.var);
 
     in {
 
@@ -84,7 +86,7 @@
 
           system.activationScripts.mleproSamba = ''
             useradd mlepro
-            echo -e ${pwd.mlepro}\n${pwd.mlepro} | smbpasswd -a mlepro  
+            echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | smbpasswd -a mlepro  
             smbpasswd -e mlepro
           '';
 
