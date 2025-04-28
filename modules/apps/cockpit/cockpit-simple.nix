@@ -43,7 +43,7 @@
 
       settings = {
         WebService = {
-          Origins = "https://*:9091";
+          Origins = lib.mkForce "https://*:9091";
           AllowUnencrypted = true;
         };
       };
