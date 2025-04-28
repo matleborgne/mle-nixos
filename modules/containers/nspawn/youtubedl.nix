@@ -52,6 +52,7 @@
           "/mnt/nas/xfi" = { hostPath = "/srv/xfi"; isReadOnly = false; };
           "/mnt/nas/vid/youtube" = { hostPath = "/srv/vid/youtube"; isReadOnly = false; };
           "/mnt/nas/bkp/lxc/555-youtubedl" = { hostPath = "/srv/bkp/lxc/555-youtubedl"; isReadOnly = false; };
+          "/dev/fuse" = { hostPath = "/dev/fuse"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, mle, ... }: {
