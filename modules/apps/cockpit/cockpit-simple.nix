@@ -43,6 +43,7 @@
 
       settings = {
         WebService = {
+          Origins = "https://*:9091";
           AllowUnencrypted = true;
         };
       };
