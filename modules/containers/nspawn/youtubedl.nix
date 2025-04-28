@@ -66,8 +66,8 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /var/lib/youtubedl 700 ytdl users -"
-            "d /mnt/nas 700 ytdl users -"
+            "d /var/lib/youtubedl - ytdl users -"
+            "d /mnt/nas - ytdl users -"
           ];
 
           imports = [
@@ -91,7 +91,7 @@
           systemd.services."youtubedl" = {
             serviceConfig = {
               Type = "oneshot";
-              ExecStart = ''${pkgs.bash}/bin/bash /var/lib/youtubedl/start-services.sh'';
+              ExecStart = ''${pkgs.bash}/bin/sudo -u ytdl ${pkgs.bash}/bin/bash /var/lib/youtubedl/start-services.sh'';
             };
           };
 
