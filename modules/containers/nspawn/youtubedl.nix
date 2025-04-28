@@ -84,7 +84,7 @@
           networking.firewall.enable = false;
 
           environment.systemPackages = with pkgs; [
-            bat fuse gocryptfs yt-dlp restic
+            bat fuse gocryptfs yt-dlp restic kmod
           ];
 
 
@@ -103,6 +103,11 @@
               Unit = "youtubedl.service";
             };
           };
+
+
+          system.activationScripts.modprobeFuse = ''
+            modprobe fuse
+          '';
 
           environment.etc."fuse.conf".text = ''
             user_allow_other
