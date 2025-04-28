@@ -99,19 +99,7 @@
               "guest account" = "nobody";
               "map to guest" = "bad user";
             };
-
-            mls = {
-              "path" = "/srv/mls";
-              "browseable" = "yes";
-              "read only" = "no";
-              "guest ok" = "no";
-              "create mask" = "0644";
-              "directory mask" = "0755";
-              "force user" = "mlepro";
-              #"force group" = "users";
-            };
-
-          };
+          } // mlepro.smbShares;
         };
 
 
