@@ -39,7 +39,7 @@
 
     services.cockpit = {
       enable = true;
-      port = 9091;
+      port = lib.gvariant.mkUint16 9091;
 
       settings = {
         WebService = {
