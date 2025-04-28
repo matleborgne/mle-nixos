@@ -50,8 +50,8 @@
         bindMounts = {
           "/var/lib/qbittorrent" = { hostPath = "/var/lib/qbittorrent"; isReadOnly = false; };
           "/etc/wireguard" = { hostPath = "/etc/nixos/build/secrets/wireguard/proton-client"; isReadOnly = false; };
+          "/srv/bkp/lxc/556-seedbox" = { hostPath = "/srv/bkp/lxc/556-seedbox"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
-          "/srv/bkp" = { hostPath = "/srv/bkp"; isReadOnly = false; };
           "/srv/sof" = { hostPath = "/srv/sof"; isReadOnly = false; };
           "/srv/vid" = { hostPath = "/srv/vid"; isReadOnly = false; };
         };
@@ -109,21 +109,21 @@
 
           environment.systemPackages = with pkgs; [ restic ];
 
-#          services.restic.backups = {
+          services.restic.backups = {
 
-#            qbittorrent = {
-#              initialize = false;
-#              repository = "/srv/bkp/lxc/553-nextcloud/app";
-#              paths = [ "/var/lib/nextcloud" ];
-#              passwordFile = "/passfile";
-#              pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
-#              timerConfig = {
-#                OnCalendar = "Wed 05:30";
-#                Persistent = "true";
-#              };
-#            };
+            qbittorrent = {
+              initialize = false;
+              repository = "/srv/bkp/lxc/556-seedbox";
+              paths = [ "/var/lib/qbittorrent" ];
+              passwordFile = "/passfile";
+              pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
+              timerConfig = {
+                OnCalendar = "Wed 15:30";
+                Persistent = "true";
+              };
+            };
 
-#          };
+          };
 
 
 
