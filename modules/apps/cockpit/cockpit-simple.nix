@@ -33,9 +33,12 @@
       pcp cockpit
     ];
 
+    networking.firewall = {
+      allowedTCPPorts = [ 9091 ];
+    };
+
     services.cockpit = {
       enable = true;
-      openFirewall = true;
       port = 9091;
 
       settings = {
