@@ -79,8 +79,11 @@
       openFirewall = true;
     };
 
-    networking.firewall.allowPing = lib.mkDefault true;
+    networking.firewall = {
+      allowPing = lib.mkDefault true;
+      allowedTCPPorts = [ 445 139 ];
+      allowedUDPPorts = [ 137 138 ];
+    };
 
-        
   });
 }
