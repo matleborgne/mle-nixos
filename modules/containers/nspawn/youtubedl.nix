@@ -92,7 +92,7 @@
           systemd.services."youtubedl" = {
             serviceConfig = {
               Type = "oneshot";
-              ExecStart = ''${pkgs.sudo}/bin/sudo -u ytdl ${pkgs.bash}/bin/bash /var/lib/youtubedl/start-services.sh'';
+              ExecStart = ''${pkgs.bash}/bin/bash /var/lib/youtubedl/start-services.sh'';
             };
           };
 
