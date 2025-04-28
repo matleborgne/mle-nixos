@@ -49,6 +49,9 @@
         bindMounts = {
           "/var/lib/youtubedl" = { hostPath = "/var/lib/youtubedl"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
+          "/mnt/nas/xfi" = { hostPath = "/srv/xfi"; isReadOnly = false; };
+          "/mnt/nas/vid/youtube" = { hostPath = "/srv/vid/youtube"; isReadOnly = false; };
+          "/mnt/nas/bkp/lxc/555-youtubedl" = { hostPath = "/srv/bkp/lxc/555-youtubedl"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, mle, ... }: {
@@ -64,6 +67,7 @@
 
           systemd.tmpfiles.rules = [
             "d /var/lib/youtubedl 700 ytdl users -"
+            "d /mnt/nas 700 ytdl users -"
           ];
 
           imports = [
