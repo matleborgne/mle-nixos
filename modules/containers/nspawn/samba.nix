@@ -94,8 +94,8 @@
               "netbios name" = "smbnix";
               "security" = "user";
               "client max protocol" = "smb3";
-              "hosts allow" = "10.22.0. 127.0.0.1 localhost";
-              "hosts deny" = "0.0.0.0/0";
+              #"hosts allow" = "10.22.0. 127.0.0.1 localhost";
+              #"hosts deny" = "0.0.0.0/0";
               "guest account" = "nobody";
               "map to guest" = "bad user";
             };
