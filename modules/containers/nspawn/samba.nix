@@ -99,8 +99,8 @@
               "guest account" = "nobody";
               "map to guest" = "bad user";
             };
+
           } // mlepro.smbShares;
-        };
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
