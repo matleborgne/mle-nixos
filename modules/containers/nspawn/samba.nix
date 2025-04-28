@@ -87,18 +87,11 @@
             password = mlepro.pwd;
           };
 
-          systemd.services.enrollSmbpwd = {
-            enable = true;
-            wantedBy = [ "default.target" ];
-            serviceConfig = {
-              Type = "oneshot";
-              ExecStart = ''
-                echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | /run/current-system/sw/bin/smbpasswd -a mlepro
-                /run/current-system/sw/bin/smbpasswd -e mlepro
-              '';
-            };
-          };
-
+          system.activationScripts.enrollSmbpwd = ''
+            echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | /run/current-system/sw/bin/smbpasswd -a mlepro
+            /run/current-system/sw/bin/smbpasswd -e mlepro
+          '';
+          
 
           services.samba.settings = {
             global = {
