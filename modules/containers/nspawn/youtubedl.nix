@@ -84,7 +84,7 @@
           networking.firewall.enable = false;
 
           environment.systemPackages = with pkgs; [
-            bat gocryptfs yt-dlp restic
+            bat fuse gocryptfs yt-dlp restic
           ];
 
 
