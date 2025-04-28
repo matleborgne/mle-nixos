@@ -39,12 +39,11 @@
 
     services.cockpit = {
       enable = true;
-      port = lib.gvariant.mkUint16 9091;
+      port = 9091;
 
       settings = {
         WebService = {
           AllowUnencrypted = true;
-          ProtocolHeader = "X-Forwarded-Proto";
         };
       };
     };
