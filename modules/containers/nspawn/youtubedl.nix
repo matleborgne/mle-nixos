@@ -68,7 +68,7 @@
           systemd.tmpfiles.rules = [
             "d /var/lib/youtubedl - ytdl users -"
             "d /mnt/nas - ytdl users -"
-            "d /mnt/uncrypt/xfi/SOURCE/ytdl - ytdl - -"
+            "d /mnt/uncrypt/xfi - ytdl - -"
           ];
 
           imports = [
