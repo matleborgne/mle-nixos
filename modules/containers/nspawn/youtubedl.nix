@@ -84,16 +84,18 @@
 
 
 
-          systemd.services."youtubedl" = {
+          systemd.user.services."youtubedl" = {
             serviceConfig = {
+              User = "ytdl";
               Type = "oneshot";
               ExecStart = ''${pkgs.bash}/bin/bash /var/lib/youtubedl/start-services.sh'';
             };
           };
 
-          systemd.timers."youtubedl" = {
+          systemd.user.timers."youtubedl" = {
             wantedBy = [ "timers.target" ];
             timerConfig = {
+              User = "ytdl";
               OnCalendar = "23:35";
               Unit = "youtubedl.service";
             };
