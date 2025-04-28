@@ -104,6 +104,10 @@
             };
           };
 
+          environment.etc."fuse.conf".text = ''
+            user_allow_other
+          '';
+
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Ensure USER 1000
@@ -112,7 +116,7 @@
           users.users.ytdl = {
             isNormalUser = true;
             uid = 1000;
-            extraGroups = [ "udev" "users" ];
+            extraGroups = [ "udev" "users" "fuse" ];
           };
 
 
