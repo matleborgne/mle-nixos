@@ -90,9 +90,6 @@
             ${pkgs.samba4Full}/bin/smbpasswd -e mlepro
           '';
 
-          networking.firewall.allowedTCPPorts = [ 445 139 ];
-          networking.firewall.allowedUDPPorts = [ 137 138 ];
-
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
