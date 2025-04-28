@@ -63,7 +63,7 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /var/lib/youtubedl - - - -"
+            "d /var/lib/youtubedl 700 ytdl users -"
           ];
 
           imports = [
@@ -82,6 +82,8 @@
             bat gocryptfs yt-dlp restic
           ];
 
+
+
           systemd.services."youtubedl" = {
             serviceConfig = {
               Type = "oneshot";
@@ -95,6 +97,17 @@
               OnCalendar = "23:35";
               Unit = "youtubedl.service";
             };
+          };
+
+
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Ensure USER 1000
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          users.users.ytdl = {
+            isNormalUser = true;
+            uid = 1000;
+            extraGroups = [ "udev" "users" ];
           };
 
 
