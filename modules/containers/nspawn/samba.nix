@@ -92,9 +92,10 @@
             serviceConfig = {
               Type = "oneshot";
               ExecStart = ''
-                /run/current-system/sw/bin/useradd mlepro || true
-                echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | /run/current-system/sw/bin/smbpasswd -a mlepro
-                /run/current-system/sw/bin/smbpasswd -e mlepro
+                export PATH=$PATH:/run/current-system/sw/bin
+                id -u mlepro >/dev/null 2>&1 || useradd mlepro
+                echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | smbpasswd -a mlepro
+                smbpasswd -e mlepro
               '';
             };
           };
