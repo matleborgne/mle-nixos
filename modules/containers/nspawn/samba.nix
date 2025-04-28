@@ -80,14 +80,27 @@
             };
           };
 
-          system.activationScripts.mleproSamba = ''
-            useradd mlepro
-            echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | ${pkgs.samba4Full}/bin/smbpasswd -a mlepro  
-            ${pkgs.samba4Full}/bin/smbpasswd -e mlepro
-          '';
+          #system.activationScripts.mleproSamba = ''
+          #  useradd mlepro
+          #  echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | ${pkgs.samba4Full}/bin/smbpasswd -a mlepro  
+          #  ${pkgs.samba4Full}/bin/smbpasswd -e mlepro
+          #'';
+
+          systemd.services.enrollSmbpwd = {
+            enable = true;
+            wantedBy = [ "default.target" ];
+            serviceConfig = {
+              Type = "oneshot";
+              ExecStart = ''
+                /run/current-system/sw/bin/useradd mlepro
+                echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | /run/current-system/sw/bin/smbpasswd -a mlepro
+                /run/current-system/sw/bin/smbpasswd -e mlepro
+              '';
+            };
+          };
+
 
           services.samba.settings = {
-
             global = {
               "workgroup" = "WORKGROUP";
               "server string" = "smbnix";
@@ -99,7 +112,6 @@
               "guest account" = "nobody";
               "map to guest" = "bad user";
             };
-
           } // mlepro.smbShares;
 
 
