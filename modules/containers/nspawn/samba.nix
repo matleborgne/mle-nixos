@@ -80,11 +80,12 @@
             };
           };
 
-          #system.activationScripts.mleproSamba = ''
-          #  useradd mlepro
-          #  echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | ${pkgs.samba4Full}/bin/smbpasswd -a mlepro  
-          #  ${pkgs.samba4Full}/bin/smbpasswd -e mlepro
-          #'';
+
+          users.users.mlepro = {
+            isNormalUser = true;
+            shell = lib.mkForce "/run/current-system/sw/bin/nologin";
+            password = mlepro.pwd;
+          };
 
           systemd.services.enrollSmbpwd = {
             enable = true;
@@ -92,7 +93,6 @@
             serviceConfig = {
               Type = "oneshot";
               ExecStart = ''
-                if [ $(/run/current-system/sw/bin/cat /etc/passwd | /run/current-system/sw/bin/grep mlepro | /run/current-system/sw/bin/wc -l) -lt 1 ] ; then useradd mlepro ; fi
                 echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | /run/current-system/sw/bin/smbpasswd -a mlepro
                 /run/current-system/sw/bin/smbpasswd -e mlepro
               '';
