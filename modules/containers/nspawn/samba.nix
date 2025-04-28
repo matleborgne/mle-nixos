@@ -49,9 +49,7 @@
         privateNetwork = true;
         macvlans = net.ifaceList;
 
-        bindMounts = {
-          "/srv/mls" = { hostPath = "/srv/mls"; isReadOnly = false; };
-        };
+        bindMounts = mlepro.smbMounts;
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
@@ -64,9 +62,7 @@
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          systemd.tmpfiles.rules = [
-            "d /srv/mls 700 mlepro - -"
-          ];
+          systemd.tmpfiles.rules = builtins.map (x: "d "+ x +" 700 mlepro - -") (lib.attrNames mlepro.smbMounts);
 
           imports = [
             ../../apps/fish.nix
