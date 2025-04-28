@@ -88,6 +88,7 @@
           };
 
           system.activationScripts.enrollSmbpwd = ''
+            /run/current-system/sw/bin/smbpasswd -x mlepro
             echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | /run/current-system/sw/bin/smbpasswd -a mlepro
             /run/current-system/sw/bin/smbpasswd -e mlepro
           '';
