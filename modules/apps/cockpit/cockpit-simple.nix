@@ -10,13 +10,13 @@
 
 {
 
-  options.mle.apps.cockpit.enable = lib.mkOption {
+  options.mle.apps.cockpit-simple.enable = lib.mkOption {
     description = "Configure COCKIT app";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.cockpit.enable {
+  config = lib.mkIf config.mle.apps.cockpit-simple.enable {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
