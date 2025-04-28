@@ -22,7 +22,7 @@
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    mle.apps.cockpit.enable = lib.mkForce true;
+    mle.apps.cockpit-simple.enable = lib.mkForce true;
     mle.misc.podman.enable = lib.mkForce true;
 
 
