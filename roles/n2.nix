@@ -31,7 +31,7 @@
   mle = {
 
     apps = {
-      cockpit.enable = true;
+      cockpit-simple.enable = true;
     };
 
     misc = {
