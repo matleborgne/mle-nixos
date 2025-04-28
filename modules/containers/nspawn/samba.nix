@@ -86,8 +86,8 @@
 
           system.activationScripts.mleproSamba = ''
             useradd mlepro
-            echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | smbpasswd -a mlepro  
-            smbpasswd -e mlepro
+            echo -e ${mlepro.smbpwd}\n${mlepro.smbpwd} | ${pkgs.samba4Full}/bin/smbpasswd -a mlepro  
+            ${pkgs.samba4Full}/bin/smbpasswd -e mlepro
           '';
 
           networking.firewall.allowedTCPPorts = [ 445 139 ];
