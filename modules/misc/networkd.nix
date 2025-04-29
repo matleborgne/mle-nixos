@@ -42,11 +42,18 @@
     systemd.network = {
       enable = true;
       networks = {
+
+        "40-${net.iface}" = {
+          matchConfig.Name = "${net.iface}";
+          networkConfig.DHCP = "yes";
+        };
+
         "40-mv-${net.iface}" = {
           matchConfig.Name = "mv-${net.iface}";
           networkConfig.DHCP = "yes";
           dhcpV4Config.ClientIdentifier = "mac";
         };
+
       };
     };
 
