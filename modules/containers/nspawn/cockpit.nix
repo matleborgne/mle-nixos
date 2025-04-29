@@ -79,7 +79,14 @@
           # Custom nginx for WEB UI
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ProtocolHeader = X-Forwarded-Proto
+          services.cockpit = {
+            settings = {
+              WebService = {
+                ProtocolHeader = "X-Forwarded-Proto";
+              };
+            };
+          };
+
 
           services.nginx = {
             enable = true;
