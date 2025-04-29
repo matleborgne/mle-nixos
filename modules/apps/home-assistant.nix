@@ -71,7 +71,7 @@
           proxy_buffering off;
         '';
         locations."/" = {
-          proxyPass = "http://[::1]:8123";
+          proxyPass = "http://localhost:8123";
           proxyWebsockets = true;
         };
       };
