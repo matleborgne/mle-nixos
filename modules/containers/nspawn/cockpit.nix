@@ -75,6 +75,47 @@
           };
 
 
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Custom nginx for WEB UI
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          services.nginx = {
+            enable = true;
+  
+            recommendedGzipSettings = true;
+            recommendedOptimisation = true;
+            recommendedProxySettings = true;
+            recommendedTlsSettings = true;
+  
+            virtualHosts = {
+              "cockpit.example.com" = {
+                http2 = true;
+                locations."/" = {
+                  proxyPass = "http://127.0.0.1:9090/";
+                  proxyWebsockets = true;
+                };
+  
+                extraConfig = ''
+  
+                  # Avoid disconnect after long pause
+                  send_timeout 100m;
+  
+                  # Forward real ip and host to Plex
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+                  proxy_set_header Host $server_addr;
+                  proxy_set_header Referer $server_addr;
+                  proxy_set_header Origin $server_addr;
+  
+                  # Nginx default client_max_body_size is 1MB, which breaks Camera Upload feature from the phones.
+                  client_max_body_size 100M;
+  
+          '';
+        };
+      };
+    };   
+
         };
       };
   });
