@@ -34,16 +34,15 @@
     ];
 
     networking.firewall = {
-      allowedTCPPorts = [ 9091 ];
+      allowedTCPPorts = [ 9090 ];
     };
 
     services.cockpit = {
       enable = true;
-      port = 9091;
+      port = 9090;
 
       settings = {
         WebService = {
-          Origins = lib.mkForce "https://*:9091";
           AllowUnencrypted = true;
         };
       };
