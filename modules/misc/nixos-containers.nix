@@ -38,20 +38,5 @@
       containers.enable = true;
     };
 
-    systemd.network = {
-      enable = true;
-      wait-online.enable = lib.mkForce false;
-      networks = {
-        "40-${iface}" = {
-          matchConfig.Name = iface;
-          networkConfig.DHCP = "yes";
-        };
-      };
-    };
-
-    networking = {
-      useNetworkd = true;
-    };
-
   });  
 }
