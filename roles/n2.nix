@@ -43,7 +43,7 @@
       youtubedl.enable = true;
       seedbox.enable = true;
       adguardhome.enable = true;
-      #rclone-cloud.enable = true;
+      rclone-cloud.enable = true;
       sshfs.enable = true;
       samba.enable = true;
       cockpit.enable = true;
