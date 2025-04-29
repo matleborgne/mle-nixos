@@ -51,6 +51,7 @@
           "/mnt/nas" = { hostPath = "/srv"; isReadOnly = false; };
           "/var/lib/rclone" = { hostPath = "/var/lib/rclone"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
+          "/dev/fuse" = { hostPath = "/dev/fuse"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, mle, ... }: {
@@ -85,7 +86,7 @@
 
 
           environment.systemPackages = with pkgs; [
-            bat gocryptfs rclone restic
+            bat gocryptfs rclone restic fuse
           ];
 
           systemd.services."rclone" = {
