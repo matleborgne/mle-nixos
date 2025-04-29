@@ -79,6 +79,8 @@
           # Custom nginx for WEB UI
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+ProtocolHeader = X-Forwarded-Proto
+
           services.nginx = {
             enable = true;
   
