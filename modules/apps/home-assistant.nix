@@ -67,6 +67,7 @@
       virtualHosts."hass.example.com" = {
         #forceSSL = true;
         #enableACME = true;
+        http2 = true;
         extraConfig = ''
           proxy_buffering off;
         '';
