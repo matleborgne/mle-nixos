@@ -64,9 +64,9 @@
     services.nginx = {
       enable = true;
       recommendedProxySettings = true;
-      virtualHosts."home.example.com" = {
-        forceSSL = true;
-        enableACME = true;
+      virtualHosts."hass.example.com" = {
+        #forceSSL = true;
+        #enableACME = true;
         extraConfig = ''
           proxy_buffering off;
         '';
