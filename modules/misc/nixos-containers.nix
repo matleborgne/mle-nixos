@@ -15,7 +15,12 @@
     default = false;
   };
   
-  config = lib.mkIf config.mle.misc.nixos-containers.enable {
+  config = lib.mkIf config.mle.misc.nixos-containers.enable (
+
+    let
+      iface = (import ../../secrets/keys/netIface).iface;
+
+    in {
   
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -37,8 +42,8 @@
       enable = true;
       wait-online.enable = lib.mkForce false;
       networks = {
-        "40-enp3s0" = {
-          matchConfig.Name = "enp3s0";
+        "40-${iface}" = {
+          matchConfig.Name = iface;
           networkConfig.DHCP = "yes";
         };
       };
@@ -46,10 +51,10 @@
 
     networking = {
       useNetworkd = true;
-      nameservers = [
-        "1.1.1.1"
-        "1.0.0.1"
-      ];
+      #nameservers = [
+      #  "1.1.1.1"
+      #  "1.0.0.1"
+      #];
     };
 
   };  
