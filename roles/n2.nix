@@ -32,7 +32,7 @@
 
     misc = {
       mdadm.enable = true;
-      podman.enable = true;
+      #podman.enable = true;
     };
 
     containers.nspawn = {
