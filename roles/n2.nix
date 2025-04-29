@@ -30,10 +30,6 @@
 
   mle = {
 
-    apps = {
-      cockpit-simple.enable = true;
-    };
-
     misc = {
       mdadm.enable = true;
     };
@@ -47,8 +43,9 @@
       seedbox.enable = true;
       adguardhome.enable = true;
       #rclone-cloud.enable = true;
-      samba.enable = true;
       sshfs.enable = true;
+      samba.enable = true;
+      cockpit.enable = true;
     };
 
     secrets = {
