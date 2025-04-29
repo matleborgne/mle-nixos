@@ -31,6 +31,7 @@
       mle.misc.nixos-containers.enable = lib.mkForce true;
 
       systemd.tmpfiles.rules = [
+        "d /srv - - - -"
         "d /var/lib/rclone - - - -"
       ];
 
@@ -47,6 +48,7 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
+          "/mnt/nas" = { hostPath = "/srv"; isReadOnly = false; };
           "/var/lib/rclone" = { hostPath = "/var/lib/rclone"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
@@ -64,6 +66,7 @@
 
           systemd.tmpfiles.rules = [
             "d /var/lib/rclone - - - -"
+            "d /mnt/nas - - - -"
             "d /mnt/uncrypt - - - -"
             "d /mnt/reverse - - - -"
           ];
@@ -80,7 +83,6 @@
             misc.networkd.enable = true;
           };
 
-          #networking.firewall.enable = false;
 
           environment.systemPackages = with pkgs; [
             bat gocryptfs rclone restic
