@@ -42,7 +42,7 @@
 
       collector = {
         enable = true;
-        schedule = "*-*-* *:*/15:00";
+        schedule = "*:0/15";
       };
     };
 
