@@ -42,7 +42,7 @@
       systemd.timers."scrutiny-collector" = {
         wantedBy = [ "timers.target" ];
         timerConfig = {
-          OnCalendar = "*:*";
+          OnCalendar = "*:0";
           Unit = "scrutiny-collector.service";
         };
       };
