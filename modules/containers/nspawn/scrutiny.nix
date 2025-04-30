@@ -95,6 +95,9 @@
             };
           };
 
+        # Manual collector because buggy inside container
+        services.scrutiny.collector.enable = false;
+
         };
       };
   });
