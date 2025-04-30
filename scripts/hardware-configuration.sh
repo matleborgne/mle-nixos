@@ -200,6 +200,31 @@ then
   echo "  mle.hardware.intelcpu.enable = true;
   " >> "$hardwarefile"
 fi
+fi
+
+
+# Dedicated GPU
+if [ $(lspci | grep "VGA" | grep "AMD" | wc -l) -gt 0 ]
+
+then
+  echo "  mle.hardware.amdgpu.enable = true;
+  " >> "$hardwarefile"
+
+elif [ $(lspci | grep "VGA" | grep "Intel" | wc -l) -gt 0 ] || [ $(lspci | grep "VGA" | grep "INTEL" | wc -l) -gt 0 ]
+then
+  echo "  mle.hardware.intelgpu.enable = true;
+  " >> "$hardwarefile"
+
+elif [ $(lspci | grep "VGA" | grep "Nvidia" | wc -l) -gt 0 ] || [ $(lspci | grep "VGA" | grep "NVIDIA" | wc -l) -gt 0 ]
+then
+  echo "  mle.hardware.nvidia.enable = true;
+  " >> "$hardwarefile"
+
+fi
+fi
+fi
+
+
 
 
 # Swapfile
