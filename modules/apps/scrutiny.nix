@@ -41,6 +41,12 @@
       openFirewall = true;
     };
 
+    services.cron = {
+      enable = true;
+      systemCronJobs = [
+        "* * * * *      root  /run/current-system/sw/bin/scrutiny-collector-metrics run"
+      ];
+    };
 
 
     services.nginx = {
