@@ -72,7 +72,7 @@
       text = ''
         #!/bin/bash
         PATH=$PATH:/run/current-system/sw/bin
-        sudo -u root scrutiny-collector-metrics run
+        sudo -u root bash -c 'scrutiny-collector-metrics run --debug --log-file /tmp/collector.log'
       '';
     };
 
