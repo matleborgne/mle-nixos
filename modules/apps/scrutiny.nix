@@ -63,30 +63,5 @@
     };  
 
 
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Collector problem solving
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    system.activationScripts.manualCollector = ''
-
-      mkdir -p /opt/scrutiny/config
-      cat <<- EOF > /opt/scrutiny/config/collector.yaml
-      version: 1
-      commands:
-        metrics_smartctl_bin: '/run/current-system/sw/bin/smartctl'
-        metrics_scan_args: '--scan --json'
-        metrics_smart_args: '--xall --json'
-        metrics_smartctl_wait: 1
-      EOF
-
-      cat <<- EOF > /etc/collector.sh
-        #!/bin/bash
-        PATH=$PATH:/run/current-system/sw/bin
-        sudo -u root bash -c 'scrutiny-collector-metrics run --debug --log-file /tmp/collector.log'
-      EOF
-    '';
-
-
-
   };
 }
