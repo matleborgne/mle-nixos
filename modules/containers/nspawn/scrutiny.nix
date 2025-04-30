@@ -43,7 +43,12 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/dev" = { hostPath = "/dev"; isReadOnly = true; };
+          "/dev/sda" = { hostPath = "/dev/sda"; isReadOnly = true; };
+          "/dev/sdb" = { hostPath = "/dev/sdb"; isReadOnly = true; };
+          "/dev/sdc" = { hostPath = "/dev/sdc"; isReadOnly = true; };
+          "/dev/sdd" = { hostPath = "/dev/sdd"; isReadOnly = true; };
+          "/dev/sde" = { hostPath = "/dev/sde"; isReadOnly = true; };
+          "/dev/sdf" = { hostPath = "/dev/sdf"; isReadOnly = true; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
