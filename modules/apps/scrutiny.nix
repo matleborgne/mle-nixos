@@ -39,11 +39,6 @@
     services.scrutiny = {
       enable = true;
       openFirewall = true;
-
-      collector = {
-        enable = true;
-        schedule = "*:0/15";
-      };
     };
 
     services.nginx = {
