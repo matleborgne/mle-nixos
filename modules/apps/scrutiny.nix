@@ -43,8 +43,9 @@
       collector = {
         enable = true;
         settings = {
-          commands:
-            metrics_scan_args: '--scan --json'
+          commands = {
+            metrics_scan_args = "--scan --json";
+          };
         };
     };
 
