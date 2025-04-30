@@ -36,7 +36,7 @@ if [ $(findmnt --real --raw | grep '/ ' | wc -l) -gt 0 ]; then
     
 else if [ $(findmnt --real --raw | grep '/mnt ' | wc -l) -gt 0 ]; then
   fstab=$(findmnt --noheadings --real --raw --uniq --nofsroot --output SOURCE,UUID,TARGET,FSTYPE,OPTIONS,FSROOT \
-    | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" \
+    | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" -e "/dev/md0" \
     | sed -e "s/$/ _/g" -e "s/\/mnt/\//g" -e "s|//|/|g")
 fi
 fi
