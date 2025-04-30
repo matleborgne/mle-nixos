@@ -44,7 +44,7 @@
     services.cron = {
       enable = true;
       systemCronJobs = [
-        "*/5 * * * *      root   /run/current-system/sw/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log"
+        "*/5 * * * *      root   /run/current-system/sw/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log || :"
       ];
     };
 
