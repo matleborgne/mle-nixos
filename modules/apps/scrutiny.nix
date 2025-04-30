@@ -39,29 +39,15 @@
     services.scrutiny = {
       enable = true;
       openFirewall = true;
+
+      collector = {
+        enable = true;
+        settings = {
+          commands:
+            metrics_scan_args: '--scan --json'
+        };
     };
 
-    services.cron = {
-      enable = true;
-      systemCronJobs = [
-        "*/5 * * * *      root   /run/current-system/sw/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log || :"
-      ];
-    };
-
-#    systemd.services."manualCollector" = {
-#      serviceConfig = {
-#        Type = "oneshot";
-#        ExecStart = ''/run/current-system/sw/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log || true '';
-#      };
-#    };
-
-#    systemd.timers."manualCollector" = {
-#      wantedBy = [ "timers.target" ];
-#      timerConfig = {
-#        OnCalendar = "*:0/15";
-#        Unit = "manualCollector.service";
-#      };
-#    };
 
 
     services.nginx = {
