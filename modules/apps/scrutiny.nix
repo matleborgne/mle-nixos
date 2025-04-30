@@ -86,20 +86,7 @@
       EOF
     '';
 
-          systemd.services."collector" = {
-            serviceConfig = {
-              Type = "oneshot";
-              ExecStart = ''${pkgs.bash}/bin/bash /etc/collector.sh'';
-            };
-          };
 
-          systemd.timers."collector" = {
-            wantedBy = [ "timers.target" ];
-            timerConfig = {
-              OnCalendar = "*:*";
-              Unit = "collector.service";
-            };
-          };
 
   };
 }
