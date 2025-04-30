@@ -27,6 +27,11 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    environment.systemPackages = with pkgs; [
+      scrutiny scrutiny-collector
+      smartmontools
+    ];
+
     networking.firewall = {
       allowedTCPPorts = [ 80 8080 ];
     };
