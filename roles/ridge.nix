@@ -38,8 +38,11 @@
       gaming.enable = true;
     };
 
-    desktop.gnome.mleborgne.enable = true;
-    
+    desktop = {
+      gnome.mleborgne.enable = true;
+      gnome.autologin.enable = true;
+    };
+
     misc = {
       mleupdater.enable = true;
     };
