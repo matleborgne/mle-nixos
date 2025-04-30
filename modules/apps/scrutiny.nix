@@ -44,7 +44,7 @@
     services.cron = {
       enable = true;
       systemCronJobs = [
-        "* * * * *      root  /run/current-system/sw/bin/scrutiny-collector-metrics run >/dev/null 2>&1"
+        "* * * * *      root  /run/current-system/sw/bin/scrutiny-collector-metrics run"
       ];
     };
 
