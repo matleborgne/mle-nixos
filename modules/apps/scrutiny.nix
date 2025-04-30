@@ -45,7 +45,7 @@
     systemd.services."manualCollector" = {
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = ''${pkgs.scrutiny-collector}/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log || true '';
+        ExecStart = ''/run/current-system/sw/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log || true '';
       };
     };
 
