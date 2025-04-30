@@ -43,7 +43,7 @@
         wantedBy = [ "timers.target" ];
         timerConfig = {
           OnCalendar = "*:*";
-          Unit = "collector.service";
+          Unit = "scrutiny-collector.service";
         };
       };
 
