@@ -47,6 +47,8 @@
             metrics_scan_args = "--scan --json";
           };
         };
+
+      };
     };
 
 
