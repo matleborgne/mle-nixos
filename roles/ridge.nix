@@ -39,7 +39,7 @@
     };
 
     desktop = {
-      gnome.mleborgne.enable = true;
+      gnome.default.enable = true;
       gnome.autologin.enable = true;
     };
 
