@@ -41,12 +41,14 @@
       openFirewall = true;
     };
 
-    services.cron = {
-      enable = true;
-      systemCronJobs = [
-        "* * * * *      root  /run/current-system/sw/bin/scrutiny-collector-metrics run"
-      ];
-    };
+
+    environment.etc."collector.sh" = ''
+      #!/bin/bash
+      PATH=$PATH:/run/current-system/sw/bin
+      sudo -u root scrutiny-collector-metrics run
+    '';
+
+
 
 
     services.nginx = {
