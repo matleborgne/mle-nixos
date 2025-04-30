@@ -41,21 +41,27 @@
       openFirewall = true;
     };
 
-
-    systemd.services."manualCollector" = {
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = ''/run/current-system/sw/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log || true '';
-      };
+    services.cron = {
+      enable = true;
+      systemCronJobs = [
+        "*/5 * * * *      root   /run/current-system/sw/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log"
+      ];
     };
 
-    systemd.timers."manualCollector" = {
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "*:0/15";
-        Unit = "manualCollector.service";
-      };
-    };
+#    systemd.services."manualCollector" = {
+#      serviceConfig = {
+#        Type = "oneshot";
+#        ExecStart = ''/run/current-system/sw/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log || true '';
+#      };
+#    };
+
+#    systemd.timers."manualCollector" = {
+#      wantedBy = [ "timers.target" ];
+#      timerConfig = {
+#        OnCalendar = "*:0/15";
+#        Unit = "manualCollector.service";
+#      };
+#    };
 
 
     services.nginx = {
