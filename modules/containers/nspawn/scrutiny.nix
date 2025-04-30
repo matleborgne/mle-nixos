@@ -30,11 +30,6 @@
 
       mle.misc.nixos-containers.enable = lib.mkForce true;
 
-      systemd.tmpfiles.rules = [
-        "d /var/lib/scrutiny - - - -"
-        "d /srv - - - -"
-      ];
-
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # Container structure
@@ -47,9 +42,9 @@
         privateNetwork = true;
         macvlans = net.ifaceList;
 
-        bindMounts = {
-          "/var/lib/scrutiny" = { hostPath = "/var/lib/scrutiny"; isReadOnly = false; };
-        };
+        #bindMounts = {
+        #  "/var/lib/scrutiny" = { hostPath = "/var/lib/scrutiny"; isReadOnly = false; };
+        #};
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
@@ -62,9 +57,9 @@
           # Running services inside the container
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          systemd.tmpfiles.rules = [
-            "d /var/lib/scrutiny - - - -"
-          ];
+          #systemd.tmpfiles.rules = [
+          #  "d /var/lib/scrutiny - - - -"
+          #];
 
           imports = [
             ../../apps/scrutiny.nix
