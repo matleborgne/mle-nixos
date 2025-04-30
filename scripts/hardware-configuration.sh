@@ -200,7 +200,6 @@ then
   echo "  mle.hardware.intelcpu.enable = true;
   " >> "$hardwarefile"
 fi
-fi
 
 
 # Dedicated GPU
@@ -221,9 +220,6 @@ then
   " >> "$hardwarefile"
 
 fi
-fi
-fi
-
 
 
 
