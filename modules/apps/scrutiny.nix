@@ -43,6 +43,7 @@
       collector = {
         enable = true;
         schedule = "*-*-* *:*/15:00";
+      };
     };
 
     services.nginx = {
