@@ -46,15 +46,6 @@
     misc = {
       mleupdater.enable = true;
     };
-
-    secrets = {
-      hm-mleborgne.enable = true;
-      libvirt-vm103.enable = true;
-      libvirt-vm104.enable = true;
-      libvirt-vm901.enable = true;
-      openssh-server.enable = true;
-      openssh-client-mleborgne.enable = true;
-    };
     
   };
 
@@ -64,5 +55,11 @@
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   system.stateVersion = lib.mkForce "25.05";
+
+  users.users.gamestation = {
+    isNormalUser = true;
+    extraGroups = [ "udev" "users" "video" "wheel" "input" "networkmanager" ];
+  };
+
 
 }
