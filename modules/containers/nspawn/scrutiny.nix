@@ -43,6 +43,7 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
+          "/scrutiny-collector" = { hostPath = "../../../scripts/scrutiny-collector-metrics-linux-amd64"; isReadOnly = false; };
           "/dev/sda" = { hostPath = "/dev/sda"; isReadOnly = true; };
           "/dev/sdb" = { hostPath = "/dev/sdb"; isReadOnly = true; };
           "/dev/sdc" = { hostPath = "/dev/sdc"; isReadOnly = true; };
