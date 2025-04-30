@@ -41,6 +41,23 @@
       openFirewall = true;
     };
 
+
+    systemd.services."manualCollector" = {
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = ''${pkgs.scrutiny-collector}/bin/scrutiny-collector-metrics run --debug --log-file /tmp/collector.log '';
+      };
+    };
+
+    systemd.timers."manualCollector" = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "*:0/15";
+        Unit = "manualCollector.service";
+      };
+    };
+
+
     services.nginx = {
       enable = true;
   
@@ -56,20 +73,6 @@
             proxyPass = "http://127.0.0.1:8080/";
             proxyWebsockets = true;
           };
-  
-#          extraConfig = ''
-#  
-#            # Avoid disconnect after long pause
-#            send_timeout 100m;
-#  
-#            # Forward real ip and host to Plex
-#            proxy_set_header X-Real-IP $remote_addr;
-#            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-#            proxy_set_header X-Forwarded-Proto $scheme;
-#            proxy_set_header Host $server_addr;
-#            proxy_set_header Referer $server_addr;
-#            proxy_set_header Origin $server_addr;
-#          '';
 
         };
       };
