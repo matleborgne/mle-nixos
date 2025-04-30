@@ -42,7 +42,6 @@
     
     misc = {
       mleupdater.enable = true;
-      sshfs.enable = true;
     };
 
     secrets = {
