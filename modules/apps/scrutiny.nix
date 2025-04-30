@@ -39,18 +39,6 @@
     services.scrutiny = {
       enable = true;
       openFirewall = true;
-
-      collector = {
-        enable = true;
-        settings = ''
-          commands:
-            metrics_smartctl_bin: '/run/current-system/sw/bin/smartctl';
-            metrics_scan_args: '--scan --json -T permissive';
-            metrics_info_args: '--info --json -T permissive';
-            metrics_smart_args: '--xall --json -T permissive';
-        '';
-
-      };
     };
 
 
