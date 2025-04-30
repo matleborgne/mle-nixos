@@ -42,9 +42,9 @@
         privateNetwork = true;
         macvlans = net.ifaceList;
 
-        #bindMounts = {
-        #  "/var/lib/scrutiny" = { hostPath = "/var/lib/scrutiny"; isReadOnly = false; };
-        #};
+        bindMounts = {
+          "/dev" = { hostPath = "/dev"; isReadOnly = true; };
+        };
 
         config = { lib, config, pkgs, options, ... }: {
           system.stateVersion = "24.11";
