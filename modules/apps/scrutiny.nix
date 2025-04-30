@@ -44,7 +44,9 @@
         enable = true;
         settings = {
           commands = {
+            metrics_smartctl_bin = "${pkgs.smartmontools}/bin/smartctl";
             metrics_scan_args = "--scan --json";
+            metrics_smart_args = "--xall --json";
           };
         };
 
