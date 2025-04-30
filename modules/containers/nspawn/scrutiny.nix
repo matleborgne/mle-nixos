@@ -31,6 +31,23 @@
       mle.misc.nixos-containers.enable = lib.mkForce true;
 
 
+      # Manual collector because buggy inside container
+      systemd.services."scrutiny-collector" = {
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = ''/run/current-system/sw/bin/nixos-container run scrutiny -- scrutiny-collector-metrics run --debug --log-file /tmp/collector.log >/dev/null 2>&1'';
+        };
+      };
+
+      systemd.timers."scrutiny-collector" = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+          OnCalendar = "*:*";
+          Unit = "collector.service";
+        };
+      };
+
+
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # Container structure
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
