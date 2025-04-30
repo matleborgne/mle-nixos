@@ -42,18 +42,6 @@
     };
 
 
-    environment.etc."collector.sh" = {
-      enable = true;
-      text = ''
-        #!/bin/bash
-        PATH=$PATH:/run/current-system/sw/bin
-        sudo -u root scrutiny-collector-metrics run
-      '';
-    };
-
-
-
-
     services.nginx = {
       enable = true;
   
@@ -73,6 +61,36 @@
         };
       };
     };  
+
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Collector problem solving
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    environment.etc."collector.sh" = {
+      enable = true;
+      text = ''
+        #!/bin/bash
+        PATH=$PATH:/run/current-system/sw/bin
+        sudo -u root scrutiny-collector-metrics run
+      '';
+    };
+
+
+          systemd.services."collector" = {
+            serviceConfig = {
+              Type = "oneshot";
+              ExecStart = ''${pkgs.bash}/bin/bash /etc/collector.sh'';
+            };
+          };
+
+          systemd.timers."collector" = {
+            wantedBy = [ "timers.target" ];
+            timerConfig = {
+              OnCalendar = "*:*";
+              Unit = "collector.service";
+            };
+          };
 
   };
 }
