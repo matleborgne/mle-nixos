@@ -78,10 +78,6 @@
             };
           };
 
-          system.activationScripts.scrutinyCollector = ''
-            scrutiny-collector-metrics run --log-file /tmp/collector.log
-          '';
-
         };
       };
   });
