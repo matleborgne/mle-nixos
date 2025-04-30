@@ -28,6 +28,12 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    environment.systemPackages = with pkgs; [
+      steam steam-tui
+      wine-staging wine64
+      vulkan-loader vulkan-headers vulkan-tools dxvk
+    ];
+
     hardware.steam-hardware.enable = true;
 
     programs = {  
