@@ -41,7 +41,6 @@
     desktop.gnome.mleborgne.enable = true;
     
     misc = {
-      libvirt.enable = true;
       mleupdater.enable = true;
       sshfs.enable = true;
     };
@@ -62,11 +61,6 @@
   # 3- Modification of mle.module (through lib.mkForce)
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  # Example with force bluetooth disabled
-  # Bad example because here we disable a full module, so we could do
-  # mle.bluetooth.enable = lib.mkForce false;
-  # hardware.bluetooth.enable = lib.mkForce false;
-
-  # Works better for example with a gsettings parameter to override (font size, etc.)
+  system.stateVersion = lib.mkForce "25.05";
 
 }
