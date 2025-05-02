@@ -44,7 +44,7 @@
           };
         };
 
-      in [ (python.withPackages (python-pkgs: [ chainladder])) ];
+      in [ (python.withPackages (python-pkgs: [ python-pkgs.chainladder ])) ];
 
 
   };
