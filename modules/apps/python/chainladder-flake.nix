@@ -28,23 +28,9 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages =
-
-      let
-        chainladder-python = builtins.getFlake "github:matleborgne/chainladder-python/8fceb42874081cd78409763ef0ea4baf88cd0241";
-
-        pkgs = import <nixpkgs> {
-          system = "x86_64-linux";
-          overlays = [ chainladder-python.overlays.default ];
-        };
-
-      in
-        [ pkgs.python312Packages.chainladder ];
-        
-
-#with pkgs; [
-#      (builtins.getFlake "github:matleborgne/chainladder-python/8fceb42874081cd78409763ef0ea4baf88cd0241").packages.x86_64-linux.default
-#    ];
+    environment.systemPackages = with pkgs; [
+      (builtins.getFlake "github:matleborgne/chainladder-python/8fceb42874081cd78409763ef0ea4baf88cd0241").packages.x86_64-linux.default
+    ];
 
   };
 }
