@@ -45,8 +45,6 @@
       # Graphical python libraries
       flake8 pygobject3
 
-      # Custom
-      #chainladder
     ];
 
   };
