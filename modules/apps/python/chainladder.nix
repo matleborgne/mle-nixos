@@ -67,7 +67,6 @@
             ];
           };
         };
-      };
 
       pkgsWithOverlay = import pkgs.path {
         inherit (pkgs) system;
