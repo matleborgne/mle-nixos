@@ -29,7 +29,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages =
-       let
+      let
         chainladder = pkgs.python3Packages.buildPythonApplication rec {
           pname = "chainladder";
           version = "0.8.24";
