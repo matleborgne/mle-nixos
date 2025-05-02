@@ -44,7 +44,7 @@
         };
 
       in [
-        pkgsWithOverlay.chainladder
+        pkgsWithOverlay.python312Packages.chainladder
     ];
 
 
