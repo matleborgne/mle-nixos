@@ -14,7 +14,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
+    chainladder-python.url = "github:matleborgne/chainladder-python";
+
   };
 
 
@@ -26,6 +28,7 @@
     self,
     nixpkgs,
     home-manager,
+    chainladder-python,
     ...
   }
     @inputs:
@@ -41,6 +44,13 @@
         ./base.nix
       ] ++ (import (builtins.toPath ./modules/imports.nix))
         ++ (import (builtins.toPath ./secrets/imports.nix));
+
+      # Chainladder overlay
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ chainladder-python.overlays.default ];
+      };
+
 
     in {
 
