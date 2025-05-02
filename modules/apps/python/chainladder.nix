@@ -65,7 +65,7 @@
 
         preFixup = ''
           wrapProgram $out/bin/$pname \
-            --prefix PYTHONPATH : ${python}/${python.sitePackages} \
+            --prefix PYTHONPATH : ${pkgs.python}/${python.sitePackages} \
         '';
 
       in
