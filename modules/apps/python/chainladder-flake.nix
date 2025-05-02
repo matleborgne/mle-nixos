@@ -10,13 +10,13 @@
 
 {
 
-  options.mle.apps.python-chainladder.enable = lib.mkOption {
+  options.mle.apps.python.chainladder-flake.enable = lib.mkOption {
     description = "Configure PYTHON CHAINLADDER library";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.python-chainladder.enable {
+  config = lib.mkIf config.mle.apps.python.chainladder-flake.enable {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
