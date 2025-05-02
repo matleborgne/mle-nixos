@@ -12,13 +12,7 @@ in
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   system.stateVersion = "24.11"; # never change this
-
-  nixpkgs = {
-    hostPlatform = lib.mkDefault "x86_64-linux";
-    config = {
-      allowUnfree = lib.mkDefault true;
-    };
-  };
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   programs.nix-index.enable = lib.mkDefault true;
   programs.command-not-found.enable = lib.mkDefault false;
