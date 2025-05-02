@@ -1,12 +1,5 @@
 { lib, config, pkgs, ... }:
 
-let
-  python =
-    with import <nixpkgs> {};
-    python3.withPackages (ps : with ps; [ ]);
-
-in
-
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # APPS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -36,47 +29,49 @@ in
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = 
-      let
-        cl = pkgs.python3Packages.buildPythonPackage rec {
-          pname = "chainladder";
-          version = "0.8.24";
-          pyproject = true;
+    let
+      overlay = self: super: {  
+        pkgs.python3Packages = super.python3Packages // {
 
-          src = pkgs.python3Packages.fetchPypi {
-            inherit pname version;
-            hash = "sha256-RKoDlqQRzYBl8gaiM1VF5sjPJVRWrsGseuefAMm/ojk=";
+          chainladder = super.python3Packages.buildPythonPackage rec {
+            pname = "chainladder";
+            version = "0.8.24";
+            pyproject = true;
+
+            src = super.python3Packages.fetchPypi {
+              inherit pname version;
+              hash = "sha256-RKoDlqQRzYBl8gaiM1VF5sjPJVRWrsGseuefAMm/ojk=";
+            };
+
+            build-system = with super.python3Packages; [
+              setuptools
+              setuptools-scm
+            ];
+
+            dependencies = with super.python3Packages; [
+              attrs
+              py
+              setuptools
+              scikit-learn
+              matplotlib
+              sparse
+              pandas
+              dill
+              patsy
+              packaging
+            ];
+
+            nativeCheckInputs = with super.python3Packages; [
+              hypothesis
+            ];
           };
-
-          build-system = with pkgs.python3Packages; [
-            setuptools
-            setuptools-scm
-          ];
-
-          dependencies = with pkgs.python3Packages; [
-            attrs
-            py
-            setuptools
-            scikit-learn
-            matplotlib
-            sparse
-            pandas
-            dill
-            patsy
-            packaging
-          ];
-
-          nativeCheckInputs = with pkgs.python3Packages; [
-            hypothesis
-          ];
         };
+      };
 
-        preFixup = ''
-          wrapProgram $out/bin/$pname \
-            --prefix PYTHONPATH : ${python}/${python.sitePackages} \
-        '';
+      customPkgs = import <nixpkgs> { overlays = [ overlay ]; };
 
-      in
-        [ cl ];
+    in
+      [ customPkgs.python3Packages.chainladder ];
 
   };
 }
