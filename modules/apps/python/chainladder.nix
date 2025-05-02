@@ -3,7 +3,7 @@
 let
   python =
     with import <nixpkgs> {};
-    python3.withPackages (ps: ps);
+    python3.withPackages (ps : with ps; [ ]);
 
 in
 
