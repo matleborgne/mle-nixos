@@ -35,13 +35,13 @@
         #().packages.x86_64-linux.default
 
         pkgsWithOverlay = import chainladder {
-          overlays = [
+          overlays = [(
             self: super: {
               python312Packages = super.pkgs.python312Packages // {
                 chainladder = self.callPackage (self.packages.x86_64-linux.default) {};
               };
             };
-          ];
+          )];
         };
 
       in [
