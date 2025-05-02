@@ -30,25 +30,26 @@
 
     environment.systemPackages = 
     let
-      overlay = self: super: {  
-        pkgs.python3Packages = super.python3Packages // {
-
-          chainladder = super.python3Packages.buildPythonPackage rec {
+      overlay = self: super:
+        let
+          pyPkgs = super.python3Packages;
+        in {
+          chainladder = pyPkgs.buildPythonPackage rec {
             pname = "chainladder";
             version = "0.8.24";
             pyproject = true;
 
-            src = super.python3Packages.fetchPypi {
+            src = pyPkgs.fetchPypi {
               inherit pname version;
               hash = "sha256-RKoDlqQRzYBl8gaiM1VF5sjPJVRWrsGseuefAMm/ojk=";
             };
 
-            build-system = with super.python3Packages; [
+            build-system = with pyPkgs; [
               setuptools
               setuptools-scm
             ];
 
-            dependencies = with super.python3Packages; [
+            dependencies = with pyPkgs; [
               attrs
               py
               setuptools
@@ -61,7 +62,7 @@
               packaging
             ];
 
-            nativeCheckInputs = with super.python3Packages; [
+            nativeCheckInputs = with pyPkgs; [
               hypothesis
             ];
           };
