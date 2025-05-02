@@ -29,7 +29,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = with pkgs; [
-      (builtins.getFlake "github:matleborgne/chainladder-python/9ce3e9926f23113308147a7e77f360588e34401b").packages.x86_64-linux.default
+      (builtins.getFlake "github:matleborgne/chainladder-python/2f63959142be34f400340f332a6a4860f5e0b1b2").packages.x86_64-linux.default
     ];
 
   };
