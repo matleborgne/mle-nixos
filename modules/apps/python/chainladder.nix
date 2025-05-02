@@ -50,6 +50,7 @@
             py
             setuptools
             scikit-learn
+            matplotlib
             sparse
             pandas
             dill
