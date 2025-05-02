@@ -29,26 +29,8 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages =
-
-      let
         chainladder = builtins.getFlake "github:matleborgne/chainladder-python/aad8a3fd743a693d30eb51860d29e179bde77281";
-
-        pkgsWithOverlay = import chainladder {
-          overlays = [
-            (self: super: with pkgs; {
-              python312Packages = super.python312Packages // {
-                chainladder = self.callPackage (self.packages.x86_64-linux.default) {};
-              };
-            })
-          ];
-        };
-
-      in [
-        pkgsWithOverlay.python312Packages.chainladder
-    ];
-
 
 
   };
-
 }
