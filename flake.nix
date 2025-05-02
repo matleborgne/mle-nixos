@@ -15,8 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chainladder-python.url = "github:matleborgne/chainladder-python";
-
   };
 
 
@@ -44,12 +42,6 @@
         ./base.nix
       ] ++ (import (builtins.toPath ./modules/imports.nix))
         ++ (import (builtins.toPath ./secrets/imports.nix));
-
-      # Chainladder overlay
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [ chainladder-python.overlays.default ];
-      };
 
 
     in {
