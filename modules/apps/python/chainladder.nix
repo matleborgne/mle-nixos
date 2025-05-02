@@ -30,8 +30,7 @@
 
     environment.systemPackages = [
 
-      let
-        chainladder = pkgs.python3Packages.buildPythonPackage rec {
+      pkgs.python3Packages.buildPythonPackage rec {
           pname = "chainladder";
           version = "0.8.24";
           pyproject = true;
@@ -63,8 +62,6 @@
           ];
         };
 
-      in
-          chainladder
     ];
 
   };
