@@ -37,7 +37,7 @@
 
           src = pkgs.python3Packages.fetchPypi {
             inherit pname version;
-            hash = "sha256-z4Q23FnYaVNG/NOrKW3kZCXsqwDWQJbOvnn7Ueyy65M=";
+            hash = "sha256-RKoDlqQRzYBl8gaiM1VF5sjPJVRWrsGseuefAMm/ojk=";
           };
 
           build-system = with pkgs.python3Packages; [
