@@ -40,7 +40,7 @@
         python = pkgs.python3.override {
           self = python;
           packageOverrides = pyfinal: pyprev: {
-            chainladder = pyfinal.callPackage chainladder_flake {};
+            chainladder = pyfinal.callPackage chainladderFlake {};
           };
         };
 
