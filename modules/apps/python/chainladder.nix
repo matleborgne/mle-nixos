@@ -73,8 +73,15 @@
         overlays = [ overlay ];
       };
 
+      pythonWithChainladder = pkgsWithOverlay.python3.withPackages (ps: [
+        ps.attrs ps.py ps.setuptools ps.scikit-learn ps.matplotlib
+        ps.sparse ps.pandas ps.dill ps.patsy ps.packaging
+        ps.hypothesis
+        pkgsWithOverlay.chainladder
+      ]);
+
     in
-      [ pkgsWithOverlay.python3Packages.chainladder ];
+      [ pythonWithChainladder ];
 
   };
 }
