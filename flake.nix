@@ -36,6 +36,7 @@
       # Define modules shared among ALL machines
       basicModules = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
+        ({ nixpkgs.config.allowUnfree = true; })
         home-manager.nixosModules.default
         ./base.nix
       ] ++ (import (builtins.toPath ./modules/imports.nix))
