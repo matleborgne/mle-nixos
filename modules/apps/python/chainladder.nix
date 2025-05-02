@@ -28,7 +28,9 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    pkgs.python3Packages.buildPythonPackage rec {
+    environment.systemPackages = 
+      let
+        cl = pkgs.python3Packages.buildPythonPackage rec {
           pname = "chainladder";
           version = "0.8.24";
           pyproject = true;
@@ -60,6 +62,14 @@
             hypothesis
           ];
         };
+
+        preFixup = ''
+          wrapProgram $out/bin/$pname \
+            --prefix PYTHONPATH : ${python}/${python.sitePackages} \
+        '';
+
+      in
+        [ cl ];
 
   };
 }
