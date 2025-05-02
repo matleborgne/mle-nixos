@@ -28,39 +28,44 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    let
-      chainladder = pkgs.python3Packages.buildPythonPackage rec {
-        pname = "chainladder";
-        version = "0.8.24";
-        pyproject = true;
+    environment.systemPackages = [
 
-        src = pkgs.python3Packages.fetchPypi {
-          inherit pname version;
-          hash = "sha256-z4Q23FnYaVNG/NOrKW3kZCXsqwDWQJbOvnn7Ueyy65M=";
+      let
+        chainladder = pkgs.python3Packages.buildPythonPackage rec {
+          pname = "chainladder";
+          version = "0.8.24";
+          pyproject = true;
+
+          src = pkgs.python3Packages.fetchPypi {
+            inherit pname version;
+            hash = "sha256-z4Q23FnYaVNG/NOrKW3kZCXsqwDWQJbOvnn7Ueyy65M=";
+          };
+
+          build-system = with pkgs.python3Packages; [
+            setuptools
+            setuptools-scm
+          ];
+
+          dependencies = with pkgs.python3Packages; [
+            attrs
+            py
+            setuptools
+            scikit-learn
+            sparse
+            pandas
+            dill
+            patsy
+            packaging
+          ];
+
+          nativeCheckInputs = with pkgs.python3Packages; [
+            hypothesis
+          ];
         };
 
-        build-system = with pkgs.python3Packages; [
-          setuptools
-          setuptools-scm
-        ];
-
-        dependencies = with pkgs.python3Packages; [
-          attrs
-          py
-          setuptools
-          six
-          pluggy
-        ];
-
-        nativeCheckInputs = with pkgs.python3Packages; [
-          hypothesis
-        ];
-      };
-
-    in  
-      environment.systemPackages = with pkgs; [
-        chainladder
-      ];
+      in
+          chainladder
+    ];
 
   };
 }
