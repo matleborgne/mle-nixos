@@ -28,11 +28,9 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #environment.systemPackages =
-      # let
-       # chainladder =
-
-    pkgs.python3Packages.buildPythonPackage rec {
+    environment.systemPackages =
+       let
+        chainladder = pkgs.python3Packages.buildPythonApplication rec {
           pname = "chainladder";
           version = "0.8.24";
           pyproject = true;
@@ -65,8 +63,8 @@
           ];
         };
 
-   #   in
-   #     [ chainladder ];
+      in
+        [ chainladder ];
 
   };
 }
