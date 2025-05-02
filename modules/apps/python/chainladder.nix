@@ -68,7 +68,7 @@
         };
       };
 
-      customPkgs = import <nixpkgs> { overlays = [ overlay ]; };
+      customPkgs = import nixpkgs { overlays = [ overlay ]; };
 
     in
       [ customPkgs.python3Packages.chainladder ];
