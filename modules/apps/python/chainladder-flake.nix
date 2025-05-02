@@ -32,19 +32,33 @@
     #  (builtins.getFlake "github:matleborgne/chainladder-python/59daca6ce5d49b180dae93d5c167ab923d4f37a3").packages.x86_64-linux.default
     #];
 
-    environment.systemPackages =
 
-      let
-        chainladderFlake = (builtins.getFlake "github:matleborgne/chainladder-python/59daca6ce5d49b180dae93d5c167ab923d4f37a3").packages.x86_64-linux.default;
-        
-        python = pkgs.python3.override {
-          self = python;
-          packageOverrides = pyfinal: pyprev: {
-            chainladder = pyfinal.callPackage chainladderFlake {};
-          };
-        };
 
-      in [ (python.withPackages (python-pkgs: [ python-pkgs.chainladder ])) ];
+#    environment.systemPackages =
+#
+#      let
+#        chainladderFlake = (builtins.getFlake "github:matleborgne/chainladder-python/59daca6ce5d49b180dae93d5c167ab923d4f37a3").packages.x86_64-linux.default;
+#        
+#        python = pkgs.python3.override {
+#          self = python;
+#          packageOverrides = pyfinal: pyprev: {
+#            chainladder = pyfinal.callPackage chainladderFlake {};
+#          };
+#        };
+
+#      in [ (python.withPackages (python-pkgs: [ python-pkgs.chainladder ])) ];
+
+
+      environment.systemPackages =
+
+        let
+          flake = builtins.getFlake "github:matleborgne/chainladder-python/59daca6ce5d49b180dae93d5c167ab923d4f37a3";
+          chainladderPkg = flake.packages.x86_64-linux.default;
+          pythonEnv = pkgs.python3.withPackages (ps: [ chainladderPkg ]);
+
+        in [ pythonEnv ];
+
+
 
 
   };
