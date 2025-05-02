@@ -1,5 +1,12 @@
 { lib, config, pkgs, ... }:
 
+let
+  python =
+    with import <nixpkgs> {};
+    python3.withPackages ();
+
+in
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # APPS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,7 +72,7 @@
 
         preFixup = ''
           wrapProgram $out/bin/$pname \
-            --prefix PYTHONPATH : ${pkgs.python}/${python.sitePackages} \
+            --prefix PYTHONPATH : ${python}/${python.sitePackages} \
         '';
 
       in
