@@ -29,7 +29,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     #environment.systemPackages = with pkgs; [
-    #  (builtins.getFlake "github:matleborgne/chainladder-python/59daca6ce5d49b180dae93d5c167ab923d4f37a3").packages.x86_64-linux.default
+    #  (builtins.getFlake "github:matleborgne/chainladder-python/31cf6baf77053d3f10c1142ee4b7bfa8578368ea").packages.x86_64-linux.default
     #];
 
 
@@ -37,7 +37,7 @@
 #    environment.systemPackages =
 #
 #      let
-#        chainladderFlake = (builtins.getFlake "github:matleborgne/chainladder-python/59daca6ce5d49b180dae93d5c167ab923d4f37a3").packages.x86_64-linux.default;
+#        chainladderFlake = (builtins.getFlake "github:matleborgne/chainladder-python/31cf6baf77053d3f10c1142ee4b7bfa8578368ea").packages.x86_64-linux.default;
 #        
 #        python = pkgs.python3.override {
 #          self = python;
@@ -52,7 +52,7 @@
       environment.systemPackages =
 
         let
-          flake = builtins.getFlake "github:matleborgne/chainladder-python/59daca6ce5d49b180dae93d5c167ab923d4f37a3";
+          flake = builtins.getFlake "github:matleborgne/chainladder-python/31cf6baf77053d3f10c1142ee4b7bfa8578368ea";
           chainladderPkg = flake.packages.x86_64-linux.default;
           pythonEnv = pkgs.python3.withPackages (ps: [ chainladderPkg ]);
 
