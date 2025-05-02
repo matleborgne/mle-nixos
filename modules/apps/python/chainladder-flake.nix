@@ -40,8 +40,8 @@
               python312Packages = super.pkgs.python312Packages // {
                 chainladder = self.callPackage (self.packages.x86_64-linux.default) {};
               };
-            });
-          ];
+            };
+          )];
         };
 
       in [
