@@ -68,10 +68,13 @@
         };
       };
 
-      customPkgs = import nixpkgs { overlays = [ overlay ]; };
+      pkgsWithOverlay = import pkgs.path {
+        inherit (pkgs) system;
+        overlays = [ overlay ];
+      };
 
     in
-      [ customPkgs.python3Packages.chainladder ];
+      [ pkgsWithOverlay.python3Packages.chainladder ];
 
   };
 }
