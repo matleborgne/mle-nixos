@@ -28,7 +28,7 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages = [
+    environment.systemPackages =
 
       let
         chainladder = builtins.getFlake "github:matleborgne/chainladder-python/aad8a3fd743a693d30eb51860d29e179bde77281"
@@ -44,7 +44,7 @@
           ];
         };
 
-      in
+      in [
         pkgs.python312Packages.chainladder
     ];
 
