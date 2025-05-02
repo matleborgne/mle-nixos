@@ -46,7 +46,7 @@
       flake8 pygobject3
 
       # Custom
-      chainladder
+      #chainladder
     ];
 
   };
