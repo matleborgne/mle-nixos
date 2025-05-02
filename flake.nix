@@ -47,7 +47,7 @@
 
       # Chainladder overlay
       pkgs = import nixpkgs {
-        inherit system;
+        system = "x86_64-linux";
         overlays = [ chainladder-python.overlays.default ];
       };
 
