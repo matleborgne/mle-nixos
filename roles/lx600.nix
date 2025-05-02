@@ -34,7 +34,8 @@
       firefox.enable = true;
       librewolf.enable = true;
       thunderbird.enable = true;      
-      video-downloader.enable = true;      
+      video-downloader.enable = true; 
+      python.chainladder-flake.enable = true;
     };
 
     bundles = {
