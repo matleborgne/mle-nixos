@@ -60,7 +60,7 @@
           nativeCheckInputs = with pkgs.python3Packages; [
             hypothesis
           ];
-        };
+        }
 
     ];
 
