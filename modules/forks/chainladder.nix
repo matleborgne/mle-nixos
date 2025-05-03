@@ -1,5 +1,6 @@
 {
   lib,
+  config,
   stdenv,
   python3Packages,
   buildPythonPackage,
