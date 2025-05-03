@@ -14,6 +14,7 @@ cd "$current"/../../github
 git pull origin main
 
 rsync -avzhx --delete ./modules/ ../build/modules/
+rsync -avzhx --delete ./pkgs/ ../build/pkgs/
 rsync -avzhx --delete ./roles/ ../build/roles/
 rsync -avzhx --delete ./scripts/ ../build/scripts/
 
