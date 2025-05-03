@@ -30,7 +30,7 @@
 
     environment.systemPackages = with pkgs; [
       (python3.withPackages (ps: with ps; [
-        (builtins.getFlake "github:matleborgne/chainladder-python/c152e493a88543f3f555a8b30ecdefe20611164c").packages.x86_64-linux.default
+        (builtins.getFlake "github:matleborgne/chainladder-python/6e55d08608973fd3c19269479deda82b4d7d14ed").packages.x86_64-linux.default
       ]))
     ];
 
