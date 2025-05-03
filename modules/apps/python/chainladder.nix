@@ -29,41 +29,11 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = 
-
-      let
-          chainladder = pkgs.python3Packages.buildPythonPackage rec {
-            pname = "chainladder";
-            version = "0.8.24";
-            pyproject = true;
-
-            src = pkgs.fetchPypi {
-              inherit pname version;
-              hash = "sha256-RKoDlqQRzYBl8gaiM1VF5sjPJVRWrsGseuefAMm/ojk=";
-            };
-
-            build-system = with pkgs.python3Packages; [
-              setuptools
-              setuptools-scm
-            ];
-
-            dependencies = with pkgs.python3Packages; [
-              setuptools
-              scikit-learn
-              matplotlib
-              sparse
-              pandas
-              dill
-              patsy
-              packaging
-            ];
-
-            nativeCheckInputs = with pkgs.python3Packages; [
-              hypothesis
-            ];
-          };
-
-    in
-      [ (pkgs.python3.withPackages (ps: with ps; [ chainladder ])) ];
+    let
+      chainladder = pkgs.callPackage ./pkgs/chainladder.nix {};
+    in [
+      (pkgs.python3.withPackages (ps: with ps; [ chainladder ]))
+    ];
 
   };
 }
