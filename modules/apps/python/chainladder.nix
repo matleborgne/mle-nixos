@@ -41,12 +41,12 @@
               hash = "sha256-RKoDlqQRzYBl8gaiM1VF5sjPJVRWrsGseuefAMm/ojk=";
             };
 
-            build-system = with pkgs; [
+            build-system = with pkgs.python3Packages; [
               setuptools
               setuptools-scm
             ];
 
-            dependencies = with pkgs; [
+            dependencies = with pkgs.python3Packages; [
               setuptools
               scikit-learn
               matplotlib
@@ -57,7 +57,7 @@
               packaging
             ];
 
-            nativeCheckInputs = with pkgs; [
+            nativeCheckInputs = with pkgs.python3Packages; [
               hypothesis
             ];
           };
