@@ -30,7 +30,7 @@
 
     environment.systemPackages = 
     let
-      chainladder = pkgs.callPackage ./pkgs/chainladder.nix {};
+      chainladder = pkgs.callPackage ../../../forks/chainladder.nix {};
     in [
       (pkgs.python3.withPackages (ps: with ps; [ chainladder ]))
     ];
