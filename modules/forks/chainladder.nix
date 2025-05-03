@@ -1,6 +1,6 @@
-{ lib, python3Packages, buildPythonPackage, fetchPypi }:
+{ lib, python3Packages, fetchPypi }:
 
-buildPythonPackage rec {
+python3Packages.buildPythonPackage rec {
   pname = "chainladder";
   version = "0.8.24";
   pyproject = true;
