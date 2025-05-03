@@ -65,7 +65,7 @@
           };
 
     in
-      [ (python3.withPackages (ps: with ps; [ chainladder ])) ];
+      [ (pkgs.python3.withPackages (ps: with ps; [ chainladder ])) ];
 
   };
 }
