@@ -5,8 +5,6 @@
   python3Packages,
   buildPythonPackage,
   fetchPypi,
-  isPy3k,
-  pytest,
 }:
 
 buildPythonPackage rec {
