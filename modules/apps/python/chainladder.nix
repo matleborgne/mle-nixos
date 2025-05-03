@@ -36,17 +36,17 @@
             version = "0.8.24";
             pyproject = true;
 
-            src = pyPkgs.fetchPypi {
+            src = pkgs.fetchPypi {
               inherit pname version;
               hash = "sha256-RKoDlqQRzYBl8gaiM1VF5sjPJVRWrsGseuefAMm/ojk=";
             };
 
-            build-system = with pyPkgs; [
+            build-system = with pkgs; [
               setuptools
               setuptools-scm
             ];
 
-            dependencies = with pyPkgs; [
+            dependencies = with pkgs; [
               attrs
               py
               setuptools
@@ -59,7 +59,7 @@
               packaging
             ];
 
-            nativeCheckInputs = with pyPkgs; [
+            nativeCheckInputs = with pkgs; [
               hypothesis
             ];
           };
