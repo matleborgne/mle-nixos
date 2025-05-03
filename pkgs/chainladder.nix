@@ -1,3 +1,5 @@
+{ lib, python3Packages, fetchPypi }:
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # PKGS - PACKAGES
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -11,8 +13,6 @@
 #  myPackage = pkgs.callPackage /etc/nixos/build/pkgs/myPackage.nix {};
 #in
 #  environment.systemPackage = [ myPackage ] or mkShell or whatever
-
-{ lib, python3Packages, fetchPypi }:
 
 python3Packages.buildPythonPackage rec {
   pname = "chainladder";
