@@ -28,35 +28,11 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #environment.systemPackages = with pkgs; [
-    #  (builtins.getFlake "github:matleborgne/chainladder-python/c152e493a88543f3f555a8b30ecdefe20611164c").packages.x86_64-linux.default
-    #];
-
-
-
-#    environment.systemPackages =
-#
-#      let
-#        chainladderFlake = (builtins.getFlake "github:matleborgne/chainladder-python/c152e493a88543f3f555a8b30ecdefe20611164c").packages.x86_64-linux.default;
-#        
-#        python = pkgs.python3.override {
-#          self = python;
-#          packageOverrides = pyfinal: pyprev: {
-#            chainladder = pyfinal.callPackage chainladderFlake {};
-#          };
-#        };
-
-#      in [ (python.withPackages (python-pkgs: [ python-pkgs.chainladder ])) ];
-
-
-      environment.systemPackages =
-
-        let
-          flake = builtins.getFlake "github:matleborgne/chainladder-python/c152e493a88543f3f555a8b30ecdefe20611164c";
-          chainladderPkg = flake.packages.x86_64-linux.default;
-          pythonEnv = pkgs.python3.withPackages (ps: [ chainladderPkg ]);
-
-        in [ pythonEnv ];
+    environment.systemPackages = with pkgs; [
+      (python3.withPackages (ps: with ps; [
+        (builtins.getFlake "github:matleborgne/chainladder-python/c152e493a88543f3f555a8b30ecdefe20611164c").packages.x86_64-linux.default
+      ]))
+    ];
 
 
 
