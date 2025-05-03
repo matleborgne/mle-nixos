@@ -1,4 +1,4 @@
-{ lib, python3Packages, fetchPypi }:
+{ config, lib, python3Packages, fetchPypi }:
 
 python3Packages.buildPythonPackage rec {
   pname = "chainladder";
