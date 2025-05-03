@@ -47,8 +47,6 @@
             ];
 
             dependencies = with pkgs; [
-              attrs
-              py
               setuptools
               scikit-learn
               matplotlib
