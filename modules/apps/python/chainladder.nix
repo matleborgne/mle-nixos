@@ -28,12 +28,12 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages = 
-    let
-      chainladder = pkgs.callPackage ../../../forks/chainladder.nix {};
-    in [
-      (pkgs.python3.withPackages (ps: with ps; [ chainladder ]))
-    ];
+    #environment.systemPackages = 
+    #let
+    #  chainladder = pkgs.callPackage ../../../forks/chainladder.nix {};
+    #in [
+    #  (pkgs.python3.withPackages (ps: with ps; [ chainladder ]))
+    #];
 
   };
 }
