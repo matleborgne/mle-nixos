@@ -31,7 +31,7 @@
     environment.systemPackages = 
 
       let
-          chainladder = pkgs.buildPythonPackage rec {
+          chainladder = pkgs.python3Packages.buildPythonPackage rec {
             pname = "chainladder";
             version = "0.8.24";
             pyproject = true;
