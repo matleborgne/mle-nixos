@@ -29,12 +29,9 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = 
-    let
-      overlay = self: super:
-        let
-          pyPkgs = super.python3Packages;
-        in {
-          chainladder = pyPkgs.buildPythonPackage rec {
+
+      let
+          chainladder = pkgs.buildPythonPackage rec {
             pname = "chainladder";
             version = "0.8.24";
             pyproject = true;
@@ -66,22 +63,9 @@
               hypothesis
             ];
           };
-        };
-
-      pkgsWithOverlay = import pkgs.path {
-        inherit (pkgs) system;
-        overlays = [ overlay ];
-      };
-
-      pythonWithChainladder = pkgsWithOverlay.python3.withPackages (ps: [
-        ps.attrs ps.py ps.setuptools ps.scikit-learn ps.matplotlib
-        ps.sparse ps.pandas ps.dill ps.patsy ps.packaging
-        ps.hypothesis
-        pkgsWithOverlay.chainladder
-      ]);
 
     in
-      [ pythonWithChainladder ];
+      [ (python3.withPackages (ps: with ps; [ chainladder ])) ];
 
   };
 }
