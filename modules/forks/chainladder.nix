@@ -1,7 +1,7 @@
 {
   lib,
   stdenv,
-  python3Packages
+  python3Packages,
   buildPythonPackage,
   fetchPypi,
   isPy3k,
