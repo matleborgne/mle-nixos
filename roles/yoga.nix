@@ -33,9 +33,8 @@
     apps = {
       firefox.enable = true;
       librewolf.enable = true;
-      python-chainladder.enable = true;
       thunderbird.enable = true;      
-      video-downloader.enable = true;      
+      video-downloader.enable = true; 
     };
 
     bundles = {
@@ -46,9 +45,7 @@
       office.enable = true;
     };
 
-    desktop = {
-      gnome-mleborgne.enable = true;
-    };
+    desktop.gnome.mleborgne.enable = true;
     
     misc = {
       libvirt.enable = true;
