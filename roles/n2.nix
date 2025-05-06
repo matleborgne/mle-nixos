@@ -30,6 +30,10 @@
 
   mle = {
 
+    apps = {
+      homepage.enable = true;
+    };
+
     misc = {
       mdadm.enable = true;
       #podman.enable = true;
@@ -67,39 +71,6 @@
   hardware.bluetooth.enable = lib.mkForce false;
 
   # Works better for example with a gsettings parameter to override (font size, etc.)
-
-  services.homepage-dashboard = {
-    enable = true;
-    widgets = [
-      {
-        resources = {
-          cpu = true;
-          disk = "/";
-          memory = true;
-        };
-      }
-      {
-        search = {
-          provider = "duckduckgo";
-          target = "_blank";
-        };
-      }
-    ];
-  };
-
-  system.activationScripts.homeSession = ''
-    export HOMEPAGE_ALLOWED_HOSTS="10.22.0.2"
-  '';
-
-  environment.sessionVariables = {
-    HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2";
-  };
-  environment.variables = {
-    HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2";
-  };
-  networking.firewall = {
-    allowedTCPPorts = [ 8082 ];
-  };
 
   environment.etc.crypttab.text = lib.mkForce ''
     WD24201W4A3K13 UUID=d4eeb28f-f13a-4d86-9e7b-213e5f22e9a8 /etc/keys/keyfile.key luks,nofail
