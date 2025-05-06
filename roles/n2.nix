@@ -87,6 +87,10 @@
     ];
   };
 
+  system.activationScripts.homeSession = ''
+    export HOMEPAGE_ALLOWED_HOSTS="10.22.0.2:8082"
+  '';
+
   environment.sessionVariables = {
     HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2:8082";
   };
