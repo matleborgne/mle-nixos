@@ -70,7 +70,7 @@
 
   services.homepage-dashboard.enable = true;
   environment.sessionVariables = {
-    HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2";
+    HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2:8082";
   };
   networking.firewall = {
     allowedTCPPorts = [ 8082 ];
