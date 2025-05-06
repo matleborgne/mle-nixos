@@ -88,14 +88,14 @@
   };
 
   system.activationScripts.homeSession = ''
-    export HOMEPAGE_ALLOWED_HOSTS="10.22.0.2 8082"
+    export HOMEPAGE_ALLOWED_HOSTS="10.22.0.2"
   '';
 
   environment.sessionVariables = {
-    HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2 8082";
+    HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2";
   };
   environment.variables = {
-    HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2 8082";
+    HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2";
   };
   networking.firewall = {
     allowedTCPPorts = [ 8082 ];
