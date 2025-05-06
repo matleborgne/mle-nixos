@@ -68,7 +68,7 @@
 
   # Works better for example with a gsettings parameter to override (font size, etc.)
 
-  services.homepage.enable = true;
+  services.homepage-dashboard.enable = true;
 
   environment.etc.crypttab.text = lib.mkForce ''
     WD24201W4A3K13 UUID=d4eeb28f-f13a-4d86-9e7b-213e5f22e9a8 /etc/keys/keyfile.key luks,nofail
