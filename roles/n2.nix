@@ -72,7 +72,7 @@
   environment.sessionVariables = {
     HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2:8082";
   };
-  environment.varibles = {
+  environment.variables = {
     HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2:8082";
   };
   networking.firewall = {
