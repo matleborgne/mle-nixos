@@ -69,6 +69,9 @@
   # Works better for example with a gsettings parameter to override (font size, etc.)
 
   services.homepage-dashboard.enable = true;
+  environment.sessionVariables = {
+    HOMEPAGE_ALLOWED_HOSTS = "10.22.0.0/24";
+  };
   networking.firewall = {
     allowedTCPPorts = [ 8082 ];
   };
