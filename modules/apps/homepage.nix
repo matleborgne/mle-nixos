@@ -28,9 +28,37 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    services.plex = {
+    services.homepage-dashboard = {
       enable = true;
-      openFirewall = true;
+      widgets = [
+        {
+          resources = {
+            cpu = true;
+            disk = "/";
+            memory = true;
+          };
+        }
+        {
+          search = {
+            provider = "duckduckgo";
+            target = "_blank";
+          };
+        }
+      ];
+    };
+
+    system.activationScripts.homeSession = ''
+      export HOMEPAGE_ALLOWED_HOSTS="10.22.0.2"
+    '';
+
+    environment.sessionVariables = {
+      HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2";
+    };
+    environment.variables = {
+      HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2";
+    };
+    networking.firewall = {
+      allowedTCPPorts = [ 8082 ];
     };
 
     services.nginx = {
