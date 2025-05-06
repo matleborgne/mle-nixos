@@ -52,7 +52,7 @@
     environment.etc."homepage.env" = {
       enable = true;
       text = ''
-        HOMEPAGE_VAR_HOMEPAGE_ALLOWED_HOSTS="10.22.0.2"
+        HOMEPAGE_VAR_HOMEPAGE_ALLOWED_HOSTS="*"
       '';
     };
 
