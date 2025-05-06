@@ -58,7 +58,7 @@
 
 
     networking.firewall = {
-      allowedTCPPorts = [ 8082 ];
+      allowedTCPPorts = [ 3000 8082 ];
     };
 
 
