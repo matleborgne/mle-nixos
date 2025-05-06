@@ -68,7 +68,25 @@
 
   # Works better for example with a gsettings parameter to override (font size, etc.)
 
-  services.homepage-dashboard.enable = true;
+  services.homepage-dashboard = {
+    enable = true;
+    widgets = [
+      {
+        resources = {
+          cpu = true;
+          disk = "/";
+          memory = true;
+        };
+      }
+      {
+        search = {
+          provider = "duckduckgo";
+          target = "_blank";
+        };
+      }
+    ];
+  };
+
   environment.sessionVariables = {
     HOMEPAGE_ALLOWED_HOSTS = "10.22.0.2:8082";
   };
