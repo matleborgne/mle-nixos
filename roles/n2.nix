@@ -47,8 +47,8 @@
       home-assistant.enable = true;
       sshfs.enable = true;
       samba.enable = true;
-      cockpit.enable = true;
       scrutiny.enable = true;
+      homepage.enable = true;
     };
 
     secrets = {
