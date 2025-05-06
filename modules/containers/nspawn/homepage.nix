@@ -81,7 +81,6 @@
 
           services.homepage = {
             enable = true;
-            package = homepage-dashboard;
           };
 
 
