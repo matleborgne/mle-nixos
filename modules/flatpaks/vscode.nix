@@ -26,6 +26,7 @@
     user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
 
     extensionsScript = ''
+      #!/bin/bash
       pip3 install --prefix=/var/data/python \
         jupyter ipykernel pipdeptree \
         pandas numpy openpyxl xlrd \
@@ -54,7 +55,11 @@
       script = ''
         flatpak install --or-update --noninteractive com.vscodium.codium
 
-        flatpak run --command=${extensionsScript} com.vscodium.codium
+        cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
+          echo ${extensionsScript} > vscode-extensions.sh
+        EOF
+
+        flatpak run --command=./vscode-extensions.sh com.vscodium.codium
       '';
     };
 
