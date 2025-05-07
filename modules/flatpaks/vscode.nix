@@ -60,6 +60,7 @@
         EOF
 
         flatpak run --command=./vscode-pythonDeps.sh com.vscodium.codium
+        rm vscode-pythonDeps.sh
       '';
     };
 
