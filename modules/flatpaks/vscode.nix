@@ -57,18 +57,13 @@
       '';
     };
 
-    systemd.user.services.pythonDeps = {
-      enable = true;
-      after = [ "flatpak-vscode.service" ];
-      wantedBy = [ "multi-user.target" ];
-      script = ''
-        cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
+    system.activationScripts.pythonDeps = '';
+        cat << EOF | ${pkgs.sudo}/bin/sudo -u ${user} flatpak run --command=/bin/bash com.vscodium.codium
           echo ${pythonDeps} > vscode-pythonDeps.sh
         EOF
 
-        flatpak run --command=./vscode-pythonDeps.sh com.vscodium.codium
+        ${pkgs.sudo}/bin/sudo -u ${user} flatpak run --command=./vscode-pythonDeps.sh com.vscodium.codium
       '';
-    };
 
     systemd.services.flatpak-shortcut = {
       wantedBy = [ "multi-user.target" ];
