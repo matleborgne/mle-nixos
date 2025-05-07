@@ -38,11 +38,19 @@
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    systemd.services.flatpak-vscode-custom = {
+    systemd.services.flatpak-vscode-with-extensions = {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.flatpak ];
       script = ''
         flatpak install --or-update --noninteractive com.vscodium.codium
+
+        flatpak run --command="pip3 install --prefix=/var/data/python \
+          jupyter ipykernel pipdeptree \
+          pandas numpy openpyxl xlrd \
+          matplotlib seaborn plotly \
+          scikit-learn scikit-learn-extra hdbscan \
+          statsmodels jellyfish chardet levenshtein \
+          chainladder sparse dill patsy packaging" com.vscodium.codium
       '';
     };
 
