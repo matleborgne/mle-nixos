@@ -26,7 +26,7 @@
     # Bundled applications
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages = with pkgs.python3Packages; [
+    environment.systemPackages = with pkgs.python313Packages; [
 
       # Python basics
       python pip pipdeptree
