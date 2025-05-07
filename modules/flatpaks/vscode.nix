@@ -56,11 +56,10 @@
         flatpak install --or-update --noninteractive com.vscodium.codium
 
         cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
-          echo ${pythonDeps} > vscode-pythonDeps.sh
+          echo ${pythonDeps} > /var/data/vscode-pythonDeps.sh
         EOF
 
-        flatpak run --command=./vscode-pythonDeps.sh com.vscodium.codium
-        rm vscode-pythonDeps.sh
+        flatpak run --command=/var/data/vscode-pythonDeps.sh com.vscodium.codium
       '';
     };
 
