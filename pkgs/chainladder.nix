@@ -41,6 +41,18 @@ python3Packages.buildPythonPackage rec {
     packaging
   ];
 
+
+  propagatedBuildInputs = with python3Packages; [
+    setuptools
+    scikit-learn
+    matplotlib
+    sparse
+    pandas
+    dill
+    patsy
+    packaging
+  ];
+
   nativeCheckInputs = with python3Packages; [
     hypothesis
   ];
