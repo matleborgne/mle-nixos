@@ -56,6 +56,14 @@
       codium --install-extension github.github-vscode-theme
     '';
 
+    preferences = ''
+{
+    "editor.language.brackets": [],
+    "workbench.colorTheme": "GitHub Light Default",
+    "window.zoomLevel": 1.3
+}
+    '';
+
   in {
 
 
