@@ -39,22 +39,29 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     systemd.tmpfiles.rules = [
-      ""
+      "d /etc/flatpak/rules - - - -"
     ];
+
+    environment.etc."flatpak/rules/vscode-extensions.sh" = {
+      enable = true;
+      text = ''
+        #!/bin/bash
+        pip3 install --prefix=/var/data/python \
+          jupyter ipykernel pipdeptree \
+          pandas numpy openpyxl xlrd \
+          matplotlib seaborn plotly \
+          scikit-learn scikit-learn-extra hdbscan \
+          statsmodels jellyfish chardet levenshtein \
+          chainladder sparse dill patsy
+      '';
+
 
     systemd.services.flatpak-vscode-with-extensions = {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.flatpak ];
       script = ''
         flatpak install --or-update --noninteractive com.vscodium.codium
-
-        flatpak run --command="/bin/pip3 install --prefix=/var/data/python \
-          jupyter ipykernel pipdeptree \
-          pandas numpy openpyxl xlrd \
-          matplotlib seaborn plotly \
-          scikit-learn scikit-learn-extra hdbscan \
-          statsmodels jellyfish chardet levenshtein \
-          chainladder sparse dill patsy" com.vscodium.codium
+        flatpak run --command=/etc/flatpak/rules/vscode-extensions.sh com.vscodium.codium
       '';
     };
 
