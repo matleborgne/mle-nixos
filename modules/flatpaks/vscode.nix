@@ -90,7 +90,7 @@
       script = ''
         flatpak install --or-update --noninteractive com.vscodium.codium
 
-        bash -c ${preferences}
+        bash ${preferences}
 
         cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
           echo ${pythonDeps} > /var/data/vscode-pythonDeps.sh
