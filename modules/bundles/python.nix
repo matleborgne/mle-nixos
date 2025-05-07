@@ -32,7 +32,7 @@
       python pip pipdeptree
 
       # Jupyter basics
-      ipykernel notebook
+      ipykernel notebook jupyter
       pandas numpy
       matplotlib seaborn plotly
       openpyxl xlrd
