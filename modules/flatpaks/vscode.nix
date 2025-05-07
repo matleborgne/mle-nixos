@@ -99,12 +99,14 @@
           chmod 755 /var/data/vscode-extensions.sh
         EOF
         flatpak run --command=/var/data/vscode-extensions.sh com.vscodium.codium
+
+        echo ${preferences} > ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
       '';
     };
 
-    #system.activationScripts.flatpak-vscode = ''
-    #  ${pkgs.sudo}/bin/sudo -u ${user} systemctl --user start flatpak-vscode
-    #'';
+    system.activationScripts.flatpak-vscode = ''
+      ${pkgs.sudo}/bin/sudo -u ${user} systemctl --user start flatpak-vscode
+    '';
 
     systemd.services.flatpak-shortcut = {
       wantedBy = [ "multi-user.target" ];
