@@ -49,21 +49,19 @@
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    systemd.services.flatpak-vscode = {
+    systemd.user.services.flatpak-vscode = {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.flatpak ];
       script = ''
         flatpak install --or-update --noninteractive com.vscodium.codium
+
+        cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
+          echo ${pythonDeps} > vscode-pythonDeps.sh
+        EOF
+
+        flatpak run --command=./vscode-pythonDeps.sh com.vscodium.codium
       '';
     };
-
-    system.activationScripts.pythonDeps = '';
-      cat << EOF | ${pkgs.sudo}/bin/sudo -u ${user} flatpak run --command=/bin/bash com.vscodium.codium
-        echo ${pythonDeps} > vscode-pythonDeps.sh
-      EOF
-
-      ${pkgs.sudo}/bin/sudo -u ${user} flatpak run --command=./vscode-pythonDeps.sh com.vscodium.codium
-    '';
 
     systemd.services.flatpak-shortcut = {
       wantedBy = [ "multi-user.target" ];
