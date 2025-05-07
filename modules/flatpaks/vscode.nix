@@ -58,6 +58,7 @@
 
         cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
           echo ${pythonDeps} > /var/data/vscode-pythonDeps.sh
+          chmod 755 /var/data/vscode-pythonDeps.sh
         EOF
 
         flatpak run --command=/var/data/vscode-pythonDeps.sh com.vscodium.codium
