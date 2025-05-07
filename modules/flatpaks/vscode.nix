@@ -41,7 +41,7 @@
 
     extensions = ''
       #!/bin/bash
-      for extension in \
+      extensions = "\
         ms-ceintl.vscode-language-pack-fr \
         pkief.material-icon-theme \
         gruntfuggly.todo-tree \
@@ -54,10 +54,11 @@
         brettm12345.nixfmt-vscode \
         arrterian.nix-env-selector \
         timonwong.shellcheck \
-        github.github-vscode-theme
+        github.github-vscode-theme"
 
+      for extension in $extensions
       do
-        codium --install-extension $extension
+        /app/bin/codium --install-extension $extension
       done
     '';
 
