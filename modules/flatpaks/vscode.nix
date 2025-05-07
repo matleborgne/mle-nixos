@@ -95,9 +95,9 @@
       '';
     };
 
-    system.activationScripts.flatpak-vscode = ''
-      ${pkgs.sudo}/bin/sudo -u ${user} systemctl --user start flatpak-vscode
-    '';
+    #system.activationScripts.flatpak-vscode = ''
+    #  ${pkgs.sudo}/bin/sudo -u ${user} systemctl --user start flatpak-vscode
+    #'';
 
     systemd.services.flatpak-shortcut = {
       wantedBy = [ "multi-user.target" ];
