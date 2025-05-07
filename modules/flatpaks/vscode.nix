@@ -100,7 +100,7 @@
         EOF
         flatpak run --command=/var/data/vscode-extensions.sh com.vscodium.codium
 
-        echo ${preferences} > ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
+        echo "${preferences}" > ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
       '';
     };
 
