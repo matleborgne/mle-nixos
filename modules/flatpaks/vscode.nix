@@ -57,7 +57,7 @@
     '';
 
     preferences = ''
-      \{
+      XbracketsOpenX
         "editor.language.brackets": [],
         "workbench.colorTheme": "GitHub Light Default",
         "workbench.statusBar.visible": false,
@@ -65,7 +65,7 @@
         "workbench.startupEditor": "none",
         "editor.minimap.enabled": false,
         "window.zoomLevel": 1.3
-      \}
+      XbracketsCloseX
     '';
 
   in {
