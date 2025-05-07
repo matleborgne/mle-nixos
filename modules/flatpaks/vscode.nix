@@ -54,12 +54,17 @@
       path = [ pkgs.flatpak ];
       script = ''
         flatpak install --or-update --noninteractive com.vscodium.codium
+      '';
+    };
 
-        cat << EOF | ${pkgs.sudo}/bin/sudo -u ${user} flatpak run --command=/bin/bash com.vscodium.codium
+    systemd.user.services.pythonDeps = {
+      wantedBy = [ "multi-user.target" ];
+      script = ''
+        cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
           echo ${pythonDeps} > vscode-pythonDeps.sh
         EOF
 
-        ${pkgs.sudo}/bin/sudo -u ${user} flatpak run --command=./vscode-pythonDeps.sh com.vscodium.codium
+        flatpak run --command=./vscode-pythonDeps.sh com.vscodium.codium
       '';
     };
 
