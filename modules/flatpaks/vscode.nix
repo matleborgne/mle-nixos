@@ -57,11 +57,11 @@
     '';
 
     preferences = ''
-{
-    "editor.language.brackets": [],
-    "workbench.colorTheme": "GitHub Light Default",
-    "window.zoomLevel": 1.3
-}
+      {
+        "editor.language.brackets": [],
+        "workbench.colorTheme": "GitHub Light Default",
+        "window.zoomLevel": 1.3
+      }
     '';
 
   in {
