@@ -25,9 +25,9 @@
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
     user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
 
-    extensionsScript = ''
+    pythonDeps = ''
       #!/bin/bash
-      pip3 install --prefix=/var/data/python \
+      pip3 install --root-user-action --prefix=/var/data/python \
         jupyter ipykernel pipdeptree \
         pandas numpy openpyxl xlrd \
         matplotlib seaborn plotly \
@@ -56,10 +56,10 @@
         flatpak install --or-update --noninteractive com.vscodium.codium
 
         cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
-          echo ${extensionsScript} > vscode-extensions.sh
+          echo ${pythonDeps} > vscode-pythonDeps.sh
         EOF
 
-        flatpak run --command=./vscode-extensions.sh com.vscodium.codium
+        flatpak run --command=./vscode-pythonDeps.sh com.vscodium.codium
       '';
     };
 
