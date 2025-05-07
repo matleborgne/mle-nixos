@@ -57,15 +57,13 @@
     '';
 
     preferences = ''
-      {
-        "editor.language.brackets": [],
-        "workbench.colorTheme": "GitHub Light Default",
-        "workbench.statusBar.visible": false,
-        "workbench.editor.enablePreview": false,
-        "workbench.startupEditor": "none",
-        "editor.minimap.enabled": false,
-        "window.zoomLevel": 1.3
-      }
+      "editor.language.brackets": [],
+      "workbench.colorTheme": "GitHub Light Default",
+      "workbench.statusBar.visible": false,
+      "workbench.editor.enablePreview": false,
+      "workbench.startupEditor": "none",
+      "editor.minimap.enabled": false,
+      "window.zoomLevel": 1.3
     '';
 
   in {
@@ -100,7 +98,7 @@
         EOF
         flatpak run --command=/var/data/vscode-extensions.sh com.vscodium.codium
 
-        echo "${preferences}" > ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
+        echo "{${preferences}}" > ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
       '';
     };
 
