@@ -86,15 +86,11 @@
 
     systemd.user.services.flatpak-vscode = {
       wantedBy = [ "default.target" ];
-      path = [ pkgs.flatpak ];
+      path = [ pkgs.bash pkgs.flatpak ];
       script = ''
         flatpak install --or-update --noninteractive com.vscodium.codium
 
-        cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
-          echo ${preferences} > /var/data/vscode-preferences.sh
-          chmod 755 /var/data/vscode-preferences.sh
-        EOF
-        flatpak run --command=/var/data/vscode-preferences.sh com.vscodium.codium
+        bash -c ${preferences}
 
         cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
           echo ${pythonDeps} > /var/data/vscode-pythonDeps.sh
