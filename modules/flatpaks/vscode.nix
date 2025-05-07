@@ -39,8 +39,44 @@
       sed -i "s/sparse._slicing/sparse.numba_backend._slicing/g" /var/data/python/lib/python3.12/site-packages/chainladder/core/slice.py
     '';
 
+    extensions = ''
+      #!/bin/bash
+      for extension in \
+        ms-ceintl.vscode-language-pack-fr \
+        pkief.material-icon-theme \
+        gruntfuggly.todo-tree \
+        ms-python.python \
+        ms-python.vscode-pylance \
+        ms-toolsai.jupyter \
+        oderwat.indent-rainbow \
+        christian-kohler.path-intellisense \
+        jnoortheen.nix-ide \
+        brettm12345.nixfmt-vscode \
+        arrterian.nix-env-selector \
+        timonwong.shellcheck \
+        github.github-vscode-theme
+
+      do
+        codium --install-extension $extension
+      done
+    '';
+
   in {
-    
+
+
+
+
+        profiles.default.userSettings = {
+          "workbench.colorTheme" = "GitHub Light Default";
+          "workbench.statusBar.visible" = false;
+          "workbench.editor.enablePreview" = false;
+          "workbench.startupEditor" = "none";
+          "editor.minimap.enabled" = false;
+        };
+
+
+
+
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
