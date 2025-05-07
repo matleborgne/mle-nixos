@@ -41,25 +41,19 @@
 
     extensions = ''
       #!/bin/bash
-      extensions="\
-        ms-ceintl.vscode-language-pack-fr \
-        pkief.material-icon-theme \
-        gruntfuggly.todo-tree \
-        ms-python.python \
-        ms-python.vscode-pylance \
-        ms-toolsai.jupyter \
-        oderwat.indent-rainbow \
-        christian-kohler.path-intellisense \
-        jnoortheen.nix-ide \
-        brettm12345.nixfmt-vscode \
-        arrterian.nix-env-selector \
-        timonwong.shellcheck \
-        github.github-vscode-theme"
-
-      for extension in $extensions
-      do
-        /app/bin/codium --install-extension $extension
-      done
+      codium --install-extension ms-ceintl.vscode-language-pack-fr
+      codium --install-extension pkief.material-icon-theme
+      codium --install-extension gruntfuggly.todo-tree
+      codium --install-extension ms-python.python
+      codium --install-extension ms-python.vscode-pylance
+      codium --install-extension ms-toolsai.jupyter
+      codium --install-extension oderwat.indent-rainbow
+      codium --install-extension christian-kohler.path-intellisense
+      codium --install-extension jnoortheen.nix-ide
+      codium --install-extension brettm12345.nixfmt-vscode
+      codium --install-extension arrterian.nix-env-selector
+      codium --install-extension timonwong.shellcheck
+      codium --install-extension github.github-vscode-theme
     '';
 
   in {
