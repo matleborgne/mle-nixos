@@ -50,6 +50,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     systemd.user.services.flatpak-vscode = {
+      reloadIfChanged = true;
       wantedBy = [ "default.target" ];
       path = [ pkgs.flatpak ];
       script = ''
