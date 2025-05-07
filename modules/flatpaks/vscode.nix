@@ -64,19 +64,6 @@
   in {
 
 
-
-
-        profiles.default.userSettings = {
-          "workbench.colorTheme" = "GitHub Light Default";
-          "workbench.statusBar.visible" = false;
-          "workbench.editor.enablePreview" = false;
-          "workbench.startupEditor" = "none";
-          "editor.minimap.enabled" = false;
-        };
-
-
-
-
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,8 +86,13 @@
           echo ${pythonDeps} > /var/data/vscode-pythonDeps.sh
           chmod 755 /var/data/vscode-pythonDeps.sh
         EOF
-
         flatpak run --command=/var/data/vscode-pythonDeps.sh com.vscodium.codium
+
+        cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
+          echo ${extensions} > /var/data/vscode-extensions.sh
+          chmod 755 /var/data/vscode-extensions.sh
+        EOF
+        flatpak run --command=/var/data/vscode-extensions.sh com.vscodium.codium
       '';
     };
 
