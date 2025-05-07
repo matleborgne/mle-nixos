@@ -50,7 +50,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     systemd.user.services.flatpak-vscode = {
-      wantedBy = [ "multi-user.target" ];
+      wantedBy = [ "default.target" ];
       path = [ pkgs.flatpak ];
       script = ''
         flatpak install --or-update --noninteractive com.vscodium.codium
