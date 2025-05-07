@@ -38,6 +38,10 @@
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    systemd.tmpfiles.rules = [
+      ""
+    ];
+
     systemd.services.flatpak-vscode-with-extensions = {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.flatpak ];
