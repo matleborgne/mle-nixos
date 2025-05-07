@@ -41,7 +41,7 @@
 
     extensions = ''
       #!/bin/bash
-      extensions = "\
+      extensions="\
         ms-ceintl.vscode-language-pack-fr \
         pkief.material-icon-theme \
         gruntfuggly.todo-tree \
