@@ -12,13 +12,13 @@
 
 {
 
-  options.mle.flatpak.vscode.enable = lib.mkOption {
+  options.mle.flatpaks.vscode.enable = lib.mkOption {
     description = "Enable VSCODE flatpak";
     type = lib.types.bool;
     default = false;
   };
   
-  config = lib.mkIf config.mle.flatpak.vscode.enable (
+  config = lib.mkIf config.mle.flatpaks.vscode.enable (
 
   let
     allUsers = builtins.attrNames config.users.users;
