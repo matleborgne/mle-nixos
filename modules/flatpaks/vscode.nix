@@ -54,6 +54,7 @@
           statsmodels jellyfish chardet levenshtein \
           chainladder sparse dill patsy
       '';
+    };
 
 
     systemd.services.flatpak-vscode-with-extensions = {
