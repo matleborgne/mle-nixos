@@ -76,7 +76,6 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     systemd.user.services.flatpak-vscode = {
-      reloadIfChanged = true;
       wantedBy = [ "default.target" ];
       path = [ pkgs.flatpak ];
       script = ''
@@ -95,6 +94,10 @@
         flatpak run --command=/var/data/vscode-extensions.sh com.vscodium.codium
       '';
     };
+
+    system.activationScripts.flatpak-vscode = ''
+      ${pkgs.sudo}/bin/sudo -u ${user} systemctl --user start flatpak-vscode
+    '';
 
     systemd.services.flatpak-shortcut = {
       wantedBy = [ "multi-user.target" ];
