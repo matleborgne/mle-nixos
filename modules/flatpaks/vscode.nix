@@ -58,7 +58,6 @@
 
     preferences = ''
       XbracketsOpenX
-        "editor.language.brackets": [],
         "workbench.colorTheme": "GitHub Light Default",
         "workbench.statusBar.visible": false,
         "workbench.editor.enablePreview": false,
