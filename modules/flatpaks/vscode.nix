@@ -34,6 +34,9 @@
         scikit-learn scikit-learn-extra hdbscan \
         statsmodels jellyfish chardet levenshtein \
         chainladder sparse dill patsy
+
+      # Correct chainladder imports
+      sed -i "s/sparse._slicing/sparse.numba_backend._slicing/g" /var/data/python/lib/python3.12/site-packages/chainladder/core/triangle.py
     '';
 
   in {
