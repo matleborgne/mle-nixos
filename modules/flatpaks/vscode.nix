@@ -49,7 +49,7 @@
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    systemd.services.flatpak-vscode-with-extensions = {
+    systemd.services.flatpak-vscode = {
       wantedBy = [ "multi-user.target" ];
       path = [ pkgs.flatpak ];
       script = ''
@@ -58,6 +58,8 @@
     };
 
     systemd.user.services.pythonDeps = {
+      enable = true;
+      after = [ "flatpak-vscode.service" ];
       wantedBy = [ "multi-user.target" ];
       script = ''
         cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
