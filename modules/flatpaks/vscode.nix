@@ -53,7 +53,7 @@
         Type=Application
         Name=VSCodium
         Exec=flatpak run com.vscodium.codium
-        Icon=visual-studio-code" > /home/"${v.username}"/.local/share/applications/codium.desktop
+        Icon=visual-studio-code" > /home/"${user}"/.local/share/applications/codium.desktop
       '';
     };
     
