@@ -60,6 +60,10 @@
       {
         "editor.language.brackets": [],
         "workbench.colorTheme": "GitHub Light Default",
+        "workbench.statusBar.visible": false,
+        "workbench.editor.enablePreview": false,
+        "workbench.startupEditor": "none",
+        "editor.minimap.enabled": false,
         "window.zoomLevel": 1.3
       }
     '';
