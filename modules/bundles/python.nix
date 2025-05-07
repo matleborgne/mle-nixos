@@ -26,7 +26,7 @@
     # Bundled applications
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages = with pkgs.python312Packages; [
+    environment.systemPackages = with pkgs.python3Packages; [
 
       # Python basics
       python pip pipdeptree
@@ -44,6 +44,14 @@
 
       # Graphical python libraries
       flake8 pygobject3
+
+      # Chainladder deps
+      setuptools
+      scikit-learn
+      sparse
+      dill
+      patsy
+      packaging
 
     ];
 
