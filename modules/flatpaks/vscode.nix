@@ -88,6 +88,8 @@
       script = ''
         flatpak install --or-update --noninteractive com.vscodium.codium
 
+        echo "${preferences}" > ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
+
         cat << EOF | flatpak run --command=/bin/bash com.vscodium.codium
           echo ${pythonDeps} > /var/data/vscode-pythonDeps.sh
           chmod 755 /var/data/vscode-pythonDeps.sh
@@ -99,8 +101,6 @@
           chmod 755 /var/data/vscode-extensions.sh
         EOF
         flatpak run --command=/var/data/vscode-extensions.sh com.vscodium.codium
-
-        echo "${preferences}" > ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
       '';
     };
 
