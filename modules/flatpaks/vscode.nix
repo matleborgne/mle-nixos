@@ -58,7 +58,7 @@
 
     preferences = ''
       #!/bin/bash
-      cat <<- EOF > "~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json"
+      cat <<- EEOOFF > "~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json"
       {
         "workbench.colorTheme": "GitHub Light Default",
         "workbench.statusBar.visible": false,
@@ -67,7 +67,7 @@
         "editor.minimap.enabled": false,
         "window.zoomLevel": 1.3
       }
-      EOF
+      EEOOFF
     '';
 
   in {
