@@ -48,6 +48,7 @@
     desktop.gnome.mleborgne.enable = true;
     
     misc = {
+      flatpak.enable = true;
       libvirt.enable = true;
       mleupdater.enable = true;
       sshfs.enable = true;
