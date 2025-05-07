@@ -27,7 +27,7 @@
 
     pythonDeps = ''
       #!/bin/bash
-      pip3 install --root-user-action --prefix=/var/data/python \
+      pip3 install --prefix=/var/data/python \
         jupyter ipykernel pipdeptree \
         pandas numpy openpyxl xlrd \
         matplotlib seaborn plotly \
