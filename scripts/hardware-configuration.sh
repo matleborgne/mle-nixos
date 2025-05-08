@@ -169,6 +169,7 @@ if [ "$type" = "crypt" ]; then
   
 # 3b - Second cas : chiffrement des disques avec raid derrière
 elif [ "$type" = "raid" ]; then
+  devices=$(cat /proc/mdstat | grep md0 | cut -d ' ' -f5- | sed 's/\[[0-9]\]//g')
 
 fi
 
