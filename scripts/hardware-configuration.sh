@@ -140,10 +140,14 @@ fi
 root=$(lsblk --raw --output UUID,NAME | grep "$rootid" | sed "s/^$rootid //g")
 type=$(lsblk --raw --output UUID,TYPE | grep "$rootid" | sed "s/^$rootid //g" | tr -d '[0-9]')
 
+
 if [ "$type" = "crypt" ]; then
+  plain="$root"
+  cipher="/dev/disk/by-uuid/$(echo "$root" | sed 's/luks-//g')"
 
 elif [ "$type" = "raid" ]; then
 
+fi
 
 
 if [ "$(echo $root | awk -F '-' '{ print $1}')" = "luks" ]
