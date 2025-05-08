@@ -128,14 +128,6 @@ echo "    '';
 " >> "$hardwarefile"
 
 
-
-# First step : determine whether root disk is encrypted
-#if [ $(lsblk --raw --output NAME,FSTYPE,MOUNTPOINT | rev | grep '^/' | rev | wc -l) -lt 1 ]; then
-#  root=$(lsblk --raw --output NAME,FSTYPE,MOUNTPOINT | rev | grep '^tnm/' | rev)
-#else
-#  root=$(lsblk --raw --output NAME,FSTYPE,MOUNTPOINT | rev | grep '^/' | rev)
-#fi
-
 # 1- Find root UUID
 if [ $(findmnt --real --raw --nofsroot --output=TARGET,UUID | grep '^/ ' | wc -l) -lt 1 ]; then
   rootid=$(findmnt --real --raw --nofsroot --output=TARGET,UUID | grep '^/mnt ' | sed 's/^\/mnt //g')
@@ -143,13 +135,15 @@ else
   rootid=$(findmnt --real --raw --nofsroot --output=TARGET,UUID | grep '^/ ' | sed 's/^\/ //g')
 fi
 
+
 # 2- Determine whether root disk is encrypted or raid+encryption
 root=$(lsblk --raw --output UUID,NAME | grep "$rootid" | sed "s/^$rootid //g")
-type=$(lsblk --raw --output UUID,TYPE | grep "$rootid" | sed "s/^$rootid //g")
+type=$(lsblk --raw --output UUID,TYPE | grep "$rootid" | sed "s/^$rootid //g" | tr -d '[0-9]')
 
 if [ "$type" = "crypt" ]; then
 
-elif [ "$type" = "raid1" ]; then
+elif [ "$type" = "raid" ]; then
+
 
 
 if [ "$(echo $root | awk -F '-' '{ print $1}')" = "luks" ]
