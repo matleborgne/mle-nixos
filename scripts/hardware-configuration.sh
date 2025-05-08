@@ -31,12 +31,12 @@ echo "{ config, lib, pkgs, ... }:
 # Loop for filesystems - fstab
 if [ $(findmnt --real --raw | grep '/ ' | wc -l) -gt 0 ]; then
   fstab=$(findmnt --noheadings --real --raw --uniq --nofsroot --output SOURCE,UUID,TARGET,FSTYPE,OPTIONS,FSROOT \
-    | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" -e "/dev/md" \
+    | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" -e "/resolv" \
     | sed -e "s/$/ _/g")
     
 else if [ $(findmnt --real --raw | grep '/mnt ' | wc -l) -gt 0 ]; then
   fstab=$(findmnt --noheadings --real --raw --uniq --nofsroot --output SOURCE,UUID,TARGET,FSTYPE,OPTIONS,FSROOT \
-    | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" -e "/dev/md" \
+    | grep -v -e "ro," -e "fuse." -e "gocryptfs" -e "sshfs" -e "/run/media" -e "/resolv" \
     | sed -e "s/$/ _/g" -e "s/\/mnt/\//g" -e "s|//|/|g")
 fi
 fi
