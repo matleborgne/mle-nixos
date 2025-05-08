@@ -141,10 +141,33 @@ root=$(lsblk --raw --output UUID,NAME | grep "$rootid" | sed "s/^$rootid //g")
 type=$(lsblk --raw --output UUID,TYPE | grep "$rootid" | sed "s/^$rootid //g" | tr -d '[0-9]')
 
 
+# 3a - Premier cas : chiffrement simple (avec ou sans FDE)
 if [ "$type" = "crypt" ]; then
   plain="$root"
   cipher="/dev/disk/by-uuid/$(echo "$root" | sed 's/luks-//g')"
 
+  # Remove entry from crypttab
+  sed -i "/$plain/d" "$hardwarefile"
+
+  # Add fullencryption
+  echo "  boot.initrd = {
+
+    luks.devices.\"$plain\" = {
+      device = \"$cipher\";
+      allowDiscards = true;
+      preLVM = true;
+      keyFile = \"/keyfile1.bin\";
+    };
+
+    secrets = {
+      \"keyfile1.bin\" = \"/etc/keys/keyfile.key\";
+    };
+
+  };
+  " >> "$hardwarefile"
+
+  
+# 3b - Second cas : chiffrement des disques avec raid derrière
 elif [ "$type" = "raid" ]; then
 
 fi
