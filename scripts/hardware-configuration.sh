@@ -136,11 +136,15 @@ echo "    '';
 #  root=$(lsblk --raw --output NAME,FSTYPE,MOUNTPOINT | rev | grep '^/' | rev)
 #fi
 
+# 1- Find root UUID
 if [ $(findmnt --real --raw --nofsroot --output=TARGET,UUID | grep '^/ ' | wc -l) -lt 1 ]; then
   rootid=$(findmnt --real --raw --nofsroot --output=TARGET,UUID | grep '^/mnt ' | sed 's/^\/mnt //g')
 else
   rootid=$(findmnt --real --raw --nofsroot --output=TARGET,UUID | grep '^/ ' | sed 's/^\/ //g')
 fi
+
+# 2- Determine whether root disk is encrypted or raid+encryption
+root=$(lsblk --raw --output UUID,NAME | grep "$rootid" | sed "s/^$rootid //g")
 
 
 
