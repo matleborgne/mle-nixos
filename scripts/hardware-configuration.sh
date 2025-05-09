@@ -138,7 +138,7 @@ fi
 
 # 2- Determine whether root disk is encrypted or raid+encryption
 root=$(lsblk --raw --output UUID,NAME | grep "$rootid" | sed "s/^$rootid //g")
-type=$(lsblk --raw --output UUID,TYPE | grep "$rootid" | sed "s/^$rootid //g" | tr -d '[0-9]')
+type=$(lsblk --raw --output UUID,TYPE | grep "$rootid" | head -n 1 | sed "s/^$rootid //g" | tr -d '[0-9]')
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
