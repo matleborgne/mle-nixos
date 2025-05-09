@@ -187,12 +187,12 @@ elif [ "$type" = "raid" ]; then
 
     # Add boot decryption
     echo "
-      luks.devices.\"$plain\" = {
-        device = \"$cipher\";
-        allowDiscards = true;
-        preLVM = true;
-        keyFile = \"/keyfile1.bin\";
-      };
+    luks.devices.\"$plain\" = {
+      device = \"$cipher\";
+      allowDiscards = true;
+      preLVM = true;
+      keyFile = \"/keyfile1.bin\";
+    };
     " >> "$hardwarefile"
 
   done
