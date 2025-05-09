@@ -141,15 +141,16 @@ root=$(lsblk --raw --output UUID,NAME | grep "$rootid" | sed "s/^$rootid //g")
 type=$(lsblk --raw --output UUID,TYPE | grep "$rootid" | sed "s/^$rootid //g" | tr -d '[0-9]')
 
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 3a - Premier cas : chiffrement simple (avec ou sans FDE)
 if [ "$type" = "crypt" ]; then
   plain="$root"
-  cipher="/dev/disk/by-uuid/$(echo "$root" | sed 's/luks-//g')"
+  cipher="/dev/disk/by-uuid/$(echo "$plain" | sed 's/luks-//g')"
 
   # Remove entry from crypttab
   sed -i "/$plain/d" "$hardwarefile"
 
-  # Add fullencryption
+  # Add boot decryption
   echo "  boot.initrd = {
 
     luks.devices.\"$plain\" = {
@@ -166,11 +167,35 @@ if [ "$type" = "crypt" ]; then
   };
   " >> "$hardwarefile"
 
-  
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 3b - Second cas : chiffrement des disques avec raid derrière
 elif [ "$type" = "raid" ]; then
-  devices=$(cat /proc/mdstat | grep md0 | cut -d ' ' -f5- | sed 's/\[[0-9]\]//g')
 
+  # Initialize the entry
+  echo "  boot.initrd = {
+  " >> "$hardwarefile"
+
+  devices=$(cat /proc/mdstat | grep "$root" | cut -d ' ' -f5- | sed 's/\[[0-9]\]//g')
+  
+  for device in $devices; do
+    plain=$(dmsetup info /dev/"$device" | grep Name | sed "s/Name://g" | tr -d ' ')
+    cipher="/dev/disk/by-uuid/$(echo "$plain" | awk -F ' ' '{ print $1 }' | tr -d '\n' | sed 's/luks-//g')"
+
+    # Remove entry from crypttab
+    sed -i "/$plain/d" "$hardwarefile"
+
+    # Add boot decryption
+    echo "
+      luks.devices.\"$plain\" = {
+        device = \"$cipher\";
+        allowDiscards = true;
+        preLVM = true;
+        keyFile = \"/keyfile1.bin\";
+      };
+    " >> "$hardwarefile"
+
+    
 fi
 
 
