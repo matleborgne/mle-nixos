@@ -218,7 +218,7 @@ echo "
 " >> "$hardwarefile"
 
 # UEFI mountpoint (/boot/efi; /efi; other)
-mountpoint=$(findmnt --noheadings --raw --real --uniq --nofsroot --output TARGET | grep -e "efi")
+mountpoint=$(findmnt --noheadings --raw --real --uniq --nofsroot --output TARGET | grep -e "efi" | head -n 1)
 echo "  boot.loader.efi.efiSysMountPoint = \"$mountpoint\";
 " >> "$hardwarefile"
 
