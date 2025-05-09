@@ -195,37 +195,19 @@ elif [ "$type" = "raid" ]; then
       };
     " >> "$hardwarefile"
 
-    
-fi
+  done
 
-
-if [ "$(echo $root | awk -F '-' '{ print $1}')" = "luks" ]
-then
-
-  plain=$(echo "$root" | awk -F ' ' '{ print $1 }' | tr -d '\n')
-  cipher="/dev/disk/by-uuid/$(echo "$root" | awk -F ' ' '{ print $1 }' | tr -d '\n' | sed 's/luks-//g')"
-
-  # Remove entry from crypttab
-  sed -i "/$plain/d" "$hardwarefile"
-
-  # Add fullencryption
-  echo "  boot.initrd = {
-
-    luks.devices.\"$plain\" = {
-      device = \"$cipher\";
-      allowDiscards = true;
-      preLVM = true;
-      keyFile = \"/keyfile1.bin\";
-    };
-
+  echo "
     secrets = {
       \"keyfile1.bin\" = \"/etc/keys/keyfile.key\";
     };
 
   };
   " >> "$hardwarefile"
-
+    
 fi
+
+
 
 echo "
 
