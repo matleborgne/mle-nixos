@@ -90,10 +90,11 @@
           ];
 
           systemd.services."rclone" = {
-            serviceConfig = {
-              Type = "oneshot";
-              ExecStart = ''${pkgs.bash}/bin/bash /var/lib/rclone/start-services.sh'';
-            };
+            wantedBy = [ "multi-user.target" ];
+            path = [ pkgs.bash ];
+            script = ''
+              bash /var/lib/rclone/start-services.sh
+            '';
           };
 
           systemd.timers."rclone" = {
