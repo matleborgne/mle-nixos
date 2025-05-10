@@ -99,7 +99,7 @@
           systemd.timers."rclone" = {
             wantedBy = [ "timers.target" ];
             timerConfig = {
-              OnCalendar = "01:08";
+              OnCalendar = "04:08";
               Unit = "rclone.service";
             };
           };
