@@ -41,7 +41,7 @@
         ip = "ip -c";
         ns = "nix-shell";
         nsp = "nix-shell --run fish -p";
-        cat = "bat -p";
+        cat = "bat -pP";
       };
       
     };
