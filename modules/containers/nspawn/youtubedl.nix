@@ -92,7 +92,6 @@
 
           systemd.services."youtubedl" = {
             wantedBy = [ "multi-user.target" ];
-            enable = false;
             path = [ pkgs.bash ];
             script = ''
               bash /var/lib/youtubedl/start-services.sh
