@@ -90,12 +90,21 @@
           ];
 
 
-          services.cron = {
-            enable = true;
-            systemCronJobs = [
-              "* * * * *      root    ${pkgs.bash}/bin/bash /var/lib/rclone/start-services.sh"
-            ];
+          systemd.services."rclone" = {
+            wantedBy = [ "multi-user.target" ];
+            path = [ pkgs.bash ];
+            script = ''
+              /var/lib/rclone/start-services.sh
+            '';
           };
+
+          #systemd.timers."rclone" = {
+          #  wantedBy = [ "timers.target" ];
+          #  timerConfig = {
+          #    OnCalendar = "*:*";
+          #    Unit = "rclone.service";
+          #  };
+          #};
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
