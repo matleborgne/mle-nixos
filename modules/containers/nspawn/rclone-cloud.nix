@@ -89,20 +89,12 @@
             bat gocryptfs rclone restic fuse
           ];
 
-          systemd.services."rclone" = {
-            wantedBy = [ "multi-user.target" ];
-            path = [ pkgs.bash pkgs.fuse ];
-            script = ''
-              bash /var/lib/rclone/start-services.sh
-            '';
-          };
 
-          systemd.timers."rclone" = {
-            wantedBy = [ "timers.target" ];
-            timerConfig = {
-              OnCalendar = "*:55";
-              Unit = "rclone.service";
-            };
+          services.cron = {
+            enable = true;
+            systemCronJobs = [
+              "* * * * *      root    ${pkgs.bash}/bin/bash /var/lib/rclone/start-services.sh"
+            ];
           };
 
 
