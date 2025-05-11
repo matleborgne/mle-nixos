@@ -91,7 +91,7 @@
 
           systemd.services."rclone" = {
             wantedBy = [ "multi-user.target" ];
-            path = [ pkgs.bash ];
+            path = [ pkgs.bash pkgs.fuse ];
             script = ''
               bash /var/lib/rclone/start-services.sh
             '';
