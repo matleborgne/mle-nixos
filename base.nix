@@ -115,6 +115,7 @@ in
     lm_sensors duf neofetch htop vim bat
     p7zip gnutar
     cron rsync restic wget curl
+    gocryptfs
   ];
 
 
