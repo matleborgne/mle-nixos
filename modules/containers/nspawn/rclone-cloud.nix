@@ -90,6 +90,7 @@
           ];
 
           systemd.services."rclone" = {
+            enable = false;
             wantedBy = [ "multi-user.target" ];
             path = [ pkgs.bash ];
             script = ''
