@@ -91,10 +91,12 @@
 
 
           systemd.services."youtubedl" = {
-            serviceConfig = {
-              Type = "oneshot";
-              ExecStart = ''${pkgs.bash}/bin/bash /var/lib/youtubedl/start-services.sh'';
-            };
+            wantedBy = [ "multi-user.target" ];
+            enable = false;
+            path = [ pkgs.bash ];
+            script = ''
+              bash /var/lib/youtubedl/start-services.sh
+            '';
           };
 
           systemd.timers."youtubedl" = {
