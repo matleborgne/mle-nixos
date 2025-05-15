@@ -52,7 +52,7 @@
         # inside the list
       
         listToAttrs [
-          (fs "first_dir") (fs "second_dir") (fs "subdir_here/third_dir")
+          (fs "first_mount") (fs "second_mount") (fs "subdir_here/third_mount")
         ];      
 
 
