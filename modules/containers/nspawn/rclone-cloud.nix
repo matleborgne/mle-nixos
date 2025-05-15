@@ -78,11 +78,13 @@
           imports = [
             ../../apps/fish.nix
             ../../misc/networkd.nix
+            ../../../secrets/gocryptfs/reverse-n2-fs.nix
           ];
 
           mle = {
             apps.fish.enable = true;
             misc.networkd.enable = true;
+            secrets.gocryptfs.reverse-n2-fs.nix;
           };
 
 
