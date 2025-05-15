@@ -48,7 +48,7 @@
     
       in
         # Put below your mounts, following the form
-        # (fs "name_of_dir_under_/plain")
+        # (fs "relative_path_under_/plain")
         # inside the list
       
         listToAttrs [
