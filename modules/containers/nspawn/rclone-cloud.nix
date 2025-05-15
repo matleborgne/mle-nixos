@@ -29,6 +29,7 @@
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       mle.misc.nixos-containers.enable = lib.mkForce true;
+      mle.secrets.gocryptfs-reverse.enable = true;
 
       systemd.tmpfiles.rules = [
         "d /srv - - - -"
@@ -77,13 +78,11 @@
           imports = [
             ../../apps/fish.nix
             ../../misc/networkd.nix
-            ../../../secrets/gocryptfs-reverse.nix
           ];
 
           mle = {
             apps.fish.enable = true;
             misc.networkd.enable = true;
-            secrets.gocryptfs-reverse.enable = true;
           };
 
 
