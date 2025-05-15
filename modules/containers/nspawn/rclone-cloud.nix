@@ -77,7 +77,7 @@
           imports = [
             ../../apps/fish.nix
             ../../misc/networkd.nix
-            ../../secrets/gocryptfs-reverse.nix
+            ../../../secrets/gocryptfs-reverse.nix
           ];
 
           mle = {
