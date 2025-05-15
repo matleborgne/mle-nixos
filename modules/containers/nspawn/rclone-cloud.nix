@@ -29,7 +29,6 @@
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       mle.misc.nixos-containers.enable = lib.mkForce true;
-      #mle.secrets.gocryptfs.reverse-n2-systemd.enable = true;
 
       systemd.tmpfiles.rules = [
         "d /srv - - - -"
@@ -50,7 +49,6 @@
 
         bindMounts = {
           "/mnt/nas" = { hostPath = "/srv"; isReadOnly = false; };
-          #"/mnt/reverse" = { hostPath = "/var/reverse"; isReadOnly = false; };
           "/dev/fuse" = { hostPath = "/dev/fuse"; isReadOnly = false; };
           "/var/lib/rclone" = { hostPath = "/var/lib/rclone"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
@@ -102,13 +100,13 @@
             '';
           };
 
-          #systemd.timers."rclone" = {
-          #  wantedBy = [ "timers.target" ];
-          #  timerConfig = {
-          #    OnCalendar = "*:*";
-          #    Unit = "rclone.service";
-          #  };
-          #};
+          systemd.timers."rclone" = {
+            wantedBy = [ "timers.target" ];
+            timerConfig = {
+              OnCalendar = "*:0";
+              Unit = "rclone.service";
+            };
+          };
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
