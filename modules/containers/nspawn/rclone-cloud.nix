@@ -84,7 +84,7 @@
           mle = {
             apps.fish.enable = true;
             misc.networkd.enable = true;
-            secrets.gocryptfs.reverse-n2-fs.nix;
+            secrets.gocryptfs.reverse-n2-fs.enable = true;
           };
 
 
