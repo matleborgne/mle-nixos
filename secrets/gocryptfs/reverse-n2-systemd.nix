@@ -45,11 +45,11 @@
 
               # Stop files being accidentally written to unmounted directory
               ExecStartPre = [
-                "${pkgs.coreutils}/bin/mkdir -m 0500 -pv /var/reverse/${relPath}"
-                "${pkgs.e2fsprogs}/bin/chattr +i /var/reverse/${relPath}"
+                "${pkgs.coreutils}/bin/mkdir -m 0500 -pv /cipher/${relPath}"
+                "${pkgs.e2fsprogs}/bin/chattr +i /cipher/${relPath}"
               ];
               ExecStart = ''
-                ${pkgs.gocryptfs}/bin/gocryptfs -reverse -allow_other -passfile /etc/nixos/build/secrets/keys/restic_passfile "/srv/${relPath}" "/var/reverse/${relPath}"
+                ${pkgs.gocryptfs}/bin/gocryptfs -reverse -allow_other -passfile /passfile "/plain/${relPath}" "/cipher/${relPath}"
               '';
               KillMode = "process";
               Restart = "on-failure";
@@ -64,8 +64,8 @@
           value = {
             wantedBy = [ "multi-user.target" ];
             script = ''
-              if [ "$(${pkgs.gocryptfs}/bin/gocryptfs -reverse -info /srv/${relPath} | grep -c 'Creator')" -lt 1 ] ; then
-                ${pkgs.gocryptfs}/bin/gocryptfs -reverse -init "/srv/${relPath}" -passfile /etc/nixos/build/secrets/keys/restic_passfile
+              if [ "$(${pkgs.gocryptfs}/bin/gocryptfs -reverse -info /plain/${relPath} | grep -c 'Creator')" -lt 1 ] ; then
+                ${pkgs.gocryptfs}/bin/gocryptfs -reverse -init "/plain/${relPath}" -passfile /passfile
               fi
             '';
           };
@@ -73,6 +73,10 @@
         };
 
       in
+        # Put below your mounts, following the form
+        # (fs "short_name_for_the_service" "relative_path_under_/plain")
+        # inside the list
+
         listToAttrs [        
           (initr "shortName1" "relPath1") (initr "shortName2" "relPath2") (initr "shortName3" "subdir_here/relPath3")
           (mount "shortName1" "relPath1") (mount "shortName2" "relPath2") (mount "shortName3" "subdir_here/relPath3")
