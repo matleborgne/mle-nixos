@@ -35,21 +35,6 @@
         "d /var/lib/rclone - - - -"
       ];
 
-      systemd.services."gocryptfs-reverse" = {
-        wantedBy = [ "multi-user.target" ];
-        path = [ pkgs.bash pkgs.gocryptfs ];
-        script = ''
-          bash /var/lib/rclone/hostmounts.sh
-        '';
-      };
-
-      systemd.timers."gocryptfs-reverse" = {
-        wantedBy = [ "timers.target" ];
-        timerConfig = {
-          OnCalendar = "*:0";
-          Unit = "gocryptfs-reverse.service";
-        };
-      };
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # Container structure
@@ -92,6 +77,7 @@
           imports = [
             ../../apps/fish.nix
             ../../misc/networkd.nix
+            ../../secrets/gocryptfs-reverse.nix
           ];
 
           mle = {
@@ -101,7 +87,7 @@
 
 
           environment.systemPackages = with pkgs; [
-            bat rclone restic
+            bat rclone restic gocryptfs
           ];
 
 
