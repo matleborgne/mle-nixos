@@ -32,6 +32,7 @@
 
       systemd.tmpfiles.rules = [
         "d /srv - - - -"
+        "d /var/reverse - - - -"
         "d /var/lib/rclone - - - -"
       ];
 
