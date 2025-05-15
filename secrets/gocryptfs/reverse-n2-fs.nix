@@ -39,8 +39,8 @@
         fs = mountPoint: {
           name = "${mountPoint}";
           value = {
-            device = "/mnt/nas/${mountPoint}";
-            mountPoint = "/mnt/reverse/${mountPoint}";
+            device = "/plain/${mountPoint}";
+            mountPoint = "/cipher/${mountPoint}";
             fsType = "fuse./run/current-system/sw/bin/gocryptfs";
             options = [ "rw" "reverse" "allow_other" "passfile=/passfile" ];
           };
@@ -48,7 +48,7 @@
     
       in
         # Put below your mounts, following the form
-        # (fs "name_of_dir_under_/mnt/nas")
+        # (fs "name_of_dir_under_/plain")
         # inside the list
       
         listToAttrs [
