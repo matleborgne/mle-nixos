@@ -33,11 +33,8 @@
 
       systemd.tmpfiles.rules = [
         "d /srv - - - -"
-        "d /var/reverse - - - -"
         "d /var/lib/rclone - - - -"
       ];
-
-      #imports = [ ../../../secrets/gocryptfs-reverse.nix ];
 
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -81,11 +78,13 @@
           imports = [
             ../../apps/fish.nix
             ../../misc/networkd.nix
+            ../../../secrets/gocryptfs-reverse.nix
           ];
 
           mle = {
             apps.fish.enable = true;
             misc.networkd.enable = true;
+            secrets.gocryptfs-reverse.enable = true;
           };
 
 
