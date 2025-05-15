@@ -49,8 +49,8 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/dev/fuse" = { hostPath = "/dev/fuse"; isReadOnly = false; };
           "/mnt/nas" = { hostPath = "/srv"; isReadOnly = false; };
+          "/mnt/reverse" = { hostPath = "/var/reverse"; isReadOnly = false; };
           "/var/lib/rclone" = { hostPath = "/var/lib/rclone"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
