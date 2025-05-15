@@ -43,6 +43,13 @@
         '';
       };
 
+      systemd.timers."gocryptfs-reverse" = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+          OnCalendar = "*:0";
+          Unit = "gocryptfs-reverse.service";
+        };
+      };
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # Container structure
@@ -57,6 +64,7 @@
 
         bindMounts = {
           "/mnt/nas" = { hostPath = "/srv"; isReadOnly = false; };
+          "/mnt/reverse" = { hostPath = "/var/reverse"; isReadOnly = false; };
           "/var/lib/rclone" = { hostPath = "/var/lib/rclone"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
@@ -93,7 +101,7 @@
 
 
           environment.systemPackages = with pkgs; [
-            bat gocryptfs rclone restic
+            bat rclone restic
           ];
 
 
