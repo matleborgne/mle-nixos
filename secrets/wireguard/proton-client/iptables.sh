@@ -17,7 +17,7 @@ wgface="proton0"
 # Other secret settings to change
 # according to your needs
 addrRange=192.168.0.0/24
-anyWebuiPort=8000
+anyWebuiPort=80
 sshPort=22
 udpPorts="53,1300:1302,1194:1197,51820"
 
