@@ -40,6 +40,7 @@
         home-manager.nixosModules.default
         ./base.nix
       ] ++ (import (builtins.toPath ./modules/imports.nix))
+        ++ (import (builtins.toPath ./pkgs/imports.nix))
         ++ (import (builtins.toPath ./secrets/imports.nix));
 
 
