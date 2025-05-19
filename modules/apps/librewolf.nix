@@ -28,7 +28,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     nixpkgs.overlays = [
-      (librewolf = pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {};)
+      (librewolf = pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {})
     ];
 
     programs.librewolf = {
