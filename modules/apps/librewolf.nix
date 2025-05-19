@@ -23,7 +23,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = [
-      (pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {};)
+      (pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {})
     ];
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
