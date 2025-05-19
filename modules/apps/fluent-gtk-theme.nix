@@ -16,7 +16,12 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.fluent-gtk-theme.enable {
+  config = lib.mkIf config.mle.apps.fluent-gtk-theme.enable (
+
+    let
+      fluent-gtk-theme = pkgs.callPackage ../../pkgs/fluent-gtk-theme.nix {};
+
+    in {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -41,6 +46,5 @@
       })
     ];
 
-  };
-
+  });
 }
