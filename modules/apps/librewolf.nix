@@ -28,12 +28,12 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     # TODO: overlay instead of fork
-    nixpkgs.overlays = [
+    with (nixpkgs.overlays = [
       (final: prev: {
         firefox = prev.firefox.override { package = pkgs.librewolf; };
         librewolf = final.firefox;
       })
-    ];
+    ]);
 
     programs.librewolf = {
       enable = true;
