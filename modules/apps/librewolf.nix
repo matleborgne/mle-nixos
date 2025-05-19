@@ -27,12 +27,6 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    nixpkgs.overlays = [
-      (final: {
-        librewolf = pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {};
-      })
-    ];
-
     programs.librewolf = {
       enable = true;
       wrapperConfig.pipewireSupport = true;
