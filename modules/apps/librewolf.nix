@@ -23,7 +23,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     #imports = [ ../../pkgs/librewolf.nix ];
-    pkgs.callPackage /../../pkgs/librewolf.nix {};
+    pkgs.callPackage ../../pkgs/librewolf.nix {};
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation and customization of APP
