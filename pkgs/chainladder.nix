@@ -5,13 +5,7 @@
   ...
 }:
 
-let
-  cfg = config.programs.chainladder;
-
-in
 {
-  options.programs.chainladder = {
-
     python3Packages.buildPythonPackage rec {
       pname = "chainladder";
       version = "0.8.24";
@@ -55,5 +49,4 @@ in
       ];
     }
 
-  };
 }
