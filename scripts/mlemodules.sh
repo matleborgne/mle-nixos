@@ -24,12 +24,6 @@ echo '[ '$(find "$current/../modules" -name '*.nix' \
           | sed -e "s|$current/||g")' ]' \
           > "$current/../modules/imports.nix"
 
-# pkgs
-echo '[ '$(find "$current/../pkgs" -name '*.nix' \
-          | grep -v "/imports.nix" \
-          | sed -e "s|$current/||g")' ]' \
-          > "$current/../pkgs/imports.nix"
-
 # secrets/mlesecrets.nix but hardware conf
 echo '[ '$(find "$current/../secrets" -name '*.nix' \
           | grep -v "/imports.nix" \
