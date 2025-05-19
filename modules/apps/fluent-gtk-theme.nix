@@ -29,7 +29,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = with pkgs; [
-      (builtins.getFlake "github:matleborgne/Fluent-gtk-theme/0b928a6f79def741a26eb252fbed0fb6d121c149").packages.x86_64-linux.default
+      (builtins.getFlake "github:matleborgne/Fluent-gtk-theme/897e7f3f1d0ef02efdce848c5e0ff86c7ab12d71").packages.x86_64-linux.default
     ];
 
   };
