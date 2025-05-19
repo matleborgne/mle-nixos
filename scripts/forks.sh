@@ -21,7 +21,7 @@ current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 fork() {
   source=${1}
   if [ -z ${2} ]; then target=${1}; else target=${2}; fi 
-  targetPath="${current}/../forks/${target}.nix"
+  targetPath="${current}/../modules/forks/${target}.nix"
 
   wget "$github/$source.nix" -O "$targetPath"
 }
@@ -33,9 +33,9 @@ fork() {
 
 # Librewolf
 fork firefox librewolf
-sed -i "s/firefox/librewolf/g" "$current/../forks/librewolf.nix"
-sed -i "s/Firefox/Librewolf/g" "$current/../forks/librewolf.nix"
+sed -i "s/firefox/librewolf/g" "$current/../modules/forks/librewolf.nix"
+sed -i "s/Firefox/Librewolf/g" "$current/../modules/forks/librewolf.nix"
 
 # Fluent-gtk-theme
 fork fluent-gtk-theme
-sed -i "s/icon nixos/icon default/g" "$current/../forks/fluent-gtk-theme.nix"
+sed -i "s/icon nixos/icon default/g" "$current/../modules/forks/fluent-gtk-theme.nix"
