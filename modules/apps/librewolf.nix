@@ -22,7 +22,8 @@
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #import = [ ../forks/firefox-to-librewolf.nix ];
+    #import = [ ../../pkgs/librewolf.nix ];
+    pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {};
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation and customization of APP
