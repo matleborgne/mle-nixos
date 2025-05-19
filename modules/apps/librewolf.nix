@@ -16,12 +16,7 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.librewolf.enable (
-
-    let
-      librewolf = pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {};
-
-    in {
+  config = lib.mkIf config.mle.apps.librewolf.enable {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -31,6 +26,10 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    nixpkgs.overlays = [
+      (librewolf = pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {};)
+    ];
 
     programs.librewolf = {
       enable = true;
@@ -160,5 +159,5 @@
 
 
 
-  });
+  };
 }
