@@ -23,7 +23,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     #imports = [ ../../pkgs/librewolf.nix ];
-    pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {};
+    import ../../pkgs.librewolf.nix;
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation and customization of APP
