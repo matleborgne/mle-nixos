@@ -76,7 +76,7 @@
             ../../apps/wireguard/proton-client.nix
             ../../apps/qbittorrent.nix
             ../../apps/fish.nix
-            ../../forks/qbittorrent.nix
+            ../../../pkgs/qbittorrent.nix
             ../../misc/networkd.nix
           ];
 
