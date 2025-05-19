@@ -27,6 +27,14 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    # TODO: overlay instead of fork
+    nixpkgs.overlays = [
+      (final: prev: {
+        firefox = prev.firefox.override { package = pkgs.librewolf };
+        librewolf = final.firefox;
+      })
+    ];
+
     programs.librewolf = {
       enable = true;
       wrapperConfig.pipewireSupport = true;
