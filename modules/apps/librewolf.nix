@@ -23,7 +23,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     #imports = [ ../../pkgs/librewolf.nix ];
-    import ../../pkgs.librewolf.nix;
+    import (builtins.readFile ../../pkgs.librewolf.nix);
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation and customization of APP
