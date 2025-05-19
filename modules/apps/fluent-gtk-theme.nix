@@ -38,6 +38,7 @@
         colorVariants = [ "dark" ];
         sizeVariants = [ "standard" ];
         tweaks = [ "solid" "square" "round" ];
+      };
     )];
 
   };
