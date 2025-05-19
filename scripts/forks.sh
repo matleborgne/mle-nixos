@@ -23,7 +23,7 @@ fork() {
   target=${2}
   targetPath="${current}/../modules/forks/${target}.nix"
 
-  wget "$github/$source.nix" -O "$targetPath"
+  wget "$github/$source" -O "$targetPath"
 }
   
 
