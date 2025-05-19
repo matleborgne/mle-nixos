@@ -37,7 +37,7 @@
         themeVariants = [ "default" ];
         colorVariants = [ "dark" ];
         sizeVariants = [ "standard" ];
-        tweaks = [ "solid" "square" "round" "--icon default" ];
+        tweaks = [ "solid" "square" "round" ];
       })
     ];
 
