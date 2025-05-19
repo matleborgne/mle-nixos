@@ -13,6 +13,21 @@
   tweaks ? [ ],
 }:
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# PKGS - PACKAGES
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Packages are FUNCTIONS, not MODULES
+# They should never been imported as a module (with import function)
+# or it could be an rebuild-error
+
+# To use a package, use something like
+#let
+#  myPackage = pkgs.callPackage /etc/nixos/build/pkgs/myPackage.nix {};
+#in
+#  environment.systemPackage = [ myPackage ] or mkShell or whatever
+
+
 let
   pname = "fluent-gtk-theme";
 in
