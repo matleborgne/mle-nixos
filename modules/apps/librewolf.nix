@@ -22,8 +22,9 @@
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #imports = [ ../../pkgs/librewolf.nix ];
-    import (builtins.readFile ../../pkgs.librewolf.nix);
+    environment.systemPackages = [
+      (pkgs.callPackage /etc/nixos/build/pkgs/librewolf.nix {};)
+    ];
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation and customization of APP
