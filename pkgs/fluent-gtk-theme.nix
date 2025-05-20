@@ -7,30 +7,37 @@
   gtk-engine-murrine,
   jdupes,
   sassc,
+  iconVariants ? [ ], # default: default
   themeVariants ? [ ], # default: blue
   colorVariants ? [ ], # default: all
   sizeVariants ? [ ], # default: standard
   tweaks ? [ ],
 }:
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# PKGS - PACKAGES
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-# Packages are FUNCTIONS, not MODULES
-# They should never been imported as a module (with import function)
-# or it could be an rebuild-error
-
-# To use a package, use something like
-#let
-#  myPackage = pkgs.callPackage /etc/nixos/build/pkgs/myPackage.nix {};
-#in
-#  environment.systemPackage = [ myPackage ] or mkShell or whatever
-
-
 let
   pname = "fluent-gtk-theme";
 in
+lib.checkListOfEnum "${pname}: icon variants"
+  [
+    "default"
+    "apple"
+    "simple"
+    "gnome"
+    "ubuntu"
+    "arch"
+    "manjaro"
+    "fedora"
+    "debian"
+    "void"
+    "opensuse"
+    "popos"
+    "mxlinux"
+    "zorin"
+    "endeavouros"
+    "tux"
+    "nixos"
+  ]
+iconVariants
 lib.checkListOfEnum "${pname}: theme variants"
   [
     "default"
@@ -105,6 +112,7 @@ lib.checkListOfEnum "${pname}: theme variants"
         ${lib.optionalString (colorVariants != [ ]) "--color " + builtins.toString colorVariants} \
         ${lib.optionalString (sizeVariants != [ ]) "--size " + builtins.toString sizeVariants} \
         ${lib.optionalString (tweaks != [ ]) "--tweaks " + builtins.toString tweaks} \
+        ${lib.optionalString (iconVariants != [ ]) "--icon " + builtins.toString iconVariants} \
         --dest $out/share/themes
 
       jdupes --quiet --link-soft --recurse $out/share
