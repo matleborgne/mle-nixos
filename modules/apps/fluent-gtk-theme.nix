@@ -18,10 +18,11 @@
 
   config = lib.mkIf config.mle.apps.fluent-gtk-theme.enable (
 
-    let
-      fluent-gtk-theme = pkgs.callPackage ../../pkgs/fluent-gtk-theme.nix {};
+    #let
+    #  fluent-gtk-theme = pkgs.callPackage ../../pkgs/fluent-gtk-theme.nix {};
 
-    in {
+    #in
+    {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -33,18 +34,18 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #environment.systemPackages = with pkgs; [
-    #  (builtins.getFlake "github:matleborgne/Fluent-gtk-theme/ac0794dcf9e5847fab9263a3b6123e3438863dfa").packages.x86_64-linux.default
-    #];
-
     environment.systemPackages = with pkgs; [
-      (fluent-gtk-theme.override {
-        themeVariants = [ "default" ];
-        colorVariants = [ "dark" ];
-        sizeVariants = [ "standard" ];
-        tweaks = [ "solid" "square" "round" ];
-      })
+      (builtins.getFlake "github:matleborgne/Fluent-gtk-theme/62744fc444e00f26f8c42107cefcb7498522c18a").packages.x86_64-linux.default
     ];
+
+    #environment.systemPackages = with pkgs; [
+    #  (fluent-gtk-theme.override {
+    #    themeVariants = [ "default" ];
+    #    colorVariants = [ "dark" ];
+    #    sizeVariants = [ "standard" ];
+    #    tweaks = [ "solid" "square" "round" ];
+    #  })
+    #];
 
   });
 }
