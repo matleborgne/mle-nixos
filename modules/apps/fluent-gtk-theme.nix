@@ -35,7 +35,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = with pkgs; [
-      (builtins.getFlake "github:matleborgne/Fluent-gtk-theme/62744fc444e00f26f8c42107cefcb7498522c18a").packages.x86_64-linux.default
+      (builtins.getFlake "github:matleborgne/Fluent-gtk-theme/bba52f563f6823a6fe095bab4b945e0306a67bf8").packages.x86_64-linux.default
     ];
 
     #environment.systemPackages = with pkgs; [
