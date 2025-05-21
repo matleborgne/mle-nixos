@@ -9,8 +9,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    fluent-gtk-theme.url = "github:matleborgne/Fluent-gtk-theme";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,7 +24,6 @@
   outputs = {
     self,
     nixpkgs,
-    fluent-gtk-theme,
     home-manager,
     ...
   }
