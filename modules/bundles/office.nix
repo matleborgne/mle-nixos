@@ -33,7 +33,7 @@
       cherrytree
 
       pdfarranger
-      gimp3   
+      gimp3-with-plugins   
       drawio
 
       bitwarden
