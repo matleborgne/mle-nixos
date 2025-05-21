@@ -15,7 +15,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     mle = {
-      apps.fluent-gtk-theme.enable = true;
+      #apps.fluent-gtk-theme.enable = true;
       
       desktop.gnome = {
         default.enable = true;
