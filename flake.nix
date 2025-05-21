@@ -8,7 +8,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    #nix-colors.url = "github:Misterio77/nix-colors";
+
+    fluent-gtk-theme.url = "github:matleborgne/Fluent-gtk-theme";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -25,6 +26,7 @@
   outputs = {
     self,
     nixpkgs,
+    fluent-gtk-theme,
     home-manager,
     ...
   }
@@ -53,7 +55,7 @@
 
       lx600 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/lx600.nix ];
+        modules = basicModules ++ [ ./roles/lx600.nix fluent-gtk-theme ];
       };
 
 
