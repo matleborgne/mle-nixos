@@ -49,6 +49,7 @@
       adguardhome.enable = true;
       rclone-cloud.enable = true;
       home-assistant.enable = true;
+      jellyfin.enable = true;
       sshfs.enable = true;
       samba.enable = true;
       scrutiny.enable = true;
