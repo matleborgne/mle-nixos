@@ -9,18 +9,18 @@
 
 {
 
-  options.mle.containers.nspawn.plexserver.enable = lib.mkOption {
-    description = "Configure plexserver nspawn container";
+  options.mle.containers.nspawn.jellyfin.enable = lib.mkOption {
+    description = "Configure jellyfin nspawn container";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.containers.nspawn.plexserver.enable (
+  config = lib.mkIf config.mle.containers.nspawn.jellyfin.enable (
 
     let
-      name = "plexserver";
+      name = "jellyfin";
       net = (import ../../../secrets/keys/netIface);
-      address = (import ../../../secrets/containers_ips).plexserver;
+      address = (import ../../../secrets/containers_ips).jellyfin;
 
     in {
 
@@ -31,7 +31,7 @@
       mle.misc.nixos-containers.enable = lib.mkForce true;
 
       systemd.tmpfiles.rules = [
-        "d /var/lib/plex - - - -"
+        "d /var/lib/jellyfin - - - -"
         "d /srv - - - -"
       ];
 
@@ -48,9 +48,9 @@
         macvlans = net.ifaceList;
 
         bindMounts = {
-          "/var/lib/plex" = { hostPath = "/var/lib/plex"; isReadOnly = false; };
+          "/var/lib/jellyfin" = { hostPath = "/var/lib/jellyfin"; isReadOnly = false; };
           "/mnt/nfs/vid" = { hostPath = "/srv/vid"; isReadOnly = true; };
-          "/mnt/nfs/bkp/lxc/552-plexserver" = { hostPath = "/srv/bkp/lxc/552-plexserver"; isReadOnly = false; };
+          "/mnt/nfs/bkp/lxc/560-jellyfin" = { hostPath = "/srv/bkp/lxc/560-jellyfin"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
@@ -66,20 +66,20 @@
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
           systemd.tmpfiles.rules = [
-            "d /var/lib/plex 700 plex plex -"
+            "d /var/lib/jellyfin 700 jellyfin jellyfin -"
             "d /mnt/nfs/vid - - - -"
             "d /mnt/nfs/bkp/lxc/552-plexserver - - - -"
           ];
 
           imports = [
-            ../../apps/plexserver.nix
+            ../../apps/jellyfin.nix
             ../../apps/fish.nix
             ../../misc/networkd.nix
           ];
 
           mle = {
             apps = {
-              plexserver.enable = true;
+              jellyfin.enable = true;
               fish.enable = true;
             };
             misc = {
@@ -96,10 +96,10 @@
 
           services.restic.backups = {
 
-            plex = {
+            jellyfin = {
               initialize = false;
-              repository = "/mnt/nfs/bkp/lxc/552-plexserver";
-              paths = [ "/var/lib/plex" ];
+              repository = "/mnt/nfs/bkp/lxc/560-jellyfin";
+              paths = [ "/var/lib/jellyfin" ];
               passwordFile = "/passfile";
               pruneOpts = [ "--keep-weekly 5" "--keep-monthly 3" ];
               timerConfig = {
