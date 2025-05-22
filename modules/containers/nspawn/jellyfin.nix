@@ -49,8 +49,8 @@
 
         bindMounts = {
           "/var/lib/jellyfin" = { hostPath = "/var/lib/jellyfin"; isReadOnly = false; };
-          "/mnt/nfs/vid" = { hostPath = "/srv/vid"; isReadOnly = true; };
-          "/mnt/nfs/bkp/lxc/560-jellyfin" = { hostPath = "/srv/bkp/lxc/560-jellyfin"; isReadOnly = false; };
+          "/srv/vid" = { hostPath = "/srv/vid"; isReadOnly = true; };
+          "/srv/bkp/lxc/560-jellyfin" = { hostPath = "/srv/bkp/lxc/560-jellyfin"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
         };
 
@@ -67,8 +67,8 @@
 
           systemd.tmpfiles.rules = [
             "d /var/lib/jellyfin 700 jellyfin jellyfin -"
-            "d /mnt/nfs/vid - - - -"
-            "d /mnt/nfs/bkp/lxc/552-plexserver - - - -"
+            "d /srv/vid - - - -"
+            "d /srv/bkp/lxc/560-jellyfin - - - -"
           ];
 
           imports = [
@@ -109,7 +109,6 @@
             };
 
           };
-
 
 
         };
