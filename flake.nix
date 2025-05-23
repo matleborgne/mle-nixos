@@ -50,6 +50,12 @@
     # Configurations
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+      tplDesktop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = basicModules ++ [ ./roles/tplDesktop.nix ];
+      };
+
+
       lx600 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = basicModules ++ [ ./roles/lx600.nix ];
