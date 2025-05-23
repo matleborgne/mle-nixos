@@ -137,7 +137,7 @@ in
     loader = {
 
       efi = {
-        canTouchEfiVariables = lib.mkDefault true;
+        #canTouchEfiVariables = lib.mkDefault true;
         efiSysMountPoint = lib.mkDefault "/efi";
       };
 
