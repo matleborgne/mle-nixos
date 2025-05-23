@@ -36,15 +36,6 @@ in
       extraGroups = [ "udev" "users" "input" "video" "wheel" "fuse" "networkmanager" ];    
     };
 
-    # Optional custom filesystems (custom but not restricted to user here)
-    #fileSystems = {
-    #  "/var/media/foo" = {
-    #      device = "bar";
-    #      fsType = "foo-bar";
-    #      options = [ "allow_other" "_netdev" "noauto" ];
-    #  };
-    #};
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Configuration of user (home-manager)
