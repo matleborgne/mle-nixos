@@ -47,7 +47,7 @@ in
       home = {
         stateVersion = "24.11";
       
-        unherit username;
+        inherit username;
         homeDirectory = "/home/${username}";
 
         # Package specific to user
