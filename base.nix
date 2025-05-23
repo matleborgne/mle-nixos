@@ -147,6 +147,7 @@ in
         efiSupport = lib.mkDefault true;
         enableCryptodisk = lib.mkDefault true;
         useOSProber = lib.mkDefault true;
+        efiInstallAsRemovable = lib.mkDefault true;
       };
     };
 
