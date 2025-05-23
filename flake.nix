@@ -50,9 +50,9 @@
     # Configurations
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      tplDesktop = nixpkgs.lib.nixosSystem {
+      tpldesktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/tplDesktop.nix ];
+        modules = basicModules ++ [ ./roles/tpldesktop.nix ];
       };
 
 
