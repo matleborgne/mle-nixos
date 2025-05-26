@@ -25,7 +25,7 @@
   # For portable installations
   boot.loader = {
     efi.canTouchEfiVariables = false;
-    grub.efiInstallAsRemovable = lib.mkDefault true;
+    grub.efiInstallAsRemovable = true;
   };
   
 
