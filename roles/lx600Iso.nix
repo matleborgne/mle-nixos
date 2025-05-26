@@ -22,6 +22,8 @@
   # Testing kernel because of new hardware
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  boot.loader.grub.enable = false;
+
   # Imports modules for iso creation
   #imports = [
   #  <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
