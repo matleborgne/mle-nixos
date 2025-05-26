@@ -137,7 +137,7 @@ in
     loader = {
 
       efi = {
-        #canTouchEfiVariables = lib.mkDefault true;
+        canTouchEfiVariables = lib.mkDefault true;
         efiSysMountPoint = lib.mkDefault "/efi";
       };
 
@@ -147,7 +147,7 @@ in
         efiSupport = lib.mkDefault true;
         enableCryptodisk = lib.mkDefault true;
         useOSProber = lib.mkDefault true;
-        efiInstallAsRemovable = lib.mkDefault true;
+        #efiInstallAsRemovable = lib.mkDefault true;
       };
     };
 
