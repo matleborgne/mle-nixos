@@ -70,9 +70,9 @@
         modules = basicModules ++ [ ./roles/lx600.nix ];
       };
 
-      lx600-iso = nixpkgs.lib.nixosSystem {
+      lx600Iso = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ isoModules ++ [ ./roles/lx600-iso.nix ];
+        modules = basicModules ++ isoModules ++ [ ./roles/lx600Iso.nix ];
       };
 
 
