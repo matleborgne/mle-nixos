@@ -37,7 +37,8 @@
 
   mle = {
     apps.librewolf.enable = true;
-    desktop.gnome.default.enable = true;   
+    desktop.gnome.default.enable = true;
+    hardware.rtl8125.enable = true;
   };
 
 
