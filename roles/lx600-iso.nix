@@ -22,6 +22,11 @@
   # Testing kernel because of new hardware
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  # Imports modules for iso creation
+  imports = [
+    <nixpkgs/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix>
+    <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
+  ];
 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
