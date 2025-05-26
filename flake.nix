@@ -42,6 +42,15 @@
         ++ (import (builtins.toPath ./secrets/imports.nix));
 
 
+      # Specific modules for ISO generation
+      isoModules = [
+        ({ pkgs, modulesPath, ... }: {
+          imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
+          environment.systemPackages = [ pkgs.neovim ];
+        })
+      ];
+        
+
     in {
 
     nixosConfigurations = {
@@ -59,6 +68,11 @@
       lx600 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = basicModules ++ [ ./roles/lx600.nix ];
+      };
+
+      lx600-iso = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = basicModules ++ isoModules ++ [ ./roles/lx600-iso.nix ];
       };
 
 
