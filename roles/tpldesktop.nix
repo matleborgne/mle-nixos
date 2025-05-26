@@ -22,7 +22,12 @@
   # Testing kernel because of new hardware
   boot.kernelPackages = pkgs.linuxPackages;
 
-
+  # For portable installations
+  boot.loader = {
+    efi.canTouchEfiVariables = false;
+    grub.efiInstallAsRemovable = lib.mkDefault true;
+  };
+  
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 2- Activation of mle.modules
