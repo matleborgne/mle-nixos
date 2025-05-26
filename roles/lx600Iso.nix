@@ -37,12 +37,7 @@
 
   mle = {
     apps.librewolf.enable = true;
-    desktop.gnome.default.enable = true;
-
-    secrets = {
-      openssh-server.enable = true;
-    };
-    
+    desktop.gnome.default.enable = true;   
   };
 
 
