@@ -38,8 +38,11 @@
         ({ nixpkgs.config.allowUnfree = true; })
         home-manager.nixosModules.default
         ./base.nix
-      ] ++ (import (builtins.toPath ./modules/imports.nix))
-        ++ (import (builtins.toPath ./secrets/imports.nix));
+      ] ++ (import (builtins.toPath ./modules/imports.nix));
+
+
+      # Secrets modules
+      secretsModules = (import (builtins.toPath ./secrets/imports.nix));
 
 
       # Specific modules for ISO generation
@@ -61,13 +64,13 @@
 
       tpldesktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/tpldesktop.nix ];
+        modules = basicModules ++ secretsModules ++ [ ./roles/tpldesktop.nix ];
       };
 
 
       lx600 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/lx600.nix ];
+        modules = basicModules ++ secretsModules ++ [ ./roles/lx600.nix ];
       };
 
       lx600Iso = nixpkgs.lib.nixosSystem {
@@ -78,25 +81,25 @@
 
       yoga = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/yoga.nix ];
+        modules = basicModules ++ secretsModules ++ [ ./roles/yoga.nix ];
       };
 
 
       n2 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/n2.nix ];
+        modules = basicModules ++ secretsModules ++ [ ./roles/n2.nix ];
       };
 
 
       sgpc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/sgpc.nix ];
+        modules = basicModules ++ secretsModules ++ [ ./roles/sgpc.nix ];
       };
 
 
       ridge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = basicModules ++ [ ./roles/ridge.nix ];
+        modules = basicModules ++ secretsModules ++ [ ./roles/ridge.nix ];
       };
 
     };
