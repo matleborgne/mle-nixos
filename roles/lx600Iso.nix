@@ -38,9 +38,7 @@
     desktop.gnome.mleborgne.enable = true;
 
     secrets = {
-      hm-mleborgne.enable = true;
       openssh-server.enable = true;
-      openssh-client-mleborgne.enable = true;
     };
     
   };
