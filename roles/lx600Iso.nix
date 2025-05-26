@@ -35,7 +35,7 @@
 
   mle = {
     apps.librewolf.enable = true;
-    desktop.gnome.mleborgne.enable = true;
+    desktop.gnome.default.enable = true;
 
     secrets = {
       openssh-server.enable = true;
