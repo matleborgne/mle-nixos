@@ -38,7 +38,6 @@
     };
 
     bundles = {
-      datapro.enable = true;
       development.enable = true;
       gaming.enable = true;
       multimedia.enable = true;
@@ -46,6 +45,10 @@
     };
 
     desktop.gnome.mleborgne.enable = true;
+
+    flatpaks = {
+      vscode.enable = true;
+    };
     
     misc = {
       libvirt.enable = true;
