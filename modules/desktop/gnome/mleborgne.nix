@@ -21,6 +21,9 @@
         default.enable = true;
         suspend-fix.enable = true;
       };
+
+      hardware.printing.enable = true;
+
     };
 
 
