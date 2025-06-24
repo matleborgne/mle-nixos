@@ -73,8 +73,8 @@
           systemd.tmpfiles.rules = [
             "d /var/lib/qbittorrent 755 qbittorrent qbittorrent -"
             "d /srv/bkp/lxc/556-seedbox - - - -"
-            "d /var/lib/youtubedl - ytdl users -"
-            "d /mnt/uncrypt/xfi - ytdl - -"
+            "d /var/lib/youtubedl - qbittorrent users -"
+            "d /mnt/uncrypt/xfi - qbittorrent - -"
           ];
 
           imports = [
@@ -136,9 +136,8 @@
             user_allow_other
           '';
 
-          users.users.ytdl = {
+          users.users.qbittorrent = {
             isNormalUser = true;
-            uid = 1001;
             extraGroups = [ "udev" "users" "fuse" ];
           };
 
