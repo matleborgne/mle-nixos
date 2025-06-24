@@ -49,11 +49,14 @@
 
         bindMounts = {
           "/var/lib/qbittorrent" = { hostPath = "/var/lib/qbittorrent"; isReadOnly = false; };
+          "/var/lib/youtubedl" = { hostPath = "/var/lib/youtubedl"; isReadOnly = false; };
           "/etc/wireguard" = { hostPath = "/etc/nixos/build/secrets/wireguard/proton-client"; isReadOnly = false; };
           "/srv/bkp/lxc/556-seedbox" = { hostPath = "/srv/bkp/lxc/556-seedbox"; isReadOnly = false; };
           "/passfile" = { hostPath = "/etc/nixos/build/secrets/keys/restic_passfile"; isReadOnly = true; };
           "/srv/sof" = { hostPath = "/srv/sof"; isReadOnly = false; };
           "/srv/vid" = { hostPath = "/srv/vid"; isReadOnly = false; };
+          "/srv/xfi" = { hostPath = "/srv/xfi"; isReadOnly = false; };
+          "/dev/fuse" = { hostPath = "/dev/fuse"; isReadOnly = false; };
         };
 
         config = { lib, config, pkgs, options, ... }: {
@@ -70,6 +73,8 @@
           systemd.tmpfiles.rules = [
             "d /var/lib/qbittorrent 755 qbittorrent qbittorrent -"
             "d /srv/bkp/lxc/556-seedbox - - - -"
+            "d /var/lib/youtubedl - ytdl users -"
+            "d /mnt/uncrypt/xfi - ytdl - -"
           ];
 
           imports = [
@@ -104,10 +109,31 @@
 
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          # Running ytdl behind VPN
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+          systemd.services."youtubedl" = {
+            wantedBy = [ "multi-user.target" ];
+            path = [ pkgs.bash ];
+            script = ''
+              bash /var/lib/youtubedl/start-services-sb.sh
+            '';
+          };
+
+          systemd.timers."youtubedl" = {
+            wantedBy = [ "timers.target" ];
+            timerConfig = {
+              OnCalendar = "23:35";
+              Unit = "youtubedl.service";
+            };
+          };
+
+
+          # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-          environment.systemPackages = with pkgs; [ restic ];
+          environment.systemPackages = with pkgs; [ bat fuse gocryptfs yt-dlp restic kmod ];
 
           services.restic.backups = {
 
