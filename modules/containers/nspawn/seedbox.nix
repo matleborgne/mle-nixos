@@ -137,7 +137,6 @@
           '';
 
           users.users.qbittorrent = {
-            isNormalUser = true;
             extraGroups = [ "udev" "users" "fuse" ];
           };
 
