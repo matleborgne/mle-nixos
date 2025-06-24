@@ -128,6 +128,20 @@
             };
           };
 
+          system.activationScripts.modprobeFuse = ''
+            modprobe fuse
+          '';
+
+          environment.etc."fuse.conf".text = ''
+            user_allow_other
+          '';
+
+          users.users.ytdl = {
+            isNormalUser = true;
+            uid = 1001;
+            extraGroups = [ "udev" "users" "fuse" ];
+          };
+
 
           # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
           # Backup service
