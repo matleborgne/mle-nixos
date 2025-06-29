@@ -58,6 +58,11 @@
           sensitivity = 0  # -1.0 - 1.0, 0 means no modification
         }     
 
+        #----- Basic use -----
+        bind = $mod, Q, exec, kitty
+        bind = $mod, C, exit
+        bind = ALT, F4, exit
+
         #----- Windows resize -----
         bind = $mod, S, submap, resize
           submap = resize
@@ -72,9 +77,6 @@
         bindm = $mod, mouse:272, movewindow
         bindm = $mod, mouse:273, resizewindow
         bindm = ALT, mouse:272, resizewindow
-
-        #----- Basic applications -----
-        bind = $mod, Q, exec, kitty 
 
       '';
 
