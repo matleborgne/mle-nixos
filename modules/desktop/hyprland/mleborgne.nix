@@ -38,7 +38,7 @@
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "libinput-gestures -v";
+        ExecStart = "/run/current-system/sw/bin/libinput-gestures -v";
       };
     };
 
