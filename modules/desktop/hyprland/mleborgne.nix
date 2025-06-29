@@ -55,7 +55,9 @@
         input {
           kb_layout = fr
           follow_mouse = 1
-          touchpad { natural_scroll = true }
+          touchpad {
+            natural_scroll = true
+          }
           sensitivity = 0  # -1.0 - 1.0, 0 means no modification
         }     
 
@@ -64,6 +66,7 @@
         bind = $mod, C, exit
 
         #----- Active window resize -----
+        # Press SUPER + S to enter resize mode, then escape to exit mode
         bind = $mod, S, submap, resize
           submap = resize
             binde = , right, resizeactive, 10 0
@@ -77,6 +80,9 @@
         bindm = $mod, mouse:272, movewindow
         bindm = $mod, mouse:273, resizewindow
         bindm = ALT, mouse:272, resizewindow
+
+        #----- Applications shortcuts -----
+        bind = $mod, F, exec, firefox
 
       '';
 
