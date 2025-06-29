@@ -41,7 +41,6 @@
 
       settings = {
         "$mod" = "SUPER";
-        "$ws" = "ALT";
       };
 
 
@@ -86,12 +85,14 @@
         #############################
 
         #----- Resize active window -----
+        bindm = $mod, mouse:272, resizewindow
         bind = $mod, left, resizeactive, -10 0
         bind = $mod, right, resizeactive, 10 0
         bind = $mod, up, resizeactive, 0 -10
         bind = $mod, down, resizeactive, 0 10
 
         #----- Move active window -----
+        bindm = $mod SHIFT, mouse:272, movewindow
         bind = $mod SHIFT, left, movewindoworgroup, l
         bind = $mod SHIFT, right, movewindoworgroup, r
         bind = $mod SHIFT, up, movewindoworgroup, u
@@ -100,12 +101,6 @@
         #----- Change window focus -----
         bind = $mod, Tab, cyclenext,
         bind = $mod SHIFT, Tab, cyclenext, prev
-
-
-        #----- Move/resize windows with mod and LMB/RMB and dragging -----
-        bindm = $mod, mouse:272, movewindow
-        bindm = $mod, mouse:273, resizewindow
-        bindm = ALT, mouse:272, resizewindow
 
 
         ###############################
@@ -142,30 +137,8 @@
 
       '';
 
-
-#      settings = {
-#        "$mod" = "SUPER";
-
-#        bind =
-#          [
-#            "$mod, F, exec, firefox"
 #            ", Print, exec, grimblast copy area"
-#          ]
-  
-#          ++ (
-#            # workspaces
-#            # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-#            builtins.concatLists (builtins.genList (i:
-#                let ws = i + 1;
-#                in [
-#                  "$mod, code:1${toString i}, workspace, ${toString ws}"
-#                  "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-#                ]
-#              )
-#              9)
-#         );
 
-#        };
 
       
 
@@ -177,11 +150,6 @@
         inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
         #"/absolute/path/to/plugin.so"
       ];
-
-
-            # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            # Extensions GNOME
-            # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             
 
     };
