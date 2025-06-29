@@ -64,10 +64,14 @@
         bind = $mod, C, exit
 
         #----- Active window resize -----
-        bind = CTRL, right, resizeactive, 10 0
-        bind = CTRL, left, resizeactive, -10 0
-        bind = CTRL, up, resizeactive, 0 -10
-        bind = CTRL, down, resizeactive, 0 10
+        bind = $mod, S, submap, resize
+          submap = resize
+            binde = , right, resizeactive, 10 0
+            binde = , left, resizeactive, -10 0
+            binde = , up, resizeactive, 0 -10
+            binde = , down, resizeactive, 0 10
+            bind = , escape, submap, reset
+          submap = reset
 
         #----- Move/resize windows with mod and LMB/RMB and dragging -----
         bindm = $mod, mouse:272, movewindow
