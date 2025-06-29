@@ -72,7 +72,9 @@
 
         #----- Basic use -----
         bind = $mod, Q, exec, kitty
-        bind = $mod, C, exit
+        bind = $mod, C, killactive,
+        bind = $mod, M, exit,
+        bind = $mod, V, togglefloating,
 
         #----- Applications shortcuts -----
         bind = $mod, F, exec, firefox
@@ -81,6 +83,12 @@
         ###############
         ### WINDOWS ###
         ###############
+
+        #----- Change window focus -----
+        bind = $mod, left, movefocus, l
+        bind = $mod, right, movefocus, r
+        bind = $mod, up, movefocus, u
+        bind = $mod, down, movefocus, d
 
         #----- Active window resize -----
         # Press SUPER + S to enter resize mode, then escape to exit mode
