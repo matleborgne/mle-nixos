@@ -39,6 +39,11 @@
 
       extraConfig = ''
 
+        #----- Inputs -----
+        input {
+          kb_layout = fr
+        }
+
         #----- Windows resize -----
         bind = $mod, S, submap, resize
           submap = resize
