@@ -78,7 +78,7 @@
         bind = $mod, F, fullscreenstate, 3
 
         #----- Applications shortcuts -----
-        bind = $mod, F, exec, firefox
+        bind = $mod, L, exec, librewolf
 
 
         ###############
