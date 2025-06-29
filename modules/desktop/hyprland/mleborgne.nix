@@ -33,7 +33,7 @@
     # Fixing problems with libinput gestures
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    home-manager.users.mleborgne.file = {
+    home-manager.users.mleborgne.home.file = {
       ".config/libinput-gestures.conf" = {
         enable = true;
         text = ''
