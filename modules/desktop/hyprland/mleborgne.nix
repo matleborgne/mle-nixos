@@ -68,6 +68,11 @@
             bind = , escape, submap, reset
           submap = reset
 
+        #----- Move/resize windows with mod and LMB/RMB and dragging -----
+        bindm = $mod, mouse:272, movewindow
+        bindm = $mod, mouse:273, resizewindow
+        bindm = ALT, mouse:272, resizewindow
+
         #----- Basic applications -----
         bind = $mod, Q, exec, kitty 
 
