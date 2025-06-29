@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
 
@@ -66,10 +66,10 @@
       # Plugins - prefered use with hyprland flake
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             
-      #wayland.windowManager.hyprland.plugins = [
-      #  hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
-      #  #"/absolute/path/to/plugin.so"
-      #];
+      wayland.windowManager.hyprland.plugins = [
+        hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprbars
+        #"/absolute/path/to/plugin.so"
+      ];
 
 
             # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
