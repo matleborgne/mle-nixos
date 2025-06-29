@@ -98,10 +98,10 @@
         bind = $mod SHIFT, down, movewindoworgroup, d
 
         #----- Change window focus -----
-        bind = $mod, left, movefocus, l
-        bind = $mod, right, movefocus, r
-        bind = $mod, up, movefocus, u
-        bind = $mod, down, movefocus, d
+        bind = $mod, Tab, movefocus, r
+        #bind = $mod, right, movefocus, r
+        #bind = $mod, up, movefocus, u
+        #bind = $mod, down, movefocus, d
 
         #----- Move/resize windows with mod and LMB/RMB and dragging -----
         bindm = $mod, mouse:272, movewindow
