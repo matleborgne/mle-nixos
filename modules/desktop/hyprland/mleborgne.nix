@@ -113,6 +113,8 @@
         ###############################
 
         #----- Mode view to workspace X -----
+        bind = ALT, right, workspace, +1
+        bind = ALT, left, workspace, -1
         bind = ALT, code:10, workspace, 1
         bind = ALT, code:11, workspace, 2
         bind = ALT, code:12, workspace, 3
@@ -125,6 +127,8 @@
         bind = ALT, code:19, workspace, 10
 
         #----- Mode active window to workspace X -----
+        bind = ALT SHIFT, right, movetoworkspace, +1
+        bind = ALT SHIFT, left, movetoworkspace, -1
         bind = ALT SHIFT, code:10, movetoworkspace, 1
         bind = ALT SHIFT, code:11, movetoworkspace, 2
         bind = ALT SHIFT, code:12, movetoworkspace, 3
