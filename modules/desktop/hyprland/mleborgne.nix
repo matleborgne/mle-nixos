@@ -53,15 +53,9 @@
         #----- Input -----
         input {
           kb_layout = fr
-          kb_variant =
-          kb_model =
-          kb_options =
-          kb_rules =
           follow_mouse = 1
-          touchpad {
-              natural_scroll = true
-          }
-          sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+          touchpad { natural_scroll = true }
+          sensitivity = 0  # -1.0 - 1.0, 0 means no modification
         }     
 
         #----- Windows resize -----
@@ -73,6 +67,9 @@
             binde = , down, resizeactive, 0 10
             bind = , escape, submap, reset
           submap = reset
+
+        #----- Basic applications -----
+        bind = $mod, Q, exec, kitty 
 
       '';
 
