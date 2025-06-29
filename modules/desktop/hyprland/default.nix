@@ -31,30 +31,11 @@
     };
       
     services = {
-      #udev.packages = [ pkgs.gnome-settings-daemon ];
-
-      #xserver = {
-      #  excludePackages = [ pkgs.xterm ];
-      #  xkb = {
-      #    layout = "fr";
-      #    variant = "azerty";
-      #    options = "eurosign:e";
-      #  };
-      #};
 
       displayManager = {
         sddm.enable = true;
         sddm.wayland.enable = true;
       };
-      
-      #desktopManager.gnome = {
-      #  enable = true;
-      #  extraGSettingsOverridePackages = [ pkgs.mutter ];
-      #  extraGSettingsOverrides = ''
-      #    [org.gnome.mutter]
-      #    experimental-features=['scale-monitor-framebuffer']
-      #  '';
-      #};
       
     };
 
@@ -63,17 +44,9 @@
     # Added packages
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #programs.kdeconnect = {
-    #  enable = true;
-    #  package = pkgs.gnomeExtensions.gsconnect;
-    #};
-
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
     environment.systemPackages = with pkgs; [
-      # Extensions
-
-      # General use
       kitty
     ];
 
