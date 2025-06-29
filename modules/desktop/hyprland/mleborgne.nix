@@ -38,9 +38,7 @@
 
       settings = {
         "$mod" = "SUPER";
-        input = {
-          kb_layout = "fr";
-        };
+        "$input.kb_layout" = "fr";
       };
 
 
