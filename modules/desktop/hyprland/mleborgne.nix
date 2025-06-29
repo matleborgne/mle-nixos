@@ -41,6 +41,7 @@
 
       settings = {
         "$mod" = "SUPER";
+        "$ws" = "ALT";
       };
 
 
@@ -61,17 +62,12 @@
         #----- Basic use -----
         bind = $mod, Q, exec, kitty
         bind = $mod, C, exit
-        bind = ALT, F4, exit
 
         #----- Windows resize -----
-        bind = $mod, S, submap, resize
-          submap = resize
-            binde = , right, resizeactive, 10 0
-            binde = , left, resizeactive, -10 0
-            binde = , up, resizeactive, 0 -10
-            binde = , down, resizeactive, 0 10
-            bind = , escape, submap, reset
-          submap = reset
+        bind = $mod, right, resizeactive, 10 0
+        bind = $mod, left, resizeactive, -10 0
+        bind = $mod, up, resizeactive, 0 -10
+        bind = $mod, down, resizeactive, 0 10
 
         #----- Move/resize windows with mod and LMB/RMB and dragging -----
         bindm = $mod, mouse:272, movewindow
