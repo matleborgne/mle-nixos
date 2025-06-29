@@ -64,10 +64,10 @@
         bind = $mod, C, exit
 
         #----- Active window resize -----
-        bind = $mod, right, resizeactive, 10 0
-        bind = $mod, left, resizeactive, -10 0
-        bind = $mod, up, resizeactive, 0 -10
-        bind = $mod, down, resizeactive, 0 10
+        bind = CTRL, right, resizeactive, 10 0
+        bind = CTRL, left, resizeactive, -10 0
+        bind = CTRL, up, resizeactive, 0 -10
+        bind = CTRL, down, resizeactive, 0 10
 
         #----- Move/resize windows with mod and LMB/RMB and dragging -----
         bindm = $mod, mouse:272, movewindow
