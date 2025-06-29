@@ -42,7 +42,7 @@
       #  };
       #};
 
-      displayManager.sddm.enable = true;
+      displayManager.sddm.wayland.enable = true;
       
       #desktopManager.gnome = {
       #  enable = true;
