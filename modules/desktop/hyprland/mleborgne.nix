@@ -37,8 +37,8 @@
       ".config/libinput-gestures.conf" = {
         enable = true;
         text = ''
-          gesture swipe right 3 hyprctl dispatch layoutmsg workspace +1
-          gesture swipe left 3 hyprctl dispatch layoutmsg workspace -1
+          gesture swipe right 3 hyprctl dispatch workspace +1
+          gesture swipe left 3 hyprctl dispatch workspace -1
         '';
       };
     };
