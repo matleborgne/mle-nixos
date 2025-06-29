@@ -44,7 +44,8 @@
       office.enable = true;
     };
 
-    desktop.gnome.mleborgne.enable = true;
+    #desktop.gnome.mleborgne.enable = true;
+    desktop.hyprland.default.enable = true;
 
     flatpaks = {
       vscode.enable = true;
