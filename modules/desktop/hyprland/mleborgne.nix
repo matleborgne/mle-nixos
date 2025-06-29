@@ -51,6 +51,10 @@
 
       extraConfig = ''
 
+        ##############
+        ### INPUTS ###
+        ##############
+
         #----- Input -----
         input {
           kb_layout = fr
@@ -59,11 +63,24 @@
             natural_scroll = true
           }
           sensitivity = 0  # -1.0 - 1.0, 0 means no modification
-        }     
+        }
+
+
+        ################
+        ### PROGRAMS ###
+        ################
 
         #----- Basic use -----
         bind = $mod, Q, exec, kitty
         bind = $mod, C, exit
+
+        #----- Applications shortcuts -----
+        bind = $mod, F, exec, firefox
+
+
+        ###############
+        ### WINDOWS ###
+        ###############
 
         #----- Active window resize -----
         # Press SUPER + S to enter resize mode, then escape to exit mode
@@ -81,8 +98,34 @@
         bindm = $mod, mouse:273, resizewindow
         bindm = ALT, mouse:272, resizewindow
 
-        #----- Applications shortcuts -----
-        bind = $mod, F, exec, firefox
+
+        ##################
+        ### WORKSPACES ###
+        ##################
+
+        #----- Mode view to workspace X -----
+        bind = ALT, code:10, workspace, 1
+        bind = ALT, code:11, workspace, 2
+        bind = ALT, code:12, workspace, 3
+        bind = ALT, code:13, workspace, 4
+        bind = ALT, code:14, workspace, 5
+        bind = ALT, code:15, workspace, 6
+        bind = ALT, code:16, workspace, 7
+        bind = ALT, code:17, workspace, 8
+        bind = ALT, code:18, workspace, 9
+        bind = ALT, code:19, workspace, 10
+
+        #----- Mode active window to workspace X -----
+        bind = ALT SHIFT, code:10, workspace, 1
+        bind = ALT SHIFT, code:11, workspace, 2
+        bind = ALT SHIFT, code:12, workspace, 3
+        bind = ALT SHIFT, code:13, workspace, 4
+        bind = ALT SHIFT, code:14, workspace, 5
+        bind = ALT SHIFT, code:15, workspace, 6
+        bind = ALT SHIFT, code:16, workspace, 7
+        bind = ALT SHIFT, code:17, workspace, 8
+        bind = ALT SHIFT, code:18, workspace, 9
+        bind = ALT SHIFT, code:19, workspace, 10
 
       '';
 
