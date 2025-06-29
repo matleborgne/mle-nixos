@@ -56,7 +56,7 @@
 
     environment.systemPackages = with pkgs; [
       kitty
-      libinput libinput-gestures
+      libinput libinput-gestures wmctrl
     ];
 
     
