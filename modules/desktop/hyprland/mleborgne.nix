@@ -85,22 +85,34 @@
         ### WINDOWS - SUPER BASED ###
         #############################
 
-        #----- Change window focus -----
-        bind = $mod, left, movefocus, l
-        bind = $mod, right, movefocus, r
-        bind = $mod, up, movefocus, u
-        bind = $mod, down, movefocus, d
+        ##----- Change window focus -----
+        #bind = $mod, left, movefocus, l
+        #bind = $mod, right, movefocus, r
+        #bind = $mod, up, movefocus, u
+        #bind = $mod, down, movefocus, d
 
-        #----- Active window resize -----
-        # Press SUPER + S to enter resize mode, then escape to exit mode
-        bind = $mod, S, submap, resize
-          submap = resize
-            binde = , right, resizeactive, 10 0
-            binde = , left, resizeactive, -10 0
-            binde = , up, resizeactive, 0 -10
-            binde = , down, resizeactive, 0 10
-            bind = , escape, submap, reset
-          submap = reset
+        ##----- Active window resize -----
+        ## Press SUPER + S to enter resize mode, then escape to exit mode
+        #bind = $mod, S, submap, resize
+        #  submap = resize
+        #    binde = , right, resizeactive, 10 0
+        #    binde = , left, resizeactive, -10 0
+        #    binde = , up, resizeactive, 0 -10
+        #    binde = , down, resizeactive, 0 10
+        #    bind = , escape, submap, reset
+        #  submap = reset
+
+        #----- Resize active window -----
+        bind = $mod, left, resizeactive, 10 0
+        bind = $mod, right, resizeactive, -10 0
+        bind = $mod, up, resizeactive, 0 -10
+        bind = $mod, down, resizeactive, 0 10
+
+        #----- Move active window -----
+        bind = $mod SHIFT, left, movewindoworgroup, l
+        bind = $mod SHIFT, right, movewindoworgroup, r
+        bind = $mod SHIFT, up, movewindoworgroup, u
+        bind = $mod SHIFT, down, movewindoworgroup, d
 
         #----- Move/resize windows with mod and LMB/RMB and dragging -----
         bindm = $mod, mouse:272, movewindow
