@@ -25,8 +25,27 @@
     };
 
 
+
+
+
+
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Home-manager configuration
+    # Fixing problems with libinput gestures
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    home-manager.users.mleborgne.file = {
+      ".config/libinput-gestures.conf" = {
+        enable = true;
+        text = ''
+          gesture swipe right 3 hyprctl dispatch layoutmsg cyclenext
+          gesture swipe left 3 hyprctl dispatch layoutmsg cycleprev
+        '';
+      };
+    };
+
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Hyprland configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     home-manager.users.mleborgne.wayland.windowManager.hyprland = {
