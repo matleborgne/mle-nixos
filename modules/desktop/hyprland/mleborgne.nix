@@ -75,6 +75,7 @@
         bind = $mod, C, killactive,
         bind = $mod, M, exit,
         bind = $mod, V, togglefloating,
+        bind = $mod, F, fullscreenstate, 3
 
         #----- Applications shortcuts -----
         bind = $mod, F, exec, firefox
