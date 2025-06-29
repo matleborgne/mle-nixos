@@ -81,9 +81,9 @@
         bind = $mod, L, exec, librewolf
 
 
-        ###############
-        ### WINDOWS ###
-        ###############
+        #############################
+        ### WINDOWS - SUPER BASED ###
+        #############################
 
         #----- Change window focus -----
         bind = $mod, left, movefocus, l
@@ -108,9 +108,9 @@
         bindm = ALT, mouse:272, resizewindow
 
 
-        ##################
-        ### WORKSPACES ###
-        ##################
+        ###############################
+        ### WORKSPACES - ALT BASED ###
+        ###############################
 
         #----- Mode view to workspace X -----
         bind = ALT, code:10, workspace, 1
