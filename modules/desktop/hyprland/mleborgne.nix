@@ -63,7 +63,7 @@
         bind = $mod, Q, exec, kitty
         bind = $mod, C, exit
 
-        #----- Windows resize -----
+        #----- Active window resize -----
         bind = $mod, right, resizeactive, 10 0
         bind = $mod, left, resizeactive, -10 0
         bind = $mod, up, resizeactive, 0 -10
