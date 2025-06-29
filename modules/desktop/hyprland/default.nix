@@ -56,6 +56,7 @@
 
     environment.systemPackages = with pkgs; [
       kitty
+      libinput libinput-gestures
     ];
 
     
