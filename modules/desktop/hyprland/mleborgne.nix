@@ -30,7 +30,18 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     home-manager.users.mleborgne.wayland.windowManager.hyprland = {
-      settings."$mod" = "SUPER";
+
+
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # Basic settings
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+      settings = {
+        "$mod" = "SUPER";
+        input = {
+          kb_layout = "fr";
+        };
+      };
 
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,11 +49,6 @@
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       extraConfig = ''
-
-        #----- Inputs -----
-        input {
-          kb_layout = fr
-        }
 
         #----- Windows resize -----
         bind = $mod, S, submap, resize
