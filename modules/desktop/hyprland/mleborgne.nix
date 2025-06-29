@@ -33,6 +33,15 @@
     # Fixing problems with libinput gestures
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    systemd.user.services."libinput" = {
+      enable = true;
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "libinput-gestures -d";
+      };
+    };
+
     home-manager.users.mleborgne.home.file = {
       ".config/libinput-gestures.conf" = {
         enable = true;
