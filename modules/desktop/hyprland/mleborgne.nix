@@ -38,7 +38,7 @@
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = "libinput-gestures -d";
+        ExecStart = "libinput-gestures -v";
       };
     };
 
