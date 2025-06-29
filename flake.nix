@@ -14,6 +14,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
   };
 
 
@@ -25,6 +31,8 @@
     self,
     nixpkgs,
     home-manager,
+    hyprland,
+    hyprland-plugins,
     ...
   }
     @inputs:
@@ -81,6 +89,7 @@
 
       yoga = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; }; # this is the important part
         modules = basicModules ++ secretsModules ++ [ ./roles/yoga.nix ];
       };
 
