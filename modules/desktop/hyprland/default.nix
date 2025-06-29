@@ -42,7 +42,7 @@
       #  };
       #};
 
-      displayManager.gdm.enable = true;
+      displayManager.sddm.enable = true;
       
       #desktopManager.gnome = {
       #  enable = true;
