@@ -56,7 +56,7 @@
 
     environment.systemPackages = with pkgs; [
       kitty
-      pwvucontrol
+      pavucontrol
       rofi-wayland waybar
     ];
 
