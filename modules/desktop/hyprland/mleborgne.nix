@@ -98,6 +98,7 @@
 
         #----- Applications shortcuts -----
         bind = $mod, L, exec, librewolf
+        bind = $mod, E, exec, nautilus
 
 
         #############################
