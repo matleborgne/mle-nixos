@@ -48,11 +48,19 @@
       
     };
 
-      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      # Rofi launcher configuration
-      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Other basics configurations
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    home-manager.users.mleborgne.home.file = {
+
+      ".local/share/rofi/themes/rofi.rasi" = {
+        enable = true;
+        text = builtins.readFile ./rofi.rasi;
+      };
+
+    };
 
 
   };
