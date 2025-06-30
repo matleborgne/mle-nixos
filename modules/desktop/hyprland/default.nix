@@ -59,6 +59,10 @@
       pavucontrol
       nautilus
       rofi-wayland waybar nwg-look
+
+      adw-gtk3
+      papirus-icon-theme
+      ubuntu_font_family
     ];
 
     
