@@ -33,14 +33,14 @@
     # Fixing problems with libinput gestures
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    systemd.user.services."libinput" = {
-      enable = true;
-      wantedBy = [ "multi-user.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "/run/current-system/sw/bin/libinput-gestures -v";
-      };
-    };
+    #systemd.user.services."libinput" = {
+    #  enable = true;
+    #  wantedBy = [ "multi-user.target" ];
+    #  serviceConfig = {
+    #    Type = "simple";
+    #    ExecStart = "/run/current-system/sw/bin/libinput-gestures -v";
+    #  };
+    #};
 
     home-manager.users.mleborgne.home.file = {
       ".config/libinput-gestures.conf" = {
@@ -51,6 +51,10 @@
         '';
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      libinput libinput-gestures wmctrl
+    ];
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -77,6 +81,13 @@
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       extraConfig = ''
+
+        #################
+        ### AUTOSTART ###
+        #################
+
+        #----- Clean desktop -----
+        exec-once = /run/current-system/sw/bin/libinput-gestures -v
 
         ##############
         ### INPUTS ###
