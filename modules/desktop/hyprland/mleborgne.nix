@@ -27,31 +27,6 @@
 
 
 
-
-
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Fixing problems with libinput gestures
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    #systemd.user.services."libinput" = {
-    #  enable = true;
-    #  wantedBy = [ "multi-user.target" ];
-    #  serviceConfig = {
-    #    Type = "simple";
-    #    ExecStart = "/run/current-system/sw/bin/libinput-gestures -v";
-    #  };
-    #};
-
-    #home-manager.users.mleborgne.home.file = {
-    #  ".config/libinput-gestures.conf" = {
-    #    enable = true;
-    #    text = ''
-    #      gesture swipe right 3 /run/current-system/sw/bin/hyprctl dispatch workspace -1
-    #      gesture swipe left 3 /run/current-system/sw/bin/hyprctl dispatch workspace +1
-    #    '';
-    #  };
-    #};
-
     environment.systemPackages = with pkgs; [
       libinput libinput-gestures wmctrl
     ];
@@ -86,8 +61,8 @@
         ### AUTOSTART ###
         #################
 
-        #----- Clean desktop -----
-        #exec-once = /run/current-system/sw/bin/libinput-gestures -v
+        #----- Proper desktop -----
+        
 
         ##############
         ### INPUTS ###
