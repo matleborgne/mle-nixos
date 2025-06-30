@@ -58,7 +58,7 @@
       kitty
       pavucontrol
       nautilus
-      rofi-wayland waybar nwglook
+      rofi-wayland waybar nwg-look
     ];
 
     
