@@ -57,7 +57,8 @@
     environment.systemPackages = with pkgs; [
       kitty
       pavucontrol
-      nautilus rofi-wayland waybar
+      nautilus
+      rofi-wayland waybar nwglook
     ];
 
     
