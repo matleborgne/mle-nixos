@@ -63,7 +63,7 @@
 
     home-manager.users.mleborgne.wayland.windowManager.hyprland = {
       enable = true;
-      systemdIntegration = true;
+      systemd.enable = true;
       #nvidiaPatches = true;
 
 
