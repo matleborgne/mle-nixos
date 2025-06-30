@@ -56,7 +56,6 @@
 
     environment.systemPackages = with pkgs; [
       kitty
-      libinput libinput-gestures wmctrl
       rofi-wayland waybar
     ];
 
