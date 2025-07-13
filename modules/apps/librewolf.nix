@@ -27,12 +27,12 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    config.i18n.defaultLocale == "fr_FR.UTF-8"
+    config.i18n.defaultLocale = "fr_FR.UTF-8";
 
     programs.librewolf = {
       enable = true;
       wrapperConfig.pipewireSupport = true;
-      languagePacks = [ "fr" "en-US" ];
+      languagePacks = [ "fr-FR" "en-US" ];
 
       policies = {
         DisableTelemetry = true;
@@ -72,8 +72,8 @@
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         # Language by default
-        "intl.accept_languages" = "fr-fr,en-us,en";
-        "intl.locale.requested" = "fr,en-US";
+        "intl.accept_languages" = "fr-FR,en-US";
+        "intl.locale.requested" = "fr-FR,en-US";
 
         #- Homepage and search engine
         "browser.search.defaultenginename" = "DuckDuckGo";
