@@ -30,7 +30,6 @@
     programs.librewolf = {
       enable = true;
       wrapperConfig.pipewireSupport = true;
-      languagePacks = [ "fr" "en-US" ];
 
       policies = {
         DisableTelemetry = true;
@@ -54,6 +53,7 @@
           };
           
           in listToAttrs [
+            (extension "language-pack-fr" "langpack-fr@firefox.mozilla.org")
             (extension "ublock-origin" "uBlock0@raymondhill.net")
             (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
             (extension "privacy-badger17" "jid1-MnnxcxisBPnSXQ@jetpack")
@@ -70,8 +70,8 @@
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         # Language by default
-        "intl.accept_languages" = "fr-FR,en-US";
-        "intl.locale.requested" = "fr-FR,en-US";
+        "intl.accept_languages" = "fr,en-US";
+        "intl.locale.requested" = "fr,en-US";
 
         #- Homepage and search engine
         "browser.search.defaultenginename" = "DuckDuckGo";
