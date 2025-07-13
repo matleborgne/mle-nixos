@@ -31,14 +31,15 @@ fork() {
 # FORKING PROGRAMS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Librewolf
+# Librewolf - base
 fork "nixos/modules/programs/firefox.nix" librewolf
 sed -i "s/firefox/librewolf/g" "$current/../modules/forks/librewolf.nix"
 sed -i "s/Firefox/Librewolf/g" "$current/../modules/forks/librewolf.nix"
 
+# Librewolf - correct versionning (removing -1, -2, etc.) for langpacks
 sed -i '/config.programs.librewolf/a\ correctedVersion = builtins.elemAt (lib.strings.splitString "-" (config.programs.librewolf.package.version)) 0;' "$current/../modules/forks/librewolf.nix"
 sed -i "s/cfg.package.version/correctedVersion/g" "$current/../modules/forks/librewolf.nix"
 
-# Fluent-gtk-theme
+# Fluent-gtk-theme - base
 fork "pkgs/by-name/fl/fluent-gtk-theme/package.nix" fluent-gtk-theme
 sed -i "s/icon nixos/icon default/g" "$current/../modules/forks/fluent-gtk-theme.nix"
