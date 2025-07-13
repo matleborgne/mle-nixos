@@ -35,11 +35,15 @@ fork() {
 fork "nixos/modules/programs/firefox.nix" librewolf
 sed -i "s/firefox/librewolf/g" "$current/../modules/forks/librewolf.nix"
 sed -i "s/Firefox/Librewolf/g" "$current/../modules/forks/librewolf.nix"
-sed -i "/install_url/s/librewolf/firefox/g" "$current/../modules/forks/librewolf.nix"
+
+# Librewolf - correct incorrect sed from firefox to librewolf
+sed -i "s|releases.mozilla.org/pub/librewolf|releases.mozilla.org/pub/firefox|g" "$current/../modules/forks/librewolf.nix"
+sed -i "s/librewolf.mozilla.org/firefox.mozilla.org/g" "$current/../modules/forks/librewolf.nix"
 
 # Librewolf - correct versionning (removing -1, -2, etc.) for langpacks
 sed -i '/config.programs.librewolf/a\ correctedVersion = builtins.elemAt (lib.strings.splitString "-" (config.programs.librewolf.package.version)) 0;' "$current/../modules/forks/librewolf.nix"
 sed -i "s/cfg.package.version/correctedVersion/g" "$current/../modules/forks/librewolf.nix"
+
 
 # Fluent-gtk-theme - base
 fork "pkgs/by-name/fl/fluent-gtk-theme/package.nix" fluent-gtk-theme
