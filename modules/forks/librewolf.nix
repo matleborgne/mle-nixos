@@ -348,7 +348,7 @@ in
             lang:
             lib.attrsets.nameValuePair "langpack-${lang}@librewolf.mozilla.org" {
               installation_mode = "normal_installed";
-              install_url = "https://releases.mozilla.org/pub/librewolf/releases/${correctedVersion}/linux-x86_64/xpi/${lang}.xpi";
+              install_url = "https://releases.mozilla.org/pub/firefox/releases/${correctedVersion}/linux-x86_64/xpi/${lang}.xpi";
             }
           ) cfg.languagePacks
         );
