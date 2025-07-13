@@ -346,7 +346,7 @@ in
         ExtensionSettings = builtins.listToAttrs (
           builtins.map (
             lang:
-            lib.attrsets.nameValuePair "langpack-${lang}@librewolf.mozilla.org" {
+            lib.attrsets.nameValuePair "langpack-${lang}@firefox.mozilla.org" {
               installation_mode = "normal_installed";
               install_url = "https://releases.mozilla.org/pub/firefox/releases/140.0.2/linux-x86_64/xpi/${lang}.xpi";
             }
