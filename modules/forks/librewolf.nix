@@ -148,7 +148,7 @@ in
     };
 
     languagePacks = lib.mkOption {
-      # Available languages can be found in https://releases.mozilla.org/pub/librewolf/releases/${correctedVersion}/linux-x86_64/xpi/
+      # Available languages can be found in https://releases.mozilla.org/pub/firefox/releases/${correctedVersion}/linux-x86_64/xpi/
       type = lib.types.listOf (
         lib.types.enum ([
           "ach"
@@ -348,7 +348,7 @@ in
             lang:
             lib.attrsets.nameValuePair "langpack-${lang}@firefox.mozilla.org" {
               installation_mode = "normal_installed";
-              install_url = "https://releases.mozilla.org/pub/firefox/releases/140.0.2/linux-x86_64/xpi/${lang}.xpi";
+              install_url = "https://releases.mozilla.org/pub/firefox/releases/${correctedVersion}/linux-x86_64/xpi/${lang}.xpi";
             }
           ) cfg.languagePacks
         );
