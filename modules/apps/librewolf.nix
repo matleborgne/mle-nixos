@@ -27,6 +27,8 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    config.i18n.defaultLocale == "fr_FR.UTF-8"
+
     programs.librewolf = {
       enable = true;
       wrapperConfig.pipewireSupport = true;
