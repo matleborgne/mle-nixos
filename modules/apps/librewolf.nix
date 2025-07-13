@@ -30,7 +30,7 @@
     programs.librewolf = {
       enable = true;
       wrapperConfig.pipewireSupport = true;
-      languagePacks = [ "fr-FR" "en-US" ];
+      languagePacks = [ "fr" "en-US" ];
 
       policies = {
         DisableTelemetry = true;
