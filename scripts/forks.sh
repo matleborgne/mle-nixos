@@ -36,7 +36,7 @@ fork "nixos/modules/programs/firefox.nix" librewolf
 sed -i "s/firefox/librewolf/g" "$current/../modules/forks/librewolf.nix"
 sed -i "s/Firefox/Librewolf/g" "$current/../modules/forks/librewolf.nix"
 
-sed '/config.programs.librewolf/a\ correctedVersion = builtins.elemAt (lib.strings.splitString "-" (config.programs.librewolf.package.version)) 0;' "$current/../modules/forks/librewolf.nix"
+sed -i '/config.programs.librewolf/a\ correctedVersion = builtins.elemAt (lib.strings.splitString "-" (config.programs.librewolf.package.version)) 0;' "$current/../modules/forks/librewolf.nix"
 sed -i "s/cfg.package.version/correctedVersion/g" "$current/../modules/forks/librewolf.nix"
 
 # Fluent-gtk-theme
