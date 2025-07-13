@@ -7,6 +7,7 @@
 
 let
   cfg = config.programs.librewolf;
+ correctedVersion = builtins.elemAt (lib.strings.splitString "-" (config.programs.librewolf.package.version)) 0;
 
   policyFormat = pkgs.formats.json { };
 
@@ -74,9 +75,7 @@ in
       defaultText = lib.literalExpression "pkgs.librewolf";
       relatedPackages = [
         "librewolf"
-        "librewolf-beta-bin"
         "librewolf-bin"
-        "librewolf-devedition-bin"
         "librewolf-esr"
       ];
     };
@@ -149,7 +148,7 @@ in
     };
 
     languagePacks = lib.mkOption {
-      # Available languages can be found in https://releases.mozilla.org/pub/librewolf/releases/${cfg.package.version}/linux-x86_64/xpi/
+      # Available languages can be found in https://releases.mozilla.org/pub/librewolf/releases/${correctedVersion}/linux-x86_64/xpi/
       type = lib.types.listOf (
         lib.types.enum ([
           "ach"
@@ -349,7 +348,7 @@ in
             lang:
             lib.attrsets.nameValuePair "langpack-${lang}@librewolf.mozilla.org" {
               installation_mode = "normal_installed";
-              install_url = "https://releases.mozilla.org/pub/librewolf/releases/${cfg.package.version}/linux-x86_64/xpi/${lang}.xpi";
+              install_url = "https://releases.mozilla.org/pub/librewolf/releases/${correctedVersion}/linux-x86_64/xpi/${lang}.xpi";
             }
           ) cfg.languagePacks
         );
