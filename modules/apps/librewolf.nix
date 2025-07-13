@@ -30,6 +30,7 @@
     programs.librewolf = {
       enable = true;
       wrapperConfig.pipewireSupport = true;
+      languagePacks = [ "fr" "en_US" ];
 
       policies = {
         DisableTelemetry = true;
@@ -53,7 +54,6 @@
           };
           
           in listToAttrs [
-            (extension "language-pack-fr" "langpack-fr@firefox.mozilla.org")
             (extension "ublock-origin" "uBlock0@raymondhill.net")
             (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}")
             (extension "privacy-badger17" "jid1-MnnxcxisBPnSXQ@jetpack")
