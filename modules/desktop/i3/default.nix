@@ -52,6 +52,7 @@
     };
 
     xdg.portal.enable = true;
+    xdg.portal.extraPortals = [ "xdg-desktop-portal-gtk" ];
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
