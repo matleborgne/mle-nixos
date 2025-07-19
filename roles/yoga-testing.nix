@@ -45,7 +45,7 @@
     };
 
     #desktop.gnome.mleborgne.enable = true;
-    desktop.i3.mleborgne.enable = true;
+    desktop.xfce.default.enable = true;
 
     flatpaks = {
       vscode.enable = true;
