@@ -39,7 +39,7 @@
       };
     };
 
-    services.displayManager = {
+    services.xserver.displayManager = {
       lightdm.enable = true;
       defaultSession = "xfce+i3";
     };
