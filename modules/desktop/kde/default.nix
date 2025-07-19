@@ -56,7 +56,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.plasma6.excludePackages = with pkgs; [
-      kdepim-runtime
+      
     ];
 
 
