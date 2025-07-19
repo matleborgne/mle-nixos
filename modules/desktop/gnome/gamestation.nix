@@ -21,7 +21,13 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+
+    mle = {      
+      desktop.gnome = {
+        default.enable = true;
+        suspend-fix.enable = true;
+      };
+    };
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Module
