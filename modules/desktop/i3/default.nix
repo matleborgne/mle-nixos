@@ -30,7 +30,7 @@
       enable = true;
     };
 
-    services.desktopManager = {
+    services.xserver.desktopManager = {
       xterm.enable = false;
       xfce = {
         enable = true;
