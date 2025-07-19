@@ -27,7 +27,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     services = {
-      udev.packages = [ pkgs.gnome-settings-daemon ];
+      #udev.packages = [ pkgs.gnome-settings-daemon ];
 
       xserver = {
         excludePackages = [ pkgs.xterm ];
@@ -39,6 +39,8 @@
       };
 
       displayManager.sddm.enable = true;
+      displayManager.sddm.wayland.enable = true;
+
       desktopManager.plasma6 = {
         enable = true;
       };
