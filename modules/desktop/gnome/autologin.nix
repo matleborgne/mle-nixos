@@ -33,7 +33,7 @@
     };
 
     services.xserver.displayManager.gdm.wayland = false;
-    services.displayManager.defaultSession = "gnome-xorg.desktop";
+    services.displayManager.defaultSession = "gnome-xorg";
 
   });
 }
