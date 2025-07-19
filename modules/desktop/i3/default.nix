@@ -2,7 +2,7 @@
 
 {
 
-  options.mle.desktop.hyprland.default.enable = lib.mkOption {
+  options.mle.desktop.i3.default.enable = lib.mkOption {
     description = "Enable i3";
     type = lib.types.bool;
     default = false;
