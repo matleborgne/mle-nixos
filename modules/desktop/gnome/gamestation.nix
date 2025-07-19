@@ -2,13 +2,13 @@
 
 {
 
-  options.mle.desktop.gnome.autologin.enable = lib.mkOption {
-    description = "GNOME autologin";
+  options.mle.desktop.gnome.gamestation.enable = lib.mkOption {
+    description = "GNOME gamestation conf";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.desktop.gnome.autologin.enable (
+  config = lib.mkIf config.mle.desktop.gnome.gamestation.enable (
 
 
   let
