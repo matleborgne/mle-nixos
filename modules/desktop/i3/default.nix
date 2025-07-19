@@ -51,6 +51,8 @@
       libinput.enable = true;    
     };
 
+    xdg.portal.enable = true;
+
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Added packages
