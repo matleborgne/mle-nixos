@@ -86,13 +86,17 @@
         modules = basicModules ++ isoModules ++ [ ./roles/lx600Iso.nix ];
       };
 
-
       yoga = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; }; # this is the important part
         modules = basicModules ++ secretsModules ++ [ ./roles/yoga.nix ];
       };
 
+      yoga-testing = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; }; # this is the important part
+        modules = basicModules ++ secretsModules ++ [ ./roles/yoga-testing.nix ];
+      };
 
       n2 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
