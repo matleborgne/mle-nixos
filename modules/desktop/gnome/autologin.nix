@@ -32,8 +32,5 @@
       inherit user;
     };
 
-    services.xserver.displayManager.gdm.wayland = false;
-    services.displayManager.defaultSession = "gnome-xorg";
-
   });
 }
