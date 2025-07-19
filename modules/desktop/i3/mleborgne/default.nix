@@ -2,13 +2,13 @@
 
 {
 
-  options.mle.desktop.i3.mleborgne.enable = lib.mkOption {
-    description = "mleborgne customized i3";
+  options.mle.desktop.i3.gamestation.enable = lib.mkOption {
+    description = "gamestation customized i3";
     type = lib.types.bool;
     default = false;
   };
   
-  config = lib.mkIf config.mle.desktop.i3.mleborgne.enable {
+  config = lib.mkIf config.mle.desktop.i3.gamestation.enable {
   
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -32,7 +32,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     services.xserver.displayManager.lightdm.extraSeatDefaults = ''
-      autologin-user = mleborgne
+      autologin-user = gamestation
     '';
 
   };
