@@ -39,9 +39,9 @@
     };
 
     desktop = {
-      #gnome.default.enable = true;
-      #gnome.autologin.enable = true;
-      i3.gamestation.enable = true;
+      gnome.default.enable = true;
+      gnome.autologin.enable = true;
+      #i3.gamestation.enable = true;
     };
 
     misc = {
