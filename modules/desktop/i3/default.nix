@@ -26,8 +26,11 @@
     # Base of i3 desktop
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    services.xserver.windowManager.i3 = {
+    services.xserver = {
       enable = true;
+      windowManager.i3 = {
+        enable = true;
+      };
     };
 
     services.xserver.desktopManager = {
