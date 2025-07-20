@@ -44,8 +44,7 @@
       office.enable = true;
     };
 
-    #desktop.gnome.mleborgne.enable = true;
-    desktop.kde.default.enable = true;
+    desktop.kde.gamestation.enable = true;
 
     flatpaks = {
       vscode.enable = true;
