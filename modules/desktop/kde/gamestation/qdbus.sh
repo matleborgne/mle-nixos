@@ -6,4 +6,5 @@ qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "
                       panel.hiding = \"autohide\";
                       "
 
-#
+# Mode performance
+sudo powerprofilesctl set performance
