@@ -37,5 +37,15 @@
       inherit user;
     };
 
+    systemd.user.services.qdbus = {
+      enable = true;
+      after = [ "network.target" ];
+      wantedBy = [ "default.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = ''./qdbus.sh'';
+      };
+    };
+
   });
 }
