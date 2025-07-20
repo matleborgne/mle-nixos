@@ -37,13 +37,19 @@
       inherit user;
     };
 
+    # Autohide menu (methode provisoire)
     systemd.user.services.qdbus = {
       enable = true;
       after = [ "network.target" ];
       wantedBy = [ "default.target" ];
       serviceConfig = {
         Type = "simple";
-        ExecStart = ''./qdbus.sh'';
+        ExecStart = ''
+          /run/current-system/sw/bin/qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "
+                      var panel = panels()[0];
+                      panel.hiding = \"autohide\";
+                      "
+        '';
       };
     };
 
