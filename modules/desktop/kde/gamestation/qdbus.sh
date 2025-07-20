@@ -7,4 +7,5 @@ qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "
                       "
 
 # Mode performance
+# Authorize sudo access for this command
 sudo powerprofilesctl set performance
