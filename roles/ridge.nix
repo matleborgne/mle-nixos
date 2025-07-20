@@ -39,7 +39,7 @@
     };
 
     desktop = {
-      gnome.gamestation.enable = true;
+      kde.gamestation.enable = true;
       #i3.gamestation.enable = true;
     };
 
