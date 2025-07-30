@@ -93,6 +93,7 @@
       gnomeExtensions.pop-shell
       gnomeExtensions.vitals
       gnomeExtensions.user-themes
+      gnomeExtensions.launch-new-instance
 
       # General use
       dconf-editor
