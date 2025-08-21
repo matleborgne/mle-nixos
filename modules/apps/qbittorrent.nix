@@ -32,7 +32,7 @@
 #    };
 
     services.qbittorrent = {
-      enable = true;
+      enable = lib.mkForce true;
       openFirewall = true;
       port = 8080;
     };
