@@ -20,6 +20,12 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     systemd = {
+
+      services."systemd-suspend" = {
+        serviceConfig = {
+          Environment=''"SYSTEMD_SLEEP_FREEZE_USER_SESSIONS=false"'';
+        };
+      };
     
       services."gnome-suspend" = {
         description = "suspend gnome shell";
