@@ -123,8 +123,8 @@
             "org/gnome/desktop/background" = {
               color-shading-type = "solid";
               picture-options = "zoom";
-              picture-uri = "file:///etc/wallpapers/space.jpg";
-              picture-uri-dark = "file:///etc/wallpapers/space.jpg";         
+              picture-uri = "file:////home/mleborgne/Documents/mleborgne/Logiciel/linux/graphics/wallpapers/pluto-2025.jpg";
+              picture-uri-dark = "file:////home/mleborgne/Documents/mleborgne/Logiciel/linux/graphics/wallpapers/pluto-2025.jpg";         
             };
 
             "org/gnome/terminal/legacy" = {
