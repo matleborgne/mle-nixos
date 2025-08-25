@@ -21,8 +21,10 @@
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    mle.apps.steam.enable = true;
-
+    mle.apps = {
+      steam.enable = true;
+      undervolting.enable = true;
+    };
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Bundled applications
