@@ -34,7 +34,6 @@
       lutris
       goverlay mangohud
       bubblewrap
-      lact
 
       wine-staging wine64
       vulkan-loader vulkan-headers vulkan-tools dxvk
