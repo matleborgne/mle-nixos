@@ -34,6 +34,11 @@
 
     systemd.packages = with pkgs; [ lact ];
     systemd.services.lactd.wantedBy = ["multi-user.target"];
+
+    hardware.amdgpu.overdrive = {
+      enable = true;
+      ppfeaturemask = "0xffffffff";
+    };
     
   };
 }
