@@ -32,17 +32,8 @@
       lact
     ];
 
-    systemd.services.lactd = {
-      enable = true;
-      wantedBy = [ "default.target" ];
-      after = [ "default.target" ];
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "/run/current-system/sw/bin/lact daemon";
-      };
-    };
-
-
+    systemd.packages = with pkgs; [ lact ];
+    systemd.services.lactd.wantedBy = ["multi-user.target"];
     
   };
 }
