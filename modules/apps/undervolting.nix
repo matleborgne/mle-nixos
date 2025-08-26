@@ -43,6 +43,7 @@
 
     # Kernel module for it87 fan controlling
     boot.extraModulePackages = [ config.boot.kernelPackages.it87 ];
+    boot.kernelModules = [ "it87" ];
 
   };
 }
