@@ -39,6 +39,8 @@
       enable = true;
       ppfeaturemask = "0xffffffff";
     };
+
+    programs.fancontrol-gui.enable = true;
     
   };
 }
