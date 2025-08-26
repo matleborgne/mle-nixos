@@ -30,6 +30,7 @@
 
     environment.systemPackages = with pkgs; [
       lact
+      fancontrol-gui
     ];
 
     systemd.packages = with pkgs; [ lact ];
@@ -40,7 +41,7 @@
       ppfeaturemask = "0xffffffff";
     };
 
-    programs.fancontrol-gui.enable = true;
+    #programs.fancontrol-gui.enable = true;
     
   };
 }
