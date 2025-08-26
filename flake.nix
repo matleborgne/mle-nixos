@@ -20,8 +20,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    fancontrol-gui.url = "github:Maldela/fancontrol-gui";
-
   };
 
 
