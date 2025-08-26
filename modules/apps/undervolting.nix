@@ -40,6 +40,9 @@
       enable = true;
       ppfeaturemask = "0xffffffff";
     };
-    
+
+    # Kernel module for it87 fan controlling
+    boot.extraModulePackages = [ config.boot.kernelPackages.it87 ];
+
   };
 }
