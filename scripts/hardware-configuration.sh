@@ -279,7 +279,7 @@ echo "  swapDevices = [{
 
 
 # Hibernation in swapfile
-tmpramfile=$(find /var -wholename '*swap/swapfile' && find /mnt/var -wholename '*swap/swapfile')
+#tmpramfile=$(find /var -wholename '*swap/swapfile' && find /mnt/var -wholename '*swap/swapfile')
 offsetFile=$(sudo filefrag -v $ramfile | head | grep " 0:" | awk -F ' ' '{print $4}' | awk -F '.' '{print $1}')
 
 echo "  boot.kernelParams = [ \"resume_offset=$offsetFile\" ];
