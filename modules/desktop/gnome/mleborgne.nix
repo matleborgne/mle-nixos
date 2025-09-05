@@ -15,15 +15,9 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     mle = {
-      #apps.fluent-gtk-theme.enable = true;
-      
-      desktop.gnome = {
-        default.enable = true;
-        hibernation.enable = true;
-      };
-
+      desktop.gnome.default.enable = true;
+      desktop.hibernation.enable = true;
       hardware.printing.enable = true;
-
     };
 
 
