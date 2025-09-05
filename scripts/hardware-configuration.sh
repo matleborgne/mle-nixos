@@ -286,8 +286,8 @@ echo "  swapDevices = [{
 # Hibernation in swapfile
 offsetFile=$(sudo filefrag -v /var/media/data1/swapfile | head | grep " 0:" | awk -F ' ' '{print $4}' | awk -F '.' '{print $1}')
 
-echo "  boot.kernelParams = [ "resume_offset=$offsetFile" ];
-  boot.resumeDevice = "/dev/disk/by-uuid/$rootid";
+echo "  boot.kernelParams = [ \"resume_offset=$offsetFile\" ];
+  boot.resumeDevice = \"/dev/disk/by-uuid/$rootid\";
   powerManagement.enable = true;
 " >> "$hardwarefile"
 
