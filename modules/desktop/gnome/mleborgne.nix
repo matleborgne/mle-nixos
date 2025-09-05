@@ -19,7 +19,7 @@
       
       desktop.gnome = {
         default.enable = true;
-        suspend-fix.enable = true;
+        hibernation.enable = true;
       };
 
       hardware.printing.enable = true;
