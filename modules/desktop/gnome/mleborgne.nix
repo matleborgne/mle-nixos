@@ -16,7 +16,7 @@
 
     mle = {
       desktop.gnome.default.enable = true;
-      desktop.hibernation.enable = true;
+      #desktop.hibernation.enable = true;
       hardware.printing.enable = true;
     };
 
