@@ -269,12 +269,7 @@ fi
 
 
 # Swapfile
-if [ $(findmnt --real --raw | grep '/var/media/data1 ' | wc -l) -gt 0 ]; then
-  ramfile="/var/media/data1/swapfile"
-else
-  ramfile="/swapfile"
-fi
-
+ramfile="/var/swap/swapfile"
 ramsize=$(($(cat /proc/meminfo | grep MemTotal | awk -F ' ' '{ print $2 }') / 1024 ))
 echo "  swapDevices = [{
     device = \"$ramfile\";
