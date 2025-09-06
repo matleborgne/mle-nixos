@@ -22,6 +22,13 @@
   # Testing kernel because of new hardware
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  # Hardware - suspend black screen workaround
+  boot.kernelParams = [
+    "amdgpu.runpm=0" # désactive le runtime power management
+    "amdgpu.aspm=0"  # désactive Active State Power management (PCIE)
+    "amdgpu.gpu_recovery=1"
+  ];
+
 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
