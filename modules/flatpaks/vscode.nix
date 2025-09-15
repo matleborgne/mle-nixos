@@ -65,7 +65,7 @@
         "workbench.editor.enablePreview": false,
         "workbench.startupEditor": "none",
         "editor.minimap.enabled": false,
-        "window.zoomLevel": 0.9
+        "window.zoomLevel": 0.8,
       }
       EEOOFF
     '';
