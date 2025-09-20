@@ -32,7 +32,6 @@
       steam steam-tui
       wine-staging wine64
       vulkan-loader vulkan-headers vulkan-tools dxvk
-      proton-ge-bin
     ];
 
     hardware.steam-hardware.enable = true;
@@ -42,6 +41,7 @@
         enable = true;      
         remotePlay.openFirewall = true;
         dedicatedServer.openFirewall = true;
+        extraCompatPackages = with pkgs; [ proton-ge-bin ];
       };
     };
 
