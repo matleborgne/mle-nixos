@@ -29,7 +29,8 @@
 
     environment.systemPackages = with pkgs; [
       vlc
-      celluloid
+      #celluloid
+      showtime
       hypnotix
 
       discord
