@@ -66,6 +66,7 @@
     environment.gnome.excludePackages = with pkgs; [
       yelp totem tali iagno hitori atomix geary xterm
       epiphany packagekit system-config-printer
+      evince gnome-console
   
       gnome-backgrounds gnome-weather
       gnome-music gnome-tour gnome-photos gnome-characters
@@ -103,6 +104,10 @@
       gnome-terminal
       gnome-tweaks
       gparted  
+
+      # GNOME 49
+      papers
+      ptyxis
     ];
 
   };
