@@ -42,6 +42,7 @@
       librewolf.enable = true;
       thunderbird.enable = true;      
       video-downloader.enable = true; 
+      podman.enable = true;
     };
 
     bundles = {
