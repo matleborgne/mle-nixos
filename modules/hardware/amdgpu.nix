@@ -34,6 +34,11 @@
 
     };
 
+    environment.systemPackages = with pkgs; [
+      clinfo
+      rocmPackages.rocminfo
+    ];
+
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Sélection par défaut des services AMDGPU - VULKAN - ROCM
