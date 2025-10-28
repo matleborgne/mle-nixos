@@ -30,7 +30,7 @@
 
     environment.systemPackages = with pkgs; [
       lact
-      fancontrol-gui
+      #fancontrol-gui
     ];
 
     systemd.packages = with pkgs; [ lact ];
