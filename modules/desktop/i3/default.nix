@@ -66,7 +66,7 @@
 
       adw-gtk3
       papirus-icon-theme
-      ubuntu_font_family
+      ubuntu-classic
     ];
 
     
