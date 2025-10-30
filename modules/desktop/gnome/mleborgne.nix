@@ -28,12 +28,14 @@
     environment.systemPackages = with pkgs; [
         adw-gtk3
         papirus-icon-theme
-        ubuntu_font_family
+        #ubuntu_font_family
+        ubuntu-classic
     ];
     
     fonts = {
       packages = with pkgs; [
-      ubuntu_font_family
+      #ubuntu_font_family deprecated
+      ubuntu-classic
       #(nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
     
