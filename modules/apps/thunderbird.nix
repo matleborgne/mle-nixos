@@ -47,8 +47,8 @@
 
 
   environment.systemPackages = with pkgs; [
-    #protonmail-bridge-gui
-    protonmail-bridge
+    protonmail-bridge-gui
+    #protonmail-bridge
   ];
 
 
