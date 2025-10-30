@@ -36,7 +36,7 @@
       gimp3-with-plugins   
       drawio
 
-      bitwarden
+      bitwarden-desktop
     ];
 
   };
