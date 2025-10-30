@@ -35,7 +35,7 @@
 
       # GTK apps build
       glib appstream-glib
-      pkg-config wrapGAppsHook
+      pkg-config wrapGAppsHook3
 
       # Other building packages (bazar)
       #busybox
