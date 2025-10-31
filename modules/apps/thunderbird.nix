@@ -99,7 +99,6 @@ esac
       '';
     };
 
-
     systemd.user.services.protonmail = {
       enable = false;
       after = [ "network.target" ];
@@ -112,7 +111,6 @@ esac
         ExecStop = ''/etc/services.d/protonmail.sh stop'';
       };
     };
-
 
   };
 }
