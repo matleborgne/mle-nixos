@@ -16,7 +16,14 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.thunderbird.enable {
+  config = lib.mkIf config.mle.apps.thunderbird.enable (
+
+  let
+    allUsers = builtins.attrNames config.users.users;
+    normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
+    user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
+
+  in {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -108,8 +115,7 @@ esac
 
     systemd.services.thunderbird-shortcut = {
       wantedBy = [ "multi-user.target" ];
-      script = ''
-[Desktop Entry]
+      script = '' echo "[Desktop Entry]
 Actions=profile-manager-window
 Categories=Network;Chat;Email;Feed;GTK;News
 Comment=Read and write e-mails or RSS feeds, or manage tasks on calendars.
@@ -123,10 +129,10 @@ StartupNotify=true
 StartupWMClass=thunderbird
 Terminal=false
 Type=Application
-Version=1.5
+Version=1.5" > /home/"${user}"/.local/share/applications/thunderbird.desktop
       '';
     };
 
 
-  };
+  });
 }
