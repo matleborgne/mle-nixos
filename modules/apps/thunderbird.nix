@@ -68,7 +68,7 @@
       uid = 1000;
       mode = "755";
       text = ''
-#!/bin/bash
+#!/run/current-system/sw/bin/bash
 
 set -x
 
