@@ -53,7 +53,6 @@
     };
 
     environment.systemPackages = with pkgs; [
-      tmux
       #protonmail-bridge-gui
       protonmail-bridge
     ];
@@ -62,6 +61,8 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Bridge service
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    programs.tmux.enable = true;
 
     environment.etc."services.d/protonmail.sh" = {
       enable = true;
