@@ -65,7 +65,8 @@
 
     environment.etc."services.d/protonmail.sh" = {
       enable = true;
-      mode = "+x";
+      uid = 1000;
+      mode = "755";
       text = ''
 #!/bin/bash
 
@@ -77,6 +78,7 @@ case "$1" in
     tmux new-session -d -s protonmail protonmail-bridge --cli
     echo "Service started."
     thunderbird
+    tmux kill-session -t protonmail
     ;;
   status)
     # ignore this block unless you understand how tmux works and that it only lists the current user's sessions
@@ -100,18 +102,18 @@ esac
       '';
     };
 
-    systemd.user.services.protonmail = {
-      enable = false;
-      after = [ "network.target" ];
-      wantedBy = [ "graphical-session.target" ];
-      description = "protonmail-bridge";
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = "yes";
-        ExecStart = ''/etc/services.d/protonmail.sh start'';
-        ExecStop = ''/etc/services.d/protonmail.sh stop'';
-      };
-    };
+#    systemd.user.services.protonmail = {
+#      enable = false;
+#      after = [ "network.target" ];
+#      wantedBy = [ "graphical-session.target" ];
+#      description = "protonmail-bridge";
+#      serviceConfig = {
+#        Type = "oneshot";
+#        RemainAfterExit = "yes";
+#        ExecStart = ''/etc/services.d/protonmail.sh start'';
+#        ExecStop = ''/etc/services.d/protonmail.sh stop'';
+#      };
+#    };
 
     systemd.services.thunderbird-shortcut = {
       wantedBy = [ "multi-user.target" ];
@@ -119,7 +121,7 @@ esac
 Actions=profile-manager-window
 Categories=Network;Chat;Email;Feed;GTK;News
 Comment=Read and write e-mails or RSS feeds, or manage tasks on calendars.
-Exec=systemctl --user start protonmail.service
+Exec=/etc/services.d/protonmail.sh start
 GenericName=Email Client
 Icon=thunderbird
 Keywords=mail;email;e-mail;messages;rss;calendar;address book;addressbook;chat
