@@ -76,6 +76,7 @@ case "$1" in
     # Will create a tmux session in detached mode (background) with name "protonmail"
     tmux new-session -d -s protonmail protonmail-bridge --cli
     echo "Service started."
+    thunderbird
     ;;
   status)
     # ignore this block unless you understand how tmux works and that it only lists the current user's sessions
@@ -111,6 +112,32 @@ esac
         ExecStop = ''/etc/services.d/protonmail.sh stop'';
       };
     };
+
+    systemd.services.thunderbird-shortcut = {
+      wantedBy = [ "multi-user.target" ];
+      script = ''
+[Desktop Entry]
+Actions=profile-manager-window
+Categories=Network;Chat;Email;Feed;GTK;News
+Comment=Read and write e-mails or RSS feeds, or manage tasks on calendars.
+Exec=systemctl --user start protonmail.service
+GenericName=Email Client
+Icon=thunderbird
+Keywords=mail;email;e-mail;messages;rss;calendar;address book;addressbook;chat
+MimeType=message/rfc822;x-scheme-handler/mailto;text/calendar;text/x-vcard
+Name=Thunderbird
+StartupNotify=true
+StartupWMClass=thunderbird
+Terminal=false
+Type=Application
+Version=1.5
+
+[Desktop Action profile-manager-window]
+Exec=thunderbird --ProfileManager
+Name=Profile Manager
+      '';
+    };
+
 
   };
 }
