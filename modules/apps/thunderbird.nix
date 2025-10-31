@@ -77,7 +77,7 @@ case "$1" in
   start)
     # Will create a tmux session in detached mode (background) with name "protonmail"
     tmux new-session -d -s protonmail protonmail-bridge --cli
-    echo "Service started."
+    sleep 5
     thunderbird
     tmux kill-session -t protonmail
     ;;
@@ -102,19 +102,6 @@ case "$1" in
 esac
       '';
     };
-
-#    systemd.user.services.protonmail = {
-#      enable = false;
-#      after = [ "network.target" ];
-#      wantedBy = [ "graphical-session.target" ];
-#      description = "protonmail-bridge";
-#      serviceConfig = {
-#        Type = "oneshot";
-#        RemainAfterExit = "yes";
-#        ExecStart = ''/etc/services.d/protonmail.sh start'';
-#        ExecStop = ''/etc/services.d/protonmail.sh stop'';
-#      };
-#    };
 
     systemd.services.thunderbird-shortcut = {
       wantedBy = [ "multi-user.target" ];
