@@ -131,10 +131,6 @@ StartupWMClass=thunderbird
 Terminal=false
 Type=Application
 Version=1.5
-
-[Desktop Action profile-manager-window]
-Exec=thunderbird --ProfileManager
-Name=Profile Manager
       '';
     };
 
