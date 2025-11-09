@@ -116,7 +116,9 @@ in
     p7zip gnutar
     cron rsync restic wget curl
     gocryptfs ghostscript
-    fd ripgrep-all fzf
+    fd ripgrep-all fzf eza
+    lazygit
+    jq
   ];
 
 
