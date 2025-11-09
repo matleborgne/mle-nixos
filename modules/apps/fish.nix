@@ -30,7 +30,7 @@
 
     users.defaultUserShell = pkgs.fish;
 
-    environment.systemPackages = with pkgs; [ fish bat ];
+    environment.systemPackages = with pkgs; [ fish fishPlugins.fzf bat ];
 
     programs.fish = {
       enable = true;
