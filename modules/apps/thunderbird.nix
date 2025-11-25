@@ -109,7 +109,8 @@ esac
 Actions=profile-manager-window
 Categories=Network;Chat;Email;Feed;GTK;News
 Comment=Read and write e-mails or RSS feeds, or manage tasks on calendars.
-Exec=/etc/services.d/protonmail.sh start
+#Exec=/etc/services.d/protonmail.sh start
+Exec=thunderbird
 GenericName=Email Client
 Icon=thunderbird
 Keywords=mail;email;e-mail;messages;rss;calendar;address book;addressbook;chat
