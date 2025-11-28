@@ -28,11 +28,9 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    config = {
-      services.udev.packages = [ pkgs.openrgb ];
-      boot.kernelModules = [ "i2c-dev" ];
-      hardware.i2c.enable = true;
-    };
+    services.udev.packages = [ pkgs.openrgb ];
+    boot.kernelModules = [ "i2c-dev" ];
+    hardware.i2c.enable = true;
 
     services.hardware.openrgb = { 
       enable = true; 
