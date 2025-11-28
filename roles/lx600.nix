@@ -43,6 +43,7 @@
       thunderbird.enable = true;      
       video-downloader.enable = true; 
       podman.enable = true;
+      openrgb.enable = true;
     };
 
     bundles = {
