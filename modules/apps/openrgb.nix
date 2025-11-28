@@ -37,6 +37,10 @@
       package = pkgs.openrgb-with-all-plugins; 
       motherboard = "amd"; 
     };
+
+    environment.systemPackages = with pkgs; [
+      openlinkhub
+    ];
         
   };
 }
