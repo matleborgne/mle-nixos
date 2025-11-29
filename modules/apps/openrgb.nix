@@ -30,6 +30,7 @@
 
     services.udev.packages = [ pkgs.openrgb ];
     boot.kernelModules = [ "i2c-dev" ];
+    boot.kernelParams = [ "acpi_enforce_resources=lax" ];
 
     services.hardware.openrgb = { 
       enable = true; 
