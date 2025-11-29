@@ -39,8 +39,13 @@
     };
 
     environment.systemPackages = with pkgs; [
-      openlinkhub
+      openlinkhub i2c-tools
     ];
+
+    hardware.i2c = {
+      group = "i2c";
+      enable = true;
+    };
         
   };
 }
