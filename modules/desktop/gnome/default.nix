@@ -95,6 +95,7 @@
       gnomeExtensions.vitals
       gnomeExtensions.user-themes
       gnomeExtensions.launch-new-instance
+      gnomeExtensions.open-bar
 
       # General use
       dconf-editor
