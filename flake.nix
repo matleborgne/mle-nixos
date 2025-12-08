@@ -103,19 +103,22 @@
         modules = basicModules ++ secretsModules ++ [ ./roles/n2.nix ];
       };
 
-
       sgpc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = basicModules ++ secretsModules ++ [ ./roles/sgpc.nix ];
       };
-
 
       ridge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = basicModules ++ secretsModules ++ [ ./roles/ridge.nix ];
       };
 
-    };
+      x2 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = basicModules ++ secretsModules ++ [ ./roles/x2.nix ];
+      };
 
+
+    };
   };
 }
