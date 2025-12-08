@@ -22,14 +22,6 @@
   # Testing kernel because of new hardware
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # Hardware - suspend black screen workaround
-  boot.kernelParams = [
-    "amdgpu.runpm=0" # désactive le runtime power management
-    "amdgpu.aspm=0"  # désactive Active State Power management (PCIE)
-    "amdgpu.gpu_recovery=1"
-  ];
-
-
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 2- Activation of mle.modules
@@ -47,32 +39,17 @@
     };
 
     bundles = {
-      #datapro.enable = true; # replace by declarative flatpaks
-      development.enable = true;
       gaming.enable = true;
       multimedia.enable = true;
       office.enable = true;
     };
 
     desktop.gnome.mleborgne.enable = true;
-
-    flatpaks = {
-      vscode.enable = true;
-    };
     
     misc = {
       libvirt.enable = true;
       mleupdater.enable = true;
       sshfs.enable = true;
-    };
-
-    secrets = {
-      hm-mleborgne.enable = true;
-      libvirt-vm103.enable = true;
-      libvirt-vm104.enable = true;
-      libvirt-vm901.enable = true;
-      openssh-server.enable = true;
-      openssh-client-mleborgne.enable = true;
     };
     
   };
