@@ -39,7 +39,7 @@
     };
 
     environment.systemPackages = with pkgs; [
-      openlinkhub i2c-tools
+      i2c-tools
     ];
 
     hardware.i2c = {
