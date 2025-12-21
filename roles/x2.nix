@@ -89,7 +89,7 @@
 
   # Works better for example with a gsettings parameter to override (font size, etc.)
 
-  security.pki.certificateFiles = import (builtins.toPath ./secrets/keys/cert/certlist);
+  security.pki.certificateFiles = import (builtins.toPath ../secrets/keys/cert/certlist);
 
 
 }
