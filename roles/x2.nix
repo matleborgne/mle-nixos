@@ -89,8 +89,7 @@
 
   # Works better for example with a gsettings parameter to override (font size, etc.)
 
-  #security.pki.certificateFiles = import (builtins.toPath ./secrets/keys/cert/import.nix);
-  security.pki.certificateFiles = [ ../secrets/keys/cert/vaultwarden.crt ../secrets/keys/cert/vaultwarden.key ];
+  security.pki.certificateFiles = import (builtins.toPath ./secrets/keys/cert/certlist);
 
 
 }
