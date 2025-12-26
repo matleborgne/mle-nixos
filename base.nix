@@ -119,7 +119,7 @@ in
     fd ripgrep-all fzf eza
     lazygit
     jq
-    lsof
+    lsof hwinfo
   ];
 
 
