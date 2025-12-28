@@ -96,7 +96,7 @@
       gnomeExtensions.user-themes
       gnomeExtensions.launch-new-instance
       gnomeExtensions.open-bar
-      gnomeExtensions.rounded-corners
+      gnomeExtensions.rounded-window-corners-reborn
 
       # General use
       dconf-editor
