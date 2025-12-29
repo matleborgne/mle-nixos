@@ -99,6 +99,7 @@
       gnomeExtensions.rounded-window-corners-reborn
 
       # General use
+      file-roller
       dconf-editor
       dconf2nix
       easyeffects
