@@ -70,7 +70,7 @@
       hm-mleborgne.enable = true;
       libvirt-vm103.enable = true;
       libvirt-vm104.enable = true;
-      libvirt-vm901.enable = true;
+      libvirt-vm201.enable = true;
       openssh-server.enable = true;
       openssh-client-mleborgne.enable = true;
     };
