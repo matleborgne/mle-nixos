@@ -40,7 +40,7 @@
           brgenml1lpr
           brlaser
           #cnijfilter2
-          epkowa
+          #epkowa
           gutenprint
           gutenprintBin
           hplip
