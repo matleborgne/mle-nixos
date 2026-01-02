@@ -108,7 +108,8 @@ in
     nh nix-prefetch-git nix-prefetch-github nixpkgs-fmt nixos-icons
 
     # Filesystems
-    e2fsprogs btrfs-progs dosfstools ntfs3g mtpfs exfat exfatprogs
+    e2fsprogs btrfs-progs dosfstools ntfs3g exfat exfatprogs
+    #mtpfs
 
     # CLI tools
     git util-linux pciutils lshw dmidecode smartmontools ncdu tree
