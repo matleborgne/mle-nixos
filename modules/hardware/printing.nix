@@ -39,7 +39,7 @@
           brgenml1cupswrapper
           brgenml1lpr
           brlaser
-          cnijfilter2
+          #cnijfilter2
           epkowa
           gutenprint
           gutenprintBin
