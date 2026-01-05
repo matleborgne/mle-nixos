@@ -69,8 +69,7 @@
     secrets = {
       hm-mleborgne.enable = true;
       libvirt-vm101.enable = true;
-      libvirt-vm103.enable = true;
-      libvirt-vm104.enable = true;
+      libvirt-vm102.enable = true;
       libvirt-vm201.enable = true;
       libvirt-vm202.enable = true;
       openssh-server.enable = true;
