@@ -37,6 +37,7 @@
         ip = "ip -c";
         ns = "nix-shell";
         nsp = "nix-shell --run bash -p";
+        ll = "ls -lah";
       };
 
     };
