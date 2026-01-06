@@ -81,7 +81,7 @@
 
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Misc configuration
+    # Flatpak configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     systemd.user.services.flatpak-vscode = {
@@ -110,7 +110,7 @@
     #  ${pkgs.sudo}/bin/sudo -u ${user} systemctl --user start flatpak-vscode
     #'';
 
-    systemd.services.flatpak-shortcut = {
+    systemd.services.flatpak-vscode-shortcut = {
       wantedBy = [ "multi-user.target" ];
       script = ''
         echo "[Desktop Entry]
