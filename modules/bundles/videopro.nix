@@ -31,7 +31,7 @@
 
       blender
       handbrake
-      kdePackages.kdenlive
+      #kdePackages.kdenlive # flatpak is better here for inter-system (non-nixos) compatibilities
 
       mediainfo-gui
       mkvtoolnix
