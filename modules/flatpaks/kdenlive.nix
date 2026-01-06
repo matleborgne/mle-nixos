@@ -51,6 +51,18 @@
         EOF
       '';
     };
-    
+
+    systemd.services.flatpak-kdenlive-shortcut = {
+      wantedBy = [ "multi-user.target" ];
+      script = ''
+        echo "[Desktop Entry]
+        Type=Application
+        Name=Kdenlive
+        Exec=flatpak run org.kde.kdenlive
+        Icon=kdenlive" > /home/"${user}"/.local/share/applications/kdenlive.desktop
+      '';
+    };
+
+
   });
 }
