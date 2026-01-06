@@ -42,6 +42,7 @@
         ns = "nix-shell";
         nsp = "nix-shell --run fish -p";
         cat = "bat -pP";
+        ll = "ls -lah";
       };
       
     };
