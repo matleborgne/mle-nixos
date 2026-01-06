@@ -57,6 +57,7 @@
     desktop.gnome.mleborgne.enable = true;
 
     flatpaks = {
+      kdenlive.enable = true;
       vscode.enable = true;
     };
     
