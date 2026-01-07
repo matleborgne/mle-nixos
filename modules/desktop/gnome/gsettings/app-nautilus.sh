@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# ~~~~~~~~~~ Schemas DIR ~~~~~~~~~~
+export GSETTINGS_SCHEMA_DIR=$(grep -r nautilus ./.gschemas | tail -n 1)
+
 # ~~~~~~~~~~ Nautilus ~~~~~~~~~~
 gsettings set org.gnome.nautilus.preferences show-hidden-files true
 gsettings set org.gnome.nautilus.preferences show-delete-permanently true
