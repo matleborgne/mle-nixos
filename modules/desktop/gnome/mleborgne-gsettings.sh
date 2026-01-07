@@ -60,7 +60,7 @@ gsettings set org.gnome.desktop.peripherals.touchpad speed .25
 gsettings set org.gnome.desktop.peripherals.mouse speed .25
 
 
-# ~~~~~~~~~~ Veille ~~~~~~~~~~
+# ~~~~~~~~~~ Désactivation de la mise en veille ~~~~~~~~~~
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type "nothing"
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type "nothing"
 
