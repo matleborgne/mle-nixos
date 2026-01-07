@@ -8,5 +8,5 @@ gsettings set org.gnome.nautilus.preferences default-folder-viewer "list-view"
 
 gsettings set org.gnome.nautilus.list-view default-zoom-level "small"
 
-gsettings set org.gtk.Settings.FileChooser show-hidden true
-gsettings set org.gtk.Settings.FileChooser sort-directories-first true
+gsettings set org.gtk.settings.file-chooser show-hidden true
+gsettings set org.gtk.settings.file-chooser sort-directories-first true
