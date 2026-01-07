@@ -8,5 +8,5 @@ if [ $distro == "nixos" ] ; then
   echo $(find -L "$HOME/.local/share/gnome-shell/" -type d -name "schemas") >> ./.gschemas
   sed -i "s/ /\n/g" .gschemas
 else
-  pass
+  schemadir="/usr/share/glib-2.0/schemas"
 elif
