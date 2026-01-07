@@ -1,7 +1,20 @@
 #!/bin/bash
 
 # ~~~~~~~~~~ Schemas DIR ~~~~~~~~~~
-schemadir=$(grep -r dash-to-panel ./.gschemas | tail -n 1)
+distro = $(cat /etc/os-release | grep '^ID=' | awk -F '=' '{print $NF }')
+
+if [ $distro == "nixos" ] ; then
+  echo $(find -L "/run/current-system/sw/share/gsettings-schemas/" -type d -name "schemas") > ./.gschemas
+  echo $(find -L "/run/current-system/sw/share/gnome-shell/extensions/" -type d -name "schemas") >> ./.gschemas
+  echo $(find -L "$HOME/.local/share/gnome-shell/" -type d -name "schemas") >> ./.gschemas
+  sed -i "s/ /\n/g" .gschemas
+  schemadir=$(grep -r dash-to-panel ./.gschemas | tail -n 1)
+  
+else
+  schemadir="/usr/share/glib-2.0/schemas"
+
+elif
+
 
 # ~~~~~~~~~~ Dash to panel ~~~~~~~~~~
 gsettings set org.gnome.shell.extensions.dash-to-panel dot-style-focused "DASHES"
