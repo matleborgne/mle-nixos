@@ -47,6 +47,19 @@ gsettings set org.gnome.desktop.background picture-options "zoom"
 gsettings set org.gnome.desktop.background picture-uri "file:////$HOME/.local/share/.wallpaper.jpg";
 gsettings set org.gnome.desktop.background picture-uri-dark "file:////$HOME/.local/share/.wallpaper.jpg";
 
+gsettings set org.gnome.terminal.legacy theme-variant dark
+gsettings set org.gnome.Ptyxis interface-style dark
 
 
+# ~~~~~~~~~~ Souris et touchpad ~~~~~~~~~~
+gsettings set org.gnome.desktop.peripherals.touchpad click-method "areas"
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+gsettings set org.gnome.desktop.peripherals.touchpad two-finger-scrolling-enabled true
+gsettings set org.gnome.desktop.peripherals.touchpad speed .25
 
+gsettings set org.gnome.desktop.peripherals.mouse speed .25
+
+
+# ~~~~~~~~~~ Veille ~~~~~~~~~~
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type "nothing"
+gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type "nothing"
