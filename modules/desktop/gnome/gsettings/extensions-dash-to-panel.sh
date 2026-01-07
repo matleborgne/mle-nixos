@@ -3,7 +3,6 @@
 # ~~~~~~~~~~ Schemas DIR ~~~~~~~~~~
 export GSETTINGS_SCHEMA_DIR=$(grep -r dash-to-panel ./.gschemas | tail -n 1)
 
-
 # ~~~~~~~~~~ Dash to panel ~~~~~~~~~~
 gsettings set org.gnome.shell.extensions.dash-to-panel dot-style-focused "DASHES"
 gsettings set org.gnome.shell.extensions.dash-to-panel dot-style-unfocused "DOTS"
