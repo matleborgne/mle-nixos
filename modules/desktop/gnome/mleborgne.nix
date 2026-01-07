@@ -213,7 +213,7 @@
 
             # Just perfection
             "org/gnome/shell/extensions/just-perfection" = {
-              #animation = 4;
+              dash-separator = false;
               search = false;
             };
 
