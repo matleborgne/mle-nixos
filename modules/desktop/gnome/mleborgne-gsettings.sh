@@ -40,7 +40,7 @@ gsettings set org.gnome.mutter dynamic-workspaces true
 gsettings set org.gnome.mutter edge-tiling true
 gsettings set org.gnome.mutter workspaces-only-on-primary true
 
-gsettings set org.gnome.desktop.session idle-delay = 0
+gsettings set org.gnome.system.location enabled false
 
 gsettings set org.gnome.desktop.background color-shading-type "solid"
 gsettings set org.gnome.desktop.background picture-options "zoom"
@@ -63,3 +63,6 @@ gsettings set org.gnome.desktop.peripherals.mouse speed .25
 # ~~~~~~~~~~ Veille ~~~~~~~~~~
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type "nothing"
 gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type "nothing"
+
+gsettings set org.gnome.desktop.session idle-delay 0
+
