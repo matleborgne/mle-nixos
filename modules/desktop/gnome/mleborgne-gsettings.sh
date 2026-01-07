@@ -34,3 +34,19 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Alt>
 gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Alt>Right']"
 
 
+# ~~~~~~~~~~ Session mutter ~~~~~~~~~~
+gsettings set org.gnome.mutter check-alive-timeout 30000
+gsettings set org.gnome.mutter dynamic-workspaces true
+gsettings set org.gnome.mutter edge-tiling true
+gsettings set org.gnome.mutter workspaces-only-on-primary true
+
+gsettings set org.gnome.desktop.session idle-delay = 0
+
+gsettings set org.gnome.desktop.background color-shading-type "solid"
+gsettings set org.gnome.desktop.background picture-options "zoom"
+gsettings set org.gnome.desktop.background picture-uri "file:////$HOME/.local/share/.wallpaper.jpg";
+gsettings set org.gnome.desktop.background picture-uri-dark "file:////$HOME/.local/share/.wallpaper.jpg";
+
+
+
+
