@@ -35,7 +35,7 @@
 
     boot.kernelParams = [ 
       "amd_iommu=on"
-      "vfio-pci.ids=10de:2d05" # replace with yours
+      "vfio-pci.ids=10de:2d05,1462:5371" # replace with yours (lspci -nnk)
     ];
 
 
