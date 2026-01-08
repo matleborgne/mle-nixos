@@ -1,0 +1,43 @@
+{ config, lib, pkgs, ... }:
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# MISC
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# Misc are configuration very specific which does not enter
+# in apps, bundles, desktop or hardware categories
+
+{
+
+  options.mle.misc.pci-passthrough.enable = lib.mkOption {
+    description = "Configure pci-passthrough";
+    type = lib.types.bool;
+    default = false;
+  };
+  
+  config = lib.mkIf config.mle.misc.pci-passthrough.enable {
+  
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Recursive activation of other mle.<modules>
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Misc configuration
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    boot.initrd.kernelModules = [ 
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
+      "nouveau"
+    ];
+
+    boot.kernelParams = [ 
+      "amd_iommu=on"
+      "vfio-pci.ids=10de:2d05" # replace with yours
+    ];
+
+
+  };  
+}
