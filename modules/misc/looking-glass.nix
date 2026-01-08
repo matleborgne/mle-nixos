@@ -26,10 +26,6 @@
     # Misc configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    boot.initrd.kernelModules = [ 
-      "ivshmem"
-    ];
-
     environment.systemPackages = with pkgs; [
       looking-glass-client
     ];
