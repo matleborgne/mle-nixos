@@ -30,8 +30,9 @@
       "vfio_pci"
       "vfio"
       "vfio_iommu_type1"
-      "nouveau"
-    ];
+
+      "nvidiafb"
+];
 
     boot.kernelParams = [ 
       "amd_iommu=on"
