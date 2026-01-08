@@ -30,10 +30,18 @@
       "vfio_pci"
       "vfio"
       "vfio_iommu_type1"
+    ];
 
+    boot.blacklistedKernelModules = [
+      "nvidia"
+      "nvidia_drm"
+      "nvidia_modeset"
+      "nvidia_uvm"
+      "nouveau"
       "nvidiafb"
-];
-
+      "rivafb"
+    ];
+    
     boot.kernelParams = [ 
       "amd_iommu=on"
       "iommu=pt"
