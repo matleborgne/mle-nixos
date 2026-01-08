@@ -46,7 +46,7 @@
       "amd_iommu=on"
       "iommu=pt"
       "pcie_acs_override=downstream,multifunction"
-      "vfio-pci.ids=10de:2d05,1462:5371,10de:22eb,10de:0000" # replace with yours (lspci -nnk)
+      "vfio-pci.ids=10de:2d05,10de:22eb" # replace with yours (lspci -nnk)
     ];
 
 
