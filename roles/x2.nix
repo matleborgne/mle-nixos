@@ -40,6 +40,7 @@
     apps = {
       firefox.enable = true;
       librewolf.enable = true;
+      logitech.enable = true;
       thunderbird.enable = true;      
       video-downloader.enable = true; 
       podman.enable = true;
