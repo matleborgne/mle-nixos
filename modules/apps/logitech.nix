@@ -28,9 +28,11 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.defaultPackages = [ pkgs.piper ];
-    services.ratbagd.enable = true;
+    environment.defaultPackages = with pkgs; [
+      logitech-udev-rules
+      solaar
+      gnomeExtensions.solaar-extension
+    ];
     
   };
-
 }
