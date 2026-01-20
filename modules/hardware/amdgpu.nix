@@ -24,13 +24,11 @@
     
     hardware.graphics = {
       enable = true;
+      enable32Bit = true;
 
-      #driSupport = lib.mkDefault true;
       extraPackages = with pkgs; [
         rocmPackages.clr.icd
       ];
-
-      #driSupport32Bit = lib.mkDefault true;
 
     };
 
