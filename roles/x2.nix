@@ -20,7 +20,7 @@
   networking.hostName = "nix-x2";
 
   # Testing kernel because of new hardware
-  boot.kernelPackages = pkgs.linuxPackages_lts;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Hardware - suspend black screen workaround
   boot.kernelParams = [
