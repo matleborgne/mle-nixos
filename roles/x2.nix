@@ -22,15 +22,6 @@
   # Testing kernel because of new hardware
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  # Hardware - suspend black screen workaround
-  boot.kernelParams = [
-    "amdgpu.dpm=0"
-    "amdgpu.runpm=0" # désactive le runtime power management
-    "amdgpu.aspm=0"  # désactive Active State Power management (PCIE)
-    "amdgpu.gpu_recovery=1"
-  ];
-
-
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 2- Activation of mle.modules
@@ -45,7 +36,7 @@
       thunderbird.enable = true;      
       video-downloader.enable = true; 
       podman.enable = true;
-      openrgb.enable = true;
+      #openrgb.enable = true;
     };
 
     bundles = {
@@ -66,8 +57,8 @@
     misc = {
       libvirt.enable = true;
       mleupdater.enable = true;
-      pci-passthrough.enable = true;
-      looking-glass.enable = true;
+      #pci-passthrough.enable = true;
+      #looking-glass.enable = true;
       sshfs.enable = true;
     };
 
@@ -95,8 +86,5 @@
   #hardware.bluetooth.enable = lib.mkForce false;
 
   # Works better for example with a gsettings parameter to override (font size, etc.)
-
-  security.pki.certificateFiles = import (builtins.toPath ../secrets/keys/cert/certlist);
-
 
 }
