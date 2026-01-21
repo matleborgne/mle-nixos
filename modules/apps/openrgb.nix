@@ -28,7 +28,10 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    services.udev.packages = [ pkgs.openrgb ];
+    services.udev.packages = [ 
+      #pkgs.openrgb # flatpak version
+    ];
+
     boot.kernelModules = [ "i2c-dev" ];
     boot.kernelParams = [ "acpi_enforce_resources=lax" ];
 
