@@ -27,7 +27,7 @@
         src = pkgs.fetchurl {
               #https://cdn.kernel.org/pub/linux/kernel/v6.x
               url = "mirror://kernel/linux/kernel/v6.x/linux-6.18.2.tar.xz";
-              sha256 = "sha256-IYF/GZjiIw+B9+T2Bfpv3LBA4U+ifZnCfdsWznSXl6k=";
+              sha256 = "sha256-VYxrurdJSSs0+Zgn/oB7ADmnRGk8IdOn4Ds6SO2quWo=";
         };
         version = "6.18.2";
         modDirVersion = "6.18.2";
