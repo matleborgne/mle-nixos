@@ -120,7 +120,7 @@ in
     fd ripgrep-all fzf eza
     lazygit
     jq
-    lsof hwinfo
+    lsof hwinfo tmux
   ];
 
 
