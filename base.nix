@@ -16,7 +16,6 @@ in
 
   programs.nix-index.enable = lib.mkDefault true;
   programs.command-not-found.enable = lib.mkDefault true;
-  home.enableNixpkgsReleaseCheck = false;
 
   nix.settings.download-buffer-size = 524288000;
   nix.settings.experimental-features = lib.mkDefault [
