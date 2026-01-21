@@ -19,8 +19,21 @@
   # Hostname
   networking.hostName = "nix-x2";
 
-  # Testing kernel because of new hardware
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Kernel is buggy now
+  #boot.kernelPackages = pkgs.linuxPackages_zen;
+  
+    boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_18.override {
+      argsOverride = rec {
+        src = pkgs.fetchurl {
+              #https://cdn.kernel.org/pub/linux/kernel/v6.x
+              url = "mirror://kernel/linux/kernel/v6.x/linux-6.18.2.tar.xz";
+              sha256 = "sha256-IYF/GZjiIw+B9+T2Bfpv3LBA4U+ifZnCfdsWznSXl6k=";
+        };
+        version = "6.18.2";
+        modDirVersion = "6.18.2";
+        };
+    });
+    
 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
