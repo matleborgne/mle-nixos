@@ -15,7 +15,7 @@ in
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   programs.nix-index.enable = lib.mkDefault true;
-  programs.command-not-found.enable = lib.mkDefault true;
+  programs.command-not-found.enable = lib.mkDefault false;
 
   nix.settings.download-buffer-size = 524288000;
   nix.settings.experimental-features = lib.mkDefault [
