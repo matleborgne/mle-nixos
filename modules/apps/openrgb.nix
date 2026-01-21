@@ -35,11 +35,11 @@
     boot.kernelModules = [ "i2c-dev" ];
     boot.kernelParams = [ "acpi_enforce_resources=lax" ];
 
-    services.hardware.openrgb = { 
-      enable = true; 
-      package = pkgs.openrgb-with-all-plugins; 
-      motherboard = "amd"; 
-    };
+    #services.hardware.openrgb = { 
+    #  enable = true; 
+    #  package = pkgs.openrgb-with-all-plugins; 
+    #  motherboard = "amd"; 
+    #};
 
     environment.systemPackages = with pkgs; [
       i2c-tools
