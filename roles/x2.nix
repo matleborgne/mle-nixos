@@ -20,21 +20,7 @@
   networking.hostName = "nix-x2";
 
   # Kernel is buggy now
-  #boot.kernelPackages = pkgs.linuxPackages_zen;
-  
-    boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_6_18.override {
-      argsOverride = rec {
-        src = pkgs.fetchurl {
-              #https://cdn.kernel.org/pub/linux/kernel/v6.x
-              url = "mirror://kernel/linux/kernel/v6.x/linux-6.18.2.tar.xz";
-              sha256 = "sha256-VYxrurdJSSs0+Zgn/oB7ADmnRGk8IdOn4Ds6SO2quWo=";
-        };
-        version = "6.18.2";
-        modDirVersion = "6.18.2";
-        };
-    });
-    
-
+  boot.kernelPackages = pkgs.linuxPackages_zen; 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 2- Activation of mle.modules
