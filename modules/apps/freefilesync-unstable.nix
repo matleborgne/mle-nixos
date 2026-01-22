@@ -1,4 +1,4 @@
-{ lib, config, pkgs, pkgsUnstable, ... }:
+{ lib, config, inputs, pkgs, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # APPS
