@@ -45,14 +45,15 @@
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
-      unitConfig = {
-        ConditionPathExists = "/var/uncrypt/%i";
-      };
-
       serviceConfig = {
         Type = "forking";
         RemainAfterExit = true;
         EnvironmentFile = [ "/home/${user}/.gocryptfs/%i.env" ];
+        ExecStartPre = ''
+          ${pkgs.bash}/bin/bash -c \
+            'test -d "$CIPHERDIR" || exit 0 \
+            test -d "$MOUNTDIR" || exit 0'
+        '';
         ExecStart = ''
           ${pkgs.bash}/bin/bash -c \
             '${pkgs.systemd}/bin/systemd-ask-password Password | \
@@ -61,6 +62,7 @@
               -config ''${CONFIG} \
               -extpass "${pkgs.systemd}/bin/systemd-ask-password Password for %i" \
               ''${ARGS}'
+        '';
       };
     };
 
@@ -72,14 +74,15 @@
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
 
-      unitConfig = {
-        ConditionPathExists = "/var/uncrypt/%i";
-      };
-
       serviceConfig = {
         Type = "forking";
         RemainAfterExit = true;
         EnvironmentFile = [ "/home/${user}/.gocryptfs/%i.env" ];
+        ExecStartPre = ''
+          ${pkgs.bash}/bin/bash -c \
+            'test -d "$CIPHERDIR" || exit 0 \
+            test -d "$MOUNTDIR" || exit 0'
+        '';
         ExecStart = ''
           ${pkgs.bash}/bin/bash -c \
             '${pkgs.gocryptfs}/bin/gocryptfs \
