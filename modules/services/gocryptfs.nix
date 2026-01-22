@@ -35,7 +35,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     # Requirements :
-    # Create your /home/$user/.gocryptfs directory, with inside a file named 'mydir.env'
+    # Create your /home/$user/.mounts directory, with inside a file named 'mydir.env'
 
     # Containing :
     # CIPHERDIR="path_to_encrypted_dir"
