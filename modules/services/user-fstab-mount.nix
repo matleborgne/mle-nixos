@@ -51,7 +51,7 @@
         Type = "forking";
         RemainAfterExit = true;
         EnvironmentFile = [ "/home/${user}/.mounts/%i.env" ];
-        ExecStartPre = "${pkgs.bash}/bin/bash -c 'test -d $MOUNTDIR || exit 0";
+        ExecStartPre = "${pkgs.bash}/bin/bash -c 'test -d $MOUNTDIR || exit 0'";
         ExecStart = "/run/current-system/sw/bin/mount $MOUNTDIR";
       };
     };
