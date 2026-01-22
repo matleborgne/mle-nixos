@@ -63,7 +63,8 @@
     };
 
     services = {
-      gocryptfs.enable = true;
+      system-gocryptfs.enable = true;
+      user-fstab-mount.enable = true;
     };
 
     secrets = {
