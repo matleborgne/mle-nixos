@@ -34,6 +34,10 @@
     # Service configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    environment.systemPackages = lib.mkForce pkgs; [
+      gocryptfs
+    ];
+
     # With PASSWORD PROMPT
     systemd.services."gocryptfs@" = {
       description = "Specified by i gocryptfs mount";      
@@ -49,7 +53,14 @@
         Type = "forking";
         RemainAfterExit = true;
         EnvironmentFile = [ "/home/${user}/.gocryptfs/%i.env" ];
-        ExecStart = "/run/current-system/sw/bin/sh -c '/run/current-system/sw/bin/systemd-ask-password Password | /run/current-system/sw/bin/gocryptfs -allow_other -config $GOCONF /var/media/nas/%i /var/uncrypt/%i'";
+        ExecStart = ''
+          ${pkgs.bash}/bin/bash -c \
+            '${pkgs.systemd}/bin/systemd-ask-password Password | \
+            ${pkgs.gocryptfs}/bin/gocryptfs \
+              ''${CIPHERDIR} ''${MOUNTDIR} \
+              -config ''${CONFIG} \
+              -extpass "${pkgs.systemd}/bin/systemd-ask-password Password for %i" \
+              ''${ARGS}'
       };
     };
 
@@ -72,13 +83,11 @@
         ExecStart = ''
           ${pkgs.bash}/bin/bash -c \
             '${pkgs.gocryptfs}/bin/gocryptfs \
-              ''${cipherdir} ''${mountdir} \
-              -config ''${config} \
-              -passfile ''${passfile} \
-              ''${args}'
+              ''${CIPHERDIR} ''${MOUNTDIR} \
+              -config ''${CONFIG} \
+              -passfile ''${PASSFILE} \
+              ''${ARGS}'
         '';
-
-        #"/run/current-system/sw/bin/bash -c '/run/current-system/sw/bin/gocryptfs /var/media/nas/%i /var/uncrypt/%i -allow_other -config $GOCONF -passfile $PASSFILE'";
       };
     };
     
