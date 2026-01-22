@@ -34,7 +34,7 @@
     # Service configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages = lib.mkForce pkgs; [
+    environment.systemPackages = lib.mkForce with pkgs; [
       gocryptfs
     ];
 
