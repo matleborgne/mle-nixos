@@ -56,10 +56,10 @@
         '';
         ExecStart = ''
           ${pkgs.bash}/bin/bash -c \
-            '${pkgs.gocryptfs}/bin/gocryptfs \
+            ' /run/current-system/sw/bin/systemd-ask-password Password for %i |
+            ${pkgs.gocryptfs}/bin/gocryptfs \
               ''${CIPHERDIR} ''${MOUNTDIR} \
               -config ''${CONFIG} \
-              -extpass "systemd-ask-password Password for %i" \
               ''${ARGS}'
         '';
       };
