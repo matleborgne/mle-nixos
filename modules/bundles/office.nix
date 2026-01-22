@@ -29,7 +29,7 @@
 
     environment.systemPackages = with pkgs; [
       libreoffice
-      freefilesync
+      #freefilesync
       cherrytree
 
       pdfarranger
