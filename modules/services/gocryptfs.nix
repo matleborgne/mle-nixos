@@ -34,6 +34,17 @@
     # Service configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+    # Requirements :
+    # Create your /home/$user/.gocryptfs directory, with inside a file named 'mydir.env'
+
+    # Containing :
+    # CIPHERDIR="path_to_encrypted_dir"
+    # MOUNTDIR="path_to_uncrypted_dir"
+    # CONFIG="path_to_conf"
+    # PASSFILE="path_to_passfile_if_needed"
+    # ARGS="some_args"
+
+
     environment.systemPackages = with pkgs; [
       gocryptfs
     ];
