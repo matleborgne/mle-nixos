@@ -60,7 +60,7 @@
             ${pkgs.gocryptfs}/bin/gocryptfs \
               ''${CIPHERDIR} ''${MOUNTDIR} \
               -config ''${CONFIG} \
-              -extpass "${pkgs.systemd}/bin/systemd-ask-password Password for %i" \
+              -extpass "systemd-ask-password Password for %i" \
               ''${ARGS}'
         '';
       };
