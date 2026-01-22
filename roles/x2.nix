@@ -62,6 +62,10 @@
       sshfs.enable = true;
     };
 
+    services = {
+      gocryptfs.enable = true;
+    };
+
     secrets = {
       hm-mleborgne.enable = true;
       libvirt-vm101.enable = true;
