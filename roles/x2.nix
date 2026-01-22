@@ -30,6 +30,7 @@
 
     apps = {
       firefox.enable = true;
+      freefilesync-unstable.enable = true;
       librewolf.enable = true;
       logitech.enable = true;
       thunderbird.enable = true;      
