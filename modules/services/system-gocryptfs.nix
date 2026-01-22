@@ -9,13 +9,13 @@
 
 {
 
-  options.mle.services.gocryptfs.enable = lib.mkOption {
+  options.mle.services.system-gocryptfs.enable = lib.mkOption {
     description = "Configure GOCRYPTFS system-wide service";
     type = lib.types.bool;
     default = false;
   };
   
-  config = lib.mkIf config.mle.services.gocryptfs.enable (
+  config = lib.mkIf config.mle.services.system-gocryptfs.enable (
     
   let
     allUsers = builtins.attrNames config.users.users;
@@ -50,7 +50,7 @@
     ];
 
     # With PASSWORD PROMPT
-    systemd.services."gocryptfs@" = {
+    systemd.services."system-gocryptfs@" = {
       description = "Specified by i gocryptfs mount";      
       enable = true;
       after = [ "network.target" ];
@@ -77,7 +77,7 @@
 
     
     # With PASSFILE
-    systemd.services."gocryptfs-passfile@" = {
+    systemd.services."system-gocryptfs-passfile@" = {
       description = "Specified by i gocryptfs mount with passfile";      
       enable = true;
       after = [ "network.target" ];
