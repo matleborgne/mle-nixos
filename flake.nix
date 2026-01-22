@@ -31,6 +31,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     hyprland,
     hyprland-plugins,
@@ -73,17 +74,20 @@
 
       tpldesktop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/tpldesktop.nix ];
       };
 
 
       lx600 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/lx600.nix ];
       };
 
       lx600Iso = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = basicModules ++ isoModules ++ [ ./roles/lx600Iso.nix ];
       };
 
@@ -101,21 +105,25 @@
 
       n2 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/n2.nix ];
       };
 
       sgpc = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/sgpc.nix ];
       };
 
       ridge = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/ridge.nix ];
       };
 
       x2 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/x2.nix ];
       };
 
