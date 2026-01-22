@@ -72,9 +72,13 @@
         ExecStart = ''
           ${pkgs.bash}/bin/bash -c \
             '${pkgs.gocryptfs}/bin/gocryptfs \
-              ''${cipherdir} ''${mountdir}
-        
-        "/run/current-system/sw/bin/bash -c '/run/current-system/sw/bin/gocryptfs /var/media/nas/%i /var/uncrypt/%i -allow_other -config $GOCONF -passfile $PASSFILE'";
+              ''${cipherdir} ''${mountdir} \
+              -config ''${config} \
+              -passfile ''${passfile} \
+              ''${args}'
+        '';
+
+        #"/run/current-system/sw/bin/bash -c '/run/current-system/sw/bin/gocryptfs /var/media/nas/%i /var/uncrypt/%i -allow_other -config $GOCONF -passfile $PASSFILE'";
       };
     };
     
