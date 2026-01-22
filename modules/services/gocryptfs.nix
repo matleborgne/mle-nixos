@@ -54,7 +54,6 @@
       description = "Specified by i gocryptfs mount";      
       enable = true;
       after = [ "network.target" ];
-      #wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
         Type = "forking";
@@ -82,7 +81,6 @@
       description = "Specified by i gocryptfs mount with passfile";      
       enable = true;
       after = [ "network.target" ];
-      #wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
         Type = "forking";
