@@ -58,7 +58,7 @@
       serviceConfig = {
         Type = "forking";
         RemainAfterExit = true;
-        EnvironmentFile = [ "/home/${user}/.gocryptfs/%i.env" ];
+        EnvironmentFile = [ "/home/${user}/.mounts/%i.env" ];
         ExecStartPre = ''
           ${pkgs.bash}/bin/bash -c \
             'test -d "$CIPHERDIR" || exit 0 \
@@ -85,7 +85,7 @@
       serviceConfig = {
         Type = "forking";
         RemainAfterExit = true;
-        EnvironmentFile = [ "/home/${user}/.gocryptfs/%i.env" ];
+        EnvironmentFile = [ "/home/${user}/.mounts/%i.env" ];
         ExecStartPre = ''
           ${pkgs.bash}/bin/bash -c \
             'test -d "$CIPHERDIR" || exit 0 \
