@@ -45,7 +45,8 @@
     boot.kernelParams = [ 
       "amd_iommu=on"
       "iommu=pt"
-      "pcie_acs_override=multifunction,id:10de:2d05,id:10de:22eb"
+      #"pcie_acs_override=multifunction,id:10de:2d05,id:10de:22eb"
+      "pcie_acs_override=downstream,multifunction"
       "vfio-pci.ids=10de:2d05,10de:22eb" # replace with yours (lspci -nnk)
     ];
 
