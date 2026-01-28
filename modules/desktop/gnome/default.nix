@@ -92,6 +92,7 @@
       gnomeExtensions.gsconnect
       gnomeExtensions.just-perfection
       #gnomeExtensions.pop-shell
+      gnomeExtensions.tiling-shell
       gnomeExtensions.forge
       gnomeExtensions.vitals
       gnomeExtensions.user-themes
