@@ -91,7 +91,8 @@
       gnomeExtensions.dash-to-panel
       gnomeExtensions.gsconnect
       gnomeExtensions.just-perfection
-      gnomeExtensions.pop-shell
+      #gnomeExtensions.pop-shell
+      gnomeExtensions.forge
       gnomeExtensions.vitals
       gnomeExtensions.user-themes
       gnomeExtensions.launch-new-instance
