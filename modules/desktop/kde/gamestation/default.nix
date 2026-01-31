@@ -32,7 +32,7 @@
     # Module
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    services.xserver.displayManager.gdm.autoLogin = {
+    services.displayManager.autoLogin = {
       enable = true;
       inherit user;
     };
