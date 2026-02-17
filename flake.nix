@@ -87,7 +87,6 @@
           inherit system;
           specialArgs = {
             inherit inputs hostPlatform pkgsUnstable;
-            nixExperimentalFeatures = [ "nix-command" "flakes" ];
           };
           modules = baseModules
             ++ [ ./roles/${r}.nix ]
