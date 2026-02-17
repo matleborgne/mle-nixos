@@ -10,13 +10,13 @@
 
 {
 
-  options.mle.desktop.gnome.default.enable = lib.mkOption {
-    description = "Enable GNOME";
+  options.mle.desktop.gnome.base.enable = lib.mkOption {
+    description = "Enable GNOME base";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.desktop.gnome.default.enable {
+  config = lib.mkIf config.mle.desktop.gnome.base.enable {
     
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
