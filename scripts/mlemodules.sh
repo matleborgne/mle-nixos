@@ -55,7 +55,7 @@ suffix="  ];
 # NIX hardware-conf
 {
   find "$current/../secrets" -name "*hardware-configuration-$host.nix" \
-    | sed -e "s|$current/||g")' "$suffix" \
+    | sed -e "s|$current/||g" \
     | sed 's/^/      /'
 
   printf "%s\n" "$suffix"
