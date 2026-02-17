@@ -61,34 +61,24 @@
         })
       ];
 
+      roles = [ "tpldesktop" "lx600" "yoga" "yoga-testing" "n2" "sgpc" "ridge" "x2" ];
+
+      nixosConfigurations = builtins.listToAttrs (map (r: {
+        name = r;
+        value = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs pkgsUnstable; };
+          modules = baseModules ++ [./roles/${r}.nix];
+        };
+      }) roles);
+
     in {
+      inherit nixosConfigurations;
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Configurations
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-      let
-        roles = [
-          "tpldesktop"
-          "lx600"
-          "yoga"
-          "yoga-testing"
-          "n2"
-          "sgpc"
-          "ridge"
-          "x2"
-        ];
-
-      in {
-        nixosConfigurations = builtins.listToAttrs (map (r: {
-          name = r;
-          value = nixpkgs.lib.nixosSystem {
-            inherit system;
-            specialArgs = { inherit inputs pkgsUnstable; };
-            modules = baseModules ++ [ ./roles/${r}.nix ];
-          };
-        }) roles);
-      };        
+    
 
       #lx600Iso = nixpkgs.lib.nixosSystem {
       #  inherit system;
