@@ -30,26 +30,6 @@ in
 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # Custom modules - mle modules
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  # TODO : retirer les modules d'ici : le base.nix doit être non flakisé, donc
-  # comme il n'y a pas d'imports il ne doit pas contenir de modules
-  # juste un système basique
-  # donc créer un rôle serveur par défaut ou quelque chose comme cela
-  
-  mle = {
-
-    apps = {
-      bash.enable = true;
-      fish.enable = true;
-      nano.enable = true;
-    };
-    
-  };
-
-
-  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Linux basics
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
