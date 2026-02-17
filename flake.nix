@@ -47,11 +47,11 @@
       };
 
       baseModules = [
-        { nixpkgs.config = nixpkgsConfig; }
         nixosModules.default
         nixosModules.secrets
         home-manager.nixosModules.default
         ./base.nix
+        { nixpkgs.config = nixpkgsConfig; }
       ];
 
       isoModules = [
