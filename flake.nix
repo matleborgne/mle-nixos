@@ -33,15 +33,9 @@
 
     let
       system = "x86_64-linux";
-      secretsModules = (import (builtins.toPath ./secrets/imports.nix));
 
       nixpkgsConfig = {
         allowUnfree = true;
-      };
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config = nixpkgsConfig; 
       };
 
       pkgsUnstable = import nixpkgs-unstable {
@@ -49,12 +43,18 @@
         config = nixpkgsConfig; 
       };
 
+      nixosModules = {
+        default = import ./modules;
+        secrets = import ./secrets;
+      };
 
-      basicModules = [
-        { system.configurationRevision = self.rev or self.dirtyRev or null; }
+      baseModules = [
+        { nixpkgs.config = nixpkgsConfig; }
+        nixosModules.default
+        nixosModules.secrets
         home-manager.nixosModules.default
         ./base.nix
-      ] ++ (import (builtins.toPath ./modules/imports.nix));
+      ];
 
       isoModules = [
         ({ pkgs, modulesPath, ... }: {
