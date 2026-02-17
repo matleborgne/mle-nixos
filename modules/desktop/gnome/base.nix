@@ -22,13 +22,22 @@
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    mle.apps.logitech.enable = true;
+    mle = {
 
-    mle.desktop.codecs.enable = true;
-    mle.desktop.pipewire.enable = true;
+      apps = {
+        bash.enable = true;
+        fish.enable = true;
+        nano.enable = true;
+        logitech.enable = true;
+      };
 
-    mle.misc.networkmanager.enable = true;
+      desktop = {
+        codecs.enable = true;
+        pipewire.enable = true;
+      };
 
+      misc.networkmanager.enable = true;
+    };
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Base of GNOME desktop
