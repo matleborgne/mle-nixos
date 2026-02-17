@@ -18,14 +18,27 @@ PATH=$PATH:/run/current-system/sw/bin
 current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 host=$(cat /etc/hostname)
 
+# nix formatting
+prefix="{ config, pkgs, pkgs-unstable, lib, ... }:
+
+{
+  imports =
+    [
+"
+
+suffix="    ];
+ 
+}
+"
+
 # mlemodules.nix
-echo '[ '$(find "$current/../modules" -name '*.nix' \
+echo $prefix '$(find "$current/../modules" -name '*.nix' \
           | grep -v "/imports.nix" \
-          | sed -e "s|$current/||g")' ]' \
+          | sed -e "s|$current/||g")' $suffix \
           > "$current/../modules/imports.nix"
 
 # secrets/mlesecrets.nix but hardware conf
-echo '[ '$(find "$current/../secrets" -name '*.nix' \
+echo $prefix '$(find "$current/../secrets" -name '*.nix' \
           | grep -v "/imports.nix" \
           | grep -v "/hardware-configuration*" \
           | sed -e "s|$current/||g")' ' \
@@ -33,7 +46,7 @@ echo '[ '$(find "$current/../secrets" -name '*.nix' \
 
 # specific import for secrets/hardware-configuration
 echo $(find "$current/../secrets" -name "*hardware-configuration-$host.nix" \
-          | sed -e "s|$current/||g")' ]' \
+          | sed -e "s|$current/||g")' $suffix \
           >> "$current/../secrets/imports.nix"
 
 # correction import.nix
