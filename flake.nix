@@ -29,9 +29,7 @@
     utils,
     home-manager,
     ...
-  }
-    @inputs:
-
+  } @inputs:
 
     let
       system = "x86_64-linux";
