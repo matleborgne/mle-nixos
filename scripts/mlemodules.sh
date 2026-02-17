@@ -34,13 +34,13 @@ suffix="
 "
 
 # mlemodules.nix
-echo $prefix $(find "$current/../modules" -name '*.nix' \
+echo "$prefix" $(find "$current/../modules" -name '*.nix' \
           | grep -v "/imports.nix" \
-          | sed -e "s|$current/||g") $suffix \
+          | sed -e "s|$current/||g") "$suffix" \
           > "$current/../modules/imports.nix"
 
 # secrets/mlesecrets.nix but hardware conf
-echo $prefix $(find "$current/../secrets" -name '*.nix' \
+echo "$prefix" $(find "$current/../secrets" -name '*.nix' \
           | grep -v "/imports.nix" \
           | grep -v "/hardware-configuration*" \
           | sed -e "s|$current/||g") ' \
@@ -48,7 +48,7 @@ echo $prefix $(find "$current/../secrets" -name '*.nix' \
 
 # specific import for secrets/hardware-configuration
 echo $(find "$current/../secrets" -name "*hardware-configuration-$host.nix" \
-          | sed -e "s|$current/||g")' $suffix \
+          | sed -e "s|$current/||g")' "$suffix" \
           >> "$current/../secrets/imports.nix"
 
 # correction import.nix
