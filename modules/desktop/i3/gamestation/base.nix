@@ -17,7 +17,7 @@
     mle = {
       
       desktop.i3 = {
-        default.enable = true;
+        base.enable = true;
       };
       hardware.printing.enable = true;
     };
