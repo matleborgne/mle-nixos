@@ -14,9 +14,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
-
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Outputs - Variables
@@ -62,10 +60,8 @@
           environment.systemPackages = [ pkgs.neovim ];
         })
       ];
-        
 
     in {
-
     nixosConfigurations = {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,56 +71,56 @@
       tpldesktop = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
-        modules = basicModules ++ secretsModules ++ [ ./roles/tpldesktop.nix ];
+        modules = baseModules ++ [ ./roles/tpldesktop.nix ];
       };
 
 
       lx600 = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
-        modules = basicModules ++ secretsModules ++ [ ./roles/lx600.nix ];
+        modules = baseModules ++ [ ./roles/lx600.nix ];
       };
 
       lx600Iso = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
-        modules = basicModules ++ isoModules ++ [ ./roles/lx600Iso.nix ];
+        modules = baseModules ++ isoModules ++ [ ./roles/lx600Iso.nix ];
       };
 
       yoga = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; }; # this is the important part
-        modules = basicModules ++ secretsModules ++ [ ./roles/yoga.nix ];
+        modules = baseModules ++ [ ./roles/yoga.nix ];
       };
 
       yoga-testing = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; }; # this is the important part
-        modules = basicModules ++ secretsModules ++ [ ./roles/yoga-testing.nix ];
+        modules = baseModules ++ [ ./roles/yoga-testing.nix ];
       };
 
       n2 = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
-        modules = basicModules ++ secretsModules ++ [ ./roles/n2.nix ];
+        modules = baseModules ++ [ ./roles/n2.nix ];
       };
 
       sgpc = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
-        modules = basicModules ++ secretsModules ++ [ ./roles/sgpc.nix ];
+        modules = baseModules ++ [ ./roles/sgpc.nix ];
       };
 
       ridge = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
-        modules = basicModules ++ secretsModules ++ [ ./roles/ridge.nix ];
+        modules = baseModules ++ [ ./roles/ridge.nix ];
       };
 
       x2 = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs; };
-        modules = basicModules ++ secretsModules ++ [ ./roles/x2.nix ];
+        modules = baseModules ++ [ ./roles/x2.nix ];
       };
 
 
