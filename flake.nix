@@ -30,6 +30,11 @@
   } @inputs:
 
     let
+
+      # ~~~~~~~
+      # System
+      # ~~~~~~~
+
       system = "x86_64-linux";
 
       nixpkgsConfig = {
@@ -40,6 +45,10 @@
         inherit system;
         config = nixpkgsConfig; 
       };
+
+      # ~~~~~~~
+      # Modules
+      # ~~~~~~~
 
       nixosModules = {
         default = import ./modules;
@@ -61,31 +70,33 @@
         })
       ];
 
-      roles = [ "tpldesktop" "lx600" "yoga" "yoga-testing" "n2" "sgpc" "ridge" "x2" ];
+      # ~~~~~~~
+      # Roles
+      # ~~~~~~~
+
+      roles = [ "tpldesktop" "lx600" "lx600Iso" "yoga" "yoga-testing" "n2" "sgpc" "ridge" "x2" ];
+
+      extraModules = {
+        lx600Iso = isoModules;
+      };
 
       nixosConfigurations = builtins.listToAttrs (map (r: {
         name = r;
         value = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs pkgsUnstable; };
-          modules = baseModules ++ [ ./roles/${r}.nix ];
+          modules = baseModules
+            ++ [ ./roles/${r}.nix ]
+            ++ (builtins.getAttr r extraModules []);
         };
       }) roles);
 
-    in {
-      inherit nixosConfigurations;
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Configurations
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
 
-      #lx600Iso = nixpkgs.lib.nixosSystem {
-      #  inherit system;
-      #  specialArgs = { inherit inputs pkgsUnstable; };
-      #  modules = baseModules ++ isoModules ++ [ ./roles/lx600Iso.nix ];
-      #};
-
+    in {
+      inherit nixosConfigurations;
     };
-  #};
 }
