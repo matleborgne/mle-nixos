@@ -2,13 +2,13 @@
 
 {
 
-  options.mle.desktop.i3.default.enable = lib.mkOption {
-    description = "Enable i3";
+  options.mle.desktop.i3.base.enable = lib.mkOption {
+    description = "Enable i3 base";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.desktop.i3.default.enable {
+  config = lib.mkIf config.mle.desktop.i3.base.enable {
     
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
