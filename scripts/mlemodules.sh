@@ -19,19 +19,13 @@ current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 host=$(cat /etc/hostname)
 
 # nix formatting
-prefix="
-{ config, pkgs, pkgsUnstable, lib, ... }:
+prefix="{ config, pkgs, pkgsUnstable, lib, ... }:
 
 {
-  imports =
-    [
-"
+  imports = ["
 
-suffix="
-    ];
- 
-}
-"
+suffix="  ];
+}"
 
 # mlemodules.nix
 #echo "$prefix" $(find "$current/../modules" -name '*.nix' \
