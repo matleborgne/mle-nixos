@@ -2,13 +2,13 @@
 
 {
 
-  options.mle.desktop.kde.default.enable = lib.mkOption {
-    description = "Enable KDE plasma";
+  options.mle.desktop.kde.base.enable = lib.mkOption {
+    description = "Enable KDE plasma base";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.desktop.kde.default.enable {
+  config = lib.mkIf config.mle.desktop.kde.base.enable {
     
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
