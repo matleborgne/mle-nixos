@@ -36,6 +36,7 @@
       # ~~~~~~~
 
       system = "x86_64-linux";
+      hostPlatform = "x86_64-linux";
 
       nixpkgsConfig = {
         allowUnfree = true;
@@ -84,7 +85,7 @@
         name = r;
         value = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs pkgsUnstable; };
+          specialArgs = { inherit inputs hostPlatform pkgsUnstable; };
           modules = baseModules
             ++ [ ./roles/${r}.nix ]
             ++ (if builtins.hasAttr r extraModules then extraModules.${r} else []);
