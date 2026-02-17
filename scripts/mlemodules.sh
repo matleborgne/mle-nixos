@@ -20,7 +20,7 @@ host=$(cat /etc/hostname)
 
 # nix formatting
 prefix="
-{ config, pkgs, pkgs-unstable, lib, ... }:
+{ config, pkgs, pkgsUnstable, lib, ... }:
 
 {
   imports =
