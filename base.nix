@@ -36,11 +36,6 @@ in
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" ];
 
-      # TODO Framework problem for LED - module framework
-    #boot.kernelParams = [
-    #  "module_blacklist=hid_sensor_hub"
-    #];
-
   environment.etc."systemd/user.conf" = {
     enable = lib.mkDefault true;
     text = lib.mkDefault ''
