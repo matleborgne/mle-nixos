@@ -17,7 +17,7 @@
     mle = {
       
       desktop.hyprland = {
-        default.enable = true;
+        base.enable = true;
       };
       hardware.printing.enable = true;
     };
