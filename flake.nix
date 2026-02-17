@@ -68,7 +68,7 @@
         value = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs pkgsUnstable; };
-          modules = baseModules ++ [./roles/${r}.nix];
+          modules = baseModules ++ [ ./roles/${r}.nix ];
         };
       }) roles);
 
