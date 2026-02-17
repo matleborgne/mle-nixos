@@ -34,20 +34,30 @@
 
 
     let
+      system = "x86_64-linux";
+      secretsModules = (import (builtins.toPath ./secrets/imports.nix));
+
+      nixpkgsConfig = {
+        allowUnfree = true;
+      };
+
+      pkgs = import nixpkgs {
+        inherit system;
+        config = nixpkgsConfig; 
+      };
+
+      pkgsUnstable = import nixpkgs-unstable {
+        inherit system;
+        config = nixpkgsConfig; 
+      };
+
 
       basicModules = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
-        ({ nixpkgs.config.allowUnfree = true; })
         home-manager.nixosModules.default
         ./base.nix
       ] ++ (import (builtins.toPath ./modules/imports.nix));
 
-
-      # Secrets modules
-      secretsModules = (import (builtins.toPath ./secrets/imports.nix));
-
-
-      # Specific modules for ISO generation
       isoModules = [
         ({ pkgs, modulesPath, ... }: {
           imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-graphical-gnome.nix") ];
@@ -65,56 +75,56 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       tpldesktop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/tpldesktop.nix ];
       };
 
 
       lx600 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/lx600.nix ];
       };
 
       lx600Iso = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = basicModules ++ isoModules ++ [ ./roles/lx600Iso.nix ];
       };
 
       yoga = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; }; # this is the important part
         modules = basicModules ++ secretsModules ++ [ ./roles/yoga.nix ];
       };
 
       yoga-testing = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; }; # this is the important part
         modules = basicModules ++ secretsModules ++ [ ./roles/yoga-testing.nix ];
       };
 
       n2 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/n2.nix ];
       };
 
       sgpc = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/sgpc.nix ];
       };
 
       ridge = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/ridge.nix ];
       };
 
       x2 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        inherit system;
         specialArgs = { inherit inputs; };
         modules = basicModules ++ secretsModules ++ [ ./roles/x2.nix ];
       };
