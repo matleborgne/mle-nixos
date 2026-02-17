@@ -85,7 +85,10 @@
         name = r;
         value = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs hostPlatform pkgsUnstable; };
+          specialArgs = {
+            inherit inputs hostPlatform pkgsUnstable;
+            nixExperimentalFeatures = [ "nix-command" "flakes" ];
+          };
           modules = baseModules
             ++ [ ./roles/${r}.nix ]
             ++ (if builtins.hasAttr r extraModules then extraModules.${r} else []);
