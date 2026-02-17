@@ -2,13 +2,13 @@
 
 {
 
-  options.mle.desktop.hyprland.default.enable = lib.mkOption {
-    description = "Enable hyprland";
+  options.mle.desktop.hyprland.base.enable = lib.mkOption {
+    description = "Enable hyprland base";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.desktop.hyprland.default.enable {
+  config = lib.mkIf config.mle.desktop.hyprland.base.enable {
     
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
