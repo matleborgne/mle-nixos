@@ -12,10 +12,12 @@ in
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   system.stateVersion = "24.11"; # never change this
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  ### nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  programs.nix-index.enable = lib.mkDefault true;
-  programs.command-not-found.enable = lib.mkDefault false;
+  programs = {
+    nix-index.enable = lib.mkDefault true;
+    command-not-found.enable = lib.mkDefault false;
+  };
 
   nix.settings.download-buffer-size = 524288000;
   nix.settings.experimental-features = lib.mkDefault [
