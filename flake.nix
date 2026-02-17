@@ -70,56 +70,56 @@
 
       tpldesktop = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs pkgsUnstable; };
         modules = baseModules ++ [ ./roles/tpldesktop.nix ];
       };
 
 
       lx600 = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs pkgsUnstable; };
         modules = baseModules ++ [ ./roles/lx600.nix ];
       };
 
       lx600Iso = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs pkgsUnstable; };
         modules = baseModules ++ isoModules ++ [ ./roles/lx600Iso.nix ];
       };
 
       yoga = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; }; # this is the important part
+        specialArgs = { inherit inputs pkgsUnstable; }; # this is the important part
         modules = baseModules ++ [ ./roles/yoga.nix ];
       };
 
       yoga-testing = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; }; # this is the important part
+        specialArgs = { inherit inputs pkgsUnstable; }; # this is the important part
         modules = baseModules ++ [ ./roles/yoga-testing.nix ];
       };
 
       n2 = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs pkgsUnstable; };
         modules = baseModules ++ [ ./roles/n2.nix ];
       };
 
       sgpc = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs pkgsUnstable; };
         modules = baseModules ++ [ ./roles/sgpc.nix ];
       };
 
       ridge = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs pkgsUnstable; };
         modules = baseModules ++ [ ./roles/ridge.nix ];
       };
 
       x2 = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs pkgsUnstable; };
         modules = baseModules ++ [ ./roles/x2.nix ];
       };
 
