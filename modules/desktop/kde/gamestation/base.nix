@@ -24,7 +24,7 @@
 
     mle = {      
       desktop.kde = {
-        default.enable = true;
+        base.enable = true;
       };
     };
 
