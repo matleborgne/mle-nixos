@@ -34,10 +34,22 @@ suffix="
 "
 
 # mlemodules.nix
-echo "$prefix" $(find "$current/../modules" -name '*.nix' \
-          | grep -v "/imports.nix" \
-          | sed -e "s|$current/||g") "$suffix" \
-          > "$current/../modules/imports.nix"
+#echo "$prefix" $(find "$current/../modules" -name '*.nix' \
+#          | grep -v "/imports.nix" \
+#          | sed -e "s|$current/||g") "$suffix" \
+#          > "$current/../modules/imports.nix"
+
+{
+  printf "%s\n" "$prefix"
+
+  find "$current/../modules" -name '*.nix' \
+    | grep -v "/imports.nix" \
+    | sed -e "s|$current/||g" \
+    | sed 's/^/      /'
+
+  printf "%s\n" "$suffix"
+} > "$current/../modules/imports.nix"
+
 
 # secrets/mlesecrets.nix but hardware conf
 echo "$prefix" $(find "$current/../secrets" -name '*.nix' \
