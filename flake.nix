@@ -87,7 +87,7 @@
           specialArgs = { inherit inputs pkgsUnstable; };
           modules = baseModules
             ++ [ ./roles/${r}.nix ]
-            ++ builtins.getAttrFromPath [ r ] extraModules [];
+            ++ (if builtins.hasAttr r extraModules then extraModules.${r} else []);
         };
       }) roles);
 
