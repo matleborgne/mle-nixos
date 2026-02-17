@@ -12,7 +12,6 @@ in
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   system.stateVersion = "24.11"; # never change this
-  ### nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   programs = {
     nix-index.enable = lib.mkDefault true;
@@ -21,10 +20,10 @@ in
 
   nix.settings = {
     download-buffer-size = 524288000;
-    #experimental-features = lib.mkDefault [
-    #  "nix-command"
-    #  "flakes"
-    #];
+    experimental-features = lib.mkDefault [
+      "nix-command"
+      "flakes"
+    ];
   };
 
   hardware.enableRedistributableFirmware = lib.mkDefault true;
