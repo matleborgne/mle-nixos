@@ -2,13 +2,13 @@
 
 {
 
-  options.mle.desktop.xfce.default.enable = lib.mkOption {
-    description = "Enable xfce";
+  options.mle.desktop.xfce.base.enable = lib.mkOption {
+    description = "Enable xfce base";
     type = lib.types.bool;
     default = false;
   };
 
-  config = lib.mkIf config.mle.desktop.xfce.default.enable {
+  config = lib.mkIf config.mle.desktop.xfce.base.enable {
     
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
