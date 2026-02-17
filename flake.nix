@@ -1,5 +1,5 @@
 {
-  description = "202503-refonte";
+  description = "mle-202602";
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # Inputs - Every external data source
@@ -8,17 +8,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    utils.url = "github:numtide/flake-utils";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
     };
 
   };
@@ -32,9 +26,8 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
+    utils,
     home-manager,
-    hyprland,
-    hyprland-plugins,
     ...
   }
     @inputs:
@@ -42,7 +35,6 @@
 
     let
 
-      # Define modules shared among ALL machines
       basicModules = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
         ({ nixpkgs.config.allowUnfree = true; })
