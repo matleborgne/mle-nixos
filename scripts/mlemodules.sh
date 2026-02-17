@@ -34,6 +34,7 @@ suffix="  ];
   find "$current/../modules" -name '*.nix' \
     | grep -v "/default.nix" \
     | sed -e "s|$current/||g" \
+    | sort \
     | sed 's/^/      /'
 
   printf "%s\n" "$suffix"
@@ -48,6 +49,7 @@ suffix="  ];
     | grep -v "/default.nix" \
     | grep -v "/hardware-configuration*" \
     | sed -e "s|$current/||g" \
+    | sort \
     | sed 's/^/      /'
 
 } > "$current/../secrets/default.nix"
@@ -56,6 +58,7 @@ suffix="  ];
 {
   find "$current/../secrets" -name "*hardware-configuration-$host.nix" \
     | sed -e "s|$current/||g" \
+    | sort \
     | sed 's/^/      /'
 
   printf "%s\n" "$suffix"
