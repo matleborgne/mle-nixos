@@ -18,7 +18,7 @@ PATH=$PATH:/run/current-system/sw/bin
 current=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 host=$(cat /etc/hostname)
 
-# nix formatting
+# NIX Syntax
 prefix="{ config, pkgs, pkgsUnstable, lib, ... }:
 
 {
@@ -27,35 +27,36 @@ prefix="{ config, pkgs, pkgsUnstable, lib, ... }:
 suffix="  ];
 }"
 
-# mlemodules.nix
-#echo "$prefix" $(find "$current/../modules" -name '*.nix' \
-#          | grep -v "/imports.nix" \
-#          | sed -e "s|$current/||g") "$suffix" \
-#          > "$current/../modules/imports.nix"
-
+# NIX modules
 {
   printf "%s\n" "$prefix"
 
   find "$current/../modules" -name '*.nix' \
-    | grep -v "/imports.nix" \
+    | grep -v "/default.nix" \
     | sed -e "s|$current/||g" \
     | sed 's/^/      /'
 
   printf "%s\n" "$suffix"
-} > "$current/../modules/imports.nix"
+} > "$current/../modules/default.nix"
 
 
-# secrets/mlesecrets.nix but hardware conf
-echo "$prefix" $(find "$current/../secrets" -name '*.nix' \
-          | grep -v "/imports.nix" \
-          | grep -v "/hardware-configuration*" \
-          | sed -e "s|$current/||g") ' \
-          > "$current/../secrets/imports.nix"
+# NIX secrets except for hardware-conf
+{
+  printf "%s\n" "$prefix"
 
-# specific import for secrets/hardware-configuration
-echo $(find "$current/../secrets" -name "*hardware-configuration-$host.nix" \
-          | sed -e "s|$current/||g")' "$suffix" \
-          >> "$current/../secrets/imports.nix"
+  find "$current/../secrets" -name '*.nix' \
+    | grep -v "/default.nix" \
+    | grep -v "/hardware-configuration*" \
+    | sed -e "s|$current/||g" \
+    | sed 's/^/      /'
 
-# correction import.nix
-echo $(sed -z 's/\n//g' "$current/../secrets/imports.nix") > "$current/../secrets/imports.nix"
+} > "$current/../secrets/default.nix"
+
+# NIX hardware-conf
+{
+  find "$current/../secrets" -name "*hardware-configuration-$host.nix" \
+    | sed -e "s|$current/||g")' "$suffix" \
+    | sed 's/^/      /'
+
+  printf "%s\n" "$suffix"
+} >> "$current/../secrets/default.nix"
