@@ -76,7 +76,6 @@
       # Roles
       # ~~~~~~~
 
-      #roles = [ "tpldesktop" "lx600" "lx600Iso" "yoga" "yoga-testing" "n2" "sgpc" "ridge" "x2" ];
       roles = builtins.filter (x: x != null) (
                 lib.mapAttrsToList (name: type:
                   if type == "regular" && lib.hasSuffix ".nix" name
@@ -85,7 +84,7 @@
                 ) (builtins.readDir ./roles));
         
 
-      extraModules = {
+      roleSpecificModule = {
         lx600Iso = isoModules;
       };
 
@@ -98,7 +97,7 @@
           };
           modules = baseModules
             ++ [ ./roles/${r}.nix ]
-            ++ (if builtins.hasAttr r extraModules then extraModules.${r} else []);
+            ++ (if builtins.hasAttr r roleSpecificModule then roleSpecificModule.${r} else []);
         };
       }) roles);
 
