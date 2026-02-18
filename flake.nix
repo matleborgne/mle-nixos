@@ -84,7 +84,7 @@
                 ) (builtins.readDir ./roles));
         
 
-      roleSpecificModule = {
+      roleSpecificModules = {
         lx600Iso = isoModules;
       };
 
@@ -97,7 +97,7 @@
           };
           modules = baseModules
             ++ [ ./roles/${r}.nix ]
-            ++ (if builtins.hasAttr r roleSpecificModule then roleSpecificModule.${r} else []);
+            ++ (if builtins.hasAttr r roleSpecificModules then roleSpecificModules.${r} else []);
         };
       }) roles);
 
