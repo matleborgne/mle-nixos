@@ -82,7 +82,7 @@
                   if type == "regular" && lib.hasSuffix ".nix" name
                   then lib.removeSuffix ".nix" name
                   else null
-                )) (builtins.readDir ./roles);
+                ) (builtins.readDir ./roles));
         
 
       extraModules = {
