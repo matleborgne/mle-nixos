@@ -76,13 +76,12 @@
       # Roles
       # ~~~~~~~
 
-      roles = builtins.filter (x: x != null)
-                (lib.mapAttrsToList (name: type:
-                  if type == "regular" && lib.hasSuffix ".nix" name
-                  then lib.removeSuffix ".nix" name
-                  else null
-                ) (builtins.readDir ./roles));
-        
+      roles = builtins.filter (x: x != null) (
+                lib.mapAttrsToList(name: type: if type == "regular" && lib.hasSuffix ".nix" name
+                then lib.removeSuffix ".nix" name else null) (
+                  builtins.readDir ./roles
+                )
+              );
 
       roleSpecificModules = {
         lx600Iso = isoModules;
