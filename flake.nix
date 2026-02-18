@@ -75,7 +75,14 @@
       # Roles
       # ~~~~~~~
 
-      roles = [ "tpldesktop" "lx600" "lx600Iso" "yoga" "yoga-testing" "n2" "sgpc" "ridge" "x2" ];
+      #roles = [ "tpldesktop" "lx600" "lx600Iso" "yoga" "yoga-testing" "n2" "sgpc" "ridge" "x2" ];
+      roles = builtins.filter (x: x != null) (
+                lib.mapAttrsToList (name: type:
+                  if type == "regular" && lib.hasSuffix ".nix" name
+                  then lib.removeSuffix ".nix" name
+                  else null
+                ) (builtins.readDir ./roles);
+        
 
       extraModules = {
         lx600Iso = isoModules;
