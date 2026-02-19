@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # APPS
@@ -28,8 +28,9 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages = with pkgs; [
-      (builtins.getFlake "github:matleborgne/video-downloader/bcc20c47bbf77065f80782620f0f465ac30e4a01").packages.x86_64-linux.default
+    environment.systemPackages = with pkgsUnstable; [
+      #(builtins.getFlake "github:matleborgne/video-downloader/bcc20c47bbf77065f80782620f0f465ac30e4a01").packages.x86_64-linux.default
+      video-downloader
     ];
 
   };
