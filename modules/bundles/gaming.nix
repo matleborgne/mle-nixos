@@ -40,7 +40,7 @@
       libjpeg xorg.libXcomposite xorg.libXinerama libgcrypt
       ncurses ocl-icd libxslt libva
 
-    ] ++ [ pkgsUnstable.lutris ];
+    ] ++ [ pkgsUnstable.lutris pkgsUnstable.cartridges ];
 
   };
 }
