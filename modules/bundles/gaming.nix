@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # BUNDLES
@@ -31,7 +31,6 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = with pkgs; [
-      lutris
       goverlay mangohud
       bubblewrap
 
@@ -40,8 +39,10 @@
       giflib libpng gnutls mpg123 openal v4l-utils libgpg-error
       libjpeg xorg.libXcomposite xorg.libXinerama libgcrypt
       ncurses ocl-icd libxslt libva
+
+    ] ++ with pkgsUnstable; [
+      lutris
     ];
 
   };
-
 }
