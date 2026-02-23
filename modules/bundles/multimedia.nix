@@ -34,7 +34,6 @@
       hypnotix
 
       discord
-      signal-desktop
     ];
 
   };
