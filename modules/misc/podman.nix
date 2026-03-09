@@ -76,5 +76,5 @@
       DefaultEnvironment="PATH=/run/current-system/sw/bin:/run/wrappers/bin:${lib.makeBinPath [ pkgs.bash ]}"
     '';
 
-  };  
+  });  
 }
