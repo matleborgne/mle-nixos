@@ -15,7 +15,14 @@
     default = false;
   };
   
-  config = lib.mkIf config.mle.misc.podman.enable {
+  config = lib.mkIf config.mle.misc.podman.enable (
+    
+    let
+      allUsers = builtins.attrNames config.users.users;
+      normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
+
+    in
+    {
   
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
