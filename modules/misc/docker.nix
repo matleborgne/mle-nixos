@@ -48,8 +48,11 @@
       };
     };
   
-    users.groups.docker = {
-      name = "docker";
+    users.groups = {
+      docker = {
+        name = "docker";
+        members = normalUsers;
+      };
     };
   
     # Add 'newuidmap' and 'sh' to the PATH for users' Systemd units. 
