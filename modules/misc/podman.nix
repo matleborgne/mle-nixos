@@ -67,6 +67,7 @@
 
     users.groups.podman = {
       name = "podman";
+      members = normalUsers;
     };
   
     # Add 'newuidmap' and 'sh' to the PATH for users' Systemd units. 
