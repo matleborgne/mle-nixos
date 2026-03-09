@@ -15,7 +15,14 @@
     default = false;
   };
   
-  config = lib.mkIf config.mle.misc.docker.enable {
+  config = lib.mkIf config.mle.misc.docker.enable (
+    
+    let
+      allUsers = builtins.attrNames config.users.users;
+      normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
+
+    in
+    {
   
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -51,5 +58,5 @@
       DefaultEnvironment="PATH=/run/current-system/sw/bin:/run/wrappers/bin:${lib.makeBinPath [ pkgs.bash ]}"
     '';
 
-  };  
+  });  
 }
