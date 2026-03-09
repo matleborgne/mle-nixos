@@ -65,9 +65,12 @@
       passt    # For Pasta rootless networking
     ];
 
-    users.groups.podman = {
-      name = "podman";
-      members = normalUsers;
+    users.groups = {
+      podman = {
+        name = "podman";
+        members = normalUsers;
+      };
+      docker.members = normalUsers;
     };
   
     # Add 'newuidmap' and 'sh' to the PATH for users' Systemd units. 
