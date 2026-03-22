@@ -28,7 +28,7 @@
       #driSupport = lib.mkDefault true;
       extraPackages = with pkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        intel-media-sdk
+        #intel-media-sdk
         libva-vdpau-driver
         libvdpau-va-gl
       ];
