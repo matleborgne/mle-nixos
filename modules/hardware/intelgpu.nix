@@ -29,13 +29,13 @@
       extraPackages = with pkgs; [
         intel-media-driver # LIBVA_DRIVER_NAME=iHD
         intel-media-sdk
-        vaapiVdpau
+        libva-vdpau-driver
         libvdpau-va-gl
       ];
 
       #driSupport32Bit = lib.mkDefault true;
       extraPackages32 = with pkgs; [
-        driversi686Linux.vaapiVdpau
+        driversi686Linux.libva-vdpau-driver
         driversi686Linux.libvdpau-va-gl
       ];
     };
