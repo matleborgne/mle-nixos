@@ -232,15 +232,15 @@ fi
 
 
 # CPU Intel/AMD microcode and firmware
-brand=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | awk -F ':' '{ print $2 }' | awk -F ' ' '{ print $1 }' | tr -d ' ')
+brand=$(grep -m1 "vendor_id" /proc/cpuinfo | awk '{print $NF}')
 
-if [ "$brand" = "amd" ] || [ "$brand" = "AMD" ]
+if [ "$brand" = "amd" ] || [ "$brand" = "AMD" ] || [ "$brand" = "AuthenticAMD" ]
 
 then
   echo "  mle.hardware.amdcpu.enable = true;
   " >> "$hardwarefile"
 
-elif [ "$brand" = "intel" ] || [ "$brand" = "INTEL" ] || [ "$brand" = "Intel" ]
+elif [ "$brand" = "intel" ] || [ "$brand" = "INTEL" ] || [ "$brand" = "Intel" ] || [ "$brand" = "GenuineIntel" ]
 then
   echo "  mle.hardware.intelcpu.enable = true;
   " >> "$hardwarefile"
