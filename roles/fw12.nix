@@ -38,7 +38,7 @@
 
     bundles = {
       #datapro.enable = true; # replace by declarative flatpaks
-      #development.enable = true;
+      development.enable = true;
       gaming.enable = true;
       multimedia.enable = true;
       office.enable = true;
@@ -48,7 +48,7 @@
 
     flatpaks = {
       #kdenlive.enable = true;
-      #vscode.enable = true;
+      vscode.enable = true;
     };
     
     misc = {
