@@ -39,7 +39,7 @@
     bundles = {
       #datapro.enable = true; # replace by declarative flatpaks
       #development.enable = true;
-      #gaming.enable = true;
+      gaming.enable = true;
       multimedia.enable = true;
       office.enable = true;
     };
