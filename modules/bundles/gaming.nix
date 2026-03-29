@@ -23,7 +23,6 @@
 
     mle.apps = {
       steam.enable = true;
-      undervolting.enable = true;
     };
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
