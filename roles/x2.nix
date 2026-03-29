@@ -36,6 +36,7 @@
       video-downloader.enable = true; 
       podman.enable = true;
       openrgb.enable = true;
+      undervolting.enable = true;
     };
 
     bundles = {
