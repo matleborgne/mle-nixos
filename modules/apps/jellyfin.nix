@@ -35,11 +35,11 @@
       openFirewall = true;
     };
 
-    #environment.systemPackages = [
-    #  pkgs.jellyfin
-    #  pkgs.jellyfin-web
-    #  pkgs.jellyfin-ffmpeg
-    #];
+    environment.systemPackages = [
+      pkgs.jellyfin-desktop
+      #pkgs.jellyfin-web
+      #pkgs.jellyfin-ffmpeg
+    ];
 
   };
 }
