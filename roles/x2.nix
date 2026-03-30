@@ -30,6 +30,7 @@
 
     apps = {
       firefox.enable = true;
+      jellyfin.enable = true;
       librewolf.enable = true;
       logitech.enable = true;
       thunderbird.enable = true;      
