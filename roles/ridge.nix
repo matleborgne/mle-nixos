@@ -32,6 +32,7 @@
 
     apps = {
       firefox.enable = true;       
+      jellyfin.enable = true;
     };
 
     bundles = {
