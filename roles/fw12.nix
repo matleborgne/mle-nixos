@@ -22,6 +22,11 @@
   # Kernel is buggy now
   boot.kernelPackages = pkgs.linuxPackages_zen; 
 
+  # FW12 screen rotation
+
+  # Manual alternative
+  #boot.initrd.kernelModules = [ "pinctrl_tigerlake" ];
+
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 2- Activation of mle.modules
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
