@@ -23,7 +23,7 @@
   boot.kernelPackages = pkgs.linuxPackages_zen; 
 
   # FW12 screen rotation
-  import [ nixos-hardware.nixosModules.framework-12-13th-gen-intel ];
+  imports = [ nixos-hardware.nixosModules.framework-12-13th-gen-intel ];
   # Manual alternative
   #boot.initrd.kernelModules = [ "pinctrl_tigerlake" ];
 
