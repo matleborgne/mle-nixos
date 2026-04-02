@@ -25,6 +25,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
+    nixos-hardware,
     utils,
     home-manager,
     ...
@@ -93,7 +94,7 @@
         value = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs hostPlatform pkgsUnstable;
+            inherit inputs hostPlatform pkgsUnstable nixos-hardware;
           };
           modules = baseModules
             ++ [ ./roles/${r}.nix ]
