@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # APPS
@@ -28,17 +28,14 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #nixpkgs.config.allowUnfree = lib.mkForce true;
-
     services.jellyfin = {
       enable = true;
       openFirewall = true;
     };
 
-    environment.systemPackages = [
-      pkgs.jellyfin-desktop
-      #pkgs.jellyfin-web
-      #pkgs.jellyfin-ffmpeg
+    environment.systemPackages = with pkgs; [
+      jellyfin-desktop
+      input-remapper
     ];
 
   };
