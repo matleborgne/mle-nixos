@@ -34,6 +34,7 @@
   mle = {
 
     apps = {
+      input-remapper.enable = true;
       firefox.enable = true;
       librewolf.enable = true;
       thunderbird.enable = true;      
