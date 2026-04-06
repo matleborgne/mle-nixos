@@ -23,6 +23,15 @@
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
     user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
 
+    config = ''
+{
+    "version": "2.2.0",
+    "autoload": {
+        "HAOBO Technology USB Composite Device": "jellyfin"
+    }
+}
+''
+
     remap = ''
 [
     {
@@ -80,8 +89,23 @@
       script = ''
         mkdir -p /home/${user}/.config/input-remapper-2/presets/HAOBO\ Technology\ USB\ Composite\ Device
         echo ${remap} > /home/${user}/.config/input-remapper-2/presets/HAOBO\ Technology\ USB\ Composite\ Device/jellyfin.json
+        echo ${config} > /home/${user}/.config/input-remapper-2/config.json
       '';
     };
+
+     systemd.services."input-renamer-jellyfin" = {
+          description = "Change input controller for jellyfin";      
+          enable = true;
+          after = [ "network.target" ];
+    
+          serviceConfig = {
+            Type = "forking";
+            RemainAfterExit = true;
+            ExecStart = ''
+              ${pkgs.input-renamer}/bin/input-remapper-control --command autoload
+            '';
+          };
+        };
 
 
   });
