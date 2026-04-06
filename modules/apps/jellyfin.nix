@@ -30,7 +30,7 @@
         "HAOBO Technology USB Composite Device": "jellyfin"
     }
 }
-''
+'';
 
     remap = ''
 [
@@ -92,6 +92,8 @@
         echo ${config} > /home/${user}/.config/input-remapper-2/config.json
       '';
     };
+
+     services.input-remapper.enable = true;
 
      systemd.services."input-renamer-jellyfin" = {
           description = "Change input controller for jellyfin";      
