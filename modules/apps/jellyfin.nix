@@ -45,21 +45,21 @@
       input-remapper
     ];
 
-     services.input-remapper.enable = true;
+     #services.input-remapper.enable = true;
 
-     #systemd.services."input-renamer-jellyfin" = {
-     #     description = "Change input controller for jellyfin";      
-     #     enable = true;
-     #     after = [ "network.target" ];
+     systemd.services."input-renamer-jellyfin" = {
+          description = "Change input controller for jellyfin";      
+          enable = true;
+          after = [ "network.target" ];
     
-     #     serviceConfig = {
-     #       Type = "forking";
-     #       RemainAfterExit = true;
-     #       ExecStart = ''
-     #         ${pkgs.input-renamer}/bin/input-remapper-control --command autoload
-     #       '';
-     #     };
-     #   };
+          serviceConfig = {
+            Type = "forking";
+            RemainAfterExit = true;
+            ExecStart = ''
+              /run/current-system/sw/bin/input-remapper-control --command autoload
+            '';
+          };
+        };
 
 
   });
