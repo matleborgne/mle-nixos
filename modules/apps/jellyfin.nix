@@ -16,7 +16,44 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.jellyfin.enable {
+  config = lib.mkIf config.mle.apps.jellyfin.enable (
+
+  let
+    allUsers = builtins.attrNames config.users.users;
+    normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
+    user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
+
+    remap = ''
+[
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 172,
+                "origin_hash": "1ddb121d78071126a3b70e5820860198"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_LEFTCTRL + Shift_L + J",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 1,
+                "code": 353,
+                "origin_hash": "1ddb121d78071126a3b70e5820860198"
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "KEY_ENTER",
+        "name": "XF86Select",
+        "mapping_type": "key_macro"
+    }
+]
+'';
+
+  in {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
@@ -38,5 +75,14 @@
       input-remapper
     ];
 
-  };
+    systemd.user.services.jellyfin-remap = {
+      wantedBy = [ "default.target" ];
+      script = ''
+        mkdir -p /home/${user}/.config/input-remapper-2/presets/HAOBO\ Technology\ USB\ Composite\ Device
+        echo ${remap} > /home/${user}/.config/input-remapper-2/presets/HAOBO\ Technology\ USB\ Composite\ Device/jellyfin.json
+      '';
+    };
+
+
+  });
 }
