@@ -23,17 +23,14 @@
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
     user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
 
-    config = ''
-{
+    config = '{
     "version": "2.2.0",
     "autoload": {
         "HAOBO Technology USB Composite Device": "jellyfin"
     }
-}
-'';
+}';
 
-    remap = ''
-[
+    remap = '[
     {
         "input_combination": [
             {
@@ -59,8 +56,7 @@
         "name": "XF86Select",
         "mapping_type": "key_macro"
     }
-]
-'';
+]';
 
   in {
 
