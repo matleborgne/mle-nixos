@@ -46,6 +46,7 @@
       gaming.enable = true;
       multimedia.enable = true;
       office.enable = true;
+      videopro.enable = true;
     };
 
     desktop.gnome.mleborgne.enable = true;
