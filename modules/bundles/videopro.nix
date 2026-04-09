@@ -29,15 +29,18 @@
 
     environment.systemPackages = with pkgs; [
 
-      blender
+      #blender
       handbrake
       #kdePackages.kdenlive # flatpak is better here for inter-system (non-nixos) compatibilities
 
       mediainfo-gui
+      mediainfo
       mkvtoolnix
 
+      losslesscut
       obs-studio
 
+      ab-av1
     ];
 
   };
