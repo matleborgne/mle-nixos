@@ -37,7 +37,7 @@
       mediainfo
       mkvtoolnix
 
-      losslesscut
+      losslesscut-bin
       obs-studio
 
       ab-av1
