@@ -42,10 +42,12 @@
 
     environment.systemPackages = [
       pkgs.jellyfin-desktop
-      pkgsUnstable.input-remapper
     ];
 
-     services.input-remapper.enable = true;
+     services.input-remapper = {
+       enable = true;
+       package = pkgsUnstable.input-remapper;
+     };
 
    #  systemd.services."input-renamer-jellyfin" = {
    #       description = "Change input controller for jellyfin";      
