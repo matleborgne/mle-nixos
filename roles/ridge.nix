@@ -47,6 +47,10 @@
     misc = {
       mleupdater.enable = true;
     };
+
+    secrets = {
+      hm-gamestation.enable = true;
+    };
     
   };
 
