@@ -40,26 +40,26 @@
       openFirewall = true;
     };
 
-    environment.systemPackages = with pkgs; [
-      jellyfin-desktop
-      input-remapper
+    environment.systemPackages = [
+      pkgs.jellyfin-desktop
+      pkgsUnstable.input-remapper
     ];
 
-     #services.input-remapper.enable = true;
+     services.input-remapper.enable = true;
 
-     systemd.services."input-renamer-jellyfin" = {
-          description = "Change input controller for jellyfin";      
-          enable = true;
-          after = [ "network.target" ];
-    
-          serviceConfig = {
-            Type = "forking";
-            RemainAfterExit = true;
-            ExecStart = ''
-              /run/current-system/sw/bin/input-remapper-control --command autoload
-            '';
-          };
-        };
+   #  systemd.services."input-renamer-jellyfin" = {
+   #       description = "Change input controller for jellyfin";      
+   #       enable = true;
+   #       after = [ "network.target" ];
+   # 
+   #       serviceConfig = {
+   #         Type = "forking";
+   #         RemainAfterExit = true;
+   #         ExecStart = ''
+   #           /run/current-system/sw/bin/input-remapper-control --command autoload
+   #         '';
+   #       };
+   #     };
 
 
   });
