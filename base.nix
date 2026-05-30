@@ -91,7 +91,7 @@ in
 
     # CLI tools
     git util-linux pciutils lshw dmidecode smartmontools ncdu tree
-    lm_sensors duf neofetch htop vim bat
+    lm_sensors duf fastfetch htop vim bat
     p7zip gnutar
     cron rsync restic wget curl
     gocryptfs ghostscript
