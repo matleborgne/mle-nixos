@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgsUnstable,
   config,
   lib,
   ...
@@ -71,7 +70,7 @@ in
 
     package = lib.mkOption {
       type = lib.types.package;
-      default = pkgsUnstable.librewolf;
+      default = pkgs.librewolf;
       description = "Librewolf package to use.";
       defaultText = lib.literalExpression "pkgs.librewolf";
       relatedPackages = [
