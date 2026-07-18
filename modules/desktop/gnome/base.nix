@@ -122,7 +122,8 @@
       ptyxis
 
     ] ++ [
-      ( pkgs.callPackage ../../../pkgs/pop-shell.nix { } )
+      # Forked package because not up-to-date
+      ( pkgs.callPackage ../../../pkgs/pop-shell { } )
     ];
 
   };
