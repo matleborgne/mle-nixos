@@ -122,7 +122,7 @@
       ptyxis
 
     ] ++ [
-      ( pkgs.callPackage ../../forks/pop-shell.nix { } )
+      ( pkgs.callPackage ../../../pkgs/pop-shell.nix { } )
     ];
 
   };
