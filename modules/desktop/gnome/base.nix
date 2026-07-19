@@ -124,7 +124,7 @@
     ] ++ [
       # Forked package because not up-to-date
       #( pkgs.callPackage ../../../pkgs/pop-shell { } )
-      pkgsUnstable.pop-shell
+      pkgsUnstable.gnomeExtensions.pop-shell
     ];
 
   };
