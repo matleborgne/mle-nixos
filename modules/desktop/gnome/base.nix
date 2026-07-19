@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
    
 # TODO : A DEPLACER
 
@@ -123,7 +123,8 @@
 
     ] ++ [
       # Forked package because not up-to-date
-      ( pkgs.callPackage ../../../pkgs/pop-shell { } )
+      #( pkgs.callPackage ../../../pkgs/pop-shell { } )
+      pkgsUnstable.pop-shell
     ];
 
   };
