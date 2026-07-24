@@ -28,6 +28,7 @@
         bash.enable = true;
         fish.enable = true;
         nano.enable = true;
+        kdeconnect.enable = true;
         logitech.enable = true;
       };
 
