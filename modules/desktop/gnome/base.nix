@@ -28,7 +28,6 @@
         bash.enable = true;
         fish.enable = true;
         nano.enable = true;
-        kdeconnect.enable = true;
         logitech.enable = true;
       };
 
@@ -92,7 +91,7 @@
 
     programs.kdeconnect = {
       enable = true;
-      package = pkgs.gnomeExtensions.gsconnect;
+      package = pkgs.valent;
     };
 
     environment.systemPackages = with pkgs; [
