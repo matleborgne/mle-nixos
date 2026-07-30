@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgsUnstable, ... }:
 
 {
 
@@ -30,7 +30,7 @@
         papirus-icon-theme
         #ubuntu_font_family
         ubuntu-classic
-    ];
+    ] ++ [ pkgsUnstable.librewolf ];
     
     fonts = {
       packages = with pkgs; [
