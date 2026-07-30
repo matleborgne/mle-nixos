@@ -31,7 +31,7 @@
       enable = true;
       package = pkgsUnstable.librewolf;
       wrapperConfig.pipewireSupport = true;
-      languagePacks = [ "fr" "en-US" ];
+      languagePacks = [ "fr" ];
 
       policies = {
         DisableTelemetry = true;
