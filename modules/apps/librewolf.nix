@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # APPS
@@ -29,6 +29,7 @@
 
     programs.librewolf = {
       enable = true;
+      package = pkgsUnstable.librewolf;
       wrapperConfig.pipewireSupport = true;
       languagePacks = [ "fr" "en-US" ];
 
