@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # APPS
@@ -30,6 +30,7 @@
 
     programs.firefox = {
       enable = true;
+      package = pkgsUnstable.firefox;
       wrapperConfig.pipewireSupport = true;
       languagePacks = [ "fr" "en-US" ];
 
