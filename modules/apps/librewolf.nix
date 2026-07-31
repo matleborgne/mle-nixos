@@ -31,7 +31,7 @@
       enable = true;
       package = pkgsUnstable.librewolf;
       wrapperConfig.pipewireSupport = true;
-      #languagePacks = [ "fr" ];
+      languagePacks = [ "fr" ];
 
       policies = {
         DisableTelemetry = true;
@@ -87,6 +87,7 @@
         "signon.firefoxRelay.feature" = "disabled";
         "extensions.pocket.enabled" = false;
         "extensions.pocket.showHome" = false;
+        "extensions.langpacks.signatures.required" = false;
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         # Privacy, adds, suggestions
