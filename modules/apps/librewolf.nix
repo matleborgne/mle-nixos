@@ -71,7 +71,7 @@
 
         # Language by default
         "intl.accept_languages" = "fr,en-US";
-        "intl.locale.requested" = "fr,en-US";
+        "intl.locale.requested" = "fr";
 
         #- Homepage and search engine
         "browser.search.defaultenginename" = "DuckDuckGo";
