@@ -113,6 +113,7 @@
         "layout.spellcheckDefault" = "0";
 
         #- Privacy - tracking
+        "privacy.resistFingerprinting" = false;
         "privacy.donottrackheader.enabled" = true;
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
