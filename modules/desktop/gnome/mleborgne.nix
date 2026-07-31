@@ -31,6 +31,19 @@
         #ubuntu_font_family
         ubuntu-classic
     ] ++ [ pkgsUnstable.librewolf ];
+
+environment.etc."librewolf/policies/policies.json".text = ''
+{
+  "policies": {
+    "ExtensionSettings": {
+      "langpack-fr@firefox.mozilla.org": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://releases.mozilla.org/pub/firefox/releases/153.0/linux-x86_64/xpi/fr.xpi"
+      }
+    }
+  }
+}
+'';
     
     fonts = {
       packages = with pkgs; [
