@@ -70,8 +70,8 @@
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         # Language by default
-        "intl.accept_languages" = "fr,en-US";
-        "intl.locale.requested" = "fr";
+        #"intl.accept_languages" = "fr,en-US";
+        #"intl.locale.requested" = "fr";
 
         #- Homepage and search engine
         "browser.search.defaultenginename" = "DuckDuckGo";
@@ -87,7 +87,6 @@
         "signon.firefoxRelay.feature" = "disabled";
         "extensions.pocket.enabled" = false;
         "extensions.pocket.showHome" = false;
-        "extensions.langpacks.signatures.required" = false;
 
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         # Privacy, adds, suggestions
