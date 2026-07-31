@@ -16,7 +16,20 @@
     default = false;
   };
 
-  config = lib.mkIf config.mle.apps.firefox.enable {
+  config = lib.mkIf config.mle.apps.firefox.enable (
+
+  let
+
+    ffPro = pkgs.writeShellScriptBin "ffPro" ''
+      PROFILE="$HOME/.mozilla/firefox/ffPro"
+      mkdir -p "$PROFILE"
+      exec ${pkgs.firefox}/bin/firefox \
+        --no-remote \
+        --profile "$PROFILE" \
+        "$@"
+    '';
+
+  in {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
