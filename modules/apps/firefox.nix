@@ -20,13 +20,28 @@
 
   let
 
+    ffNav = pkgs.writeShellScriptBin "ffNav" ''
+      PROFILE="$HOME/.mozilla/firefox/ffNav"
+      mkdir -p "$PROFILE"
+      exec ${pkgs.firefox}/bin/firefox --no-remote --profile "$PROFILE" "$@"
+    '';
+
     ffPro = pkgs.writeShellScriptBin "ffPro" ''
       PROFILE="$HOME/.mozilla/firefox/ffPro"
       mkdir -p "$PROFILE"
-      exec ${pkgs.firefox}/bin/firefox \
-        --no-remote \
-        --profile "$PROFILE" \
-        "$@"
+      exec ${pkgs.firefox}/bin/firefox --no-remote --profile "$PROFILE" "$@"
+    '';
+
+    ffApp = pkgs.writeShellScriptBin "ffApp" ''
+      PROFILE="$HOME/.mozilla/firefox/ffApp"
+      mkdir -p "$PROFILE"
+      exec ${pkgs.firefox}/bin/firefox --no-remote --profile "$PROFILE" "$@"
+    '';
+
+    ffVid = pkgs.writeShellScriptBin "ffVid" ''
+      PROFILE="$HOME/.mozilla/firefox/ffVid"
+      mkdir -p "$PROFILE"
+      exec ${pkgs.firefox}/bin/firefox --no-remote --profile "$PROFILE" "$@"
     '';
 
   in {
@@ -40,6 +55,13 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    environment.systemPackages = [
+      ffNav
+      ffPro
+      ffApp
+      ffVid
+    ];
 
     programs.firefox = {
       enable = true;
