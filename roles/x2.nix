@@ -29,6 +29,7 @@
   mle = {
 
     apps = {
+      ddcutil.enable = true;
       firefox.enable = true;
       jellyfin.enable = true;
       #librewolf.enable = true;
