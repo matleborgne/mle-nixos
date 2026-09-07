@@ -82,7 +82,7 @@
     ];
 
     system.activationScripts.vscodiumSettings = lib.mkIf (user != null) ''
-      dir="/home/${targetUser}/.config/VSCodium/User"
+      dir="/home/${user}/.config/VSCodium/User"
       mkdir -p "$dir"
       install -o "${user}" -g users -m 0644 ${settingsJson} "$dir/settings.json"
 
