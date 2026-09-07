@@ -64,6 +64,10 @@
       "python.defaultInterpreterPath" = "${pythonEnv}/bin/python3";
     });
 
+    localeJson = pkgs.writeText "vscodium-locale.json" (builtins.toJSON {
+      locale = "fr";
+    });
+
   in {
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -85,6 +89,7 @@
       dir="/home/${user}/.config/VSCodium/User"
       mkdir -p "$dir"
       install -o "${user}" -g users -m 0644 ${settingsJson} "$dir/settings.json"
+      install -o "${user}" -g users -m 0644 ${localeJson} "$dir/locale.json"
 
       sudo -u "${user}" ${pythonEnv}/bin/python -m ipykernel install \
         --user --name=nixos-pandas --display-name "NixOS (pandas)" \
