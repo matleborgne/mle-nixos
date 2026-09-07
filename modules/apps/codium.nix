@@ -76,45 +76,20 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    home-manager.sharedModules = [{
+    environment.systemPackages = [
+      vscodeWithExtensions
+      pythonEnv
+    ];
 
-      programs.vscode = {
-        enable = true;
-        package = pkgs.vscodium;
+    system.activationScripts.vscodiumSettings = lib.mkIf (user != null) ''
+      dir="/home/${targetUser}/.config/VSCodium/User"
+      mkdir -p "$dir"
+      install -o "${user}" -g users -m 0644 ${settingsJson} "$dir/settings.json"
 
-        profiles.default.userSettings = {
-          "workbench.colorTheme" = "GitHub Light Default";
-          "workbench.statusBar.visible" = false;
-          "workbench.editor.enablePreview" = false;
-          "workbench.startupEditor" = "none";
-          "editor.minimap.enabled" = false;
-        };
-
-        profiles.default.extensions = with pkgs.vscode-extensions; [
-
-          ms-ceintl.vscode-language-pack-fr    # Pack FR
-          pkief.material-icon-theme            # Pack d'icones 
-          gruntfuggly.todo-tree                # Arbre montrant les TODO et FIXME
-
-          ms-python.python                     # Python metapackage
-          ms-python.vscode-pylance             # Python LSP support
-          ms-toolsai.jupyter                   # Jupyter Notebook (metapack)
-          oderwat.indent-rainbow               # Highlight indentation
-          christian-kohler.path-intellisense   # Path auto-completion
-          #github.copilot
-
-          jnoortheen.nix-ide                   # Integrated environment for NIX
-          brettm12345.nixfmt-vscode            # 
-          arrterian.nix-env-selector           # NixOS environment
-
-          timonwong.shellcheck                 # ShellCheck
-          github.github-vscode-theme           # Theme github
-        ];
-
-      };  
-    }];
-
-
-  };
-
+      sudo -u "${user}" ${pythonEnv}/bin/python -m ipykernel install \
+        --user --name=nixos-pandas --display-name "NixOS (pandas)" \
+        2>/dev/null || true
+    '';
+   
+  });
 }
