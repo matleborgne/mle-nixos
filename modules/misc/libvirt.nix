@@ -106,6 +106,7 @@
     users.groups = {
       libvirtd.members = normalUsers;
       kvm.members = normalUsers;
+      qemu-libvirtd.members = normalUsers;
     };
 
     networking.firewall.trustedInterfaces = [ "virbr0" ];
