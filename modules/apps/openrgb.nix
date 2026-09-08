@@ -45,6 +45,18 @@
       group = "i2c";
       enable = true;
     };
-        
+
+    systemd.services.openrgb-gskill = {
+      wantedBy = [ "multi-user.target" ];
+      script = ''
+        [Desktop Entry]
+        Type=Application
+        Name=GskillRGB
+        Exec=openrgb --profile gskillOff
+        X-GNOME-Autostart-enabled=true" > /home/"${user}"/.config/autostart/gskill.desktop
+      '';
+    };
+
+
   };
 }
