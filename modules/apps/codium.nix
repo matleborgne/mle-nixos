@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # APPS
@@ -23,7 +23,7 @@
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
     user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
       
-    pythonEnv = pkgs.python3.withPackages (ps: with ps; [
+    pythonEnv = pkgsUnstable.python3.withPackages (ps: with ps; [
       jupyter ipykernel pipdeptree
       pandas numpy openpyxl xlrd
       matplotlib seaborn plotly
@@ -36,9 +36,9 @@
       # scikit-learn-extra # cf. note plus bas
     ]);
 
-    vscodeWithExtensions = pkgs.vscode-with-extensions.override {
-      vscode = pkgs.vscodium;
-      vscodeExtensions = with pkgs.vscode-extensions; [
+    vscodeWithExtensions = pkgsUnstable.vscode-with-extensions.override {
+      vscode = pkgsUnstable.vscodium;
+      vscodeExtensions = with pkgsUnstable.vscode-extensions; [
         ms-ceintl.vscode-language-pack-fr
         pkief.material-icon-theme
         gruntfuggly.todo-tree
