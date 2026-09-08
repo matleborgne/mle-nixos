@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # BUNDLES
@@ -28,11 +28,13 @@
     # Bundled applications
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgsUnstable; [
 
       meld     
       sqlitebrowser
       sqlite
+
+      signal-desktop
 
     ];
 
