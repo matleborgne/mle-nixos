@@ -52,6 +52,10 @@
     };
 
     desktop.gnome.mleborgne.enable = true;
+
+    flatpaks = {
+      kdenlive.enable = true;
+    };
     
     misc = {
       libvirt.enable = true;
