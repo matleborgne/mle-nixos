@@ -37,7 +37,7 @@
       motherboard = "amd"; 
     };
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgsUnstable; [
       i2c-tools
     ];
 
