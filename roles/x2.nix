@@ -33,6 +33,7 @@
       ddcutil.enable = true;
       firefox.enable = true;
       jellyfin.enable = true;
+      kdenlive.enable = true;
       logitech.enable = true;
       thunderbird.enable = true;      
       video-downloader.enable = true; 
