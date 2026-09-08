@@ -60,7 +60,7 @@
         Type=Application
         Name=GskillRGB
         Exec=openrgb --profile gskillOff
-        X-GNOME-Autostart-enabled=true" > /home/"${user}"/.config/autostart/gskill.desktop
+        X-GNOME-Autostart-enabled=true > /home/"${user}"/.config/autostart/gskill.desktop
       '';
     };
 
