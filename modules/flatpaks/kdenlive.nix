@@ -58,7 +58,7 @@
         echo "[Desktop Entry]
         Type=Application
         Name=Kdenlive
-        Exec=flatpak run org.kde.kdenlive
+        Exec=flatpak run --env=QT_FONT_DPI=110 org.kde.kdenlive
         Icon=kdenlive" > /home/"${user}"/.local/share/applications/kdenlive.desktop
       '';
     };
