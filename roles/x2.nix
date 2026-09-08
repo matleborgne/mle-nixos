@@ -54,7 +54,7 @@
 
     flatpaks = {
       kdenlive.enable = true;
-      vscode.enable = true;
+      #vscode.enable = true;
     };
     
     misc = {
