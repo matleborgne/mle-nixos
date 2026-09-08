@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # APPS
@@ -28,16 +28,12 @@
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    services.udev.packages = [ 
-      #pkgs.openrgb # flatpak version
-    ];
-
     boot.kernelModules = [ "i2c-dev" ];
     boot.kernelParams = [ "acpi_enforce_resources=lax" ];
 
     services.hardware.openrgb = { 
       enable = true; 
-    #  package = pkgs.openrgb-with-all-plugins; 
+      package = pkgsUnstable.openrgb;
       motherboard = "amd"; 
     };
 
