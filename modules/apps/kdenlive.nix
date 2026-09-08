@@ -40,7 +40,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = [
-      pkgsUnstable.kdenlive   # version récente via unstable, cf. contrainte 1
+      pkgsUnstable.kdePackages.kdenlive   # version récente via unstable, cf. contrainte 1
       sam2PythonEnv
     ];
 
