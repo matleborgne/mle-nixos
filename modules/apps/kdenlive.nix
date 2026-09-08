@@ -24,7 +24,7 @@
     user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
 
     sam2PythonEnv = pkgsUnstable.python3.withPackages (ps: with ps; [
-      sam2 opencv4 pillow iopath hydra-core tqdm torchvision torchvision-bin
+      sam2 opencv4 pillow iopath hydra-core tqdm torchvision torchvision-bin cuda-bindings
     ]);
 
   in {
