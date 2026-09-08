@@ -52,7 +52,7 @@
         Type=Application
         Name=Kdenlive
         Exec=kdenlive
-        Icon=kdenlive > /home/"${user}"/.local/share/applications/kdenlive.desktop
+        Icon=kdenlive" > /home/"${user}"/.local/share/applications/kdenlive.desktop
       '';
     };
 
