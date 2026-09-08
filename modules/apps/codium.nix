@@ -97,7 +97,7 @@
         2>/dev/null || true
     '';
 
-    systemd.services.flatpak-vscode-shortcut = {
+    systemd.services.shortcut-codium = {
       wantedBy = [ "multi-user.target" ];
       script = ''
         echo "[Desktop Entry]
