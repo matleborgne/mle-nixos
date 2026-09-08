@@ -95,6 +95,17 @@
         --user --name=nixos-pandas --display-name "NixOS (pandas)" \
         2>/dev/null || true
     '';
-   
+
+    systemd.services.flatpak-vscode-shortcut = {
+      wantedBy = [ "multi-user.target" ];
+      script = ''
+        echo "[Desktop Entry]
+        Type=Application
+        Name=VSCodium
+        Exec=codium
+        Icon=visual-studio-code" > /home/"${user}"/.local/share/applications/codium.desktop
+      '';
+    };
+
   });
 }
