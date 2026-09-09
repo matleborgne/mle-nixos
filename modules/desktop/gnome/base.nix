@@ -66,7 +66,11 @@
 
       };
     };
-          
+
+     hardware.bluetooth = {
+        enable = true;
+        powerOnBoot = true;
+     };
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Packages exclusion
