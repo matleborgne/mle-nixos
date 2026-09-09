@@ -30,9 +30,10 @@
 
   mle = {
 
+    core.kernel.enable = true;
+
     apps = {
-      firefox.enable = true;       
-      #jellyfin.enable = true;
+      firefox.enable = true;      
     };
 
     bundles = {
