@@ -17,8 +17,8 @@
     };
 
     # GLF-OS applications
-    nix-disk = {
-      url = "git+https://framagit.org/gaming-linux-fr/glf-os/app-glf-os/nix-disk.git?ref=feat/advanced-storage-safety";
+    easyflatpak = {
+      url = "git+https://framagit.org/gaming-linux-fr/glf-os/app-glf-os/easyflatpak.git?ref=main";
       flake = false;
     };
 
@@ -67,7 +67,7 @@
       };
 
       glfOverlay = final: prev: {
-        nix-disk = final.callPackage "${inputs.nix-disk}/package.nix" { };
+        easyflatpak = final.callPackage "${inputs.easyflatpak}/package.nix" { };
       };
 
       baseModules = [
