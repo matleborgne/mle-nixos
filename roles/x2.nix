@@ -63,7 +63,6 @@
       libvirt.enable = true;
       mleupdater.enable = true;
       pci-passthrough.enable = true;
-      #looking-glass.enable = true;
       sshfs.enable = true;
     };
 
