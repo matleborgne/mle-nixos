@@ -46,19 +46,11 @@
       rocmPackages.rocm-smi
     ];
 
-    services.xserver.videoDrivers = [ "amdgpu" ];
+    # High Performance Software => au niveau du soft directement, s'il exige ROCM dans /opt/rocm
+    #systemd.tmpfiles.rules = [
+    #  "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+    #];
 
-    # Force RADV (vulkan-radeon) over amdvlk - via environment variable
-    environment.variables.AMD_VULKAN_ICD = lib.mkDefault "RADV";
 
-    # High Performance Software
-    systemd.tmpfiles.rules = [
-      "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
-    ];
-    
   }; 
-
 }
-
-
-
