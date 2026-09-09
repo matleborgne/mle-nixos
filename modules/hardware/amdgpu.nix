@@ -49,7 +49,7 @@
     services.xserver.videoDrivers = [ "amdgpu" ];
 
     # Force RADV (vulkan-radeon) over amdvlk - via environment variable
-    #environment.variables.AMD_VULKAN_ICD = lib.mkDefault "RADV";
+    environment.variables.AMD_VULKAN_ICD = lib.mkDefault "RADV";
 
     # High Performance Software
     systemd.tmpfiles.rules = [
