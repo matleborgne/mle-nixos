@@ -29,7 +29,7 @@
     # Configuration des services (cups, avahi, udev, sane)
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    services.priting = {
+    services.printing = {
       enable = true;
       startWhenNeeded = true;
       drivers = [ pkgs.brlaser ];
