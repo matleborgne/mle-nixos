@@ -6,7 +6,6 @@
 
 # Hardware modules are the place for customization of pieces
 # of hardware (cpu, gpu, x-y-wifi card or ethernet cards, etc.)
-# It does not concern software itself at all
 
 {
 
@@ -25,7 +24,7 @@
     mle.hardware.graphics.enable = true;
   
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Configuration du serveur graphique
+    # Module configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     hardware.amdgpu = {
@@ -57,7 +56,8 @@
       "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
     ];
     
-  };  
+  }; 
+
 }
 
 
