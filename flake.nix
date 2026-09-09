@@ -73,9 +73,9 @@
         ./base.nix
         { nixpkgs.config = nixpkgsConfig; }
 
-        { nixpkgs.overlays = [(final: prev: {
+        nixpkgs.overlays = [(final: prev: {
           nix-disk = final.callPackage "${inputs.nix-disk}/package.nix" { };
-        })] }
+        })]
       ];
 
       isoModules = [
