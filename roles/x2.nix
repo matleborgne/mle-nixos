@@ -97,4 +97,8 @@
 
   # Works better for example with a gsettings parameter to override (font size, etc.)
 
+  environment.systemPackages = [
+    pkgs.nix-disk
+  ];
+
 }
