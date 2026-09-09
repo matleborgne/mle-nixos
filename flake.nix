@@ -66,16 +66,20 @@
         secrets = import ./secrets;
       };
 
+      glfOverlay = final: prev: {
+        nix-disk = final.callPackage "${inputs.nix-disk}/package.nix" { };
+      };
+
       baseModules = [
         nixosModules.default
         nixosModules.secrets
         home-manager.nixosModules.default
         ./base.nix
-        { nixpkgs.config = nixpkgsConfig; }
 
-        nixpkgs.overlays = [(final: prev: {
-          nix-disk = final.callPackage "${inputs.nix-disk}/package.nix" { };
-        })]
+        {
+          nixpkgs.config = nixpkgsConfig;
+          nixpkgs.overlays = [ glfOverlay ];
+        }
       ];
 
       isoModules = [
