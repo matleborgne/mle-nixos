@@ -24,10 +24,12 @@
     
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   
-    boot = {
-      kernelParams = [ "initcall_blacklist=acpi_cpufreq_init" ];
-      kernelModules = [ "amd-pstate" ] ++ lib.optionals (config.mle.misc.libvirt.enable == true) [ "kvm-amd" ];
-    };
+    boot.kernelParams = [
+        "initcall_blacklist=acpi_cpufreq_init"
+        "amd_pstate=active"
+      ];
+
+    boot.kernelModules = [ "amd-pstate" ] ++ lib.optionals config.mle.misc.libvirt.enable [ "kvm-amd" ];
 
   };  
 }
