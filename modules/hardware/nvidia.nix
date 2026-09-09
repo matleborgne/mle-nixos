@@ -38,13 +38,6 @@
 
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
-      
-    hardware.graphics = {
-      extraPackages = with pkgs; [
-        #vaapiVdpau
-        libva-vdpau-driver
-      ];
-    };
 
     # Required for hibernation
     boot.extraModprobeConfig = ''
