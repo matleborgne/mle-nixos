@@ -17,23 +17,34 @@
   };
   
   config = lib.mkIf config.mle.hardware.amdgpu.enable {
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Recursive activation of other mle.<modules>
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    mle.hardware.graphics.enable = true;
   
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Configuration du serveur graphique
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+
+    hardware.amdgpu = {
+      initrd.enable = true;
+      opencl.enable = true;
+    };
+
     hardware.graphics = {
       extraPackages = with pkgs; [
         rocmPackages.clr.icd
+        rocmPackages.hiprt
       ];
-
     };
 
     environment.systemPackages = with pkgs; [
       clinfo
       rocmPackages.rocminfo
+      rocmPackages.rocm-smi
     ];
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Sélection par défaut des services AMDGPU - VULKAN - ROCM
