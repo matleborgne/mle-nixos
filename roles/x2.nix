@@ -28,6 +28,8 @@
 
   mle = {
 
+    core.kernel.enable = true;
+
     apps = {
       codium.enable = true;
       ddcutil.enable = true;
