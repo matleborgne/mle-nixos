@@ -1,21 +1,22 @@
 { config, lib, pkgs, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# BUNDLES
+# HARDWARE
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Bundles are groups of nix-packages generally used together
-# Do not customize an app here, use mle.apps module instead
+# Hardware modules are the place for customization of pieces
+# of hardware (cpu, gpu, x-y-wifi card or ethernet cards, etc.)
+# It does not concern software itself at all
 
 {
 
-  options.mle.bundles.graphics.enable = lib.mkOption {
-    description = "Enable graphics bundle";
+  options.mle.hardware.graphics.enable = lib.mkOption {
+    description = "Enable graphics hardware";
     type = lib.types.bool;
     default = false;
   };
   
-  config = lib.mkIf config.mle.bundles.graphics.enable {
+  config = lib.mkIf config.mle.hardware.graphics.enable {
     
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Recursive activation of other mle.<modules>
