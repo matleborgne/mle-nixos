@@ -30,7 +30,6 @@
     hardware.amdgpu = {
       initrd.enable = true;
       opencl.enable = true;
-      amdvlk.enable = false;
     };
 
     hardware.graphics = {
