@@ -17,35 +17,34 @@
   };
   
   config = lib.mkIf config.mle.hardware.nvidia.enable {
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Recursive activation of other mle.<modules>
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    mle.core.graphics.enable = true;
+
   
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Configuration du serveur graphique
+    # Module configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
-    hardware.graphics = {
-      enable = true;
 
-      #driSupport = lib.mkDefault true;
+    hardware.nvidia = {
+      open = true;                   # meilleures perfs sur GPU récents
+      modesetting.enable = true;     # KMS, fortement recommandé
+      nvidiaSettings = true;         # panneau de configuration nvidia
+    };
+      
+    hardware.graphics = {
       extraPackages = with pkgs; [
         #vaapiVdpau
         libva-vdpau-driver
       ];
-
-      #driSupport32Bit = lib.mkDefault true;
-      extraPackages32 = with pkgs; [
-        #driversi686Linux.vaapiVdpau
-        driversi686Linux.libva-vdpau-driver
-      ];
-
     };
 
-
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Sélection par défaut des services NVIDIA
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+    # A date, NixOS continue d'utiliser xserver pour nvidia
     services.xserver = {
-      videoDrivers = lib.mkDefault [ "nvidia" ];
+      videoDrivers = [ "nvidia" ];
     };
 
     boot.kernelParams = [
@@ -55,9 +54,6 @@
     ];
     
 
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Paramétrage du hardware NVIDIA
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     hardware.nvidia = {
       modesetting.enable = true;
