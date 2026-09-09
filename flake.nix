@@ -15,6 +15,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # GLF-OS applications
+    nix-disk = {
+      url = "git+https://framagit.org/gaming-linux-fr/glf-os/app-glf-os/nix-disk.git?ref=feat/advanced-storage-safety";
+      flake = false;
+    };
+
   };
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,6 +72,10 @@
         home-manager.nixosModules.default
         ./base.nix
         { nixpkgs.config = nixpkgsConfig; }
+
+        nixpkgs.overlays = [(final: prev: {
+          nix-disk = final.callPackage "${inputs.nix-disk}/package.nix" { };
+        })
       ];
 
       isoModules = [
