@@ -44,26 +44,16 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     services = {
-      udev.packages = [ pkgs.gnome-settings-daemon ];
-
-      xserver = {
-        excludePackages = [ pkgs.xterm ];
-        xkb = {
-          layout = "fr";
-          variant = "azerty";
-          options = "eurosign:e";
-        };
-      };
-
       displayManager.gdm.enable = true;
+
       desktopManager.gnome = {
         enable = true;
-        extraGSettingsOverridePackages = [ pkgs.mutter ];
-        extraGSettingsOverrides = ''
-          [org.gnome.mutter]
-          experimental-features=['scale-monitor-framebuffer']
-        '';
+      };
 
+      xserver.xkb = {
+        layout = "fr";
+        variant = "azerty";
+        options = "eurosign:e";
       };
     };
 
@@ -85,7 +75,7 @@
       gnome-music gnome-tour gnome-photos gnome-characters
       gnome-maps gnome-clocks gnome-connections
       gnome-font-viewer gnome-software
-      gnome-packagekit gnome-tour
+      gnome-packagekit
     ];
 
 
@@ -102,9 +92,7 @@
       # Extensions
       gnomeExtensions.appindicator
       gnomeExtensions.dash-to-panel
-      gnomeExtensions.gsconnect
       gnomeExtensions.just-perfection
-      gnomeExtensions.forge
       gnomeExtensions.vitals
       gnomeExtensions.user-themes
       gnomeExtensions.launch-new-instance
@@ -126,8 +114,6 @@
       ptyxis
 
     ] ++ [
-      # Forked package because not up-to-date
-      #( pkgs.callPackage ../../../pkgs/pop-shell { } )
       pkgsUnstable.gnomeExtensions.pop-shell
     ];
 
