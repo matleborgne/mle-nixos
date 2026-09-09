@@ -20,7 +20,7 @@
   networking.hostName = "nix-x2";
 
   # Kernel is buggy now
-  boot.kernelPackages = pkgs.linuxPackages_zen; 
+  boot.kernelPackages = pkgs.linuxPackages_7_2; 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 2- Activation of mle.modules
