@@ -67,12 +67,6 @@
       "nova_core"
     ];
 
-    boot.kernelParams = [
-      "module_blacklist=amdgpu,i915"
-      "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-      "NVreg_TemporaryFilePath=/var/tmp"
-    ];
-
 
   };  
 }
