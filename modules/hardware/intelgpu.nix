@@ -17,40 +17,33 @@
   };
   
   config = lib.mkIf config.mle.hardware.intelgpu.enable {
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # Recursive activation of other mle.<modules>
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    mle.core.graphics.enable = true;
+  
   
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Configuration du serveur graphique
+    # Module configuration
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     hardware.graphics = {
-      enable = true;
-
-      #driSupport = lib.mkDefault true;
       extraPackages = with pkgs; [
-        intel-media-driver # LIBVA_DRIVER_NAME=iHD
-        #intel-media-sdk
-        libva-vdpau-driver
-        libvdpau-va-gl
-      ];
-
-      #driSupport32Bit = lib.mkDefault true;
-      extraPackages32 = with pkgs; [
-        driversi686Linux.libva-vdpau-driver
-        driversi686Linux.libvdpau-va-gl
+        intel-compute-runtime
+        intel-media-driver
+        intel-vaapi-driver
       ];
     };
 
-
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Sélection par défaut des services INTELGPU
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    #services.xserver.videoDrivers = [ "amdgpu" ];
-    #boot.initrd.kernelModules = [ "amdgpu" ];
+    environment.systemPackages = with pkgs; [
+      intel-gpu-tools
+      clinfo
+    ];
 
     environment.variables = {
       LIBVA_DRIVER_NAME = lib.mkDefault "iHD";
-      VDPAU_DRIVER = lib.mkDefault "va_gl";
     };
     
   };  
