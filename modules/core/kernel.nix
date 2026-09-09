@@ -55,6 +55,7 @@
         "kernel.kptr_restrict" = 2;
         "kernel.kexec_load_disabled" = 1;
       };
+    };
 
   };
 }
