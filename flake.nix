@@ -17,9 +17,8 @@
     };
 
     # GLF-OS applications
-    easyflatpak = {
-      url = "git+https://framagit.org/gaming-linux-fr/glf-os/app-glf-os/easyflatpak.git?ref=main";
-      flake = false;
+    glf-apps = {
+      url = "git+https://framagit.org/gaming-linux-fr/glf-os/glf-os.git?ref=testing&dir=modules/default/glf-apps";
     };
 
   };
@@ -66,10 +65,6 @@
         secrets = import ./secrets;
       };
 
-      glfOverlay = final: prev: {
-        easyflatpak = final.callPackage "${inputs.easyflatpak}/package.nix" { };
-      };
-
       baseModules = [
         nixosModules.default
         nixosModules.secrets
@@ -78,7 +73,7 @@
 
         {
           nixpkgs.config = nixpkgsConfig;
-          nixpkgs.overlays = [ glfOverlay ];
+          nixpkgs.overlays = [ inputs.glf-apps.overlays.default ];
         }
       ];
 
