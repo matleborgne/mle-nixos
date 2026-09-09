@@ -29,67 +29,29 @@
     # Configuration des services (cups, avahi, udev, sane)
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    services = {
-
-      # CUPS / priting daemon
-      printing = {
-        enable = true;
-        startWhenNeeded = true;
-        drivers = with pkgs; [
-          brgenml1cupswrapper
-          brgenml1lpr
-          brlaser
-          #cnijfilter2
-          #epkowa
-          gutenprint
-          gutenprintBin
-          hplip
-          hplipWithPlugin
-          samsung-unified-linux-driver
-          splix
-        ];
-      };
-
-      # Autodiscovery with AVAHI
-      avahi = {
-        enable = true;
-        nssmdns4 = true;
-        openFirewall = true;
-      };
-
-      # UDEV packages
-      udev.packages = with pkgs; [
-        sane-airscan
-        utsushi
-      ];
-
-
+    services.priting = {
+      enable = true;
+      startWhenNeeded = true;
+      drivers = [ pkgs.brlaser ];
     };
 
-    # SANE scanner
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
+    services.udev.packages = [ pkgs.sane-airscan ];
+    
     hardware.sane = {
       enable = true;
-      extraBackends = with pkgs; [
-        hplipWithPlugin
-        sane-airscan
-        #epkowa
-        utsushi
-      ];
+      extraBackends = [ pkgs.sane-airscan ];
     };
-
-    # Let users install printer manually
-    programs.system-config-printer.enable = true;
-    
-
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    # Configuration des groupes utilisateur
-    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
     users.groups = {
       scanner.members = normalUsers;
       lp.members = normalUsers;
-      cups.members = normalUsers;
-      printer.members = normalUsers;
+      lpadmin.members = normalUsers;
     };
 
 
