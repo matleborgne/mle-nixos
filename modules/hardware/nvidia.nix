@@ -30,9 +30,13 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     hardware.nvidia = {
-      open = true;                   # meilleures perfs sur GPU récents
-      modesetting.enable = true;     # KMS, fortement recommandé
-      nvidiaSettings = true;         # panneau de configuration nvidia
+      open = true;                         # meilleures perfs sur GPU récents
+      modesetting.enable = true;           # KMS, fortement recommandé
+      nvidiaSettings = true;               # panneau de configuration nvidia
+      powerManagement.enable = true;       # attention aux pbs de suspend
+      powerManagement.finegrained = false; # trop récent
+
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
       
     hardware.graphics = {
@@ -46,6 +50,12 @@
     services.xserver = {
       videoDrivers = [ "nvidia" ];
     };
+
+    # TODO : à placer dans un module gaming spécifique
+    environment.variables = {
+      __GL_SHADER_DISK_CACHE_SIZE = "12000000000";
+    };
+
 
     boot.kernelParams = [
       "module_blacklist=amdgpu,i915"
