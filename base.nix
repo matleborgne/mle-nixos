@@ -96,22 +96,20 @@ in
 
   environment.systemPackages = with pkgs; [
     # Nix tools
-    nh nix-prefetch-git nix-prefetch-github nixpkgs-fmt nixos-icons
+    nh nixos-icons
 
     # Filesystems
     e2fsprogs btrfs-progs dosfstools ntfs3g exfat exfatprogs
-    #mtpfs
 
-    # CLI tools
-    git util-linux pciutils lshw dmidecode smartmontools ncdu tree
-    lm_sensors duf fastfetch htop vim bat
-    p7zip gnutar
-    cron rsync restic wget curl
-    gocryptfs ghostscript
-    fd ripgrep-all fzf eza
-    lazygit
-    jq
-    lsof hwinfo tmux
+    # Hardware diagnostic
+    pciutils lshw smartmontools lm_sensors
+
+    # Basic tools
+    git rsync wget curl util-linux
+    unzip p7zip gnutar zstd
+    ncdu tree duf fastfetch htop vim bat
+    fd ripgrep-all fzf eza jq lsof
+    tmux
   ];
 
 
