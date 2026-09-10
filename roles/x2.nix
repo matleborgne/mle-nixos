@@ -20,15 +20,13 @@
   networking.hostName = "nix-x2";
 
   # Kernel is buggy now
-  boot.kernelPackages = pkgs.linuxPackages_7_2; 
+  boot.kernelPackages = pkgs.linuxPackages_zen; 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # 2- Activation of mle.modules
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   mle = {
-
-    core.kernel.enable = true;
 
     apps = {
       codium.enable = true;
