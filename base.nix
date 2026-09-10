@@ -96,7 +96,7 @@ in
 
   environment.systemPackages = with pkgs; [
     # Nix tools
-    nh nixos-icons
+    nh nixos-icons nixpkgs-fmt
 
     # Filesystems
     e2fsprogs btrfs-progs dosfstools ntfs3g exfat exfatprogs
