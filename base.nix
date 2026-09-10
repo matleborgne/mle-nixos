@@ -3,6 +3,7 @@
 let
     allUsers = builtins.attrNames config.users.users;
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
+    wheelUser = builtins.filter (u: config.users.users.${u}.uid == 1000) allUsers;
 
 in
 {
@@ -12,6 +13,7 @@ in
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   system.stateVersion = "24.11"; # never change this
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   programs = {
     nix-index.enable = lib.mkDefault true;
@@ -26,7 +28,13 @@ in
     ];
   };
 
-  hardware.enableRedistributableFirmware = lib.mkDefault true;
+  nix.gc = {
+    automatic = lib.mkDefault true;
+    dates = lib.mkDefault "weekly";
+    options = lib.mkDefault "--delete-older-than 30d";
+  };
+
+  nix.optimise.automatic = lib.mkDefault true;
 
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,7 +56,12 @@ in
   services = {
     fstrim.enable = lib.mkDefault true;
     fwupd.enable = lib.mkDefault true;
+
     openssh.enable = lib.mkDefault true;
+    openssh.settings = {
+      PasswordAuthentication = lib.mkDefault false;
+      PermitRootLogin = lib.mkDefault "no";
+    };
   };
 
   users.groups = {
@@ -56,7 +69,7 @@ in
     users.members = lib.mkDefault normalUsers;
     input.members = lib.mkDefault normalUsers;
     video.members = lib.mkDefault normalUsers;
-    wheel.members = lib.mkDefault normalUsers;
+    wheel.members = lib.mkDefault wheelUser ;
   };
 
 
@@ -130,12 +143,7 @@ in
         device = lib.mkDefault "nodev";
         efiSupport = lib.mkDefault true;
         enableCryptodisk = lib.mkDefault true;
-        useOSProber = lib.mkDefault true;
       };
-    };
-
-    plymouth = {
-      enable = lib.mkDefault true;
     };
     
   };  
