@@ -94,9 +94,5 @@
 
   # Works better for example with a gsettings parameter to override (font size, etc.)
 
-microvm.vms.vm1 = {
-  flake = self;
-};
-
 
 }
