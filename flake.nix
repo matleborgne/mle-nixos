@@ -45,9 +45,9 @@
 
     let
 
-      # ~~~~~~~
+      # ~~~~~~~~~~~~~~~~~~~~~~
       # System
-      # ~~~~~~~
+      # ~~~~~~~~~~~~~~~~~~~~~~
 
       system = "x86_64-linux";
       hostPlatform = "x86_64-linux";
@@ -62,9 +62,10 @@
         config = nixpkgsConfig; 
       };
 
-      # ~~~~~~~
+
+      # ~~~~~~~~~~~~~~~~~~~~~~
       # Modules
-      # ~~~~~~~
+      # ~~~~~~~~~~~~~~~~~~~~~~
 
       nixosModules = {
         default = import ./modules;
@@ -91,9 +92,21 @@
         })
       ];
 
-      # ~~~~~~~
+      microvmGuestModules = [
+        microvm.nixosModules.microvm
+        { nixpkgs.config = nixpkgsConfig; }
+      ];
+
+      microvmNames = builtins.filter (x: x != null) (
+        lib.mapAttrsToList (name: type: if type == "regular" && lib.hasSuffix ".nix" name
+          then lib.removeSuffix ".nix" name else null) (
+            builtins.readDir ./microvms
+          )
+      );
+
+      # ~~~~~~~~~~~~~~~~~~~~~~
       # Roles
-      # ~~~~~~~
+      # ~~~~~~~~~~~~~~~~~~~~~~
 
       roles = builtins.filter (x: x != null) (
                 lib.mapAttrsToList(name: type: if type == "regular" && lib.hasSuffix ".nix" name
@@ -106,7 +119,7 @@
         lx600Iso = isoModules;
       };
 
-      nixosConfigurations = builtins.listToAttrs (map (r: {
+      rolesConfigurations = builtins.listToAttrs (map (r: {
         name = r;
         value = nixpkgs.lib.nixosSystem {
           inherit system;
@@ -119,12 +132,21 @@
         };
       }) roles);
 
+      microvmConfigurations = builtins.listToAttrs (map (v: {
+        name = v;
+        value = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs hostPlatform pkgsUnstable nixos-hardware; };
+          modules = microvmGuestModules ++ [ ./microvms/${v}.nix ];
+        };
+      }) microvmNames);
+
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Configurations
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     in {
-      inherit nixosConfigurations;
+      nixosConfigurations = rolesConfigurations // microvmConfigurations;
     };
 }
