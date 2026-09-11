@@ -70,7 +70,6 @@
         nixosModules.default
         nixosModules.secrets
         home-manager.nixosModules.default
-        microvm.nixosModules.host
         ./base.nix
 
         {
