@@ -16,7 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # GLF-OS applications
+    microvm = {
+      url = "github:microvm-nix/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     glf-apps = {
       url = "git+https://framagit.org/gaming-linux-fr/glf-os/glf-os.git?ref=testing&dir=modules/default/glf-apps";
     };
@@ -34,6 +38,8 @@
     nixos-hardware,
     utils,
     home-manager,
+    microvm,
+    glf-apps,
     ...
   } @inputs:
 
@@ -69,6 +75,7 @@
         nixosModules.default
         nixosModules.secrets
         home-manager.nixosModules.default
+        microvm.nixosModules.host
         ./base.nix
 
         {
