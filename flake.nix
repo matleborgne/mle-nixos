@@ -124,7 +124,7 @@
         value = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs hostPlatform pkgsUnstable nixos-hardware;
+            inherit inputs hostPlatform pkgsUnstable nixos-hardware self;
           };
           modules = baseModules
             ++ [ ./roles/${r}.nix ]
@@ -136,7 +136,7 @@
         name = v;
         value = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs hostPlatform pkgsUnstable nixos-hardware; };
+          specialArgs = { inherit inputs hostPlatform pkgsUnstable nixos-hardware self; };
           modules = microvmGuestModules ++ [ ./microvms/${v}.nix ];
         };
       }) microvmNames);
