@@ -16,11 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    microvm = {
-      url = "github:microvm-nix/microvm.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     glf-apps = {
       url = "git+https://framagit.org/gaming-linux-fr/glf-os/glf-os.git?ref=testing&dir=modules/default/glf-apps";
     };
@@ -38,7 +33,6 @@
     nixos-hardware,
     utils,
     home-manager,
-    microvm,
     glf-apps,
     ...
   } @inputs:
@@ -92,20 +86,6 @@
         })
       ];
 
-      microvmGuestModules = [
-        microvm.nixosModules.microvm
-        {
-          nixpkgs.config = nixpkgsConfig;
-          nixpkgs.overlays = [ microvm.overlays.default ];
-        }
-      ];
-
-      microvmNames = builtins.filter (x: x != null) (
-        lib.mapAttrsToList (name: type: if type == "regular" && lib.hasSuffix ".nix" name
-          then lib.removeSuffix ".nix" name else null) (
-            builtins.readDir ./microvms
-          )
-      );
 
       # ~~~~~~~~~~~~~~~~~~~~~~
       # Roles
@@ -135,21 +115,12 @@
         };
       }) roles);
 
-      microvmConfigurations = builtins.listToAttrs (map (v: {
-        name = v;
-        value = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs hostPlatform pkgsUnstable nixos-hardware self; };
-          modules = microvmGuestModules ++ [ ./microvms/${v}.nix ];
-        };
-      }) microvmNames);
-
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Configurations
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     in {
-      nixosConfigurations = rolesConfigurations // microvmConfigurations;
+      nixosConfigurations = rolesConfigurations;
     };
 }
