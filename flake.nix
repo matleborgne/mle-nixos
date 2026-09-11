@@ -94,7 +94,10 @@
 
       microvmGuestModules = [
         microvm.nixosModules.microvm
-        { nixpkgs.config = nixpkgsConfig; }
+        {
+          nixpkgs.config = nixpkgsConfig;
+          nixpkgs.overlays = [ microvm.overlays.default ];
+        }
       ];
 
       microvmNames = builtins.filter (x: x != null) (
