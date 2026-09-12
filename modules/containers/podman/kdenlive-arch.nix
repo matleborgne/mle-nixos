@@ -25,6 +25,7 @@
         RUN pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
         RUN echo "LANG=fr_FR.UTF-8" > /etc/locale.gen && echo "LANG=fr_FR.UTF-8" > /etc/locale.conf && locale-gen
         ENV LANG=fr_FR.UTF-8
+        ENV LC_ALL=fr_FR.UTF-8
       '';
 
       allUsers = builtins.attrNames config.users.users;
