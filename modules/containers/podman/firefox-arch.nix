@@ -36,7 +36,7 @@
       # Host prerequisites
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      virtualisation.podman.enable = true;
+      virtualisation.podman.enable = lib.mkForce true;
       
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
