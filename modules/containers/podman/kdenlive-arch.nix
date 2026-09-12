@@ -91,7 +91,8 @@
             "--network=pasta" "--security-opt=no-new-privileges"
           ];
 
-          entrypoint = "LC_ALL=fr_FR.UTF-8 /usr/bin/kdenlive";
+          entrypoint = "/bin/sh";
+          cmd = [ "-c" "LC_ALL=fr_FR.UTF-8 exec /usr/bin/kdenlive" ];
 
         };
       };
