@@ -72,16 +72,17 @@
           };
 
           volumes = [
-            "/run/user/1000/wayland-0:/run/user/1000/wayland-0"
-            "/run/user/1000/pulse:/run/user/1000/pulse"
-            "/run/user/1000/pipewire-0:/run/user/1000/pipewire-0"
-            "/run/user/1000/dconf:/run/user/1000/dconf"
+            "/run/user/1000/wayland-0:/run/user/1000/wayland-0:U"
+            "/run/user/1000/pulse:/run/user/1000/pulse:U"
+            "/run/user/1000/pipewire-0:/run/user/1000/pipewire-0:U"
+            "/run/user/1000/dconf:/run/user/1000/dconf:U"
           ];
 
           extraOptions = [
             "--interactive" "--tty" "--read-only" "--userns=keep-id"
             "--cap-drop=CAP_AUDIT_WRITE" "--cap-drop=CAP_MKNOD" "--cap-drop=CAP_NET_RAW"
             "--network=pasta" "--security-opt=no-new-privileges"
+            "-e WAYLAND_DISPLAY" "-e XDG_RUNTIME_DIR" "-e HOME"
           ];
 
           entrypoint = "/usr/bin/firefox";
