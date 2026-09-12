@@ -45,7 +45,7 @@
         serviceConfig = {
           Type = "oneshot";
           RemainAfterExit = true;
-          User = "$user";     
+          User = user;     
         };
         script = ''
           podman build -t localhost/firefox-arch -f ${containerfile}
