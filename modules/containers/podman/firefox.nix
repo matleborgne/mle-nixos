@@ -62,7 +62,7 @@
         backend = "podman";
         containers.firefox = {
           image = "localhost/firefox-arch";
-          #autoStart = true;
+          autoStart = false;
           user = "1000:1000";
 
           environment = {
