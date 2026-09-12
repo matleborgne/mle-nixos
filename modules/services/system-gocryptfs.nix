@@ -85,6 +85,7 @@
       description = "Specified by i gocryptfs mount with passfile";      
       enable = true;
       after = [ "network.target" ];
+      path = [ pkgs.bash pkgs.gocryptfs ];
 
       serviceConfig = {
         Type = "forking";
