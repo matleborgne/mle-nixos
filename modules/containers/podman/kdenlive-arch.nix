@@ -82,6 +82,7 @@
             "/run/user/${uid}/wayland-0:/run/user/${uid}/wayland-0:U"
             "/run/user/${uid}/pulse:/run/user/${uid}/pulse:U"
             "/run/user/${uid}/dconf:/run/user/${uid}/dconf:U"
+            "/run/user/${uid}/bus:/run/user/${uid}/bus:U"
           ];
 
           extraOptions = [
