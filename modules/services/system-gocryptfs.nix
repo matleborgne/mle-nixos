@@ -61,10 +61,6 @@
         Type = "forking";
         RemainAfterExit = true;
         EnvironmentFile = [ "/home/${user}/.mounts/%i.env" ];
-        Environment = [
-          "WAYLAND_DISPLAY=wayland-0"
-          "XDG_RUNTIME_DIR=/run/user/${uid}"
-        ];
         ExecStartPre = ''
           ${pkgs.bash}/bin/bash -c \
             'test -d "$CIPHERDIR" || exit 0 \
