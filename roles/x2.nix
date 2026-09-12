@@ -54,6 +54,7 @@
     containers.podman = {
       firefox-arch.enable = true;
       freefilesync-tumble.enable = true;
+      kdenlive-arch.enable = true;
     };
 
     desktop.gnome.mleborgne.enable = true;
