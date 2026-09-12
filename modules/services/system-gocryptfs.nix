@@ -46,6 +46,7 @@
 
 
     environment.systemPackages = with pkgs; [
+      zenity
       gocryptfs
     ];
 
@@ -54,6 +55,7 @@
       description = "Specified by i gocryptfs mount";      
       enable = true;
       after = [ "network.target" ];
+      path = [ pkgs.bash pkgs.gocryptfs pkgs.zenity ];
 
       serviceConfig = {
         Type = "forking";
@@ -66,7 +68,7 @@
         '';
         ExecStart = ''
           ${pkgs.bash}/bin/bash -c \
-            '/run/current-system/sw/bin/systemd-ask-password Password | \
+            '${pkgs.zenity}/bin/zenity --password | \
             ${pkgs.gocryptfs}/bin/gocryptfs \
               ''${CIPHERDIR} ''${MOUNTDIR} \
               -config ''${CONFIG} \
