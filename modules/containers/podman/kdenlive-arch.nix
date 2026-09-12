@@ -21,7 +21,7 @@
 
       containerfile = pkgs.writeText "Containerfile" ''
         FROM archlinux
-        RUN pacman -Syu --noconfirm kdenlive xkeyboard-config libpulse
+        RUN pacman -Syu --noconfirm kdenlive xkeyboard-config libpulse glibc
         RUN pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
         RUN echo "fr_FR.UTF-8" > /etc/locale.gen && echo "LANG=fr_FR.UTF-8" > /etc/locale.conf && locale-gen
         ENV LANG=fr_FR.UTF-8
