@@ -69,7 +69,7 @@
         containers.${cname} = {
           image = "localhost/${cname}";
           autoStart = false;
-          user = lib.mkForce "${user}";
+          user = "${uid}:${uid}";
 
           environment = {
             PULSE_SERVER       = "unix:/run/user/${uid}/pulse/native";
@@ -103,7 +103,7 @@
       # Deploy order verification
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        systemd.user.services."podman-${cname}" = {
+        systemd.services."podman-${cname}" = {
           serviceConfig.User = lib.mkForce user;
           after = [ "build-${cname}.service" ];
           requires = [ "build-${cname}.service" ];
