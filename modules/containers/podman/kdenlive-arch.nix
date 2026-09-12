@@ -91,7 +91,6 @@
           ];
 
           entrypoint = "/usr/bin/kdenlive";
-          cmd = [ "--name" "${cname}" ];
 
         };
       };
