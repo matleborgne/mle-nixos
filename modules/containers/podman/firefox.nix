@@ -91,10 +91,14 @@
         };
       };
 
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      # Deploy order verification
+      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
-
+        systemd.services."podman-firefox" = {
+          after = [ "build-firefox-arch.service" ];
+          requires = [ "build-firefox-arch.service" ];
+        };
 
   });
 }
