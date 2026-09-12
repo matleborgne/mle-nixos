@@ -21,8 +21,7 @@
 
       containerfile = pkgs.writeText "Containerfile" ''
         FROM archlinux
-        RUN pacman -Syu --noconfirm wget gnupg ca-certificates xkeyboard-config firefox
-        RUN pacman -Syu --noconfirm pulseaudio pavucontrol alsa-utils
+        RUN pacman -Syu --noconfirm firefox xkeyboard-config libpulse
         RUN pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
       '';
 
@@ -83,7 +82,6 @@
           volumes = [
             "/run/user/${uid}/wayland-0:/run/user/${uid}/wayland-0:U"
             "/run/user/${uid}/pulse:/run/user/${uid}/pulse:U"
-            "/run/user/${uid}/pipewire-0:/run/user/${uid}/pipewire-0:U"
             "/run/user/${uid}/dconf:/run/user/${uid}/dconf:U"
           ];
 
