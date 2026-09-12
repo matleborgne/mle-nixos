@@ -23,6 +23,7 @@
         FROM archlinux
         RUN pacman -Syu --noconfirm kdenlive xkeyboard-config libpulse
         RUN pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
+        RUN echo "LANG=fr_FR.UTF-8" > /etc/locale.conf && locale-gen -a
       '';
 
       allUsers = builtins.attrNames config.users.users;
