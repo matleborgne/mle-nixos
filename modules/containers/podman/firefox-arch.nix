@@ -12,6 +12,8 @@
     default = false;
   };
 
+  imports = lib.optional (builtins.pathExists ../../../secrets/podman/${cname}.nix) ../../../secrets/podman/${cname}.nix;
+
   config = lib.mkIf config.mle.containers.podman.firefox-arch.enable (
 
     let
@@ -27,6 +29,7 @@
       allUsers = builtins.attrNames config.users.users;
       normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
       user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
+      uid = config.users.users.${user}.uid;
 
     in {
 
@@ -35,15 +38,13 @@
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       virtualisation.podman.enable = true;
-
-      imports = lib.optional (builtins.pathExists ../../../secrets/podman/${cname}.nix) ../../../secrets/podman/${cname}.nix;
       
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # Container build
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      systemd.services.build-${cname} = {
+      systemd.services."build-${cname}" = {
         description = "Build ${cname} podman image";
         path = [ pkgs.podman ];
         serviceConfig = {
