@@ -79,6 +79,7 @@
             WAYLAND_DISPLAY    = "wayland-0";
             XDG_RUNTIME_DIR    = "/run/user/${uid}";
             HOME               = "/home/${user}";
+            GDK_DPI_SCALE      = "1.3";
           };
 
           volumes = [
