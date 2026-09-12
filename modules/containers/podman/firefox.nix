@@ -69,6 +69,9 @@
             PULSE_SERVER       = "unix:/run/user/1000/pulse/native";
             XDG_DATA_DIRS      = "/usr/share";
             MOZ_ENABLE_WAYLAND = "1";
+            WAYLAND_DISPLAY    = "wayland-0";
+            XDG_RUNTIME_DIR    = "/run/user/1000";
+            HOME               = "/home/${user}";
           };
 
           volumes = [
@@ -82,7 +85,6 @@
             "--interactive" "--tty" "--read-only" "--userns=keep-id"
             "--cap-drop=CAP_AUDIT_WRITE" "--cap-drop=CAP_MKNOD" "--cap-drop=CAP_NET_RAW"
             "--network=pasta" "--security-opt=no-new-privileges"
-            "-e WAYLAND_DISPLAY" "-e XDG_RUNTIME_DIR" "-e HOME"
           ];
 
           entrypoint = "/usr/bin/firefox";
