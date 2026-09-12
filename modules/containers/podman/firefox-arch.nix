@@ -15,6 +15,8 @@
   config = lib.mkIf config.mle.containers.podman.firefox-arch.enable (
 
     let
+      cname = "firefox-arch";
+
       containerfile = pkgs.writeText "Containerfile" ''
         FROM archlinux
         RUN pacman -Syu --noconfirm wget gnupg ca-certificates xkeyboard-config firefox
@@ -33,14 +35,16 @@
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       virtualisation.podman.enable = true;
+
+      imports = lib.optional (builtins.pathExists ../../../secrets/podman/${cname}.nix) ../../../secrets/podman/${cname}.nix;
       
 
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # Container build
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      systemd.services.build-firefox-arch = {
-        description = "Build firefox-arch podman image";
+      systemd.services.build-${cname} = {
+        description = "Build ${cname} podman image";
         path = [ pkgs.podman ];
         serviceConfig = {
           Type = "oneshot";
@@ -48,7 +52,7 @@
           User = user;     
         };
         script = ''
-          podman build -t localhost/firefox-arch -f ${containerfile}
+          podman build -t localhost/${cname} -f ${containerfile}
         '';
         wantedBy = [ "multi-user.target" ];
       };
@@ -60,8 +64,8 @@
 
       virtualisation.oci-containers = {
         backend = "podman";
-        containers.firefox-arch = {
-          image = "localhost/firefox-arch";
+        containers.${cname} = {
+          image = "localhost/${cname}";
           autoStart = false;
           user = "1000:1000";
 
@@ -88,7 +92,7 @@
           ];
 
           entrypoint = "/usr/bin/firefox";
-          cmd = [ "--name" "firefox-arch" ];
+          cmd = [ "--name" "${cname}" ];
 
         };
       };
@@ -97,10 +101,10 @@
       # Deploy order verification
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        systemd.services."podman-firefox-arch" = {
+        systemd.services."podman-${cname}" = {
           serviceConfig.User = lib.mkForce user;
-          after = [ "build-firefox-arch.service" ];
-          requires = [ "build-firefox-arch.service" ];
+          after = [ "build-${cname}.service" ];
+          requires = [ "build-${cname}.service" ];
         };
 
   });
