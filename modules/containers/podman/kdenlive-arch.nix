@@ -21,11 +21,11 @@
 
       containerfile = pkgs.writeText "Containerfile" ''
         FROM archlinux
-        RUN pacman -Syu --noconfirm kdenlive xkeyboard-config libpulse
+        RUN sed -i '\|NoExtract.*usr/share/i18n/\*|d' /etc/pacman.conf
+        RUN pacman -Syu --noconfirm kdenlive xkeyboard-config libpulse glibc
         RUN pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*
         RUN echo "fr_FR.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
-        ENV LANG=fr_FR.UTF-8
-        ENV LC_ALL=fr_FR.UTF-8
+        
       '';
 
       allUsers = builtins.attrNames config.users.users;
