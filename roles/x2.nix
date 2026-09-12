@@ -51,6 +51,10 @@
       videopro.enable = true;
     };
 
+    containers.podman = {
+      firefox-arch.enable = true;
+    };
+
     desktop.gnome.mleborgne.enable = true;
 
     flatpaks = {
