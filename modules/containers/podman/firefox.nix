@@ -96,6 +96,7 @@
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         systemd.services."podman-firefox" = {
+          serviceConfig.User = user;
           after = [ "build-firefox-arch.service" ];
           requires = [ "build-firefox-arch.service" ];
         };
