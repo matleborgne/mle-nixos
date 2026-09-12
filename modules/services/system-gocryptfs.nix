@@ -38,6 +38,8 @@
     # Create your /home/$user/.mounts directory, with inside a file named 'mydir.env'
 
     # Containing :
+    # WAYLAND_DISPLAY="wayland-0"
+    # XDG_RUNTIME_DIR="/run/user/1000"
     # CIPHERDIR="path_to_encrypted_dir"
     # MOUNTDIR="path_to_uncrypted_dir"
     # CONFIG="path_to_conf"
