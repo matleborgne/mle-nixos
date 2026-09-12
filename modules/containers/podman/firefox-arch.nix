@@ -12,7 +12,7 @@
     default = false;
   };
 
-  imports = lib.optional (builtins.pathExists ../../../secrets/podman/${cname}.nix) ../../../secrets/podman/${cname}.nix;
+  imports = lib.optional (builtins.pathExists ../../../secrets/podman/firefox-arch.nix) ../../../secrets/podman/firefox-arch.nix;
 
   config = lib.mkIf config.mle.containers.podman.firefox-arch.enable (
 
