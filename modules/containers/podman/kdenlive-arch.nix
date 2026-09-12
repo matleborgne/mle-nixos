@@ -79,7 +79,7 @@
             WAYLAND_DISPLAY    = "wayland-0";
             XDG_RUNTIME_DIR    = "/run/user/${uid}";
             HOME               = "/home/${user}";
-            QT_SCALE_FACTOR    = "1.3";
+            QT_FONT_DPI        = "120";
           };
 
           volumes = [
