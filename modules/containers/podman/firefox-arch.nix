@@ -45,13 +45,12 @@
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
       systemd.services."build-${cname}" = {
-        serviceConfig.User = lib.mkForce user;
         description = "Build ${cname} podman image";
         path = [ pkgs.podman ];
         serviceConfig = {
           Type = "oneshot";
           RemainAfterExit = true;
-          User = user;     
+          User = lib.mkForce user;     
         };
         script = ''
           podman build -t localhost/${cname} -f ${containerfile} \
