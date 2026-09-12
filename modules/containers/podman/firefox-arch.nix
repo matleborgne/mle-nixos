@@ -105,6 +105,7 @@
 
         systemd.services."podman-${cname}" = {
           serviceConfig.User = lib.mkForce user;
+          serviceConfig.PAMName = lib.mkForce "login";
           after = [ "build-${cname}.service" ];
           requires = [ "build-${cname}.service" ];
         };
