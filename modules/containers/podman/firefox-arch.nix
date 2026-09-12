@@ -69,7 +69,7 @@
         containers.${cname} = {
           image = "localhost/${cname}";
           autoStart = false;
-          user = "${uid}:${uid}";
+          user = lib.mkForce "${user}";
 
           environment = {
             PULSE_SERVER       = "unix:/run/user/${uid}/pulse/native";
