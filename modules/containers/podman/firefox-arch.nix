@@ -60,7 +60,7 @@
 
       virtualisation.oci-containers = {
         backend = "podman";
-        containers.firefox = {
+        containers.firefox-arch = {
           image = "localhost/firefox-arch";
           autoStart = false;
           user = "1000:1000";
@@ -97,7 +97,7 @@
       # Deploy order verification
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        systemd.services."podman-firefox" = {
+        systemd.services."podman-firefox-arch" = {
           serviceConfig.User = lib.mkForce user;
           after = [ "build-firefox-arch.service" ];
           requires = [ "build-firefox-arch.service" ];
