@@ -86,7 +86,7 @@
           ];
 
           extraOptions = [
-            "--interactive" "--tty" "--read-only" "--userns=keep-id"
+            "--interactive" "--tty" "--userns=keep-id"
             "--cap-drop=CAP_AUDIT_WRITE" "--cap-drop=CAP_MKNOD" "--cap-drop=CAP_NET_RAW"
             "--network=pasta" "--security-opt=no-new-privileges"
           ];
