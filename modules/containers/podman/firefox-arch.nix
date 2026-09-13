@@ -55,6 +55,8 @@
         Volume=/run/user/${uid}/pulse:/run/user/${uid}/pulse:U
         Volume=/run/user/${uid}/dconf:/run/user/${uid}/dconf:U
 
+        #custom
+
         Exec=/usr/bin/firefox --name firefox-arch
       '';
 
