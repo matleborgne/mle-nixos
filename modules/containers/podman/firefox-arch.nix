@@ -31,9 +31,16 @@
       '';
 
       quadletfile = pkgs.writeText "Quadletfile" ''
+        [Unit]
+        After=build-${cname}.service
+        Requires=build-${cname}.service
+
+        [Install]
+        WantedBy=default.target
+
         [Container]
         ContainerName=firefox-arch
-        Image=firefox-arch
+        Image=localhost/firefox-arch
         User=${uid}
         Group=${uid}
 
@@ -67,19 +74,17 @@
       # Container build
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      systemd.services."build-${cname}" = {
+      systemd.user.services."build-${cname}" = {
         description = "Build ${cname} podman image";
         path = [ pkgs.podman ];
         serviceConfig = {
           Type = "oneshot";
-          RemainAfterExit = true;
-          User = lib.mkForce user;     
+          RemainAfterExit = true;    
         };
         script = ''
-          podman build -t localhost/${cname} -f ${containerfile} \
-            --build-arg UID=${uid} --build-arg GID=${uid} --build-arg UNAME=${user}
+          podman build -t localhost/${cname} -f ${containerfile}
         '';
-        wantedBy = [ "multi-user.target" ];
+        wantedBy = [ "default.target" ];
       };
 
       
@@ -87,50 +92,10 @@
       # Quadlet build
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-      virtualisation.oci-containers = {
-        backend = "podman";
-        containers.${cname} = {
-          image = "localhost/${cname}";
-          autoStart = false;
-          user = "${uid}:${uid}";
-
-          environment = {
-            PULSE_SERVER       = "unix:/run/user/${uid}/pulse/native";
-            XDG_DATA_DIRS      = "/usr/share";
-            MOZ_ENABLE_WAYLAND = "1";
-            WAYLAND_DISPLAY    = "wayland-0";
-            XDG_RUNTIME_DIR    = "/run/user/${uid}";
-            HOME               = "/home/${user}";
-          };
-
-          volumes = [
-            "/run/user/${uid}/wayland-0:/run/user/${uid}/wayland-0:U"
-            "/run/user/${uid}/pulse:/run/user/${uid}/pulse:U"
-            "/run/user/${uid}/dconf:/run/user/${uid}/dconf:U"
-          ];
-
-          extraOptions = [
-            "--interactive" "--tty" "--read-only" "--userns=keep-id"
-            "--cap-drop=CAP_AUDIT_WRITE" "--cap-drop=CAP_MKNOD" "--cap-drop=CAP_NET_RAW"
-            "--network=pasta" "--security-opt=no-new-privileges"
-          ];
-
-          entrypoint = "/usr/bin/firefox";
-          cmd = [ "--name" "${cname}" ];
-
-        };
-      };
-
-      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      # Fine tuning
-      # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-        systemd.services."podman-${cname}" = {
-          serviceConfig.User = lib.mkForce user;
-          serviceConfig.Restart = lib.mkForce "no";
-          after = [ "build-${cname}.service" ];
-          requires = [ "build-${cname}.service" ];
-        };
+      systemd.user.tmpfiles.rules = [
+        "d %h/.config/containers/systemd 0755 - - -"
+        "L+ %h/.config/containers/systemd/${cname}.container - - - - ${quadletfile}"
+      ];
 
   });
 }
