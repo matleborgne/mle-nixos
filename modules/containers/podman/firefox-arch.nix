@@ -35,9 +35,6 @@
         After=build-${cname}.service
         Requires=build-${cname}.service
 
-        [Install]
-        WantedBy=default.target
-
         [Container]
         ContainerName=firefox-arch
         Image=localhost/firefox-arch
