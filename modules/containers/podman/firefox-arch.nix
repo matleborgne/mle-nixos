@@ -94,7 +94,7 @@
 
       systemd.user.tmpfiles.rules = [
         "d %h/.config/containers/systemd 0755 - - -"
-        "L+ %h/.config/containers/systemd/${cname}.container - - - - ${quadletfile}"
+        "C+ %h/.config/containers/systemd/${cname}.container - - - - ${quadletfile}"
       ];
 
   });
