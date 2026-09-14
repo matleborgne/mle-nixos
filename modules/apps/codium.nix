@@ -23,14 +23,14 @@
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
     user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
       
-    pythonEnv = pkgs.python314.withPackages (ps: with ps; [
+    pythonEnv = pkgs.python3.withPackages (ps: with ps; [
       jupyter ipykernel pipdeptree
       pandas numpy openpyxl xlrd
       matplotlib seaborn plotly
       scikit-learn statsmodels
       jellyfish chardet levenshtein
       sparse dill patsy
-      #ydata-profiling flashtext
+      ydata-profiling flashtext
       # chainladder
       # hdbscan            # cf. note plus bas
       # scikit-learn-extra # cf. note plus bas
