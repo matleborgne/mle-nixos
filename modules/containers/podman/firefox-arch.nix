@@ -104,8 +104,6 @@
         systemd.services."podman-${cname}" = {
           serviceConfig.User = lib.mkForce user;
           serviceConfig.Restart = lib.mkForce "no";
-          after = [ "build-${cname}.service" ];
-          requires = [ "build-${cname}.service" ];
         };
 
   });
