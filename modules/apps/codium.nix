@@ -93,8 +93,8 @@
       install -o "${user}" -g users -m 0644 ${settingsJson} "$dir/settings.json"
       install -o "${user}" -g users -m 0644 ${localeJson} "$dir/locale.json"
 
-      ${pkgs.util-linux}/bin/runuser -u "${user}" -c \
-        "${pythonEnv}/bin/python -m ipykernel install --user --name=nixos-pandas --display-name 'NixOS (pandas)' --force" \
+      /run/current-system/sw/bin/sudo -H -u "${user}" ${pythonEnv}/bin/python -m ipykernel install \
+        --user --name=nixos-pandas --display-name "NixOS (pandas)" --force \
         >> /home/${user}/.cache/ipykernel-install.log 2>&1 || true
     '';
 
