@@ -46,6 +46,7 @@
         ms-python.python
         ms-python.vscode-pylance
         ms-toolsai.jupyter
+        ms-toolsai.jupyter-renderers
         oderwat.indent-rainbow
         christian-kohler.path-intellisense
         jnoortheen.nix-ide
