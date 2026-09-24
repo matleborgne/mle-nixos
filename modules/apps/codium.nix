@@ -30,7 +30,7 @@
       scikit-learn statsmodels
       jellyfish chardet levenshtein
       sparse dill patsy
-      # ydata-profiling
+      ydata-profiling
       flashtext
       # chainladder
       # hdbscan            # cf. note plus bas
