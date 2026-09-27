@@ -62,6 +62,11 @@
         powerOnBoot = true;
      };
 
+    boot.plymouth = {
+      enable = true;
+      theme = "spinner";
+    };
+
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Packages exclusion
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
