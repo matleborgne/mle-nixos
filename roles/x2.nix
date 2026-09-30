@@ -66,7 +66,7 @@
     misc = {
       libvirt.enable = true;
       mleupdater.enable = true;
-      #pci-passthrough.enable = true;
+      pci-passthrough.enable = true;
       sshfs.enable = true;
     };
 
