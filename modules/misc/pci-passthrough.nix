@@ -44,6 +44,7 @@
     
     boot.kernelParams = [ 
       "amd_iommu=on"
+      "vfio-pci.ids=10de:2d83,10de:22ec"
     ];
 
       #"iommu=pt"
