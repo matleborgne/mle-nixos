@@ -17,7 +17,7 @@
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   # Hostname
-  networking.hostName = "nix-x2";
+  networking.hostName = "nix-ex5";
 
   # Kernel is buggy now
   boot.kernelPackages = pkgs.linuxPackages_zen; 
