@@ -24,6 +24,12 @@
     
     services.usbmuxd.enable = true;
 
+    environment.systemPackages = with pkgs; [
+      libheif
+      libimobiledevice
+      ifuse # optional, to mount using 'ifuse ~/iphone'
+    ];
+
   };  
 }
 
