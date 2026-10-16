@@ -109,7 +109,7 @@ in
     unzip p7zip gnutar zstd
     ncdu tree duf fastfetch htop vim bat
     fd ripgrep-all fzf eza jq lsof
-    tmux
+    tmux usbutils
   ];
 
 
