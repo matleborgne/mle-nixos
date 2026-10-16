@@ -59,10 +59,8 @@
 
     desktop.gnome.mleborgne.enable = true;
 
-    flatpaks = {
-      kdenlive.enable = true;
-    };
-    
+    hardware.iphone.enable = true;
+
     misc = {
       libvirt.enable = true;
       mleupdater.enable = true;
