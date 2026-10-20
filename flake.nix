@@ -16,10 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #glf-apps = {
-    #  url = "git+https://framagit.org/gaming-linux-fr/glf-os/glf-os.git?ref=testing&dir=modules/default/glf-apps";
-    #};
-
   };
 
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -33,7 +29,6 @@
     nixos-hardware,
     utils,
     home-manager,
-    glf-apps,
     ...
   } @inputs:
 
