@@ -69,7 +69,7 @@
 
         {
           nixpkgs.config = nixpkgsConfig;
-          nixpkgs.overlays = [ inputs.glf-apps.overlays.default ];
+          nixpkgs.overlays = [ ];
         }
       ];
 
