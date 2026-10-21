@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgsUnstable, ... }:
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # BUNDLES
@@ -27,7 +27,7 @@
     # Bundled applications
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgsUnstable; [
 
       #blender
       handbrake
@@ -37,7 +37,7 @@
       mediainfo
       mkvtoolnix
 
-      losslesscut-bin
+      #losslesscut-bin
       obs-studio
 
       ab-av1
