@@ -27,7 +27,7 @@
       jupyter ipykernel pipdeptree
       pandas numpy openpyxl xlrd
       matplotlib seaborn plotly
-      pyarrow
+      pyarrow polars
       scikit-learn statsmodels
       jellyfish chardet levenshtein
       sparse dill patsy
