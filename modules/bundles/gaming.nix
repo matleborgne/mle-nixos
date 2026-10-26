@@ -39,8 +39,6 @@
       libjpeg libxcomposite libxinerama libgcrypt
       ncurses ocl-icd libxslt libva
 
-      gamemode
-
     ] ++ [
       pkgsUnstable.cartridges
 
