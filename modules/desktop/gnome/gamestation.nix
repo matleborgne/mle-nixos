@@ -25,7 +25,6 @@
     mle = {      
       desktop.gnome = {
         base.enable = true;
-        suspend-fix.enable = true;
       };
     };
 
