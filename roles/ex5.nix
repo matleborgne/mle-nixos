@@ -74,7 +74,7 @@
     };
 
     secrets = {
-      hardware-ex5.enable = true;
+      hardware-nix-ex5.enable = true;
       hm-mleborgne.enable = true;
       libvirt-vm101.enable = true;
       libvirt-vm102.enable = true;
