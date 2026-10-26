@@ -113,8 +113,6 @@
 
     virtualisation.spiceUSBRedirection.enable = true;
 
-    boot.kernel.sysctl."vm.nr_hugepages" = 8192;
-
     
   });
 }
