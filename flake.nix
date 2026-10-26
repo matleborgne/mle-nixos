@@ -56,11 +56,8 @@
       # ~~~~~~~~~~~~~~~~~~~~~~
 
       nixosModules = {
-        default = { imports = lib.filter
-          (p: lib.hasSuffix ".nix" (toString p))
-          (lib.filesystem.listFilesRecursive ./modules);
-        };
-        secrets = import ./secrets;
+        default = { imports = lib.filter (p: lib.hasSuffix ".nix" (toString p)) (lib.filesystem.listFilesRecursive ./modules); };
+        secrets = { imports = lib.filter (p: lib.hasSuffix ".nix" (toString p)) (lib.filesystem.listFilesRecursive ./secrets); };
       };
 
       baseModules = [
