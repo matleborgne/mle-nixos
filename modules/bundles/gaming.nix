@@ -21,8 +21,13 @@
     # Recursive activation of other mle.<modules>
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    mle.apps = {
-      steam.enable = true;
+    mle = {
+      apps = {
+        steam.enable = true;
+      };
+      misc = {
+        gamemode.enable = true;
+      };
     };
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
