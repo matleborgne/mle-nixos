@@ -6,4 +6,5 @@ C’est un dépôt NixOS en flake pour un parc de machines personnelles. Il déc
 - modules/ : environ 105 options mle.*, rangées par catégorie : apps, bundles (groupes de paquets), containers (nspawn et podman), desktop (GNOME, KDE, i3, Hyprland, XFCE), hardware, misc, services. Chaque module suit le même modèle : une option enable puis un mkIf.
 - base.nix : socle commun, avec des mkDefault que les rôles peuvent surcharger.
 - secrets/ : en réalité un gabarit avec des valeurs factices (UUID aaa/bbb, mot de passe masqué). Les vraies données sont dans un dossier privé qui n’est pas sur GitHub.
+
 Déploiement : le dépôt public est cloné dans /etc/nixos/github, puis github-autosync.sh le copie par rsync vers /etc/nixos/build, qui contient aussi les secrets privés. mlemodules.sh y génère les default.nix d’imports, et hardware-configuration.sh génère la config matérielle de chaque machine. mleupdater déclenche ces scripts à l’activation du système.
