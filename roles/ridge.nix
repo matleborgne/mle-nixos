@@ -45,6 +45,7 @@
     };
 
     secrets = {
+      hardware-nix-ridge.enable = true;
       hm-gamestation.enable = true;
     };
     
