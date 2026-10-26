@@ -30,7 +30,7 @@
 
   mle = {
 
-    core.kernel.enable = true;
+    core.kernel-gaming.enable = true;
 
     apps = {
       firefox.enable = true;      
@@ -61,6 +61,12 @@
     isNormalUser = true;
     extraGroups = [ "udev" "users" "video" "wheel" "input" "networkmanager" ];
   };
+
+  # Testing gamescope
+  services.displayManager.defaultSession = lib.mkForce "steam";
+  #programs.gamescope.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+
 
 
 }
