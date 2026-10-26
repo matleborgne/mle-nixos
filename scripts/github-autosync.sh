@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 PATH=$PATH:/run/current-system/sw/bin
-#set -x
+set -euo pipefail
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Autosync last github modifications to modules
