@@ -27,7 +27,6 @@
     nixpkgs,
     nixpkgs-unstable,
     nixos-hardware,
-    utils,
     home-manager,
     ...
   } @inputs:
