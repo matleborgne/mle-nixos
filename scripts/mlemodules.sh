@@ -27,20 +27,6 @@ prefix="{ config, pkgs, pkgsUnstable, lib, ... }:
 suffix="  ];
 }"
 
-# NIX modules
-{
-  printf "%s\n" "$prefix"
-
-  find "$current/../modules" -name '*.nix' \
-    | grep -v "/default.nix" \
-    | sed -e "s|$current/||g" \
-    | sort \
-    | sed 's/^/      /'
-
-  printf "%s\n" "$suffix"
-} > "$current/../modules/default.nix"
-
-
 # NIX secrets except for hardware-conf
 {
   printf "%s\n" "$prefix"
