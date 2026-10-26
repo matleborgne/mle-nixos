@@ -38,8 +38,6 @@
       goverlay mangohud
       bubblewrap
 
-      wine-staging wine64
-      vulkan-loader vulkan-headers vulkan-tools dxvk
       giflib libpng gnutls mpg123 openal v4l-utils libgpg-error
       libjpeg libxcomposite libxinerama libgcrypt
       ncurses ocl-icd libxslt libva
