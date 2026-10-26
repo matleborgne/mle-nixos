@@ -63,11 +63,4 @@
     extraGroups = [ "udev" "users" "video" "wheel" "input" "networkmanager" ];
   };
 
-  # Testing gamescope
-  services.displayManager.defaultSession = lib.mkForce "steam";
-  #programs.gamescope.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-
-
-
 }
