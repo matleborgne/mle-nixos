@@ -316,11 +316,11 @@ case "$(grep -m1 vendor_id /proc/cpuinfo | awk '{ print $NF }')" in
   GenuineIntel|Intel|intel)   echo "    mle.hardware.intelcpu.enable = true;" | out ; echo "" | out ;;
 esac
 
-# Carte graphique (priorité AMD > Intel > Nvidia)
+# Carte graphique (priorité Nvidia > AMD > Intel)
 vga=$(grep "VGA" <<< "$pci" || true)
-if   grep -qi "AMD"    <<< "$vga"; then echo "    mle.hardware.amdgpu.enable = true;"   | out ; echo "" | out
+if grep -qi "Nvidia" <<< "$vga"; then echo "    mle.hardware.nvidia.enable = true;"   | out ; echo "" | out
+elif   grep -qi "AMD"    <<< "$vga"; then echo "    mle.hardware.amdgpu.enable = true;"   | out ; echo "" | out
 elif grep -qi "Intel"  <<< "$vga"; then echo "    mle.hardware.intelgpu.enable = true;" | out ; echo "" | out
-elif grep -qi "Nvidia" <<< "$vga"; then echo "    mle.hardware.nvidia.enable = true;"   | out ; echo "" | out
 fi
 
 
