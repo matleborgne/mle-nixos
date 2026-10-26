@@ -42,11 +42,6 @@
 
     desktop = {
       kde.gamestation.enable = true;
-      #i3.gamestation.enable = true;
-    };
-
-    misc = {
-      mleupdater.enable = true;
     };
 
     secrets = {
