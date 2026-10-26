@@ -29,7 +29,7 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = with pkgs; [
-      steam steam-tui
+      steam-tui
       wine-staging wine64
       vulkan-loader vulkan-headers vulkan-tools dxvk
     ];
