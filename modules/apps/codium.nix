@@ -33,6 +33,7 @@
       sparse dill patsy
       ydata-profiling
       flashtext
+      pypdf
       # chainladder
       # hdbscan            # cf. note plus bas
       # scikit-learn-extra # cf. note plus bas
