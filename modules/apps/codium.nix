@@ -31,7 +31,7 @@
       scikit-learn statsmodels
       jellyfish chardet levenshtein
       sparse dill patsy
-      ydata-profiling
+      #ydata-profiling
       flashtext
       pypdf pymupdf
       # chainladder
