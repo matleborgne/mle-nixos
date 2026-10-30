@@ -25,17 +25,12 @@
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # TODO : remove this when imageio bug is solved
-nixpkgs.overlays = [
-  (final: prev: {
-    pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
-      (pyFinal: pyPrev: {
-        imageio = pyPrev.imageio.overridePythonAttrs (old: {
-          doCheck = false;
-        });
-      })
-    ];
-  })
-];
+    python = pkgsUnstable.python3.override {
+      packageOverrides = final: prev: {
+        imageio = prev.imageio.overridePythonAttrs (_: { doCheck = false; });
+      };
+      self = python;
+    };
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
