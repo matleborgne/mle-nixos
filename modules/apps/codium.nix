@@ -25,17 +25,10 @@
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # TODO : remove this when imageio bug is solved
-    pythonOverlayed = pkgsUnstable.python3.override {
-      packageOverrides = final: prev: {
-        imageio = prev.imageio.overridePythonAttrs (_: { doCheck = false; });
-      };
-      self = pythonOverlayed;
-    };
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    #pythonEnv = pkgsUnstable.python3.withPackages (ps: with ps; [
-    pythonEnv = pythonOverlayed.withPackages (ps: with ps; [
+    pythonEnv = pkgsUnstable.python3.withPackages (ps: with ps; [
       jupyter ipykernel pipdeptree
       pandas numpy openpyxl xlrd
       matplotlib seaborn plotly
@@ -96,6 +89,24 @@
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # Activation and customization of APP
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # TODO : retirer quand le backport #580682 sera dans le channel
+    nixpkgs.overlays = [
+      (final: prev: {
+        pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+          (pyFinal: pyPrev: {
+            imageio = pyPrev.imageio.overridePythonAttrs (old: {
+              disabledTests = (old.disabledTests or [ ]) ++ [
+                "test_png_16bit"
+                "test_png"
+              ];
+            });
+          })
+        ];
+      })
+    ];
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     environment.systemPackages = [
       vscodeWithExtensions
