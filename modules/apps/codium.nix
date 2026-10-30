@@ -25,7 +25,7 @@
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # TODO : remove this when imageio bug is solved
-    python = pkgsUnstable.python3.override {
+    pythonOverlayed = pkgsUnstable.python3.override {
       packageOverrides = final: prev: {
         imageio = prev.imageio.overridePythonAttrs (_: { doCheck = false; });
       };
@@ -34,7 +34,8 @@
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    pythonEnv = pkgsUnstable.python3.withPackages (ps: with ps; [
+    #pythonEnv = pkgsUnstable.python3.withPackages (ps: with ps; [
+    pythonEnv = pythonOverlayed.withPackages (ps: with ps; [
       jupyter ipykernel pipdeptree
       pandas numpy openpyxl xlrd
       matplotlib seaborn plotly
