@@ -22,7 +22,23 @@
     allUsers = builtins.attrNames config.users.users;
     normalUsers = builtins.filter (user: config.users.users.${user}.isNormalUser) allUsers;
     user = (if builtins.length normalUsers > 0 then builtins.elemAt normalUsers 0 else "root");
-      
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # TODO : remove this when imageio bug is solved
+nixpkgs.overlays = [
+  (final: prev: {
+    pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+      (pyFinal: pyPrev: {
+        imageio = pyPrev.imageio.overridePythonAttrs (old: {
+          doCheck = false;
+        });
+      })
+    ];
+  })
+];
+
+    # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
     pythonEnv = pkgsUnstable.python3.withPackages (ps: with ps; [
       jupyter ipykernel pipdeptree
       pandas numpy openpyxl xlrd
