@@ -29,7 +29,7 @@
       packageOverrides = final: prev: {
         imageio = prev.imageio.overridePythonAttrs (_: { doCheck = false; });
       };
-      self = python;
+      self = pythonOverlayed;
     };
 
     # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
