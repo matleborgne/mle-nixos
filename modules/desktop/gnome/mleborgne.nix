@@ -30,6 +30,7 @@
         papirus-icon-theme
         #ubuntu_font_family
         ubuntu-classic
+        flatpak
     ] ++ [ pkgsUnstable.librewolf ];
 
 environment.etc."librewolf/policies/policies.json".text = ''
