@@ -44,8 +44,6 @@
       kde.gamestation.enable = true;
     };
 
-    hardware.bitdo-usbboot.enable = true;
-
     secrets = {
       hardware-nix-ridge.enable = true;
       hm-gamestation.enable = true;
@@ -59,6 +57,8 @@
   # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   system.stateVersion = lib.mkForce "25.05";
+
+  boot.initrd.kernelModules = [ "xpad" ];
 
   users.users.gamestation = {
     isNormalUser = true;
