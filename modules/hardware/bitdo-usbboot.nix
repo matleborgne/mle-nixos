@@ -10,13 +10,13 @@
 
 {
 
-  options.mle.hardware.8bitdoBoot.enable = lib.mkOption {
+  options.mle.hardware.bitdo-usbboot.enable = lib.mkOption {
     description = "Configure 8bitdo-usbboot";
     type = lib.types.bool;
     default = false;
   };
   
-  config = lib.mkIf config.mle.hardware.8bitdoBoot.enable (
+  config = lib.mkIf config.mle.hardware.bitdo-usbboot.enable (
   
   let
     allUsers = builtins.attrNames config.users.users;
