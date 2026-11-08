@@ -44,6 +44,8 @@
       kde.gamestation.enable = true;
     };
 
+    hardware.8bitdo-usbboot.enable = true;
+
     secrets = {
       hardware-nix-ridge.enable = true;
       hm-gamestation.enable = true;
