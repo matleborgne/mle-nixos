@@ -33,10 +33,6 @@
       mle.misc.podman.enable = true;
 
       boot.kernelModules = [ "tun" "wireguard" ];
- 
-      users.users.${user} = {
-        linger = true;
-      };
       
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       # Quadlet build
