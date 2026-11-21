@@ -43,7 +43,7 @@
         containers.${cname} = {
           image = "docker.io/qmcgaw/gluetun:latest";
           autoStart = false;
-          user = "${uid}:${uid}";
+          user = "0:0";
           podman.sdnotify = "healthy";
 
           environment = lib.mkDefault {
