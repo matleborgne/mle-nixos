@@ -36,7 +36,6 @@
  
       users.users.${user} = {
         linger = true;
-        uid = lib.toInt uid;
       };
       
       # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
