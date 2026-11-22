@@ -55,7 +55,7 @@
           extraOptions = [
             "--cap-add=NET_ADMIN"
             "--device=/dev/net/tun:/dev/net/tun"
-            "--network=pasta"
+            "--network=pasta:-4"
             "--health-cmd=/gluetun-entrypoint healthcheck"
             "--health-interval=10s"
             "--health-start-period=20s"
