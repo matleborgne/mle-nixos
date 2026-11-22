@@ -44,7 +44,6 @@
           image = "docker.io/qmcgaw/gluetun:latest";
           autoStart = false;
           user = "0:0";
-          podman.sdnotify = "healthy";
 
           environment = lib.mkDefault {
             VPN_SERVICE_PROVIDER = "enter_here";
@@ -55,10 +54,6 @@
           extraOptions = [
             "--cap-add=NET_ADMIN"
             "--device=/dev/net/tun:/dev/net/tun"
-            "--health-cmd=/gluetun-entrypoint healthcheck"
-            "--health-interval=10s"
-            "--health-start-period=20s"
-            "--health-retries=3"
           ];
 
         };
