@@ -52,7 +52,6 @@
     };
 
     containers.podman = {
-      gluetun.enable = true;
       firefox-arch.enable = true;
       freefilesync-tumble.enable = true;
     };
